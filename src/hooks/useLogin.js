@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { AuthType } from '../enums/AuthType';
 import { projectAuth } from '../firebase/config';
 import { useAuthContext } from './useAuthContext';
 
@@ -15,7 +16,7 @@ export const useLogin = () => {
       try {
          const res = await projectAuth.signInWithEmailAndPassword(email, passsword);
          
-         dispatch({ type: 'LOGIN', payload: res.user });
+         dispatch({ type: AuthType.LOGIN, payload: res.user });
 
          if (!isCancelled) {
             setIsPending(false);
