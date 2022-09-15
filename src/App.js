@@ -4,6 +4,7 @@ import Home from './pages/home/Home';
 import Login from './pages/login/Login';
 import Signup from './pages/signup/Signup';
 import Navbar from './components/Navbar';
+import YouTubeLink from './pages/youtubeLink';
 
 function App() {
    const { authIsReady, user } = useAuthContext();
@@ -25,6 +26,9 @@ function App() {
                   <Route path="/signup">
                      {user && <Redirect to="/" />}
                      {!user && <Signup />}
+                  </Route>
+                  <Route path='/link' >
+                     <YouTubeLink />
                   </Route>
                </Switch>
             </BrowserRouter>

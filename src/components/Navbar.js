@@ -14,6 +14,7 @@ export default function Navbar() {
 
             {!user && (
                <>
+                  <li><Link to="link">YouTube link</Link></li>
                   <li><Link to="login">Login</Link></li>
                   <li><Link to="signup">Sign up</Link></li>
                </>
