@@ -1,4 +1,5 @@
 import { useReducer, useEffect, useState } from 'react';
+import { FirestoreType } from '../enums/FirestoreType';
 import { projectFirestore, timestamp } from '../firebase/config';
 
 let initialState = {
@@ -10,21 +11,21 @@ let initialState = {
 
 const firestoreReducer = (state, action) => {
    switch (action.type) {
-      case 'IS_PENDING':
+      case FirestoreType.IS_PENDING:
          return {
             document: null,
             isPending: true,
             error: null,
             success: null
          };
-      case 'ADDED_DOCUMENT':
+      case FirestoreType.ADDED_DOCUMENT:
          return {
             document: action.payload,
             isPending: false,
             error: null,
             success: true
          };
-      case 'ERROR':
+      case FirestoreType.ERROR:
          return {
             document: null,
             isPending: false,
@@ -50,20 +51,20 @@ export const useFirestore = (collection) => {
    }
 
    const addDocument = async (doc) => {
-      dispatch({ type: 'IS_PENDING' });
+      dispatch({ type: FirestoreType.IS_PENDING });
 
       try {
          const createdAt = timestamp.fromDate(new Date());
          const addedDocument = await ref.add({ ...doc, createdAt });
-         dispatchIfNotCancelled({ type: 'ADDED_DOCUMENT', payload: addedDocument });
+         dispatchIfNotCancelled({ type: FirestoreType.ADDED_DOCUMENT, payload: addedDocument });
       }
       catch (err) {
-         dispatchIfNotCancelled({ type: 'ERROR', payload: err.message });
+         dispatchIfNotCancelled({ type: FirestoreType.ERROR, payload: err.message });
       }
    }
 
    const deleteDocument = async (id) => {
-
+      dispatch({ type: FirestoreType.IS_PENDING });
    }
 
    //cleanup function
