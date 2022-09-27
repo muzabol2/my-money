@@ -26,6 +26,7 @@ export default function TransactionForm({ uid }) {
                <span>Transaction name:</span>
                <input
                   type="text"
+                  maxLength={20}
                   required
                   onChange={(e) => setName(e.target.value)}
                   value={name}
@@ -35,6 +36,10 @@ export default function TransactionForm({ uid }) {
                <span>Amount (PLN):</span>
                <input
                   type="number"
+                  placeholder="0.00"
+                  min="0.01"
+                  max="9999999"
+                  step=".01"
                   required
                   onChange={(e) => setAmount(e.target.value)}
                   value={amount}
