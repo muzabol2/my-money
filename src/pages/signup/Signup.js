@@ -21,6 +21,8 @@ export default function Signup() {
             <span>Display name:</span>
             <input
                type="text"
+               maxLength={20}
+               required
                onChange={(e) => setDisplayName(e.target.value)}
                value={displayName}
             />
@@ -51,7 +53,7 @@ export default function Signup() {
          </label>
          {!isPending && <button className="btn">Sign up</button>}
          {isPending && <button className="btn" disabled>Loading</button>}
-         {error && <p>{error}</p>}
+         {error && <p className="error">{error}</p>}
       </form>
    );
 }
