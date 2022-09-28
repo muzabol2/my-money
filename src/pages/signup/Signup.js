@@ -5,12 +5,13 @@ import { useSignup } from "../../hooks/useSignup";
 export default function Signup() {
    const [email, setEmail] = useState('');
    const [password, setPassword] = useState('');
+   const [passwordConfirm, setPasswordConfirm] = useState('');
    const [displayName, setDisplayName] = useState('');
    const { signup, isPending, error } = useSignup();
 
    const handleSubmit = (e) => {
       e.preventDefault();
-      signup(email, password, displayName);
+      signup(email, password, passwordConfirm, displayName);
    }
 
    return (
@@ -38,6 +39,14 @@ export default function Signup() {
                type="password"
                onChange={(e) => setPassword(e.target.value)}
                value={password}
+            />
+         </label>
+         <label>
+            <span>Password confirmation:</span>
+            <input
+               type="password"
+               onChange={(e) => setPasswordConfirm(e.target.value)}
+               value={passwordConfirm}
             />
          </label>
          {!isPending && <button className="btn">Sign up</button>}

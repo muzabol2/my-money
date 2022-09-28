@@ -9,9 +9,14 @@ export const useSignup = () => {
    const [error, setError] = useState(null);
    const { dispatch } = useAuthContext();
 
-   const signup = async (email, password, displayName) => {
+   const signup = async (email, password, passwordConfirm, displayName) => {
       setError(null);
       setIsPending(true);
+
+      if (password !== passwordConfirm) {
+         setIsPending(false);
+         return setError("Passwords do not match.");
+      }
 
       try {
          const res = await projectAuth.createUserWithEmailAndPassword(email, password);
