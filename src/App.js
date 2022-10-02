@@ -1,6 +1,5 @@
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 import { useAuthContext } from './hooks/useAuthContext';
-import { Helmet } from "react-helmet";
 import Home from './pages/home/Home';
 import Login from './pages/login/Login';
 import Signup from './pages/signup/Signup';
@@ -12,10 +11,6 @@ function App() {
 
    return (
       <div className="App">
-         <Helmet>
-            <meta charSet="utf-8" />
-            <title>myMoney</title>
-         </Helmet>
          {authIsReady && (
             <BrowserRouter>
                <Navbar />

@@ -10,7 +10,7 @@ export default function Home() {
       'transactions',
       ["uid", "==", user.uid],
       ["createdAt", "desc"]
-      );
+   );
 
    return (
       <div className={styles.container}>
