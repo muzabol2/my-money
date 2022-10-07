@@ -1,0 +1,28 @@
+.update-form {
+   max-width: 360px;
+   margin: 60px auto;
+   padding: 20px;
+ }
+ .update-form label {
+   display: block;
+   margin: 30px auto;
+ }
+ .update-form span {
+   display: block;
+   margin-bottom: 6px;
+ }
+ .update-form input {
+   padding: 8px 6px;
+   font-size: 1em;
+   color: #777;
+   width: 100%;
+ }
+ .container {
+   display: grid;
+   grid-template-columns: 2fr 1fr;
+   max-width: 960px;
+   margin: 60px auto;
+ }
+ .content {
+   padding-right: 30px;
+ }

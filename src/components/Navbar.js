@@ -24,6 +24,7 @@ export default function Navbar() {
                   <li>hello, {user.displayName}</li>
                   <li>
                      <button className="btn" onClick={logout}>Logout</button>
+                     <Link className="btn" to="updateProfile">Profile</Link>
                   </li>
                </>
             )}

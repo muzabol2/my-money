@@ -18,9 +18,10 @@
  }
  .navbar button, .navbar a {
    margin-left: 16px;
-   padding: 8px;
+   padding: 6px 12px;
    border: 1px solid #333;
    border-radius: 4px;
+   font-size: 1em;
  }
  .navbar a {
    background: none;
