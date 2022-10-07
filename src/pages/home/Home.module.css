@@ -40,6 +40,10 @@
    border-radius: 4px;
    cursor: pointer;
    display: block;
+   width: 100%;
+ }
+ .sidebar button:hover {
+   background: #025f29;
  }
  .sidebar h3 {
    color: #1f9751;
