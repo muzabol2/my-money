@@ -16,8 +16,14 @@ export const useLogin = () => {
       try {
          const res = await projectAuth.signInWithEmailAndPassword(email, passsword);
          
-         dispatch({ type: AuthType.LOGIN, payload: res.user });
-
+         if (res.user.emailVerified) {
+            dispatch({ type: AuthType.LOGIN, payload: res.user });
+         }
+         else {
+            await projectAuth.signOut();
+            setIsPending(false);
+            return setError("Email not verified.");
+         }
          if (!isCancelled) {
             setIsPending(false);
             setError(null);

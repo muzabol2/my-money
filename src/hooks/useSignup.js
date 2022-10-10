@@ -1,13 +1,11 @@
 import { useEffect, useState } from 'react';
-import { AuthType } from '../enums/AuthType';
 import { projectAuth } from '../firebase/config';
-import { useAuthContext } from './useAuthContext';
 
 export const useSignup = () => {
    const [isCancelled, setIsCancelled] = useState(false);
    const [isPending, setIsPending] = useState(false);
    const [error, setError] = useState(null);
-   const { dispatch } = useAuthContext();
+   const [verificationMail, setVerificationMail] = useState(false);
 
    const signup = async (email, password, passwordConfirm, displayName) => {
       setError(null);
@@ -27,7 +25,13 @@ export const useSignup = () => {
 
          await res.user.updateProfile({ displayName });
 
-         dispatch({ type: AuthType.LOGIN, payload: res.user });
+         res.user.sendEmailVerification()
+            .then(() => {
+               setVerificationMail(true);
+            })
+            .catch(() => {
+               throw new Error("Could not complate signup.");
+            });
 
          if (!isCancelled) {
             setIsPending(false);
@@ -47,5 +51,5 @@ export const useSignup = () => {
       return () => setIsCancelled(true);
    }, []);
 
-   return { signup, error, isPending };
+   return { signup, error, isPending, verificationMail };
 }

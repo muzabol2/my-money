@@ -7,53 +7,58 @@ export default function Signup() {
    const [password, setPassword] = useState('');
    const [passwordConfirm, setPasswordConfirm] = useState('');
    const [displayName, setDisplayName] = useState('');
-   const { signup, isPending, error } = useSignup();
+   const { signup, isPending, error, verificationMail } = useSignup();
 
    const handleSubmit = (e) => {
       e.preventDefault();
       signup(email, password, passwordConfirm, displayName);
    }
-
    return (
       <form onSubmit={handleSubmit} className={styles['signup-form']}>
          <h2>Sign up</h2>
-         <label>
-            <span>Display name:</span>
-            <input
-               type="text"
-               maxLength={20}
-               required
-               onChange={(e) => setDisplayName(e.target.value)}
-               value={displayName}
-            />
-         </label>
-         <label>
-            <span>Email:</span>
-            <input
-               type="email"
-               onChange={(e) => setEmail(e.target.value)}
-               value={email}
-            />
-         </label>
-         <label>
-            <span>Password:</span>
-            <input
-               type="password"
-               onChange={(e) => setPassword(e.target.value)}
-               value={password}
-            />
-         </label>
-         <label>
-            <span>Password confirmation:</span>
-            <input
-               type="password"
-               onChange={(e) => setPasswordConfirm(e.target.value)}
-               value={passwordConfirm}
-            />
-         </label>
-         {!isPending && <button className="btn">Sign up</button>}
-         {isPending && <button className="btn" disabled>Loading</button>}
-         {error && <p className="error">{error}</p>}
+         {verificationMail ?
+            <p>{"A verification email has been sent to your account. Please confirm it. If you can't find it, check your spam box. ;)"}</p>
+            :
+            <>
+               <label>
+                  <span>Display name:</span>
+                  <input
+                     type="text"
+                     maxLength={20}
+                     required
+                     onChange={(e) => setDisplayName(e.target.value)}
+                     value={displayName}
+                  />
+               </label>
+               <label>
+                  <span>Email:</span>
+                  <input
+                     type="email"
+                     onChange={(e) => setEmail(e.target.value)}
+                     value={email}
+                  />
+               </label>
+               <label>
+                  <span>Password:</span>
+                  <input
+                     type="password"
+                     onChange={(e) => setPassword(e.target.value)}
+                     value={password}
+                  />
+               </label>
+               <label>
+                  <span>Password confirmation:</span>
+                  <input
+                     type="password"
+                     onChange={(e) => setPasswordConfirm(e.target.value)}
+                     value={passwordConfirm}
+                  />
+               </label>
+               {!isPending && <button className="btn">Sign up</button>}
+               {isPending && <button className="btn" disabled>Loading</button>}
+               {error && <p className="error">{error}</p>}
+            </>
+         }
       </form>
    );
 }
