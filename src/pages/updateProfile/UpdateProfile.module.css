@@ -1,7 +1,24 @@
+.container {
+   display: flex;
+   flex-flow: row-reverse wrap;
+   justify-content: center;
+   gap: 5px 1px;
+   max-width: 960px;
+   margin: 30px auto;
+ }
+ .content {
+   order: 1;
+   flex-grow: 4;
+ }
+ .sidebar {
+   order: 0;
+ }
 .update-form {
    max-width: 360px;
-   margin: 60px auto;
-   padding: 20px;
+   margin: 20pxauto;
+   padding: 60px;
+   border: 1px solid #ddd;
+   box-shadow: 3px 3px 5px rgba(0,0,0,0.05);
  }
  .update-form label {
    display: block;
@@ -16,13 +33,4 @@
    font-size: 1em;
    color: #777;
    width: 100%;
- }
- .container {
-   display: grid;
-   grid-template-columns: 2fr 1fr;
-   max-width: 960px;
-   margin: 60px auto;
- }
- .content {
-   padding-right: 30px;
  }

@@ -21,10 +21,6 @@ export default function UpdateProfile() {
 
    return (
       <div className={styles.container}>
-         <h2>Update Profile</h2>
-         <div className={styles.sidebar}>
-            <Link className='btn' to="/">Go Back</Link>
-         </div>
          <div className={styles.content}>
             <form onSubmit={handleSubmit} className={styles['update-form']}>
                <label>
@@ -79,7 +75,9 @@ export default function UpdateProfile() {
 
             </form>
          </div>
-         
+         <div className={styles.sidebar}>
+            <Link className='btn' to="/">Go Back</Link>
+         </div>
       </div>
    );
 }

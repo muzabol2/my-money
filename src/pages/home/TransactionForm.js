@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useFirestore } from '../../hooks/useFirestore';
+import styles from './Home.module.css';
 
 export default function TransactionForm({ uid }) {
    const [name, setName] = useState('');
@@ -19,8 +20,7 @@ export default function TransactionForm({ uid }) {
    }, [response.success]);
 
    return (
-      <>
-         <h3>Add a Transaction</h3>
+      <div >
          <form onSubmit={handleSubmit}>
             <label>
                <span>Transaction name:</span>
@@ -45,8 +45,8 @@ export default function TransactionForm({ uid }) {
                   value={amount}
                />
             </label>
-            <button>Add Transaction</button>
+            <button className={styles.transactions}>Add Transaction</button>
          </form>
-      </>
+      </div>
    )
 }

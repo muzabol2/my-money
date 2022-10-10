@@ -9,26 +9,25 @@ export default function Navbar() {
 
    return (
       <nav className={styles.navbar}>
-         <ul>
-            <li className={styles.title}>Where's my money?!</li>
-
-            {!user && (
-               <>
-                  <li><Link to="link">YouTube link</Link></li>
-                  <li><Link to="login">Login</Link></li>
-                  <li><Link to="signup">Sign up</Link></li>
-               </>
-            )}
-            {user && (
-               <>
-                  <li>hello, {user.displayName}</li>
-                  <li>
-                     <button className="btn" onClick={logout}>Logout</button>
-                     <Link className="btn" to="updateProfile">Profile</Link>
-                  </li>
-               </>
-            )}
-         </ul>
+         <div className={styles.title}>Where's my money?!</div>
+         <div className={styles.links}>
+            <ul>
+               {!user && (
+                  <>
+                     <li><Link to="login">Login</Link></li>
+                     <li><Link to="signup">Sign up</Link></li>
+                     <li><Link to="link">YouTube link</Link></li>
+                  </>
+               )}
+               {user && (
+                  <>
+                     <li>hello, {user.displayName}</li>
+                     <li><button className="btn" onClick={logout}>Logout</button></li>
+                     <li><Link className="btn" to="updateProfile">Profile</Link></li>
+                  </>
+               )}
+            </ul>
+         </div>
       </nav>
    );
 }
