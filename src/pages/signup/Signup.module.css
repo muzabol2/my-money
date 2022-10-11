@@ -19,3 +19,14 @@
    color: #777;
    width: 100%;
  }
+ p {
+    color: red;
+ }
+.success {
+   color: #1f9751;
+   font-weight: bold;
+}
+.error {
+   color: red;
+   font-weight: bold;
+}

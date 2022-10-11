@@ -1,39 +1,59 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import styles from './Login.module.css';
 import { useLogin } from '../../hooks/useLogin';
+import { validateLogin } from './validateLogin';
 
 export default function Login() {
-   const [email, setEmail] = useState('');
-   const [password, setPassword] = useState('');
    const { login, error, isPending } = useLogin();
+
+   const initialFormValues = { email: "", password: "" };
+   const [formValues, setFormValues] = useState(initialFormValues);
+   const [formErrors, setFormErrors] = useState({});
+   const [isSubmit, setIsSubmit] = useState(false);
 
    const handleSubmit = (e) => {
       e.preventDefault();
-      login(email, password);
+      setFormErrors(validateLogin(formValues));
+      setIsSubmit(true);
    }
+
+   const handleChange = (e) => {
+      const { name, value } = e.target;
+      setFormValues({ ...formValues, [name]: value });
+   };
+
+   useEffect(() => {
+      if (Object.keys(formErrors).length === 0 && isSubmit) {
+         login(formValues.email, formValues.password);
+      }
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+   }, [formErrors, isSubmit]);
 
    return (
       <form onSubmit={handleSubmit} className={styles['login-form']}>
          <h2>Login</h2>
          <label>
-            <span>email:</span>
+            <span>Email:</span>
             <input
-               type="email"
-               onChange={(e) => setEmail(e.target.value)}
-               value={email}
+               name="email"
+               value={formValues.email}
+               onChange={handleChange}
             />
+            <p>{formErrors.email}</p>
          </label>
          <label>
-            <span>password:</span>
+            <span>Password:</span>
             <input
+               name="password"
                type="password"
-               onChange={(e) => setPassword(e.target.value)}
-               value={password}
+               value={formValues.password}
+               onChange={handleChange}
             />
+            <p>{formErrors.password}</p>
          </label>
          {!isPending && <button className="btn">Login</button>}
          {isPending && <button className="btn" disabled>loading</button>}
-         {error && <p className="error">{error}</p>}
+         {error && <p className={styles['error']}>{error}</p>}
       </form>
    );
 }

@@ -1,23 +1,47 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useAuthContext } from '../../hooks/useAuthContext';
 import { useUpdateProfile } from '../../hooks/useUpdateProfile';
 import styles from './UpdateProfile.module.css';
+import { validateUpdateProfile } from './validateUpdateProfile';
 
 export default function UpdateProfile() {
    const { user } = useAuthContext();
-   const [email, setEmail] = useState(user.email);
-   const [password, setPassword] = useState('');
-   const [passwordConfirm, setPasswordConfirm] = useState('');
-   const [currentPassword, setCurrentPassword] = useState('');
-   const [displayName, setDisplayName] = useState(user.displayName);
+   const { updateProfile, error, isPending, success } = useUpdateProfile();
 
-   const { updateProfile, error, isPending } = useUpdateProfile();
+   const initialFormValues = {
+      currentPassword: "",
+      displayName: user.displayName,
+      email: user.email,
+      password: "",
+      passwordConfirm: ""
+   };
+   const [formValues, setFormValues] = useState(initialFormValues);
+   const [formErrors, setFormErrors] = useState({});
+   const [isSubmit, setIsSubmit] = useState(false);
 
    const handleSubmit = (e) => {
       e.preventDefault();
-      updateProfile(email, displayName, password, passwordConfirm, currentPassword);
+      setFormErrors(validateUpdateProfile(formValues));
+      setIsSubmit(true);
    }
+
+   const handleChange = (e) => {
+      const { name, value } = e.target;
+      setFormValues({ ...formValues, [name]: value });
+   };
+
+   useEffect(() => {
+      if (Object.keys(formErrors).length === 0 && isSubmit) {
+         updateProfile(
+            formValues.email,
+            formValues.displayName,
+            formValues.password,
+            formValues.currentPassword
+         );
+      }
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+   }, [formErrors, isSubmit]);
 
    return (
       <div className={styles.container}>
@@ -26,53 +50,59 @@ export default function UpdateProfile() {
                <label>
                   <span><strong>Current password:</strong></span>
                   <input
+                     name="currentPassword"
                      type="password"
-                     onChange={(e) => setCurrentPassword(e.target.value)}
-                     value={currentPassword}
-                     required
+                     value={formValues.currentPassword}
+                     onChange={handleChange}
                      placeholder="Mandatory to make any changes"
                   />
+                  <p>{formErrors.currentPassword}</p>
                </label>
                <label>
                   <span>Display name:</span>
                   <input
+                     name="displayName"
                      type="text"
-                     maxLength={20}
-                     onChange={(e) => setDisplayName(e.target.value)}
-                     value={displayName}
+                     value={formValues.displayName}
+                     onChange={handleChange}
                   />
+                  <p>{formErrors.displayName}</p>
                </label>
                <label>
                   <span>Email:</span>
                   <input
-                     type="email"
-                     onChange={(e) => setEmail(e.target.value)}
-                     value={email}
+                     name="email"
+                     value={formValues.email}
+                     onChange={handleChange}
                   />
+                  <p>{formErrors.email}</p>
                </label>
                <label>
                   <span>New password:</span>
                   <input
+                     name="password"
                      type="password"
-                     onChange={(e) => setPassword(e.target.value)}
-                     minLength={6}
-                     value={password}
+                     value={formValues.password}
+                     onChange={handleChange}
                      placeholder="Leave blank to keep the same"
                   />
+                  <p>{formErrors.password}</p>
                </label>
                <label>
                   <span>Confirm new password:</span>
                   <input
+                     name="passwordConfirm"
                      type="password"
-                     onChange={(e) => setPasswordConfirm(e.target.value)}
-                     value={passwordConfirm}
+                     value={formValues.passwordConfirm}
+                     onChange={handleChange}
                      placeholder="Leave blank to keep the same"
                   />
+                  <p>{formErrors.passwordConfirm}</p>
                </label>
                {!isPending && <button className="btn">Update</button>}
                {isPending && <button className="btn" disabled>Loading</button>}
-               {error && <p className="error">{error}</p>}
-
+               {error && <p className={styles['error']}>{error}</p>}
+               {success && <p className={styles['success']}>{success}</p>}
             </form>
          </div>
          <div className={styles.sidebar}>
