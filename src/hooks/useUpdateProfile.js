@@ -12,7 +12,7 @@ export const useUpdateProfile = () => {
    const [error, setError] = useState(null);
    const [success, setSuccess] = useState(null);
 
-   const updateProfile = async (email, displayName, password, currentPassword) => {
+   const updateProfile = async (displayName, password, currentPassword) => {
       const promises = [];
       setIsPending(true);
       setError(null);
@@ -21,9 +21,6 @@ export const useUpdateProfile = () => {
 
       await user.reauthenticateWithCredential(credential)
          .then(async () => {
-            if (email !== user.email) {
-               promises.push(await user.updateEmail(email));
-            }
             if (password) {
                promises.push(await user.updatePassword(password));
             };

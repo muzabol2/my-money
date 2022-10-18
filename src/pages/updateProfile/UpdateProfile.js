@@ -17,12 +17,7 @@ export default function UpdateProfile() {
          passwordConfirm: "",
       },
       validationSchema: updateSchema,
-      onSubmit: (values) => updateProfile(
-         user.email,
-         values.displayName,
-         values.password,
-         values.currentPassword
-      )
+      onSubmit: (values) => updateProfile(values.displayName, values.password, values.currentPassword)
    });
 
    return (
