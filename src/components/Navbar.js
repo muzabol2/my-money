@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import styles from './Navbar.module.css';
+import './Navbar.css';
 import { useLogout } from '../hooks/useLogout';
 import { useAuthContext } from '../hooks/useAuthContext';
 
@@ -8,9 +8,9 @@ export default function Navbar() {
    const { user } = useAuthContext();
 
    return (
-      <nav className={styles.navbar}>
-         <div className={styles.title}>Where's my money?!</div>
-         <div className={styles.links}>
+      <nav className="navbar">
+         <div className="title">Where's my money?!</div>
+         <div className="links">
             <ul>
                {!user && (
                   <>

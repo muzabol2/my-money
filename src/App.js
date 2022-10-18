@@ -4,7 +4,7 @@ import Home from './pages/home/Home';
 import Login from './pages/login/Login';
 import Signup from './pages/signup/Signup';
 import Navbar from './components/Navbar';
-import YouTubeLink from './pages/youtubeLink';
+import YouTubeLink from './components/YoutubeLink';
 import UpdateProfile from './pages/updateProfile/UpdateProfile';
 
 function App() {
