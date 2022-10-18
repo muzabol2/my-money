@@ -5,43 +5,53 @@
    gap: 5px 1px;
    max-width: 960px;
    margin: 30px auto;
- }
- .content {
+}
+
+.content {
    order: 1;
    flex-grow: 4;
- }
- .sidebar {
+}
+
+.sidebar {
    order: 0;
- }
+}
+
 .update-form {
    max-width: 360px;
    margin: 20pxauto;
    padding: 60px;
    border: 1px solid #ddd;
-   box-shadow: 3px 3px 5px rgba(0,0,0,0.05);
- }
- .update-form label {
+   box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.05);
+}
+
+.update-form label {
    display: block;
    margin: 30px auto;
- }
- .update-form span {
+}
+
+.update-form span {
    display: block;
    margin-bottom: 6px;
- }
- .update-form input {
+}
+
+.update-form input {
    padding: 8px 6px;
    font-size: 1em;
    color: #777;
    width: 100%;
- }
- p {
+}
+
+p {
    color: red;
+   font-size: 12px;
 }
+
 .success {
-  color: #1f9751;
-  font-weight: bold;
+   color: #1f9751;
+   font-weight: bold;
 }
+
 .error {
-  color: red;
-  font-weight: bold;
+   color: red;
+   font-weight: bold;
 }

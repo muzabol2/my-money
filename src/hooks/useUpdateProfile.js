@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import { useHistory } from 'react-router-dom';
 import { AuthType } from '../enums/AuthType';
 import { useAuthContext } from './useAuthContext';
 import { auth } from '../firebase/config';

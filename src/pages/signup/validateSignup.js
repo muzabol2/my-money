@@ -1,38 +1,24 @@
-export  const validateSignup = (values) => {
-   const errors = {};
-   const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
+import * as yup from "yup";
 
-   if (!values.displayName) {
-      errors.displayName = "Display name is required.";
-   } 
-   else if (values.displayName.length > 20) {
-      errors.displayName = "Display name cannot exceed more than 20 characters.";
-   }
+const passwordRules = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{5,}$/;
+// min 5 characters, 1 upper case letter, 1 lower case letter, 1 numeric digit.
 
-   if (!values.email) {
-      errors.email = "Email is required.";
-   } 
-   else if (!regex.test(values.email)) {
-      errors.email = "This is not a valid email format.";
-   }
-
-   if (!values.password) {
-      errors.password = "Password is required.";
-   } 
-   else if (values.password.length < 6) {
-      errors.password = "Password must be at least 6 characters.";
-   } 
-   else if (values.password.length > 10) {
-      errors.password = "Password cannot exceed more than 10 characters.";
-   }
-
-   if (!values.passwordConfirm) {
-      errors.passwordConfirm = "Password confirmation is required.";
-   }
-
-   if (values.password !== values.passwordConfirm) {
-      errors.passwordConfirm = "Password confirmation must be the same as password.";
-   }
-
-   return errors;
-};
+export const signupSchema = yup.object().shape({
+   displayName: yup
+      .string()
+      .min(5)
+      .max(20)
+      .required("Required"),
+   email: yup
+      .string()
+      .email("Please enter a valid email")
+      .required("Required"),
+   password: yup
+      .string()
+      .matches(passwordRules, { message: "Please create a stronger password: min 5 characters, 1 upper case letter, 1 lower case letter, 1 numeric digit." })
+      .required("Required"),
+   passwordConfirm: yup
+      .string()
+      .oneOf([yup.ref("password"), null], "Passwords must match")
+      .required("Required"),
+});

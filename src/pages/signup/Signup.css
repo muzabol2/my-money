@@ -1,28 +1,38 @@
-.login-form {
+.signup-form {
    max-width: 360px;
    margin: 60px auto;
    padding: 60px;
    border: 1px solid #ddd;
-   box-shadow: 3px 3px 5px rgba(0,0,0,0.05);
- }
- .login-form label {
+   box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.05);
+}
+
+.signup-form label {
    display: block;
    margin: 30px auto;
- }
- .login-form span {
+}
+
+.signup-form span {
    display: block;
    margin-bottom: 6px;
- }
- .login-form input {
+}
+
+.signup-form input {
    padding: 8px 6px;
    font-size: 1em;
    color: #777;
    width: 100%;
- }
+}
+
+p {
+   color: red;
+   font-size: 12px;
+}
+
 .success {
    color: #1f9751;
    font-weight: bold;
 }
+
 .error {
    color: red;
    font-weight: bold;

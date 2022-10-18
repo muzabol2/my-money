@@ -1,111 +1,91 @@
-import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useAuthContext } from '../../hooks/useAuthContext';
 import { useUpdateProfile } from '../../hooks/useUpdateProfile';
-import styles from './UpdateProfile.module.css';
-import { validateUpdateProfile } from './validateUpdateProfile';
+import { useFormik } from 'formik';
+import { updateSchema } from './validateUpdateProfile';
+import './UpdateProfile.css';
 
 export default function UpdateProfile() {
    const { user } = useAuthContext();
    const { updateProfile, error, isPending, success } = useUpdateProfile();
 
-   const initialFormValues = {
-      currentPassword: "",
-      displayName: user.displayName,
-      email: user.email,
-      password: "",
-      passwordConfirm: ""
-   };
-   const [formValues, setFormValues] = useState(initialFormValues);
-   const [formErrors, setFormErrors] = useState({});
-   const [isSubmit, setIsSubmit] = useState(false);
-
-   const handleSubmit = (e) => {
-      e.preventDefault();
-      setFormErrors(validateUpdateProfile(formValues));
-      setIsSubmit(true);
-   }
-
-   const handleChange = (e) => {
-      const { name, value } = e.target;
-      setFormValues({ ...formValues, [name]: value });
-   };
-
-   useEffect(() => {
-      if (Object.keys(formErrors).length === 0 && isSubmit) {
-         updateProfile(
-            formValues.email,
-            formValues.displayName,
-            formValues.password,
-            formValues.currentPassword
-         );
-      }
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-   }, [formErrors, isSubmit]);
+   const { values, errors, touched, isSubmitting, handleBlur, handleChange, handleSubmit } = useFormik({
+      initialValues: {
+         currentPassword: "",
+         displayName: user.displayName,
+         password: "",
+         passwordConfirm: "",
+      },
+      validationSchema: updateSchema,
+      onSubmit: (values) => updateProfile(
+         user.email,
+         values.displayName,
+         values.password,
+         values.currentPassword
+      )
+   });
 
    return (
-      <div className={styles.container}>
-         <div className={styles.content}>
-            <form onSubmit={handleSubmit} className={styles['update-form']}>
-               <label>
-                  <span><strong>Current password:</strong></span>
-                  <input
-                     name="currentPassword"
-                     type="password"
-                     value={formValues.currentPassword}
-                     onChange={handleChange}
-                     placeholder="Mandatory to make any changes"
-                  />
-                  <p>{formErrors.currentPassword}</p>
-               </label>
+      <div className="container">
+         <div className="content">
+            <form onSubmit={handleSubmit} className="update-form">
                <label>
                   <span>Display name:</span>
                   <input
-                     name="displayName"
-                     type="text"
-                     value={formValues.displayName}
+                     value={values.displayName}
                      onChange={handleChange}
+                     id="displayName"
+                     type="text"
+                     onBlur={handleBlur}
+                     className={errors.displayName && touched.displayName ? "input-error" : ""}
                   />
-                  <p>{formErrors.displayName}</p>
+                  {errors.displayName && touched.displayName && <p>{errors.displayName}</p>}
                </label>
                <label>
-                  <span>Email:</span>
+                  <span>Current password:</span>
                   <input
-                     name="email"
-                     value={formValues.email}
+                     id="currentPassword"
+                     type="password"
+                     value={values.currentPassword}
                      onChange={handleChange}
+                     onBlur={handleBlur}
+                     className={errors.currentPassword && touched.currentPassword ? "input-error" : ""}
                   />
-                  <p>{formErrors.email}</p>
+                  {errors.currentPassword && touched.currentPassword && (<p>{errors.currentPassword}</p>)}
                </label>
                <label>
                   <span>New password:</span>
                   <input
-                     name="password"
+                     id="password"
                      type="password"
-                     value={formValues.password}
-                     onChange={handleChange}
+                     value={values.password}
                      placeholder="Leave blank to keep the same"
+                     onChange={handleChange}
+                     onBlur={handleBlur}
+                     className={errors.password && touched.password ? "input-error" : ""}
                   />
-                  <p>{formErrors.password}</p>
+                  {errors.password && touched.password && (<p>{errors.password}</p>)}
                </label>
                <label>
                   <span>Confirm new password:</span>
                   <input
-                     name="passwordConfirm"
+                     id="passwordConfirm"
                      type="password"
-                     value={formValues.passwordConfirm}
-                     onChange={handleChange}
+                     value={values.passwordConfirm}
                      placeholder="Leave blank to keep the same"
+                     onChange={handleChange}
+                     onBlur={handleBlur}
+                     className={errors.passwordConfirm && touched.passwordConfirm ? "input-error" : ""}
                   />
-                  <p>{formErrors.passwordConfirm}</p>
+                  {errors.passwordConfirm && touched.passwordConfirm && (<p>{errors.passwordConfirm}</p>)}
                </label>
-               {!isPending && <button className="btn">Update</button>}
+               {!isPending && <button type="submit" disabled={isSubmitting} className="btn">Update</button>}
                {isPending && <button className="btn" disabled>Loading</button>}
-               {error && <p className={styles['error']}>{error}</p>}
-               {success && <p className={styles['success']}>{success}</p>}
+               {error && <p className="error">{error}</p>}
+               {success && <p className="success">{success}</p>}
             </form>
          </div>
-         <div className={styles.sidebar}>
+         <div className="sidebar">
             <Link className='btn' to="/">Go Back</Link>
          </div>
       </div>

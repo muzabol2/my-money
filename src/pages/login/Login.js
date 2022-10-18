@@ -1,59 +1,50 @@
-import { useEffect, useState } from 'react';
-import styles from './Login.module.css';
 import { useLogin } from '../../hooks/useLogin';
-import { validateLogin } from './validateLogin';
+import { useFormik } from 'formik';
+import { loginSchema } from './validateLogin';
+import './Login.css';
 
 export default function Login() {
    const { login, error, isPending } = useLogin();
 
-   const initialFormValues = { email: "", password: "" };
-   const [formValues, setFormValues] = useState(initialFormValues);
-   const [formErrors, setFormErrors] = useState({});
-   const [isSubmit, setIsSubmit] = useState(false);
-
-   const handleSubmit = (e) => {
-      e.preventDefault();
-      setFormErrors(validateLogin(formValues));
-      setIsSubmit(true);
-   }
-
-   const handleChange = (e) => {
-      const { name, value } = e.target;
-      setFormValues({ ...formValues, [name]: value });
-   };
-
-   useEffect(() => {
-      if (Object.keys(formErrors).length === 0 && isSubmit) {
-         login(formValues.email, formValues.password);
-      }
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-   }, [formErrors, isSubmit]);
+   const { values, errors, touched, isSubmitting, handleBlur, handleChange, handleSubmit } = useFormik({
+      initialValues: {
+         email: "",
+         password: "",
+      },
+      validationSchema: loginSchema,
+      onSubmit: (values) => login(values.email, values.password)
+   });
 
    return (
-      <form onSubmit={handleSubmit} className={styles['login-form']}>
+      <form onSubmit={handleSubmit} className="login-form" >
          <h2>Login</h2>
          <label>
             <span>Email:</span>
             <input
-               name="email"
-               value={formValues.email}
+               value={values.email}
                onChange={handleChange}
+               id="email"
+               type="email"
+               onBlur={handleBlur}
+               className={errors.email && touched.email ? "input-error" : ""}
             />
-            <p>{formErrors.email}</p>
+            {errors.email && touched.email && <p>{errors.email}</p>}
          </label>
          <label>
             <span>Password:</span>
             <input
-               name="password"
+               id="password"
                type="password"
-               value={formValues.password}
+               value={values.password}
                onChange={handleChange}
+               onBlur={handleBlur}
+               className={errors.password && touched.password ? "input-error" : ""}
             />
-            <p>{formErrors.password}</p>
+            {errors.password && touched.password && (<p>{errors.password}</p>)}
          </label>
-         {!isPending && <button className="btn">Login</button>}
-         {isPending && <button className="btn" disabled>loading</button>}
-         {error && <p className={styles['error']}>{error}</p>}
+         {!isPending && <button type="submit" disabled={isSubmitting} className="btn">Login</button>}
+         {isPending && <button className="btn" disabled>Loading</button>}
+         {error && <p>{error}</p>}
       </form>
    );
 }
