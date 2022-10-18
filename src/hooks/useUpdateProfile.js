@@ -34,7 +34,7 @@ export const useUpdateProfile = () => {
             setSuccess("Profile updated correctly");
          })
          .catch((error) => {
-            console.log("error", error);
+            console.error(error);
             setIsPending(false);
             setSuccess(null);
             return setError(error.message);
