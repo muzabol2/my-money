@@ -4,7 +4,7 @@ import Home from './pages/home/Home';
 import Login from './pages/login/Login';
 import Signup from './pages/signup/Signup';
 import Navbar from './components/Navbar';
-import YouTubeLink from './components/YoutubeLink';
+import Inspiration from './pages/inspiration/Inspiration';
 import UpdateProfile from './pages/updateProfile/UpdateProfile';
 
 function App() {
@@ -28,8 +28,8 @@ function App() {
                      {user && <Redirect to="/" />}
                      {!user && <Signup />}
                   </Route>
-                  <Route path='/link' >
-                     <YouTubeLink />
+                  <Route path='/inspiration' >
+                     <Inspiration />
                   </Route>
                   <Route path="/updateProfile">
                      {!user && <Redirect to="/login" />}
