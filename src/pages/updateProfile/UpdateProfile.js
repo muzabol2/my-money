@@ -3,6 +3,7 @@ import { useAuthContext } from '../../hooks/useAuthContext';
 import { useUpdateProfile } from '../../hooks/useUpdateProfile';
 import { useFormik } from 'formik';
 import { updateSchema } from './validateUpdateProfile';
+import { validateYupSchemaMultiErrors } from '../validateFormikMultiErrors';
 import './UpdateProfile.css';
 
 export default function UpdateProfile() {
@@ -16,8 +17,8 @@ export default function UpdateProfile() {
          password: "",
          passwordConfirm: "",
       },
-      validationSchema: updateSchema,
-      onSubmit: (values) => updateProfile(values.displayName, values.password, values.currentPassword)
+      validate: values => validateYupSchemaMultiErrors(values, updateSchema),
+      onSubmit: values => updateProfile(values.displayName, values.password, values.currentPassword)
    });
 
    return (

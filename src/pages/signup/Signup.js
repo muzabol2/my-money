@@ -1,6 +1,7 @@
 import { useSignup } from '../../hooks/useSignup';
 import { useFormik } from 'formik';
 import { signupSchema } from './validateSignup';
+import { validateYupSchemaMultiErrors } from '../validateFormikMultiErrors';
 import './Signup.css';
 
 export default function Signup() {
@@ -13,8 +14,8 @@ export default function Signup() {
          password: "",
          passwordConfirm: "",
       },
-      validationSchema: signupSchema,
-      onSubmit: (values) => signup(values.email, values.password, values.displayName)
+      validate: values => validateYupSchemaMultiErrors(values, signupSchema),
+      onSubmit: values => signup(values.email, values.password, values.displayName),
    });
 
    return (

@@ -1,51 +1,49 @@
-import { useEffect, useState } from 'react';
 import { useFirestore } from '../../hooks/useFirestore';
+import { useFormik } from 'formik';
+import { transactionSchema } from './validateTransaction';
 import './Home.css';
 
 export default function TransactionForm({ uid }) {
-   const [name, setName] = useState('');
-   const [amount, setAmount] = useState('');
    const { addDocument, response } = useFirestore('transactions');
 
-   const handleSubmit = (e) => {
-      e.preventDefault();
-      addDocument({ uid, name, amount });
-   }
+   const { values, errors, touched, isSubmitting, handleBlur, handleChange, handleSubmit } = useFormik({
+      initialValues: {
+         transactionName: "",
+         amount: "",
+      },
+      validationSchema: transactionSchema,
+      onSubmit: ({transactionName, amount}) => addDocument({ uid, transactionName, amount })
+   });
 
-   useEffect(() => {
-      if (response.success) {
-         setName('');
-         setAmount('');
-      }
-   }, [response.success]);
 
    return (
-      <div >
+      <div>
          <form onSubmit={handleSubmit}>
             <label>
                <span>Transaction name:</span>
                <input
+                  value={values.transactionName}
+                  onChange={handleChange}
+                  id="transactionName"
                   type="text"
-                  maxLength={20}
-                  required
-                  onChange={(e) => setName(e.target.value)}
-                  value={name}
+                  onBlur={handleBlur}
+                  className={errors.transactionName && touched.transactionName ? "input-error" : ""}
                />
+               {errors.transactionName && touched.transactionName && <p>{errors.transactionName}</p>}
             </label>
             <label>
                <span>Amount (PLN):</span>
                <input
-                  type="number"
-                  placeholder="0.00"
-                  min="0.01"
-                  max="9999999"
-                  step=".01"
-                  required
-                  onChange={(e) => setAmount(e.target.value)}
-                  value={amount}
+                  id="amount"
+                  type="text"
+                  value={values.amount}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  className={errors.amount && touched.amount ? "input-error" : ""}
                />
+               {errors.amount && touched.amount && (<p>{errors.amount}</p>)}
             </label>
-            <button className="transactions">Add Transaction</button>
+            <button type="submit" disabled={isSubmitting} className="transactions">Add Transaction</button>
          </form>
       </div>
    )

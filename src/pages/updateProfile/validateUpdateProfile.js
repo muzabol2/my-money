@@ -1,8 +1,5 @@
 import * as yup from 'yup';
 
-const passwordRules = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{5,}$/;
-// min 5 characters, 1 upper case letter, 1 lower case letter, 1 numeric digit.
-
 export const updateSchema = yup.object().shape({
    currentPassword: yup
       .string()
@@ -14,7 +11,12 @@ export const updateSchema = yup.object().shape({
       .required("Required"),
    password: yup
       .string()
-      .matches(passwordRules, { message: "Please create a stronger password" }),
+      .min(5, "\u2022 Min 5 characters or more\n")
+      .matches(/[a-z]+/, "\u2022 One lowercase character\n")
+      .matches(/[A-Z]+/, "\u2022 One uppercase character\n")
+      .matches(/[@$!%*#?&]+/, "\u2022 One special character (@$!%*#?&)\n")
+      .matches(/\d+/, "\u2022 One number")
+      .required("Required"),
    passwordConfirm: yup
       .string()
       .oneOf([yup.ref("password"), null], "Passwords must match"),
