@@ -92,7 +92,7 @@
    border-left: 4px solid #1f9751;
 }
 
-.transactions .name {
+.transactions .transactionName {
    color: #777;
    font-size: 1.4em;
 }
