@@ -8,7 +8,7 @@ import './UpdateProfile.css';
 
 export default function UpdateProfile() {
    const { user } = useAuthContext();
-   const { updateProfile, error, isPending, success } = useUpdateProfile();
+   const { updateUserProfile, error, isPending, success } = useUpdateProfile();
 
    const { values, errors, touched, isSubmitting, handleBlur, handleChange, handleSubmit } = useFormik({
       initialValues: {
@@ -18,7 +18,7 @@ export default function UpdateProfile() {
          passwordConfirm: "",
       },
       validate: values => validateYupSchemaMultiErrors(values, updateSchema),
-      onSubmit: values => updateProfile(values.displayName, values.password, values.currentPassword)
+      onSubmit: values => updateUserProfile(values.displayName, values.password, values.currentPassword)
    });
 
    return (

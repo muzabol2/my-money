@@ -1,8 +1,13 @@
-import { useEffect, useState } from 'react';
-import { projectAuth } from '../firebase/config';
+import { useState } from 'react';
+import { auth } from '../firebase/config';
+import {
+   createUserWithEmailAndPassword,
+   updateProfile,
+   signOut,
+   sendEmailVerification
+} from 'firebase/auth';
 
 export const useSignup = () => {
-   const [isCancelled, setIsCancelled] = useState(false);
    const [isPending, setIsPending] = useState(false);
    const [error, setError] = useState(null);
    const [verificationMail, setVerificationMail] = useState(false);
@@ -10,41 +15,24 @@ export const useSignup = () => {
    const signup = async (email, password, displayName) => {
       setError(null);
       setIsPending(true);
-      try {
-         const res = await projectAuth.createUserWithEmailAndPassword(email, password);
 
-         if (!res) {
-            throw new Error("Could not complate signup.");
-         }
-
-         await res.user.updateProfile({ displayName });
-
-         res.user.sendEmailVerification()
-            .then(() => {
-               setVerificationMail(true);
-               projectAuth.signOut();
-            })
-            .catch(() => {
-               throw new Error("Could not complate signup.");
-            });
-
-         if (!isCancelled) {
-            setIsPending(false);
-            setError(null);
-         }
-      }
-      catch (error) {
-         if (!isCancelled) {
-            console.error(error)
+      createUserWithEmailAndPassword(auth, email, password)
+         .then(() => {
+            updateProfile(auth.currentUser, { displayName });
+            sendEmailVerification(auth.currentUser)
+               .then(() => {
+                  setVerificationMail(true);
+                  signOut(auth);
+               })
+         })
+         .catch((error) => {
+            console.error(error);
             setError(error.message);
+         })
+         .finally(() => {
             setIsPending(false);
-         }
-      }
+         });
    }
-
-   useEffect(() => {
-      return () => setIsCancelled(true);
-   }, []);
 
    return { signup, error, isPending, verificationMail };
 }

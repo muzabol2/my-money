@@ -1,7 +1,12 @@
 import { useEffect, useState } from 'react';
 import { AuthType } from '../enums/AuthType';
 import { useAuthContext } from './useAuthContext';
-import { auth } from '../firebase/config';
+import {
+   EmailAuthProvider,
+   reauthenticateWithCredential,
+   updatePassword,
+   updateProfile
+} from "firebase/auth";
 
 export const useUpdateProfile = () => {
    const [isCancelled, setIsCancelled] = useState(false);
@@ -12,21 +17,20 @@ export const useUpdateProfile = () => {
    const [error, setError] = useState(null);
    const [success, setSuccess] = useState(null);
 
-   const updateProfile = async (displayName, password, currentPassword) => {
+   const updateUserProfile = async (displayName, password, currentPassword) => {
       const promises = [];
       setIsPending(true);
       setError(null);
 
-      const credential = auth.EmailAuthProvider.credential(user.email, currentPassword);
-
-      await user.reauthenticateWithCredential(credential)
+      const credential = EmailAuthProvider.credential(user.email, currentPassword);
+      await reauthenticateWithCredential(user, credential)
          .then(async () => {
             if (password) {
-               promises.push(await user.updatePassword(password));
+               promises.push(await updatePassword(user, password));
             };
 
             if (displayName !== user.displayName) {
-               promises.push(await user.updateProfile({ displayName }));
+               promises.push(await updateProfile(user, { displayName }));
             }
             setSuccess("Profile updated correctly");
          })
@@ -38,7 +42,7 @@ export const useUpdateProfile = () => {
          });
 
       Promise.all(promises)
-         .then(prom => {
+         .then(() => {
             dispatch({ type: AuthType.LOGIN, payload: user });
 
             if (!isCancelled) {
@@ -52,5 +56,5 @@ export const useUpdateProfile = () => {
       return () => setIsCancelled(true);
    }, []);
 
-   return { updateProfile, error, isPending, success };
+   return { updateUserProfile, error, isPending, success };
 }

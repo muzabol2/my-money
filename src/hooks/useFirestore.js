@@ -1,6 +1,7 @@
 import { useReducer, useEffect, useState } from 'react';
 import { FirestoreType } from '../enums/FirestoreType';
-import { projectFirestore, timestamp } from '../firebase/config';
+import { db } from '../firebase/config';
+import { collection, addDoc, doc, deleteDoc, Timestamp } from 'firebase/firestore';
 
 let initialState = {
    document: null,
@@ -44,11 +45,11 @@ const firestoreReducer = (state, action) => {
    }
 }
 
-export const useFirestore = (collection) => {
+export const useFirestore = (collectionName) => {
    const [response, dispatch] = useReducer(firestoreReducer, initialState);
    const [isCancelled, setIsCancelled] = useState(false);
 
-   const ref = projectFirestore.collection(collection);
+   const ref = collection(db, collectionName);
 
    // only dispatch if not cancel
    const dispatchIfNotCancelled = (action) => {
@@ -57,25 +58,28 @@ export const useFirestore = (collection) => {
       }
    }
 
-   const addDocument = async (doc) => {
+   const addDocument = async (document) => {
       dispatch({ type: FirestoreType.IS_PENDING });
 
       try {
-         const createdAt = timestamp.fromDate(new Date());
-         const addedDocument = await ref.add({ ...doc, createdAt });
+         const createdAt = Timestamp.fromDate(new Date());
+         const addedDocument = await addDoc(ref, { ...document, createdAt });
          dispatchIfNotCancelled({ type: FirestoreType.ADDED_DOCUMENT, payload: addedDocument });
       }
-      catch (err) {
-         dispatchIfNotCancelled({ type: FirestoreType.ERROR, payload: err.message });
+      catch (error) {
+         console.error(error);
+         dispatchIfNotCancelled({ type: FirestoreType.ERROR, payload: error.message });
       }
    }
 
    const deleteDocument = async (id) => {
       dispatch({ type: FirestoreType.IS_PENDING });
       try {
-         await ref.doc(id).delete();
+         const ref = doc(db, collectionName, id);
+         await deleteDoc(ref);
          dispatchIfNotCancelled({ type: FirestoreType.DELETED_DOCUMENT });
       } catch (error) {
+         console.error(error);
          dispatchIfNotCancelled({ type: FirestoreType.ERROR, payload: "could not delete" });
       }
    }
