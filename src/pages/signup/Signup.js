@@ -75,7 +75,7 @@ export default function Signup() {
                </label>
                {!isPending && <button type="submit" disabled={isSubmitting} className="btn">Sign up</button>}
                {isPending && <button className="btn" disabled>Loading</button>}
-               {error && <p className="error">{error}</p>}
+               {error && <p className="firebase-error">{error}</p>}
             </>
          }
       </form>

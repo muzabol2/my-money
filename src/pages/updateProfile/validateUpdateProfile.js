@@ -6,8 +6,8 @@ export const updateSchema = yup.object().shape({
       .required("Required"),
    displayName: yup
       .string()
-      .min(5)
-      .max(20)
+      .min(5, "5-20 characters")
+      .max(20, "5-20 characters")
       .required("Required"),
    password: yup
       .string()
@@ -15,8 +15,7 @@ export const updateSchema = yup.object().shape({
       .matches(/[a-z]+/, "\u2022 One lowercase character\n")
       .matches(/[A-Z]+/, "\u2022 One uppercase character\n")
       .matches(/[@$!%*#?&]+/, "\u2022 One special character (@$!%*#?&)\n")
-      .matches(/\d+/, "\u2022 One number")
-      .required("Required"),
+      .matches(/\d+/, "\u2022 One number"),
    passwordConfirm: yup
       .string()
       .oneOf([yup.ref("password"), null], "Passwords must match"),

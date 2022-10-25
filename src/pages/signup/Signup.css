@@ -34,7 +34,7 @@ p {
    font-weight: bold;
 }
 
-.error {
-   color: red;
+.firebase-error {
+   margin-top: 20px;
    font-weight: bold;
 }

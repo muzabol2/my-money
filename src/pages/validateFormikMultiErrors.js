@@ -35,7 +35,7 @@ import { validateYupSchema, setIn, getIn } from "formik";
    try {
      await validateYupSchema(values, schema);
      return {};
-   } catch (e) {
-     return yupToFormErrors(e, { showMultipleFieldErrors: true });
+   } catch (error) {
+     return yupToFormErrors(error, { showMultipleFieldErrors: true });
    }
  };

@@ -3,7 +3,6 @@ import './Home.css';
 
 export default function TransactionList({ transactions }) {
    const { deleteDocument } = useFirestore('transactions')
-   console.log("transactions", transactions);
 
    const sum = transactions.reduce((accumulator, transaction) => {
       return accumulator + Number(transaction.amount);

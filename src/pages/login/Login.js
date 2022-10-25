@@ -44,7 +44,7 @@ export default function Login() {
          </label>
          {!isPending && <button type="submit" disabled={isSubmitting} className="btn">Login</button>}
          {isPending && <button className="btn" disabled>Loading</button>}
-         {error && <p>{error}</p>}
+         {error && <p className="firebase-error">{error}</p>}
       </form>
    );
 }

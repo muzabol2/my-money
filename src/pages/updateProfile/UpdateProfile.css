@@ -46,12 +46,13 @@ p {
    font-size: 12px;
 }
 
-.success {
+.firebase-success {
+   margin-top: 20px;
    color: #1f9751;
    font-weight: bold;
 }
 
-.error {
-   color: red;
+.firebase-error {
+   margin-top: 20px;
    font-weight: bold;
 }

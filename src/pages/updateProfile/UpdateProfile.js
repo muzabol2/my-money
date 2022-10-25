@@ -77,8 +77,8 @@ export default function UpdateProfile() {
                </label>
                {!isPending && <button type="submit" disabled={isSubmitting} className="btn">Update</button>}
                {isPending && <button className="btn" disabled>Loading</button>}
-               {error && <p className="error">{error}</p>}
-               {success && <p className="success">{success}</p>}
+               {error && <p className="firebase-error">{error}</p>}
+               {success && <p className="firebase-success">{success}</p>}
             </form>
          </div>
          <div className="sidebar">
