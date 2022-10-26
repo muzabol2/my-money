@@ -18,7 +18,6 @@ export const useGoogleSignIn = () => {
 
       signInWithPopup(auth, provider)
          .then(res => {
-            console.log(res);
             dispatch({ type: AuthType.LOGIN, payload: res.user });
          })
          .catch((error) => {

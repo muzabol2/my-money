@@ -20,15 +20,15 @@ export default function UpdateProfile() {
       validate: values => validateYupSchemaMultiErrors(values, updateSchema),
       onSubmit: values => updateUserProfile(values.displayName, values.password, values.currentPassword)
    });
-   console.log(user.providerData[0]);
+
    return (
       <div className="container">
          <div className="content">
-                  <form onSubmit={handleSubmit} className="update-form">
-            {user.providerData[0].providerId === 'google.com' ?
-               <p>{"You are sign in with Google account. You can't change your profile data from here."}</p>
-               :
-               <>
+            <form onSubmit={handleSubmit} className="update-form">
+               {user.providerData[0].providerId === 'google.com' ?
+                  <p>{"You are sign in with Google account. You can't change your profile data from here."}</p>
+                  :
+                  <>
                      <label>
                         <span>Display name:</span>
                         <input
@@ -83,9 +83,9 @@ export default function UpdateProfile() {
                      {isPending && <button className="btn" disabled>Loading</button>}
                      {error && <p className="firebase-error">{error}</p>}
                      {success && <p className="firebase-success">{success}</p>}
-                     </>
-                  }
-                  </form>
+                  </>
+               }
+            </form>
          </div>
          <div className="sidebar">
             <Link className='btn' to="/">Go Back</Link>

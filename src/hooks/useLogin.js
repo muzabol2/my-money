@@ -16,7 +16,6 @@ export const useLogin = () => {
 
       signInWithEmailAndPassword(auth, email, password)
          .then(res => {
-            console.log(res);
             if (res.user.emailVerified) {
                dispatch({ type: AuthType.LOGIN, payload: res.user });
             }
