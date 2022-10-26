@@ -23,7 +23,9 @@ export default function Navbar() {
                   <>
                      <li>hello, {user.displayName}</li>
                      <li><button className="btn" onClick={logout}>Logout</button></li>
-                     <li><Link className="btn" to="updateProfile">Profile</Link></li>
+                     {user.providerData[0].providerId !== 'google.com' && (
+                        <li><Link className="btn" to="updateProfile">Profile</Link></li>
+                     )}
                   </>
                )}
             </ul>
