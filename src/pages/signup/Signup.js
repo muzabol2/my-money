@@ -2,10 +2,14 @@ import { useSignup } from '../../hooks/useSignup';
 import { useFormik } from 'formik';
 import { signupSchema } from './validateSignup';
 import { validateYupSchemaMultiErrors } from '../validateFormikMultiErrors';
+import { GoogleButton } from 'react-google-button';
+import { useGoogleSignIn } from '../../hooks/useGoogleSignIn';
 import './Signup.css';
+import Separator from '../../components/Separator';
 
 export default function Signup() {
    const { signup, isPending, error, verificationMail } = useSignup();
+   const { googleSignIn, googleError, isGooglePending } = useGoogleSignIn();
 
    const { values, errors, touched, isSubmitting, handleBlur, handleChange, handleSubmit } = useFormik({
       initialValues: {
@@ -20,7 +24,7 @@ export default function Signup() {
 
    return (
       <form onSubmit={handleSubmit} className="signup-form">
-         <h2>Sign up</h2>
+         <h2>Create your account:</h2>
          {verificationMail ?
             <p className="success">{"A verification email has been sent to your account. Please confirm it. If you can't find it, check your spam box. ;)"}</p>
             :
@@ -73,11 +77,19 @@ export default function Signup() {
                   />
                   {errors.passwordConfirm && touched.passwordConfirm && (<p>{errors.passwordConfirm}</p>)}
                </label>
-               {!isPending && <button type="submit" disabled={isSubmitting} className="btn">Sign up</button>}
-               {isPending && <button className="btn" disabled>Loading</button>}
-               {error && <p className="firebase-error">{error}</p>}
+               <div className="center">
+                  {!isPending && <button type="submit" disabled={isSubmitting} className="btn">Sign up</button>}
+                  {isPending && <button className="btn" disabled>Loading</button>}
+                  {error && <p className="firebase-error">{error}</p>}
+               </div>
+               <Separator label="OR" />
+               <div className="center">
+                  {!isGooglePending && <GoogleButton label="Sign up with Google" onClick={googleSignIn} />}
+                  {isGooglePending && <GoogleButton label="Loading" disabled />}
+                  {googleError && <p className="firebase-error">{error}</p>}
+               </div>
             </>
          }
-      </form>
+      </form >
    );
 }

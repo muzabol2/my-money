@@ -15,7 +15,8 @@ export const useLogin = () => {
       setIsPending(true);
 
       signInWithEmailAndPassword(auth, email, password)
-         .then((res) => {
+         .then(res => {
+            console.log(res);
             if (res.user.emailVerified) {
                dispatch({ type: AuthType.LOGIN, payload: res.user });
             }

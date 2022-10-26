@@ -1,6 +1,7 @@
 import { createContext, useEffect, useReducer } from 'react';
 import { AuthType } from '../enums/AuthType';
 import { auth } from '../firebase/config';
+import { onAuthStateChanged } from 'firebase/auth';
 
 export const AuthContext = createContext();
 
@@ -24,8 +25,8 @@ export const AuthContextProvider = ({ children }) => {
    });
 
    useEffect(() => {
-      const unsub = auth.onAuthStateChanged((user) => {
-         dispatch({ type: AuthType.AUTH_IS_READY, payload: user});
+      const unsub = onAuthStateChanged(auth, (user) => {
+         dispatch({ type: AuthType.AUTH_IS_READY, payload: user });
          unsub();
       });
    }, []);
