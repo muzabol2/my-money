@@ -1,8 +1,9 @@
+/* login, signup, updateProfile */
 .displayName-good__border,
-.password-good__border, 
+.password-good__border,
 .email-good__border,
-.passwordConfirm-good__border
-.currentPassword-good__border {
+.passwordConfirm-good__border,
+ .currentPassword-good__border {
    border: 1px solid;
 }
 
@@ -20,6 +21,24 @@
 .passwordConfirm-error__p,
 .currentPassword-error__p {
    color: red;
+   font-size: 12px;
+   white-space: pre-wrap;
+}
+
+/* transactions */
+.transactionName-good__border,
+.amount-good__border {
+   border: 0;
+}
+
+.transactionName-error__border,
+.amount-error__border {
+   border: 2px solid rgb(229, 255, 0);
+}
+
+.transactionName-error__p,
+.amount-error__p {
+   color: rgb(229, 255, 0);
    font-size: 12px;
    white-space: pre-wrap;
 }

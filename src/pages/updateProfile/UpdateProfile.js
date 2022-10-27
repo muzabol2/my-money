@@ -6,7 +6,6 @@ import { updateSchema } from './validateUpdateProfile';
 import { validateYupSchemaMultiErrors } from '../validateFormikMultiErrors';
 import { TextFormField } from '../../formFields/TextFormField';
 import { Grid } from '@mui/material';
-import './UpdateProfile.css';
 
 export default function UpdateProfile() {
    const { user } = useAuthContext();
@@ -42,7 +41,7 @@ export default function UpdateProfile() {
                               component={TextFormField}
                            />
                         </Grid>
-                        
+
                         <Grid>
                            <Field
                               label="Email:"

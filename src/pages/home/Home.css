@@ -111,20 +111,3 @@
    font-size: 0.9em;
    cursor: pointer;
 }
-
-.transactionName-good__border,
-.amount-good__border {
-   border: 0;
-}
-
-.transactionName-error__border,
-.amount-error__border {
-   border: 2px solid rgb(229, 255, 0);
-}
-
-.transactionName-error__p,
-.amount-error__p {
-   color: rgb(229, 255, 0);
-   font-size: 12px;
-   white-space: pre-wrap;
-}

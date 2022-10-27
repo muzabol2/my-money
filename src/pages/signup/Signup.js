@@ -7,7 +7,6 @@ import { GoogleButton } from 'react-google-button';
 import Separator from '../../components/Separator';
 import { TextFormField } from '../../formFields/TextFormField';
 import { Grid } from '@mui/material';
-import './Signup.css';
 
 export default function Signup() {
    const { signup, isPending, error, verificationMail } = useSignup();
