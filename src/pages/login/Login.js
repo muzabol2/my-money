@@ -1,16 +1,18 @@
 import { useLogin } from '../../hooks/useLogin';
-import { useFormik } from 'formik';
+import { Field, Form, FormikProvider, useFormik } from 'formik';
 import { loginSchema } from './validateLogin';
 import { GoogleButton } from 'react-google-button';
 import { useGoogleSignIn } from '../../hooks/useGoogleSignIn';
 import './Login.css';
 import Separator from '../../components/Separator';
+import { TextFormField } from '../../formFields/TextFormField';
+import { Grid } from '@mui/material';
 
 export default function Login() {
    const { login, error, isPending } = useLogin();
    const { googleSignIn, googleError, isGooglePending } = useGoogleSignIn();
 
-   const { values, errors, touched, isSubmitting, handleBlur, handleChange, handleSubmit } = useFormik({
+   const loginFornik = useFormik({
       initialValues: {
          email: "",
          password: "",
@@ -19,44 +21,42 @@ export default function Login() {
       onSubmit: (values) => login(values.email, values.password)
    });
 
+   const { isSubmitting, handleSubmit } = loginFornik;
+
    return (
-      <form onSubmit={handleSubmit} className="login-form" >
-         <h2>Please log in:</h2>
-         <label>
-            <span>Email:</span>
-            <input
-               value={values.email}
-               onChange={handleChange}
-               id="email"
-               type="email"
-               onBlur={handleBlur}
-               className={errors.email && touched.email ? "input-error" : ""}
-            />
-            {errors.email && touched.email && <p>{errors.email}</p>}
-         </label>
-         <label>
-            <span>Password:</span>
-            <input
-               id="password"
-               type="password"
-               value={values.password}
-               onChange={handleChange}
-               onBlur={handleBlur}
-               className={errors.password && touched.password ? "input-error" : ""}
-            />
-            {errors.password && touched.password && (<p>{errors.password}</p>)}
-         </label>
-         <div className="center">
-            {!isPending && <button type="submit" disabled={isSubmitting} className="btn">Login</button>}
-            {isPending && <button className="btn" disabled>Loading</button>}
-            {error && <p className="firebase-error">{error}</p>}
-         </div>
-         <Separator label="OR" />
-         <div className="center">
-            {!isGooglePending && <GoogleButton label="Login with Google" onClick={googleSignIn} />}
-            {isGooglePending && <GoogleButton label="Loading" disabled />}
-            {googleError && <p className="firebase-error">{error}</p>}
-         </div>
-      </form>
+      <FormikProvider value={loginFornik}>
+         <Form onSubmit={handleSubmit} className="login-form">
+            <h2>Please log in:</h2>
+
+            <Grid>
+               <Field
+                  label="Email:"
+                  name="email"
+                  component={TextFormField}
+               />
+            </Grid>
+
+            <Grid>
+               <Field
+                  label="Password:"
+                  name="password"
+                  type="password"
+                  component={TextFormField}
+               />
+            </Grid>
+
+            <div className="center">
+               {!isPending && <button type="submit" disabled={isSubmitting} className="btn">Login</button>}
+               {isPending && <button className="btn" disabled>Loading</button>}
+               {error && <p className="firebase-error">{error}</p>}
+            </div>
+            <Separator label="OR" />
+            <div className="center">
+               {!isGooglePending && <GoogleButton label="Login with Google" onClick={googleSignIn} />}
+               {isGooglePending && <GoogleButton label="Loading" disabled />}
+               {googleError && <p className="firebase-error">{error}</p>}
+            </div>
+         </Form>
+      </FormikProvider>
    );
 }

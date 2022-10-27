@@ -1,0 +1,25 @@
+.displayName-good__border,
+.password-good__border, 
+.email-good__border,
+.passwordConfirm-good__border
+.currentPassword-good__border {
+   border: 1px solid;
+}
+
+.displayName-error__border,
+.password-error__border,
+.email-error__border,
+.passwordConfirm-error__border,
+.currentPassword-error__border {
+   border: 2px solid red;
+}
+
+.displayName-error__p,
+.password-error__p,
+.email-error__p,
+.passwordConfirm-error__p,
+.currentPassword-error__p {
+   color: red;
+   font-size: 12px;
+   white-space: pre-wrap;
+}
