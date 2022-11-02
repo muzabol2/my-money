@@ -17,6 +17,7 @@ export const SelectFormField = ({ field, form, label, options, ...props }) => {
          {label && <InputLabel>{label}</InputLabel>}
          <Select
             style={{ backgroundColor: 'white', width: 225, maxWidth: 'md' }}
+            label={label}
             {...field}
             {...props}>
             {options.map(op => (
