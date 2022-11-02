@@ -26,30 +26,33 @@ export default function Login() {
    return (
       <FormikProvider value={loginFornik}>
          <Form onSubmit={handleSubmit} className="login-form">
-            <h2>Please log in:</h2>
+            <Grid container spacing={2}>
+               <Grid item>
+                  <h2>Please log in:</h2>
+               </Grid>
+               <Grid item>
+                  <Field
+                     label="Email:"
+                     name="email"
+                     component={TextFormField}
+                  />
+               </Grid>
 
-            <Grid>
-               <Field
-                  label="Email:"
-                  name="email"
-                  component={TextFormField}
-               />
+               <Grid item>
+                  <Field
+                     label="Password:"
+                     name="password"
+                     type="password"
+                     component={TextFormField}
+                  />
+               </Grid>
+
+               <Grid item>
+                  {!isPending && <button type="submit" disabled={isSubmitting} className="btn">Login</button>}
+                  {isPending && <button className="btn" disabled>Loading</button>}
+                  {error && <p className="firebase-error">{error}</p>}
+               </Grid>
             </Grid>
-
-            <Grid>
-               <Field
-                  label="Password:"
-                  name="password"
-                  type="password"
-                  component={TextFormField}
-               />
-            </Grid>
-
-            <div className="center">
-               {!isPending && <button type="submit" disabled={isSubmitting} className="btn">Login</button>}
-               {isPending && <button className="btn" disabled>Loading</button>}
-               {error && <p className="firebase-error">{error}</p>}
-            </div>
             <Separator label="OR" />
             <div className="center">
                {!isGooglePending && <GoogleButton label="Login with Google" onClick={googleSignIn} />}

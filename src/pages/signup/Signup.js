@@ -28,52 +28,56 @@ export default function Signup() {
    return (
       <FormikProvider value={signupFormik}>
          <Form onSubmit={handleSubmit} className="login-form">
-            <h2>Create your account:</h2>
             {verificationMail ?
                <p className="firebase-success">
                   {"A verification email has been sent to your account. Please confirm it. If you can't find it, check your spam box. ;)"}
                </p>
                :
                <>
-                  <Grid>
-                     <Field
-                        label="Display name:"
-                        name="displayName"
-                        component={TextFormField}
-                     />
-                  </Grid>
+                  <Grid container spacing={2}>
+                     <Grid item>
+                        <h2>Create account:</h2>
+                     </Grid>
+                     <Grid item>
+                        <Field
+                           label="Display name:"
+                           name="displayName"
+                           component={TextFormField}
+                        />
+                     </Grid>
 
-                  <Grid>
-                     <Field
-                        label="Email:"
-                        name="email"
-                        component={TextFormField}
-                     />
-                  </Grid>
+                     <Grid item>
+                        <Field
+                           label="Email:"
+                           name="email"
+                           component={TextFormField}
+                        />
+                     </Grid>
 
-                  <Grid>
-                     <Field
-                        label="Password:"
-                        name="password"
-                        type="password"
-                        component={TextFormField}
-                     />
-                  </Grid>
+                     <Grid item>
+                        <Field
+                           label="Password:"
+                           name="password"
+                           type="password"
+                           component={TextFormField}
+                        />
+                     </Grid>
 
-                  <Grid>
-                     <Field
-                        label="Password confirmation:"
-                        name="passwordConfirm"
-                        type="password"
-                        component={TextFormField}
-                     />
-                  </Grid>
+                     <Grid item>
+                        <Field
+                           label="Password confirmation:"
+                           name="passwordConfirm"
+                           type="password"
+                           component={TextFormField}
+                        />
+                     </Grid>
 
-                  <div className="center">
-                     {!isPending && <button type="submit" disabled={isSubmitting} className="btn">Sign up</button>}
-                     {isPending && <button className="btn" disabled>Loading</button>}
-                     {error && <p className="firebase-error">{error}</p>}
-                  </div>
+                     <Grid item>
+                        {!isPending && <button type="submit" disabled={isSubmitting} className="btn">Sign up</button>}
+                        {isPending && <button className="btn" disabled>Loading</button>}
+                        {error && <p className="firebase-error">{error}</p>}
+                     </Grid>
+                  </Grid>
                   <Separator label="OR" />
                   <div className="center">
                      {!isGooglePending && <GoogleButton label="Sign up with Google" onClick={googleSignIn} />}

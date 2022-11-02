@@ -2,6 +2,7 @@ import { useAuthContext } from '../../hooks/useAuthContext';
 import { useCollection } from '../../hooks/useCollection';
 import TransactionForm from './TransactionForm';
 import TransactionList from './TransactionList';
+import { Grid, Container } from '@mui/material';
 import './Home.css';
 
 export default function Home() {
@@ -13,14 +14,18 @@ export default function Home() {
    );
 
    return (
-      <div className="container">
-         <div className="content">
-            {error && <p>{error}</p>}
-            {!!documents && <TransactionList transactions={documents} />}
-         </div>
-         <div className="sidebar">
-            <TransactionForm uid={user.uid} />
-         </div>
-      </div>
+      <Container style={{ borderStyle: "dashed", borderColor: "red", margin: '30px auto' }}>
+         <Grid container direction="row-reverse" justifyContent="center">
+            <Grid item md={4} style={{ borderStyle: "dashed", borderColor: "blue" }}>
+               <TransactionForm uid={user.uid} />
+            </Grid>
+            <Grid item md={8} style={{ borderStyle: "dashed", borderColor: "brown" }}>
+               {error && <p>{error}</p>}
+               {!!documents &&
+                  <TransactionList transactions={documents} />
+               }
+            </Grid>
+         </Grid>
+      </Container>
    );
 }

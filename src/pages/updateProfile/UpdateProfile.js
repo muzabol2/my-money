@@ -34,56 +34,58 @@ export default function UpdateProfile() {
                      <p>{"You are sign in with Google account. You can't change your profile data from here."}</p>
                      :
                      <>
-                        <Grid>
-                           <Field
-                              label="Display name:"
-                              name="displayName"
-                              component={TextFormField}
-                           />
+                        <Grid container spacing={2}>
+                           <Grid item>
+                              <Field
+                                 label="Display name:"
+                                 name="displayName"
+                                 component={TextFormField}
+                              />
+                           </Grid>
+
+                           <Grid item>
+                              <Field
+                                 label="Email:"
+                                 name="email"
+                                 component={TextFormField}
+                                 disabled
+                              />
+                           </Grid>
+
+                           <Grid item>
+                              <Field
+                                 label="Current password:"
+                                 name="currentPassword"
+                                 type="password"
+                                 component={TextFormField}
+                              />
+                           </Grid>
+
+
+                           <Grid item>
+                              <Field
+                                 label="Password:"
+                                 name="password"
+                                 type="password"
+                                 component={TextFormField}
+                              />
+                           </Grid>
+
+                           <Grid item>
+                              <Field
+                                 label="Password confirmation:"
+                                 name="passwordConfirm"
+                                 type="password"
+                                 component={TextFormField}
+                              />
+                           </Grid>
+                           <Grid item>
+                              {!isPending && <button type="submit" disabled={isSubmitting} className="btn">Update</button>}
+                              {isPending && <button className="btn" disabled>Loading</button>}
+                              {error && <p className="firebase-error">{error}</p>}
+                              {success && <p className="firebase-success">{success}</p>}
+                           </Grid>
                         </Grid>
-
-                        <Grid>
-                           <Field
-                              label="Email:"
-                              name="email"
-                              component={TextFormField}
-                              disabled
-                           />
-                        </Grid>
-
-                        <Grid>
-                           <Field
-                              label="Current password:"
-                              name="currentPassword"
-                              type="password"
-                              component={TextFormField}
-                           />
-                        </Grid>
-
-
-                        <Grid>
-                           <Field
-                              label="Password:"
-                              name="password"
-                              type="password"
-                              component={TextFormField}
-                           />
-                        </Grid>
-
-                        <Grid>
-                           <Field
-                              label="Password confirmation:"
-                              name="passwordConfirm"
-                              type="password"
-                              component={TextFormField}
-                           />
-                        </Grid>
-
-
-                        {!isPending && <button type="submit" disabled={isSubmitting} className="btn">Update</button>}
-                        {isPending && <button className="btn" disabled>Loading</button>}
-                        {error && <p className="firebase-error">{error}</p>}
-                        {success && <p className="firebase-success">{success}</p>}
                      </>
                   }
                </Form>
@@ -95,3 +97,8 @@ export default function UpdateProfile() {
       </div>
    );
 }
+
+// TODO: allow user to customize:
+// - dark mode
+// - currency
+// - add/remove categories
