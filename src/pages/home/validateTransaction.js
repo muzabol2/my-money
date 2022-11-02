@@ -16,4 +16,11 @@ export const transactionSchema = yup.object({
       .string()
       .matches(regExp.amount, "\u2022 Only numbers\n\u2022 max 12 digits\n\u2022 dot(.) or comma(,) separator\n\u2022 only 2 decimal places")
       .required("Required"),
+   transactionDate: yup
+      .string()
+      .required("Required")
+      .nullable(),
+   transactionCategory: yup
+      .string()
+      .required("Required"),
 });

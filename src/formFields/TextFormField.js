@@ -1,22 +1,26 @@
+import { FormControl, FormHelperText, Grid, TextField } from "@mui/material";
 import { getIn } from "formik";
 import React from "react";
-import './TextFormField.css';
 
 export const TextFormField = ({ label, field, form, ...props }) => {
 
    const errorText = getIn(form.touched, field.name) && getIn(form.errors, field.name);
 
    return (
-      <label>
-         <span>{label}</span>
-         <input
-            id={field.name}
-            type="text"
-            {...field}
-            {...props}
-            className={!!errorText ? `${field.name}-error__border` : `${field.name}-good__border`}
-         />
-         {errorText && <p className={`${field.name}-error__p`}>{errorText}</p>}
-      </label>
+      <Grid>
+         <FormControl error={!!errorText}>
+            <TextField
+               fullWidth
+               style={{ backgroundColor: 'white' }}
+               label={label}
+               id={field.name}
+               type="text"
+               {...field}
+               {...props}
+               error={!!errorText}
+            />
+            {errorText && <FormHelperText error>{errorText}</FormHelperText>}
+         </FormControl>
+      </Grid>
    );
 };
