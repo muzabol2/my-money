@@ -49,7 +49,7 @@ export default function TransactionForm({ uid }) {
       <div>
          <FormikProvider value={transactionFormik}>
             <Form onSubmit={handleSubmit}>
-               <Container style={{ borderStyle: "dashed", borderColor: "red" }} >
+               <Container>
                   <Grid container
                      style={{
                         backgroundColor: '#effaf0',

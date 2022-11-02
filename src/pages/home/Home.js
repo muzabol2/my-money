@@ -14,12 +14,12 @@ export default function Home() {
    );
 
    return (
-      <Container style={{ borderStyle: "dashed", borderColor: "red", margin: '30px auto' }}>
+      <Container style={{ margin: '30px auto' }}>
          <Grid container direction="row-reverse" justifyContent="center">
-            <Grid item md={4} style={{ borderStyle: "dashed", borderColor: "blue" }}>
+            <Grid item md={4}>
                <TransactionForm uid={user.uid} />
             </Grid>
-            <Grid item md={8} style={{ borderStyle: "dashed", borderColor: "brown" }}>
+            <Grid item md={8}>
                {error && <p>{error}</p>}
                {!!documents &&
                   <TransactionList transactions={documents} />
