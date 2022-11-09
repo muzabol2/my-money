@@ -1,7 +1,14 @@
-rules_version = '2';
+rules_version = '3';
 service cloud.firestore {
   match /databases/{database}/documents {
     match /transactions/{document=**} {
+      //only auth
+      allow create: if request.auth != null;
+
+      // logged in user uid must match document creator
+      allow read, delete: if request.auth.uid == resource.data.uid;
+    }
+    match /categories/{document=**} {
       //only auth
       allow create: if request.auth != null;
 
