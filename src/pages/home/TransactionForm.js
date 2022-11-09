@@ -12,6 +12,7 @@ export default function TransactionForm({ uid }) {
    const { addDocument } = useFirestore('transactions');
 
    const toNumber = (amount) => Number(amount.replace(/,/, '.'));
+   const formatDate = (date) => dayjs(date).format('DD/MM/YYYY').toString();
 
    const categories = [
       { label: "Gifts", value: "gifts" },
@@ -33,24 +34,31 @@ export default function TransactionForm({ uid }) {
          amount: "",
       },
       validationSchema: transactionSchema,
-      onSubmit: ({ transactionName, transactionDate, transactionCategory, amount }) =>
+      onSubmit: ({ transactionName, transactionDate, transactionCategory, amount }) => {
          addDocument({
             uid,
             transactionName,
-            transactionDate: transactionDate.toString(),
+            transactionDate: formatDate(transactionDate),
             transactionCategory,
             amount: toNumber(amount)
-         })
+         });
+         resetForm();
+      }
    });
 
-   const { isSubmitting, handleSubmit } = transactionFormik;
+   const { isSubmitting, handleSubmit, resetForm } = transactionFormik;
 
    return (
       <div>
          <FormikProvider value={transactionFormik}>
             <Form onSubmit={handleSubmit}>
                <Container>
-                  <Grid container
+                  <Grid
+                     container
+                     direction="column"
+                     justifyContent="center"
+                     alignItems="center"
+                     spacing={1}
                      style={{
                         backgroundColor: '#effaf0',
                         borderRadius: '10px',
@@ -58,11 +66,6 @@ export default function TransactionForm({ uid }) {
                         borderColor: '#1f9751',
                         width: 260,
                      }}
-                     spacing={1}
-
-                     direction="column"
-                     justifyContent="center"
-                     alignItems="center"
                   >
                      <Grid item mt={1}>
                         <Field
