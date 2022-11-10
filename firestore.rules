@@ -8,12 +8,12 @@ service cloud.firestore {
       // logged in user uid must match document creator
       allow read, delete: if request.auth.uid == resource.data.uid;
     }
-    match /categories/{document=**} {
+    match /users/{userId} {
       //only auth
       allow create: if request.auth != null;
 
       // logged in user uid must match document creator
-      allow read, delete: if request.auth.uid == resource.data.uid;
+      allow read, update, delete: if request.auth.uid == resource.data.uid;
     }
   }
 }

@@ -7,7 +7,7 @@ export const TextFormField = ({ label, field, form, ...props }) => {
    const errorText = getIn(form.touched, field.name) && getIn(form.errors, field.name);
 
    return (
-      <Grid>
+      <Grid item>
          <FormControl error={!!errorText}>
             <TextField
                fullWidth

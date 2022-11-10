@@ -6,6 +6,7 @@ import Signup from './pages/signup/Signup';
 import Navbar from './components/Navbar';
 import Inspiration from './pages/inspiration/Inspiration';
 import UpdateProfile from './pages/updateProfile/UpdateProfile';
+import Categories from './pages/categories/categories';
 
 function App() {
    const { authIsReady, user } = useAuthContext();
@@ -34,6 +35,10 @@ function App() {
                   <Route path="/updateProfile">
                      {!user && <Redirect to="/login" />}
                      {user && <UpdateProfile />}
+                  </Route>
+                  <Route path="/categories">
+                     {!user && <Redirect to="/login" />}
+                     {user && <Categories />}
                   </Route>
                </Switch>
             </BrowserRouter>

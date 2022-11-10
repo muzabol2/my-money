@@ -20,9 +20,9 @@ export const SelectFormField = ({ field, form, label, options, ...props }) => {
             label={label}
             {...field}
             {...props}>
-            {options.map(op => (
-               <MenuItem key={op.value} value={op.value}>
-                  {op.label}
+            {options?.map((op, index) => (
+               <MenuItem key={index} value={op}>
+                  {op}
                </MenuItem>
             ))}
          </Select>

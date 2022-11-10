@@ -30,6 +30,7 @@ export const useCollection = (collectionName, _query, _orderBy) => {
          setError(null);
 
       }, error => {
+         console.error(error);
          setError('could not fetch the data');
       });
 

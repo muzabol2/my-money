@@ -1,7 +1,7 @@
 import { useReducer, useEffect, useState } from 'react';
 import { FirestoreType } from '../enums/FirestoreType';
 import { db } from '../firebase/config';
-import { collection, addDoc, doc, deleteDoc, Timestamp } from 'firebase/firestore';
+import { collection, addDoc, doc, deleteDoc, Timestamp, updateDoc, arrayUnion, setDoc, arrayRemove } from 'firebase/firestore';
 
 let initialState = {
    document: null,
@@ -84,10 +84,52 @@ export const useFirestore = (collectionName) => {
       }
    }
 
+   const addUser = async ({ document, id }) => {
+      dispatch({ type: FirestoreType.IS_PENDING });
+
+      try {
+         const ref = doc(db, collectionName, id);
+         const addedDocument = await setDoc(ref, document);
+         dispatchIfNotCancelled({ type: FirestoreType.ADDED_DOCUMENT, payload: addedDocument });
+      }
+      catch (error) {
+         console.error(error);
+         dispatchIfNotCancelled({ type: FirestoreType.ERROR, payload: error.message });
+      }
+   }
+
+   const updateCategories = async ({ id, category }) => {
+      dispatch({ type: FirestoreType.IS_PENDING });
+      try {
+         const ref = doc(db, collectionName, id);
+         const updatedDocument = await updateDoc(ref, {
+            categories: arrayUnion(category)
+         });
+         dispatchIfNotCancelled({ type: FirestoreType.ADDED_DOCUMENT, payload: updatedDocument });
+      } catch (error) {
+         console.error(error);
+         dispatchIfNotCancelled({ type: FirestoreType.ERROR, payload: "could not update" });
+      }
+   }
+   
+   const deleteCategories = async ({ id, category }) => {
+      dispatch({ type: FirestoreType.IS_PENDING });
+      try {
+         const ref = doc(db, collectionName, id);
+         const updatedDocument = await updateDoc(ref, {
+            categories: arrayRemove(category)
+         });
+         dispatchIfNotCancelled({ type: FirestoreType.ADDED_DOCUMENT, payload: updatedDocument });
+      } catch (error) {
+         console.error(error);
+         dispatchIfNotCancelled({ type: FirestoreType.ERROR, payload: "could not delete" });
+      }
+   }
+
    //cleanup function
    useEffect(() => {
       return () => setIsCancelled(true);
    }, []);
 
-   return { addDocument, deleteDocument, response };
+   return { addDocument, deleteDocument, addUser, updateCategories, deleteCategories, response };
 }

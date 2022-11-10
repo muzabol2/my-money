@@ -7,24 +7,16 @@ import { SelectFormField } from '../../formFields/SelectFormField';
 import dayjs from 'dayjs';
 import { Button, Grid, Container } from '@mui/material';
 import './Home.css';
+import { useCollection } from '../../hooks/useCollection';
 
 export default function TransactionForm({ uid }) {
    const { addDocument } = useFirestore('transactions');
-
+   const { documents } = useCollection('users', ['uid', '==', uid]);
+   
    const toNumber = (amount) => Number(amount.replace(/,/, '.'));
    const formatDate = (date) => dayjs(date).format('DD/MM/YYYY').toString();
 
-   const categories = [
-      { label: "Gifts", value: "gifts" },
-      { label: "Apartment", value: "apartment" },
-      { label: "Food", value: "food" },
-      { label: "Transport", value: "transport" },
-      { label: "Eating out", value: "eatingout" },
-      { label: "Entertainment", value: "entertainment" },
-      { label: "Clothes", value: "clothes" },
-      { label: "Health", value: "health" },
-      { label: "Other", value: "other" },
-   ];
+   const categories = documents?.[0]?.categories;
 
    const transactionFormik = useFormik({
       initialValues: {
