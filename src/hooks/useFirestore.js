@@ -84,12 +84,17 @@ export const useFirestore = (collectionName) => {
       }
    }
 
-   const addUser = async ({ document, id }) => {
+   const addUser = async (displayName, id) => {
       dispatch({ type: FirestoreType.IS_PENDING });
 
       try {
          const ref = doc(db, collectionName, id);
-         const addedDocument = await setDoc(ref, document);
+         const addedDocument = await setDoc(ref, {
+            displayName,
+            categories: ["Food", "Other"],
+            uid: id
+         });
+
          dispatchIfNotCancelled({ type: FirestoreType.ADDED_DOCUMENT, payload: addedDocument });
       }
       catch (error) {
@@ -111,7 +116,7 @@ export const useFirestore = (collectionName) => {
          dispatchIfNotCancelled({ type: FirestoreType.ERROR, payload: "could not update" });
       }
    }
-   
+
    const deleteCategories = async ({ id, category }) => {
       dispatch({ type: FirestoreType.IS_PENDING });
       try {

@@ -18,33 +18,22 @@ export const useSignup = () => {
       setError(null);
       setIsPending(true);
 
-      createUserWithEmailAndPassword(auth, email, password)
-         .then(() => {
-            updateProfile(auth.currentUser, { displayName });
+      try {
+         await createUserWithEmailAndPassword(auth, email, password);
+         updateProfile(auth.currentUser, { displayName });
 
-            // create a user's default categories
-            addUser({
-               document: {
-                  displayName,
-                  categories: ["Food", "Other"],
-                  uid: auth.currentUser.uid
-               },
-               id: auth.currentUser.uid
-            });
+         // create a user file with default categories
+         addUser(displayName, auth.currentUser.uid);
 
-            sendEmailVerification(auth.currentUser)
-               .then(() => {
-                  setVerificationMail(true);
-                  signOut(auth);
-               })
-         })
-         .catch((error) => {
-            console.error(error);
-            setError(error.message);
-         })
-         .finally(() => {
-            setIsPending(false);
-         });
+         sendEmailVerification(auth.currentUser);
+         setVerificationMail(true);
+         signOut(auth);
+      } catch (error) {
+         console.error(error);
+         setError(error.message);
+      } finally {
+         setIsPending(false);
+      }
    }
 
    return { signup, error, isPending, verificationMail };
