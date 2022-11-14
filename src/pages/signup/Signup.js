@@ -39,51 +39,40 @@ export default function Signup() {
                         <h2>Create account:</h2>
                      </Grid>
                      <Grid item>
-                        <Field
-                           label="Display name:"
-                           name="displayName"
-                           component={TextFormField}
-                        />
+                        {!isGooglePending && <GoogleButton label="Log in with Google" onClick={googleSignIn} />}
+                        {isGooglePending && <GoogleButton label="Loading" disabled />}
+                        {googleError && <p className="firebase-error">{error}</p>}
+                        <Separator label="OR" />
                      </Grid>
-
-                     <Grid item>
-                        <Field
-                           label="Email:"
-                           name="email"
-                           component={TextFormField}
-                        />
-                     </Grid>
-
-                     <Grid item>
-                        <Field
-                           label="Password:"
-                           name="password"
-                           type="password"
-                           component={TextFormField}
-                        />
-                     </Grid>
-
-                     <Grid item>
-                        <Field
-                           label="Password confirmation:"
-                           name="passwordConfirm"
-                           type="password"
-                           component={TextFormField}
-                        />
-                     </Grid>
-
+                     <Field
+                        label="Display name:"
+                        name="displayName"
+                        component={TextFormField}
+                     />
+                     <Field
+                        label="Email:"
+                        name="email"
+                        component={TextFormField}
+                     />
+                     <Field
+                        label="Password:"
+                        name="password"
+                        type="password"
+                        component={TextFormField}
+                     />
+                     <Field
+                        label="Password confirmation:"
+                        name="passwordConfirm"
+                        type="password"
+                        component={TextFormField}
+                     />
                      <Grid item>
                         {!isPending && <button type="submit" disabled={isSubmitting} className="btn">Sign up</button>}
                         {isPending && <button className="btn" disabled>Loading</button>}
                         {error && <p className="firebase-error">{error}</p>}
                      </Grid>
                   </Grid>
-                  <Separator label="OR" />
-                  <div className="center">
-                     {!isGooglePending && <GoogleButton label="Sign up with Google" onClick={googleSignIn} />}
-                     {isGooglePending && <GoogleButton label="Loading" disabled />}
-                     {googleError && <p className="firebase-error">{error}</p>}
-                  </div>
+
                </>
             }
          </Form>

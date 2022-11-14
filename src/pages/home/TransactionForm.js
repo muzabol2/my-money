@@ -17,7 +17,7 @@ export default function TransactionForm({ uid }) {
    const formatDate = (date) => dayjs(date).format('DD/MM/YYYY').toString();
 
    const categories = documents?.[0]?.categories;
-
+   
    const transactionFormik = useFormik({
       initialValues: {
          transactionName: "",

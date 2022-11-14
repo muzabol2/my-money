@@ -30,35 +30,29 @@ export default function Login() {
                <Grid item>
                   <h2>Please log in:</h2>
                </Grid>
-               <Grid item>
-                  <Field
-                     label="Email:"
-                     name="email"
-                     component={TextFormField}
-                  />
-               </Grid>
-
-               <Grid item>
-                  <Field
-                     label="Password:"
-                     name="password"
-                     type="password"
-                     component={TextFormField}
-                  />
-               </Grid>
-
+               <Field
+                  label="Email:"
+                  name="email"
+                  component={TextFormField}
+               />
+               <Field
+                  label="Password:"
+                  name="password"
+                  type="password"
+                  component={TextFormField}
+               />
                <Grid item>
                   {!isPending && <button type="submit" disabled={isSubmitting} className="btn">Login</button>}
                   {isPending && <button className="btn" disabled>Loading</button>}
                   {error && <p className="firebase-error">{error}</p>}
                </Grid>
+               <Grid item>
+                  <Separator label="OR" />
+                  {!isGooglePending && <GoogleButton label="Login with Google" onClick={googleSignIn} />}
+                  {isGooglePending && <GoogleButton label="Loading" disabled />}
+                  {googleError && <p className="firebase-error">{error}</p>}
+               </Grid>
             </Grid>
-            <Separator label="OR" />
-            <div className="center">
-               {!isGooglePending && <GoogleButton label="Login with Google" onClick={googleSignIn} />}
-               {isGooglePending && <GoogleButton label="Loading" disabled />}
-               {googleError && <p className="firebase-error">{error}</p>}
-            </div>
          </Form>
       </FormikProvider>
    );
