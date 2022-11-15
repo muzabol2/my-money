@@ -9,7 +9,7 @@ export default function Navbar() {
 
    return (
       <nav className="navbar">
-         <div className="title">Where's my money?!</div>
+         <div className="title">{`Where's my money?! (${process.env.NODE_ENV.substring(0, 3)})`}</div>
          <div className="links">
             <ul>
                {!user && (
