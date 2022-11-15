@@ -9,7 +9,7 @@ export default function Navbar() {
 
    return (
       <nav className="navbar">
-         <div className="title">Where's my money?!</div>
+         <div className="title">{`Where's my money?! (${process.env.REACT_APP_NAVBAR_TITLE})`}</div>
          <div className="links">
             <ul>
                {!user && (
