@@ -21,34 +21,44 @@ export default function Home() {
    const [value, setValue] = useState(dayjs('2022-11-01'));
 
    return (
-      <Container style={{ margin: '30px auto' }}>
-         <Title>Transactions</Title>
-         <Grid item mb={1}>
-            <LocalizationProvider dateAdapter={AdapterDayjs}>
-               <DatePicker
-                  openTo="month"
-                  views={['year', 'month']}
-                  label="Pick a month"
-                  value={dayjs(value)}
-                  onChange={newValue => setValue(newValue)}
-                  renderInput={params => <TextField {...params} helperText={null} />}
-               />
-            </LocalizationProvider>
-         </Grid>
+      <Container style={{ margin: '10px auto' }}>
          <Grid
             container
-            direction="row-reverse"
+            direction="column"
             justifyContent="center"
          >
-            <TransactionForm uid={user.uid} />
-            <Grid item md={8}>
-               {error && <p>{error}</p>}
-               {!!documents &&
-                  <TransactionGrid
-                     transactions={documents}
-                     filterMonthYear={value.format('MM/YYYY').toString()}
+            <Title>Transactions</Title>
+            <Grid item>
+               <LocalizationProvider dateAdapter={AdapterDayjs}>
+                  <DatePicker
+                     openTo="month"
+                     views={['year', 'month']}
+                     label="Pick a month"
+                     value={dayjs(value)}
+                     onChange={newValue => setValue(newValue)}
+                     renderInput={params => <TextField {...params} helperText={null} />}
                   />
-               }
+               </LocalizationProvider>
+            </Grid>
+            <Grid
+               item
+               container
+               direction="row-reverse"
+               justifyContent="flex-end"
+               alignItems="flex-start"
+            >
+               <Grid item md={3}>
+                  <TransactionForm uid={user.uid} />
+               </Grid>
+               <Grid item md={9}>
+                  {error && <p>{error}</p>}
+                  {!!documents &&
+                     <TransactionGrid
+                        transactions={documents}
+                        filterMonthYear={value.format('MM/YYYY').toString()}
+                     />
+                  }
+               </Grid>
             </Grid>
          </Grid>
       </Container>

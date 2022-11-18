@@ -63,11 +63,7 @@ export default function Categories() {
                      <Grid item>
                         {error && <p>{error}</p>}
                      </Grid>
-
-                     <Grid item>
-                     </Grid>
                   </Grid>
-
                </Form>
             </FormikProvider>
          </div>

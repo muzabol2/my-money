@@ -7,6 +7,7 @@ import { GoogleButton } from 'react-google-button';
 import Separator from '../../components/Separator';
 import { TextFormField } from '../../formFields/TextFormField';
 import { Grid } from '@mui/material';
+import { ColorButton } from '../../components/ColorButton';
 
 export default function Signup() {
    const { signup, isPending, error, verificationMail } = useSignup();
@@ -26,56 +27,69 @@ export default function Signup() {
    const { isSubmitting, handleSubmit } = signupFormik
 
    return (
-      <FormikProvider value={signupFormik}>
-         <Form onSubmit={handleSubmit} className="login-form">
-            {verificationMail ?
-               <p className="firebase-success">
-                  {"A verification email has been sent to your account. Please confirm it. If you can't find it, check your spam box. ;)"}
-               </p>
-               :
-               <>
-                  <Grid container spacing={2}>
-                     <Grid item>
+      <div className="login-form">
+         {verificationMail ?
+            <p className="firebase-success">
+               {"A verification email has been sent to your account. Please confirm it. If you can't find it, check your spam box. ;)"}
+            </p>
+            :
+            <FormikProvider value={signupFormik}>
+               <Form onSubmit={handleSubmit}>
+                  <Grid
+                     container
+                     alignItems="center"
+                     justifyContent="center"
+                  >
+                     <Grid item mb={2}>
                         <h2>Create account:</h2>
                      </Grid>
                      <Grid item>
-                        {!isGooglePending && <GoogleButton label="Log in with Google" onClick={googleSignIn} />}
-                        {isGooglePending && <GoogleButton label="Loading" disabled />}
+                        {!isGooglePending && <GoogleButton style={{ width: '220px' }} label="Log in with Google" onClick={googleSignIn} />}
+                        {isGooglePending && <GoogleButton style={{ width: '220px' }} label="Loading" disabled />}
                         {googleError && <p className="firebase-error">{error}</p>}
                         <Separator label="OR" />
                      </Grid>
-                     <Field
-                        label="Display name:"
-                        name="displayName"
-                        component={TextFormField}
-                     />
-                     <Field
-                        label="Email:"
-                        name="email"
-                        component={TextFormField}
-                     />
-                     <Field
-                        label="Password:"
-                        name="password"
-                        type="password"
-                        component={TextFormField}
-                     />
-                     <Field
-                        label="Password confirmation:"
-                        name="passwordConfirm"
-                        type="password"
-                        component={TextFormField}
-                     />
+                     <Grid item mb={1}>
+                        <Field
+                           label="Display name:"
+                           name="displayName"
+                           component={TextFormField}
+                        />
+                     </Grid>
+                     <Grid item mb={1}>
+                        <Field
+                           label="Email:"
+                           name="email"
+                           component={TextFormField}
+                        />
+                     </Grid>
+                     <Grid item mb={1}>
+                        <Field
+                           label="Password:"
+                           name="password"
+                           type="password"
+                           component={TextFormField}
+                        />
+                     </Grid>
+                     <Grid item mb={1}>
+                        <Field
+                           label="Password confirmation:"
+                           name="passwordConfirm"
+                           type="password"
+                           component={TextFormField}
+                        />
+                     </Grid>
                      <Grid item>
-                        {!isPending && <button type="submit" disabled={isSubmitting} className="btn">Sign up</button>}
-                        {isPending && <button className="btn" disabled>Loading</button>}
+                        {!isPending && <ColorButton type="submit" disabled={isSubmitting}>Sign up</ColorButton>}
+                        {isPending && <ColorButton disabled>Sign up</ColorButton>}
+                     </Grid>
+                     <Grid item>
                         {error && <p className="firebase-error">{error}</p>}
                      </Grid>
                   </Grid>
-
-               </>
-            }
-         </Form>
-      </FormikProvider>
+               </Form>
+            </FormikProvider>
+         }
+      </div>
    );
 }

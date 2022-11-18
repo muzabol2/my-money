@@ -16,7 +16,7 @@ export const SelectFormField = ({ field, form, label, options, ...props }) => {
       <FormControl error={!!errorText} >
          {label && <InputLabel>{label}</InputLabel>}
          <Select
-            style={{ backgroundColor: 'white', width: 225, maxWidth: 'md' }}
+            style={{ backgroundColor: 'white', width: 220, maxWidth: 'md' }}
             label={label}
             {...field}
             {...props}>

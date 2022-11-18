@@ -4,7 +4,7 @@ import Box from "@mui/material/Box";
 
 function TransactionGridFooterTotalComponent(props) {
    return (
-      <Box sx={{ padding: "10px", display: "flex" }}>
+      <Box style={{ padding: "10px", display: "flex" }}>
          Total : {props.total}
       </Box>
    );

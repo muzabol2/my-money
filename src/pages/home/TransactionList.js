@@ -50,8 +50,8 @@ export default function TransactionList({ transactions }) {
                      <TableCell>{t.transactionCategory}</TableCell>
                      <TableCell align="right">{`${t.amount} PLN`}</TableCell>
                      <TableCell align="center">
-                        <Fab size="small" color="inherit" sx={{ color: "#effaf0" }}>
-                           <DeleteRoundedIcon sx={{ color: "#1f9751" }} onClick={() => deleteDocument(t.id)} />
+                        <Fab size="small" color="inherit" style={{ color: "#effaf0" }}>
+                           <DeleteRoundedIcon style={{ color: "#1f9751" }} onClick={() => deleteDocument(t.id)} />
                         </Fab>
                      </TableCell>
                   </TableRow>
