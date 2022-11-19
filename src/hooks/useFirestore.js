@@ -87,15 +87,16 @@ export const useFirestore = (collectionName) => {
    const addUser = async (displayName, id) => {
       dispatch({ type: FirestoreType.IS_PENDING });
 
+      const ref = doc(db, collectionName, id);
+      const data = {
+         displayName,
+         categories: ["Food", "Other"],
+         uid: id
+      }
+      
       try {
-         const ref = doc(db, collectionName, id);
-         const addedDocument = await setDoc(ref, {
-            displayName,
-            categories: ["Food", "Other"],
-            uid: id
-         });
-
-         dispatchIfNotCancelled({ type: FirestoreType.ADDED_DOCUMENT, payload: addedDocument });
+         await setDoc(ref, data);
+         dispatchIfNotCancelled({ type: FirestoreType.ADDED_DOCUMENT, payload: data });
       }
       catch (error) {
          console.error(error);

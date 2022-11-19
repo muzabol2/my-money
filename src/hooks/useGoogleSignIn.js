@@ -24,10 +24,6 @@ export const useGoogleSignIn = () => {
          const { isNewUser } = getAdditionalUserInfo(result);
          if (isNewUser) {
             // create a user file with default categories
-            console.log("result", result);
-            console.log("displayName", result.user.displayName);
-            console.log("uid", result.user.uid);
-
             await addUser(result.user.displayName, result.user.uid);
          }
 

@@ -23,7 +23,7 @@ export const useSignup = () => {
          updateProfile(auth.currentUser, { displayName });
 
          // create a user file with default categories
-         addUser(displayName, auth.currentUser.uid);
+         await addUser(displayName, auth.currentUser.uid);
 
          sendEmailVerification(auth.currentUser);
          setVerificationMail(true);
