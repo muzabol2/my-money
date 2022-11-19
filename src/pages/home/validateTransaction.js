@@ -8,8 +8,8 @@ const regExp = {
 export const transactionSchema = yup.object({
    transactionName: yup
       .string()
-      .min(3, "3-20 characters\n")
-      .max(20, "3-20 characters\n")
+      .min(5, "5-35 characters\n")
+      .max(35, "5-35 characters\n")
       .matches(regExp.transactionName, "Only letters, numbers and spaces")
       .required("Required"),
    amount: yup

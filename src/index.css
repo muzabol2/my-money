@@ -52,3 +52,22 @@ ul {
    display: flex;
    justify-content: center;
 }
+
+.login-form {
+   max-width: 250px;
+   margin: 30px auto;
+   padding: 50px;
+   border: 1px solid #ddd;
+   box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.05);
+}
+
+.firebase-success {
+   margin-top: 20px;
+   color: #1f9751;
+   font-weight: bold;
+}
+
+.firebase-error {
+   margin-top: 20px;
+   color: red;
+}

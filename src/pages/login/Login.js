@@ -3,7 +3,6 @@ import { Field, Form, FormikProvider, useFormik } from 'formik';
 import { loginSchema } from './validateLogin';
 import { GoogleButton } from 'react-google-button';
 import { useGoogleSignIn } from '../../hooks/useGoogleSignIn';
-import './Login.css';
 import Separator from '../../components/Separator';
 import { TextFormField } from '../../formFields/TextFormField';
 import { Grid } from '@mui/material';

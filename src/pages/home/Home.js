@@ -2,10 +2,8 @@ import { useAuthContext } from '../../hooks/useAuthContext';
 import { useCollection } from '../../hooks/useCollection';
 import TransactionForm from './TransactionForm';
 import TransactionGrid from './TransactionGrid';
-import Title from '../../components/Title';
 import { Grid, Container, TextField } from '@mui/material';
 import { useState } from 'react';
-import './Home.css';
 import { DatePicker, LocalizationProvider } from '@mui/x-date-pickers';
 import dayjs from 'dayjs';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
@@ -21,14 +19,13 @@ export default function Home() {
    const [value, setValue] = useState(dayjs('2022-11-01'));
 
    return (
-      <Container style={{ margin: '10px auto' }}>
+      <Container fixed disableGutters>
          <Grid
             container
             direction="column"
             justifyContent="center"
          >
-            <Title>Transactions</Title>
-            <Grid item>
+            <Grid item mt={2} xs={12}>
                <LocalizationProvider dateAdapter={AdapterDayjs}>
                   <DatePicker
                      openTo="month"
@@ -47,10 +44,10 @@ export default function Home() {
                justifyContent="flex-end"
                alignItems="flex-start"
             >
-               <Grid item md={3}>
+               <Grid item md={3} xs={12}>
                   <TransactionForm uid={user.uid} />
                </Grid>
-               <Grid item md={9}>
+               <Grid item md={9} xs={12}>
                   {error && <p>{error}</p>}
                   {!!documents &&
                      <TransactionGrid

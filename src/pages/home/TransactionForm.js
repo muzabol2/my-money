@@ -5,8 +5,7 @@ import { TextFormField } from '../../formFields/TextFormField';
 import { DatePickerField } from '../../formFields/DatePickerField';
 import { SelectFormField } from '../../formFields/SelectFormField';
 import dayjs from 'dayjs';
-import { Button, Grid, Container } from '@mui/material';
-import './Home.css';
+import { Grid, Container } from '@mui/material';
 import { useCollection } from '../../hooks/useCollection';
 import { ColorButton } from '../../components/ColorButton';
 
@@ -50,7 +49,8 @@ export default function TransactionForm({ uid }) {
                      backgroundColor: '#effaf0',
                      borderRadius: '10px',
                      border: '2px solid',
-                     borderColor: '#1f9751'
+                     borderColor: '#1f9751',
+                     width: '270px'
                   }}>
                   <Grid
                      container

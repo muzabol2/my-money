@@ -4,7 +4,7 @@ import { Field, Form, FormikProvider, useFormik } from 'formik';
 import { validateYupSchemaMultiErrors } from '../validateFormikMultiErrors';
 import { categoriesSchema } from './validateCategories';
 import { TextFormField } from '../../formFields/TextFormField';
-import { Grid, IconButton, List, ListItem, ListItemText } from '@mui/material';
+import { Container, Grid, IconButton, List, ListItem, ListItemText } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { useCollection } from '../../hooks/useCollection';
 import { useFirestore } from '../../hooks/useFirestore';
@@ -28,48 +28,46 @@ export default function Categories() {
    const { isSubmitting, handleSubmit, resetForm } = categoriesFormik;
 
    return (
-      <div className="container">
-         <div className="content">
-            <FormikProvider value={categoriesFormik}>
-               <Form onSubmit={handleSubmit} className="login-form">
+      <Container>
+         <FormikProvider value={categoriesFormik}>
+            <Form onSubmit={handleSubmit} className="login-form">
+               <Grid item>
+                  <h2>Transaction categories:</h2>
+               </Grid>
+               <Grid container direction="column" spacing={2}>
                   <Grid item>
-                     <h2>Transaction categories:</h2>
+                     <List>
+                        {documents?.[0]?.categories.map(category => (
+                           <ListItem
+                              key={category.toString()}
+                              secondaryAction={
+                                 <IconButton edge="end" aria-label="delete" onClick={() => deleteCategories({ id: user.uid, category })}>
+                                    <DeleteIcon />
+                                 </IconButton>
+                              }
+                           >
+                              <ListItemText primary={category} />
+                           </ListItem>
+                        ))}
+                     </List>
                   </Grid>
-                  <Grid container direction="column" spacing={2}>
-                     <Grid item>
-                        <List>
-                           {documents?.[0]?.categories.map(category => (
-                              <ListItem
-                                 key={category.toString()}
-                                 secondaryAction={
-                                    <IconButton edge="end" aria-label="delete" onClick={() => deleteCategories({ id: user.uid, category })}>
-                                       <DeleteIcon />
-                                    </IconButton>
-                                 }
-                              >
-                                 <ListItemText primary={category} />
-                              </ListItem>
-                           ))}
-                        </List>
-                     </Grid>
 
-                     <Grid item>
-                        <Field
-                           name="categories"
-                           component={TextFormField}
-                           InputProps={{ endAdornment: <button type="submit" disabled={isSubmitting} className="btn">Add</button> }}
-                        />
-                     </Grid>
-                     <Grid item>
-                        {error && <p>{error}</p>}
-                     </Grid>
+                  <Grid item>
+                     <Field
+                        name="categories"
+                        component={TextFormField}
+                        InputProps={{ endAdornment: <button type="submit" disabled={isSubmitting} className="btn">Add</button> }}
+                     />
                   </Grid>
-               </Form>
-            </FormikProvider>
-         </div>
+                  <Grid item>
+                     {error && <p>{error}</p>}
+                  </Grid>
+               </Grid>
+            </Form>
+         </FormikProvider>
          <div className="sidebar">
             <Link className='btn' to="/">Go Back</Link>
          </div>
-      </div>
+      </Container>
    );
 }
