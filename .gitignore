@@ -16,7 +16,6 @@
 .env.dev
 .env.prod
 .firebase
-.firebaserc
 
 npm-debug.log*
 yarn-debug.log*

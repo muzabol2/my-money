@@ -1,0 +1,8 @@
+{
+  "projects": {
+    "dev": "whereismymoneysir-dev",
+    "prod": "whereismymoneysir"
+  },
+  "targets": {},
+  "etags": {}
+}
