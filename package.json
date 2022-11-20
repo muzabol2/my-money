@@ -17,7 +17,7 @@
     "@testing-library/user-event": "^12.8.3",
     "dayjs": "^1.11.6",
     "env-cmd": "^10.1.0",
-    "firebase": "^9.12.1",
+    "firebase": "^9.14.0",
     "formik": "^2.2.9",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
