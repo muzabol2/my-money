@@ -21,7 +21,7 @@ export default function Login() {
       onSubmit: (values) => login(values.email, values.password)
    });
 
-   const { isSubmitting, handleSubmit } = loginFornik;
+   const { handleSubmit } = loginFornik;
 
    return (
       <FormikProvider value={loginFornik}>
@@ -50,16 +50,23 @@ export default function Login() {
                   />
                </Grid>
                <Grid item>
-                  {!isPending && <ColorButton type="submit" disabled={isSubmitting}>Login</ColorButton>}
-                  {isPending && <ColorButton disabled>Loading</ColorButton>}
+                  {!isPending ?
+                     <ColorButton type="submit">Login</ColorButton>
+                     :
+                     <ColorButton disabled>Loading</ColorButton>
+                  }
                </Grid>
                <Grid item>
                   {error && <p className="firebase-error">{error}</p>}
                </Grid>
                <Grid item>
                   <Separator label="OR" />
-                  {!isGooglePending && <GoogleButton style={{ width: '220px' }} label="Login with Google" onClick={googleSignIn} />}
-                  {isGooglePending && <GoogleButton style={{ width: '220px' }} label="Loading" disabled />}
+                  <GoogleButton
+                     style={{ width: '220px' }}
+                     label="Login with Google"
+                     onClick={googleSignIn}
+                     disabled={isGooglePending}
+                  />
                </Grid>
                <Grid item>
                   {googleError && <p className="firebase-error">{error}</p>}
