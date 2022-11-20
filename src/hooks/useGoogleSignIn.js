@@ -26,7 +26,6 @@ export const useGoogleSignIn = () => {
             // create a user file with default categories
             await addUser(result.user.displayName, result.user.uid);
          }
-
       } catch (error) {
          console.error(error);
          setGoogleError(error.message);
