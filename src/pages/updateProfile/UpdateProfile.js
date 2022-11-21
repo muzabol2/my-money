@@ -6,6 +6,7 @@ import { updateSchema } from './validateUpdateProfile';
 import { validateYupSchemaMultiErrors } from '../validateFormikMultiErrors';
 import { TextFormField } from '../../formFields/TextFormField';
 import { Container, Grid } from '@mui/material';
+import { ColorButton } from '../../components/ColorButton';
 
 export default function UpdateProfile() {
    const { user } = useAuthContext();
@@ -20,13 +21,19 @@ export default function UpdateProfile() {
          passwordConfirm: "",
       },
       validate: values => validateYupSchemaMultiErrors(values, updateSchema),
-      onSubmit: values => updateUserProfile(values.displayName, values.password, values.currentPassword)
+      onSubmit: values => {
+         updateUserProfile(values.displayName, values.password, values.currentPassword);
+         resetForm();
+      }
    });
 
-   const { isSubmitting, handleSubmit } = updateProfileFormik
+   const { resetForm, handleSubmit } = updateProfileFormik
 
    return (
       <Container>
+         <Grid item mt={1}>
+            <Link className='btn' to="/">Go Back</Link>
+         </Grid>
          <FormikProvider value={updateProfileFormik}>
             <Form onSubmit={handleSubmit} className="login-form">
                {user.providerData[0].providerId === 'google.com' ?
@@ -36,51 +43,49 @@ export default function UpdateProfile() {
                      <Grid container spacing={2}>
                         <Grid item>
                            <Field
-                              label="Display name:"
+                              label="Display name"
                               name="displayName"
                               component={TextFormField}
                            />
                         </Grid>
-
                         <Grid item>
                            <Field
-                              label="Email:"
+                              label="Email"
                               name="email"
                               component={TextFormField}
                               disabled
                            />
                         </Grid>
-
                         <Grid item>
                            <Field
-                              label="Current password:"
+                              label="Current password"
                               name="currentPassword"
                               type="password"
                               component={TextFormField}
                            />
                         </Grid>
-
-
                         <Grid item>
                            <Field
-                              label="Password:"
+                              label="Password"
                               name="password"
                               type="password"
                               component={TextFormField}
                            />
                         </Grid>
-
                         <Grid item>
                            <Field
-                              label="Password confirmation:"
+                              label="Password confirmation"
                               name="passwordConfirm"
                               type="password"
                               component={TextFormField}
                            />
                         </Grid>
                         <Grid item>
-                           {!isPending && <button type="submit" disabled={isSubmitting} className="btn">Update</button>}
-                           {isPending && <button className="btn" disabled>Loading</button>}
+                           {!isPending ?
+                              <ColorButton type="submit">Update</ColorButton>
+                              :
+                              <ColorButton disabled>Loading</ColorButton>
+                           }
                            {error && <p className="firebase-error">{error}</p>}
                            {success && <p className="firebase-success">{success}</p>}
                         </Grid>
@@ -89,14 +94,6 @@ export default function UpdateProfile() {
                }
             </Form>
          </FormikProvider>
-         <div className="sidebar">
-            <Link className='btn' to="/">Go Back</Link>
-         </div>
       </Container>
    );
 }
-
-// TODO: allow user to customize:
-// - dark mode
-// - currency
-// - add/remove categories

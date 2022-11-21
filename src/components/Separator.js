@@ -1,4 +1,4 @@
-export default function Separator ({label}) {
+export default function Separator({ label }) {
 
    return (
       <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', margin: 20 }} >

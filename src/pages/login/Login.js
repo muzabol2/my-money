@@ -36,14 +36,14 @@ export default function Login() {
                </Grid>
                <Grid item mb={2}>
                   <Field
-                     label="Email:"
+                     label="Email"
                      name="email"
                      component={TextFormField}
                   />
                </Grid>
                <Grid item mb={2}>
                   <Field
-                     label="Password:"
+                     label="Password"
                      name="password"
                      type="password"
                      component={TextFormField}

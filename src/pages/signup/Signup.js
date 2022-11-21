@@ -24,7 +24,7 @@ export default function Signup() {
       onSubmit: values => signup(values.email, values.password, values.displayName),
    });
 
-   const { isSubmitting, handleSubmit } = signupFormik
+   const { handleSubmit } = signupFormik
 
    return (
       <div className="login-form">
@@ -44,28 +44,32 @@ export default function Signup() {
                         <h2>Create account:</h2>
                      </Grid>
                      <Grid item>
-                        {!isGooglePending && <GoogleButton style={{ width: '220px' }} label="Log in with Google" onClick={googleSignIn} />}
-                        {isGooglePending && <GoogleButton style={{ width: '220px' }} label="Loading" disabled />}
+                        <GoogleButton
+                           style={{ width: '220px' }}
+                           label="Login with Google"
+                           onClick={googleSignIn}
+                           disabled={isGooglePending}
+                        />
                         {googleError && <p className="firebase-error">{error}</p>}
                         <Separator label="OR" />
                      </Grid>
                      <Grid item mb={1}>
                         <Field
-                           label="Display name:"
+                           label="Display name"
                            name="displayName"
                            component={TextFormField}
                         />
                      </Grid>
                      <Grid item mb={1}>
                         <Field
-                           label="Email:"
+                           label="Email"
                            name="email"
                            component={TextFormField}
                         />
                      </Grid>
                      <Grid item mb={1}>
                         <Field
-                           label="Password:"
+                           label="Password"
                            name="password"
                            type="password"
                            component={TextFormField}
@@ -73,15 +77,18 @@ export default function Signup() {
                      </Grid>
                      <Grid item mb={1}>
                         <Field
-                           label="Password confirmation:"
+                           label="Password confirmation"
                            name="passwordConfirm"
                            type="password"
                            component={TextFormField}
                         />
                      </Grid>
                      <Grid item>
-                        {!isPending && <ColorButton type="submit" disabled={isSubmitting}>Sign up</ColorButton>}
-                        {isPending && <ColorButton disabled>Sign up</ColorButton>}
+                        {!isPending ?
+                           <ColorButton type="submit">Sign up</ColorButton>
+                           :
+                           <ColorButton disabled>Loading</ColorButton>
+                        }
                      </Grid>
                      <Grid item>
                         {error && <p className="firebase-error">{error}</p>}

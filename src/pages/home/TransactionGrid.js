@@ -36,10 +36,11 @@ export default function TransactionGrid({ transactions, filterMonthYear }) {
                   rowHeight={25}
                   sx={{
                      boxShadow: 2,
-                     border: 2,
-                     borderColor: 'green',
+                     borderRadius: '10px',
+                     border: '2px solid',
+                     borderColor: '#1f9751',
                      '& .MuiDataGrid-cell:hover': {
-                        color: 'green',
+                        color: '#1f9751',
                      },
                   }}
                   components={{

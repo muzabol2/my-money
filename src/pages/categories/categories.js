@@ -4,10 +4,11 @@ import { Field, Form, FormikProvider, useFormik } from 'formik';
 import { validateYupSchemaMultiErrors } from '../validateFormikMultiErrors';
 import { categoriesSchema } from './validateCategories';
 import { TextFormField } from '../../formFields/TextFormField';
-import { Container, Grid, IconButton, List, ListItem, ListItemText } from '@mui/material';
+import { Container, Grid, IconButton, InputAdornment, List, ListItem, ListItemText } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { useCollection } from '../../hooks/useCollection';
 import { useFirestore } from '../../hooks/useFirestore';
+import { ColorButton } from '../../components/ColorButton';
 
 export default function Categories() {
    const { user } = useAuthContext();
@@ -29,6 +30,9 @@ export default function Categories() {
 
    return (
       <Container>
+         <Grid item mt={1}>
+            <Link className='btn' to="/">Go Back</Link>
+         </Grid>
          <FormikProvider value={categoriesFormik}>
             <Form onSubmit={handleSubmit} className="login-form">
                <Grid item>
@@ -52,12 +56,30 @@ export default function Categories() {
                      </List>
                   </Grid>
 
-                  <Grid item>
-                     <Field
-                        name="categories"
-                        component={TextFormField}
-                        InputProps={{ endAdornment: <button type="submit" disabled={isSubmitting} className="btn">Add</button> }}
-                     />
+                  <Grid
+                     sx={{ flexGrow: 1 }}
+                     item
+                     container
+                     direction="row"
+                     justifyContent="flex-start"
+                     alignItems="flex-start"
+                     spacing={1}
+                  >
+                     <Grid item xs={8}>
+                        <Field
+                           style={{ width: '170px' }}
+                           name="categories"
+                           component={TextFormField}
+                        />
+                     </Grid>
+                     <Grid item mt={1} xs={4}>
+                        <ColorButton
+                           style={{ width: '10px', height: '40px' }}
+                           type="submit"
+                           disabled={isSubmitting}>
+                           Add
+                        </ColorButton>
+                     </Grid>
                   </Grid>
                   <Grid item>
                      {error && <p>{error}</p>}
@@ -65,9 +87,6 @@ export default function Categories() {
                </Grid>
             </Form>
          </FormikProvider>
-         <div className="sidebar">
-            <Link className='btn' to="/">Go Back</Link>
-         </div>
       </Container>
    );
 }

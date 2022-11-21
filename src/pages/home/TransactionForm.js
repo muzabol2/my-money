@@ -89,7 +89,6 @@ export default function TransactionForm({ uid }) {
                      </Grid>
                      <Grid item mb={3}>
                         <ColorButton
-                           style={{ width: '220px', height: '50px' }}
                            type="submit"
                            disabled={isSubmitting}
                         >
