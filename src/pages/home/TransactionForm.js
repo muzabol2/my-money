@@ -5,10 +5,9 @@ import { TextFormField } from '../../formFields/TextFormField';
 import { DatePickerField } from '../../formFields/DatePickerField';
 import { SelectFormField } from '../../formFields/SelectFormField';
 import dayjs from 'dayjs';
-import { Grid, Container, Typography } from '@mui/material';
+import { Grid, Container } from '@mui/material';
 import { useCollection } from '../../hooks/useCollection';
 import { ColorButton } from '../../components/ColorButton';
-import { Link } from 'react-router-dom';
 
 export default function TransactionForm({ uid }) {
    const { addDocument } = useFirestore('transactions');
@@ -35,11 +34,11 @@ export default function TransactionForm({ uid }) {
             transactionCategory,
             amount: toNumber(amount)
          });
-         resetForm();
+         //resetForm();
       }
    });
 
-   const { isSubmitting, handleSubmit, resetForm } = transactionFormik;
+   const { handleSubmit, resetForm } = transactionFormik;
 
    return (
       <div>
@@ -52,7 +51,8 @@ export default function TransactionForm({ uid }) {
                      border: '2px solid',
                      borderColor: '#1f9751',
                      width: '270px'
-                  }}>
+                  }}
+               >
                   <Grid
                      container
                      direction="column"
@@ -91,7 +91,6 @@ export default function TransactionForm({ uid }) {
                      <Grid item mb={3}>
                         <ColorButton
                            type="submit"
-                           disabled={isSubmitting}
                         >
                            Add Transaction
                         </ColorButton>
