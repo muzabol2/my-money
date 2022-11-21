@@ -1,18 +1,8 @@
 # Where's my money?!
 
-The project was created to better manage the household budget.
-
-Application uses:
-* Functions components
-* Custom React hooks
-* React Router
-* Firebase
-* Material-UI
-* Formik
+The project was created to help manage the home budget
 
 ## Table of contents
-- [Where's my money?!](#wheres-my-money)
-  - [Table of contents](#table-of-contents)
   - [General info](#general-info)
   - [Deployment](#deployment)
   - [Screenshots](#screenshots)
@@ -22,7 +12,7 @@ Application uses:
   - [Inspiration](#inspiration)
 
 ## General info
-Project allows to:
+Application allows you to:
 * create a profile account - sign up  & log in 
 * add transactions (name, date, category, amount)
 * add categories of transactions
@@ -37,22 +27,19 @@ Project allows to:
 
 ## Screenshots
 
-- View all your transactions and add new ones: \
-![App 1 Screenshot](./Screenshot1.png)
-
-- Add/remove categories: \
-![App 2 Screenshot](./Screenshot2.png)
-
-- Create your own account and log in: \
-![App 3 Screenshot](./Screenshot3.png)
+ View all your transactions and add new ones |  Manage categories |  Log in
+:-------------------------:|:-------------------------:|:-------------------------:
+![](./Screenshot1.png)  |  ![](./Screenshot2.png) | ![](./Screenshot3.png)
 
 ## Technologies
+
 Main:
 * React
-* html, css
+* js, html, css
 
 Libraries:
 * material-ui
+* react-router-dom
 * forimik
 * dayjs
 * firebase
@@ -75,8 +62,6 @@ Hopefully, in the near future, me and my friends will be able to actually use th
 
 ## Inspiration
 Credits for:
-
-[Shaun Pelling](https://github.com/iamshaunjp) - for an idea for this project and his excelent firebase tutorial. Thank you.
-[Ben Awad](https://github.com/benawad) - for his intuitive Formik FormFields.Thank you.
-
-And, of course as always - StackOverflow... :)
+* [Shaun Pelling](https://github.com/iamshaunjp) - for an idea for this project and his excelent firebase tutorial. Thank you.
+* [Ben Awad](https://github.com/benawad) - for his intuitive Formik FormFields.Thank you.
+* And, of course as always - StackOverflow... :)
