@@ -5,7 +5,7 @@ export default function Wrapper({ children }) {
    return (
       <>
          <Navbar />
-         <Box mt={10} mb={4}>
+         <Box mt={10} mb={1}>
             {children}
          </Box>
       </>

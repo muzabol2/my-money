@@ -34,7 +34,7 @@ export default function TransactionForm({ uid }) {
             transactionCategory,
             amount: toNumber(amount)
          });
-         //resetForm();
+         resetForm();
       }
    });
 

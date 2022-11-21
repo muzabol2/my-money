@@ -78,7 +78,7 @@ export default function TransactionGrid({ transactions }) {
                         rowHeight={25}
                         pageSize={pageSize}
                         onPageSizeChange={(newPageSize) => setPageSize(newPageSize)}
-                        rowsPerPageOptions={[25, 50, 75]}
+                        rowsPerPageOptions={[25, 50, 75, 100]}
                         pagination
                         sx={{
                            boxShadow: 2,
