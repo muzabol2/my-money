@@ -11,13 +11,15 @@ Application uses:
 * Formik
 
 ## Table of contents
-* [General info](#general-info)
-* [Deployment](#deployment)
-* [Screenshots](#screenshots)
-* [Technologies](#technologies)
-* [Setup](#setup)
-* [Status](#status)
-* [Inspiration](#inspiration)
+- [Where's my money?!](#wheres-my-money)
+  - [Table of contents](#table-of-contents)
+  - [General info](#general-info)
+  - [Deployment](#deployment)
+  - [Screenshots](#screenshots)
+  - [Technologies](#technologies)
+  - [Setup](#setup)
+  - [Status](#status)
+  - [Inspiration](#inspiration)
 
 ## General info
 Project allows to:
@@ -34,18 +36,17 @@ Project allows to:
 | production | https://whereismymoneysir.web.app |
 
 ## Screenshots
-You can sign up to the app by register or Login with your Google account:
-![App Screenshot](./Screenshot2.png)
 
-You can log in to the app:
-![App 2 Screenshot](./Screenshot1.png)
+- View all your transactions and add new ones:
+![App 1 Screenshot](./Screenshot1.png)
 
-When you are logged in you can see all of your transactions and add a new ones:
+- Add/remove categories:
+![App 2 Screenshot](./Screenshot2.png)
+
+- Create your own account and log in:
 ![App 3 Screenshot](./Screenshot3.png)
-![App 4 Screenshot](./Screenshot4.png)
 
-You can add/remove categories:
-![App 5 Screenshot](./Screenshot5.png)
+
 ## Technologies
 Main:
 * React
@@ -71,7 +72,7 @@ You will need to change .env.sample file. You need to go to firebase website and
 
 ## Status
 I work on this project in my spare time. It is possible that the screenshots here are not up to date - it is constantly changing. I really enjoy adding new features here and I treat this app as my code-sandbox. \
-Hopefully, me and my friends in the near future will be able to actually use this app to keep our private budgets in it.
+Hopefully, in the near future, me and my friends will be able to actually use this app to keep our private budgets in it.
 
 ## Inspiration
 Credits for:
