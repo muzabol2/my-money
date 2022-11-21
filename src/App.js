@@ -3,10 +3,10 @@ import { useAuthContext } from './hooks/useAuthContext';
 import Home from './pages/home/Home';
 import Login from './pages/login/Login';
 import Signup from './pages/signup/Signup';
-import Navbar from './components/Navbar';
 import Inspiration from './pages/inspiration/Inspiration';
 import UpdateProfile from './pages/updateProfile/UpdateProfile';
 import Categories from './pages/categories/categories';
+import Wrapper from './Wrapper';
 
 function App() {
    const { authIsReady, user } = useAuthContext();
@@ -15,11 +15,30 @@ function App() {
       <div className="App">
          {authIsReady && (
             <BrowserRouter>
-               <Navbar />
                <Switch>
                   <Route exact path="/">
                      {!user && <Redirect to="/login" />}
-                     {user && <Home />}
+                     {user &&
+                        <Wrapper>
+                           <Home />
+                        </Wrapper>
+                     }
+                  </Route>
+                  <Route path="/categories">
+                     {!user && <Redirect to="/login" />}
+                     {user &&
+                        <Wrapper>
+                           <Categories />
+                        </Wrapper>
+                     }
+                  </Route>
+                  <Route path="/updateProfile">
+                     {!user && <Redirect to="/login" />}
+                     {user &&
+                        <Wrapper>
+                           <UpdateProfile />
+                        </Wrapper>
+                     }
                   </Route>
                   <Route path="/login">
                      {user && <Redirect to="/" />}
@@ -31,14 +50,6 @@ function App() {
                   </Route>
                   <Route path='/inspiration' >
                      <Inspiration />
-                  </Route>
-                  <Route path="/updateProfile">
-                     {!user && <Redirect to="/login" />}
-                     {user && <UpdateProfile />}
-                  </Route>
-                  <Route path="/categories">
-                     {!user && <Redirect to="/login" />}
-                     {user && <Categories />}
                   </Route>
                </Switch>
             </BrowserRouter>
