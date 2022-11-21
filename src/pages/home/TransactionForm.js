@@ -5,9 +5,10 @@ import { TextFormField } from '../../formFields/TextFormField';
 import { DatePickerField } from '../../formFields/DatePickerField';
 import { SelectFormField } from '../../formFields/SelectFormField';
 import dayjs from 'dayjs';
-import { Grid, Container } from '@mui/material';
+import { Grid, Container, Typography } from '@mui/material';
 import { useCollection } from '../../hooks/useCollection';
 import { ColorButton } from '../../components/ColorButton';
+import { Link } from 'react-router-dom';
 
 export default function TransactionForm({ uid }) {
    const { addDocument } = useFirestore('transactions');
@@ -82,7 +83,7 @@ export default function TransactionForm({ uid }) {
                      </Grid>
                      <Grid item mb={1}>
                         <Field
-                           label="Amount (PLN)"
+                           label="Amount"
                            name="amount"
                            component={TextFormField}
                         />
@@ -99,6 +100,6 @@ export default function TransactionForm({ uid }) {
                </Container>
             </Form>
          </FormikProvider>
-      </div >
+      </div>
    )
 }

@@ -1,5 +1,5 @@
-import { Container } from '@mui/material';
-import './Inspiration.css';
+import { Container, Typography } from '@mui/material';
+import { Link } from 'react-router-dom';
 
 export default function Inspiration() {
    return (
@@ -16,6 +16,14 @@ export default function Inspiration() {
                src="https://www.youtube.com/embed/ZomwVcGt0LE?start=37"
                title="Wheres my Money"
             />
+         </div>
+         <div className="below-container">
+            <Typography sx={{ textAlign: 'center' }}>
+               Have an account? <Link to="login">Login</Link>
+            </Typography>
+            <Typography sx={{ textAlign: 'center' }}>
+               Don't have an account? <Link to="signup">Sign up</Link>
+            </Typography>
          </div>
       </Container>
    );

@@ -5,8 +5,9 @@ import { Field, Form, FormikProvider, useFormik } from 'formik';
 import { updateSchema } from './validateUpdateProfile';
 import { validateYupSchemaMultiErrors } from '../validateFormikMultiErrors';
 import { TextFormField } from '../../formFields/TextFormField';
-import { Container, Grid } from '@mui/material';
+import { Container, Grid, Typography } from '@mui/material';
 import { ColorButton } from '../../components/ColorButton';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
 export default function UpdateProfile() {
    const { user } = useAuthContext();
@@ -31,11 +32,8 @@ export default function UpdateProfile() {
 
    return (
       <Container>
-         <Grid item mt={1}>
-            <Link className='btn' to="/">Go Back</Link>
-         </Grid>
          <FormikProvider value={updateProfileFormik}>
-            <Form onSubmit={handleSubmit} className="login-form">
+            <Form onSubmit={handleSubmit} className="form-container">
                {user.providerData[0].providerId === 'google.com' ?
                   <p>{"You are sign in with Google account. You can't change your profile data from here."}</p>
                   :
@@ -94,6 +92,11 @@ export default function UpdateProfile() {
                }
             </Form>
          </FormikProvider>
+         <div className="below-container">
+            <Typography variant="h6" sx={{ textAlign: 'center' }}>
+               <Link to="/">back</Link>
+            </Typography>
+         </div>
       </Container>
    );
 }

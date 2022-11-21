@@ -4,7 +4,7 @@ import { Field, Form, FormikProvider, useFormik } from 'formik';
 import { validateYupSchemaMultiErrors } from '../validateFormikMultiErrors';
 import { categoriesSchema } from './validateCategories';
 import { TextFormField } from '../../formFields/TextFormField';
-import { Container, Grid, IconButton, InputAdornment, List, ListItem, ListItemText } from '@mui/material';
+import { Container, Grid, Typography, IconButton, List, ListItem, ListItemText } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { useCollection } from '../../hooks/useCollection';
 import { useFirestore } from '../../hooks/useFirestore';
@@ -30,13 +30,12 @@ export default function Categories() {
 
    return (
       <Container>
-         <Grid item mt={1}>
-            <Link className='btn' to="/">Go Back</Link>
-         </Grid>
          <FormikProvider value={categoriesFormik}>
-            <Form onSubmit={handleSubmit} className="login-form">
-               <Grid item>
-                  <h2>Transaction categories:</h2>
+            <Form onSubmit={handleSubmit} className="form-container">
+               <Grid item mb={2} align="left">
+                  <Typography variant="h6" sx={{ fontFamily: 'Arial', fontWeight: 'bold' }}>
+                     Transaction categories:
+                  </Typography>
                </Grid>
                <Grid container direction="column" spacing={2}>
                   <Grid item>
@@ -87,6 +86,11 @@ export default function Categories() {
                </Grid>
             </Form>
          </FormikProvider>
+         <div className="below-container">
+            <Typography variant="h6" sx={{ textAlign: 'center' }}>
+               <Link to="/">back</Link>
+            </Typography>
+         </div>
       </Container>
    );
 }
