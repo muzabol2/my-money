@@ -37,15 +37,14 @@ Project allows to:
 
 ## Screenshots
 
-- View all your transactions and add new ones:
+- View all your transactions and add new ones: \
 ![App 1 Screenshot](./Screenshot1.png)
 
-- Add/remove categories:
+- Add/remove categories: \
 ![App 2 Screenshot](./Screenshot2.png)
 
-- Create your own account and log in:
+- Create your own account and log in: \
 ![App 3 Screenshot](./Screenshot3.png)
-
 
 ## Technologies
 Main:
