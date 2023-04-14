@@ -29,7 +29,7 @@ Application allows you to:
 
  View all your transactions and add new ones |  Manage categories |  Log in
 :-------------------------:|:-------------------------:|:-------------------------:
-![](./Screenshot1.png)  |  ![](./Screenshot2.png) | ![](./Screenshot3.png)
+<img width="955" alt="Screenshot1" src="https://user-images.githubusercontent.com/109333068/231939911-d719bf24-edbb-4e4d-9306-95970d2fff1d.png"> | <img width="218" alt="Screenshot2" src="https://user-images.githubusercontent.com/109333068/231941047-e9015272-1a4a-4bcd-9a97-4e6a68d31aee.png"> | <img width="201" alt="Screenshot3" src="https://user-images.githubusercontent.com/109333068/231941089-f625b4a8-b3ea-43d2-82f8-48a33c3f7e7d.png">
 
 ## Technologies
 
