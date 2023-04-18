@@ -1,5 +1,6 @@
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 import { useAuthContext } from './hooks/useAuthContext';
+import { useThemeContext } from './hooks/useThemeContext';
 import Home from './pages/home/Home';
 import Login from './pages/login/Login';
 import Signup from './pages/signup/Signup';
@@ -10,9 +11,10 @@ import Wrapper from './Wrapper';
 
 function App() {
    const { authIsReady, user } = useAuthContext();
+   const { mode } = useThemeContext()
 
    return (
-      <div className="App">
+      <div className={`App ${mode}`}>
          {authIsReady && (
             <BrowserRouter>
                <Switch>
