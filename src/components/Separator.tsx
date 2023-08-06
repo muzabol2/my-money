@@ -1,4 +1,4 @@
-export default function Separator({ label }) {
+export default function Separator({ label }: { label: string }) {
   return (
     <div
       style={{

@@ -27,7 +27,7 @@ export default function MenuProfilePopup() {
           </Tooltip>
           <Menu {...bindMenu(popupState)}>
             <MenuItem disabled sx={{ color: "black", fontWeight: "bold" }}>
-              {user.displayName}
+              {user?.displayName}
             </MenuItem>
             <Divider />
             <MenuItem
