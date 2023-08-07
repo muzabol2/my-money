@@ -1,5 +1,5 @@
 import { Box } from "@mui/material";
-import Navbar from "./components/Navbar";
+import Navbar from "./Navbar";
 
 export default function Wrapper({ children }: { children: React.ReactNode }) {
   return (

@@ -6,7 +6,7 @@ import Signup from "./pages/signup/Signup";
 import Inspiration from "./pages/inspiration/Inspiration";
 import UpdateProfile from "./pages/updateProfile/UpdateProfile";
 import Categories from "./pages/categories/categories";
-import Wrapper from "./Wrapper";
+import Wrapper from "./components/Wrapper";
 
 function App() {
   const { authIsReady, user } = useAuthContext();
