@@ -1,10 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
 
 /* base styles */
 body {
-   font-family: Poppins, sans-serif;
-   margin: 0;
-   font-size: 1.1em;
+  font-family: Poppins, sans-serif;
+  margin: 0;
+  font-size: 1.1em;
 }
 
 ul,
@@ -14,70 +14,70 @@ h1,
 h2,
 h3,
 h4 {
-   margin: 0;
-   padding: 0;
+  margin: 0;
+  padding: 0;
 }
 
 ul {
-   list-style-type: none;
+  list-style-type: none;
 }
 
 .btn {
-   background: none;
-   border: 2px solid #1f9751;
-   padding: 6px 12px;
-   border-radius: 4px;
-   color: #1f9751;
-   font-weight: bold;
-   cursor: pointer;
-   font-size: 1em;
-   text-decoration: none;
+  background: none;
+  border: 2px solid #1f9751;
+  padding: 6px 12px;
+  border-radius: 4px;
+  color: #1f9751;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 1em;
+  text-decoration: none;
 }
 
 .btn:hover {
-   background: #1f9751;
-   color: #fff;
+  background: #1f9751;
+  color: #fff;
 }
 
 .form-container {
-   max-width: 250px;
-   margin: 30px auto 5px;
-   padding: 40px 50px 30px;
-   border: 1px solid #ddd;
-   box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.05);
+  max-width: 250px;
+  margin: 30px auto 5px;
+  padding: 40px 50px 30px;
+  border: 1px solid #ddd;
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.05);
 }
 
 .below-container {
-   max-width: 250px;
-   margin: 5px auto 30px;
-   padding: 10px 50px 10px;
-   border: 1px solid #ddd;
-   box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.05);
+  max-width: 250px;
+  margin: 5px auto 30px;
+  padding: 10px 50px 10px;
+  border: 1px solid #ddd;
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.05);
 }
 
 .firebase-success {
-   margin-top: 20px;
-   color: #1f9751;
-   font-weight: bold;
+  margin-top: 20px;
+  color: #1f9751;
+  font-weight: bold;
 }
 
 .firebase-error {
-   margin-top: 20px;
-   color: red;
+  margin-top: 20px;
+  color: red;
 }
 
 .iframe-container {
-   margin: 30px auto 10px;
-   position: relative;
-   width: 100%;
-   padding-bottom: 56.25%;
-   height: 0;
+  margin: 30px auto 10px;
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%;
+  height: 0;
 }
 
 .iframe-container iframe {
-   position: absolute;
-   top: 0;
-   left: 0;
-   width: 100%;
-   height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }

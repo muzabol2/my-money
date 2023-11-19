@@ -1,5 +1,5 @@
 export const AuthType = {
-   LOGIN: 'LOGIN',
-   LOGOUT: 'LOGOUT',
-   AUTH_IS_READY: 'AUTH_IS_READY',
+  LOGIN: "LOGIN",
+  LOGOUT: "LOGOUT",
+  AUTH_IS_READY: "AUTH_IS_READY",
 };

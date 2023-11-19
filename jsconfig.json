@@ -1,18 +1,17 @@
 {
-    "compilerOptions": {
-      "baseUrl": "./src",
-      "paths": {
-        "app/*": ["app/*"],
-        "components/*": ["components/*"],
-        "config/*": ["config/*"],
-        "context/*": ["context/*"],
-        "enums/*": ["enums/*"],
-        "firebase/*": ["firebase/*"],
-        "hooks/*": ["hooks/*"],
-        "pages/*": ["pages/*"],
-        "utils/*": ["utils/*"]
-      }
-    },
-    "include": ["src"]
-  }
-  
+  "compilerOptions": {
+    "baseUrl": "./src",
+    "paths": {
+      "app/*": ["app/*"],
+      "components/*": ["components/*"],
+      "config/*": ["config/*"],
+      "context/*": ["context/*"],
+      "enums/*": ["enums/*"],
+      "firebase/*": ["firebase/*"],
+      "hooks/*": ["hooks/*"],
+      "pages/*": ["pages/*"],
+      "utils/*": ["utils/*"]
+    }
+  },
+  "include": ["src"]
+}
