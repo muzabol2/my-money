@@ -1,6 +1,6 @@
 import { Container, Grid } from '@mui/material';
-import { useAuthContext } from '../../hooks/useAuthContext';
-import { useCollection } from '../../hooks/useCollection';
+
+import { useAuthContext, useCollection } from 'hooks';
 import TransactionForm from './TransactionForm';
 import TransactionGrid from './TransactionGrid';
 

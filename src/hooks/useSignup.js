@@ -5,8 +5,9 @@ import {
    updateProfile
 } from 'firebase/auth';
 import { useState } from 'react';
-import { auth } from '../firebase/config';
-import { useFirestore } from './useFirestore';
+
+import { auth } from 'config';
+import { useFirestore } from 'hooks';
 
 export const useSignup = () => {
    const [isPending, setIsPending] = useState(false);

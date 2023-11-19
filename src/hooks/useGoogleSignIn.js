@@ -1,9 +1,9 @@
 import { GoogleAuthProvider, getAdditionalUserInfo, signInWithPopup } from 'firebase/auth';
 import { useEffect, useState } from 'react';
-import { AuthType } from '../enums/AuthType';
-import { auth } from '../firebase/config';
-import { useAuthContext } from './useAuthContext';
-import { useFirestore } from './useFirestore';
+
+import { auth } from 'config';
+import { AuthType } from 'enums';
+import { useAuthContext, useFirestore } from 'hooks';
 
 export const useGoogleSignIn = () => {
    const [isCancelled, setIsCancelled] = useState(false);

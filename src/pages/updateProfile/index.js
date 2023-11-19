@@ -2,12 +2,9 @@ import { Container, Grid, Typography } from '@mui/material';
 import { Field, Form, FormikProvider, useFormik } from 'formik';
 import { Link } from 'react-router-dom';
 
-import { ColorButton } from '../../components/ColorButton';
-import { TextFormField } from '../../formFields/TextFormField';
-import { useAuthContext } from '../../hooks/useAuthContext';
-import { useUpdateProfile } from '../../hooks/useUpdateProfile';
-import { validateYupSchemaMultiErrors } from '../validateFormikMultiErrors';
-import { updateSchema } from './validateUpdateProfile';
+import { validateYupSchemaMultiErrors, updateSchema } from 'utils';
+import { useAuthContext, useUpdateProfile } from 'hooks';
+import { ColorButton, TextFormField } from 'components';
 
 export default function UpdateProfile() {
    const { user } = useAuthContext();

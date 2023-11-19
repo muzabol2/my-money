@@ -1,13 +1,10 @@
 import { Container, Grid } from '@mui/material';
 import dayjs from 'dayjs';
 import { Field, Form, FormikProvider, useFormik } from 'formik';
-import { ColorButton } from '../../components/ColorButton';
-import { DatePickerField } from '../../formFields/DatePickerField';
-import { SelectFormField } from '../../formFields/SelectFormField';
-import { TextFormField } from '../../formFields/TextFormField';
-import { useCollection } from '../../hooks/useCollection';
-import { useFirestore } from '../../hooks/useFirestore';
-import { transactionSchema } from './validateTransaction';
+
+import { transactionSchema } from 'utils';
+import { useCollection, useFirestore } from 'hooks';
+import { ColorButton, DatePickerField, SelectFormField, TextFormField } from 'components';
 
 export default function TransactionForm({ uid }) {
    const { addDocument } = useFirestore('transactions');

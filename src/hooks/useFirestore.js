@@ -1,7 +1,8 @@
 import { Timestamp, addDoc, arrayRemove, arrayUnion, collection, deleteDoc, doc, setDoc, updateDoc } from 'firebase/firestore';
 import { useEffect, useReducer, useState } from 'react';
-import { FirestoreType } from '../enums/FirestoreType';
-import { db } from '../firebase/config';
+
+import { db } from 'config';
+import { FirestoreType } from 'enums';
 
 let initialState = {
    document: null,

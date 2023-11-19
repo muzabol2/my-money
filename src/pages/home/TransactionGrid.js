@@ -5,7 +5,8 @@ import { DatePicker, LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import dayjs from 'dayjs';
 import { useState } from 'react';
-import { useFirestore } from '../../hooks/useFirestore';
+
+import { useFirestore } from 'hooks';
 import { TransactionGridFooterTotalComponent } from "./transactionGridFooter.js";
 
 export default function TransactionGrid({ transactions }) {

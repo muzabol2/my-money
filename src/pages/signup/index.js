@@ -2,13 +2,10 @@ import { Grid, Typography } from '@mui/material';
 import { Field, Form, FormikProvider, useFormik } from 'formik';
 import { GoogleButton } from 'react-google-button';
 import { Link } from 'react-router-dom';
-import { ColorButton } from '../../components/ColorButton';
-import Separator from '../../components/Separator';
-import { TextFormField } from '../../formFields/TextFormField';
-import { useGoogleSignIn } from '../../hooks/useGoogleSignIn';
-import { useSignup } from '../../hooks/useSignup';
-import { validateYupSchemaMultiErrors } from '../validateFormikMultiErrors';
-import { signupSchema } from './validateSignup';
+
+import { signupSchema, validateYupSchemaMultiErrors } from 'utils';
+import { useGoogleSignIn, useSignup } from 'hooks';
+import { ColorButton, Separator, TextFormField } from 'components';
 
 export default function Signup() {
    const { signup, isPending, error, verificationMail } = useSignup();

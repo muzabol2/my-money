@@ -1,13 +1,8 @@
 import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom';
 
-import { useAuthContext } from '../hooks/useAuthContext';
-import Categories from '../pages/categories/categories';
-import Home from '../pages/home/Home';
-import Inspiration from '../pages/inspiration/Inspiration';
-import Login from '../pages/login/Login';
-import Signup from '../pages/signup/Signup';
-import UpdateProfile from '../pages/updateProfile/UpdateProfile';
-import Wrapper from './Wrapper';
+import { Wrapper } from 'components';
+import { useAuthContext } from 'hooks';
+import { Categories, Home, Inspiration, Login, Signup, UpdateProfile } from 'pages';
 
 function App() {
    const { authIsReady, user } = useAuthContext();
