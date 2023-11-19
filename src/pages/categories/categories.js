@@ -1,14 +1,14 @@
-import { Link } from 'react-router-dom';
-import { useAuthContext } from '../../hooks/useAuthContext';
-import { Field, Form, FormikProvider, useFormik } from 'formik';
-import { validateYupSchemaMultiErrors } from '../validateFormikMultiErrors';
-import { categoriesSchema } from './validateCategories';
-import { TextFormField } from '../../formFields/TextFormField';
-import { Container, Grid, Typography, IconButton, List, ListItem, ListItemText } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
+import { Container, Grid, IconButton, List, ListItem, ListItemText, Typography } from '@mui/material';
+import { Field, Form, FormikProvider, useFormik } from 'formik';
+import { Link } from 'react-router-dom';
+import { ColorButton } from '../../components/ColorButton';
+import { TextFormField } from '../../formFields/TextFormField';
+import { useAuthContext } from '../../hooks/useAuthContext';
 import { useCollection } from '../../hooks/useCollection';
 import { useFirestore } from '../../hooks/useFirestore';
-import { ColorButton } from '../../components/ColorButton';
+import { validateYupSchemaMultiErrors } from '../validateFormikMultiErrors';
+import { categoriesSchema } from './validateCategories';
 
 export default function Categories() {
    const { user } = useAuthContext();

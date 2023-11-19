@@ -1,6 +1,6 @@
-import MenuProfilePopup from './MenuProfilePopup';
 import { AppBar, Toolbar, Typography } from '@mui/material';
 import { Link } from 'react-router-dom';
+import MenuProfilePopup from './MenuProfilePopup';
 
 export default function Navbar() {
 

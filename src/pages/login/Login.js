@@ -1,13 +1,13 @@
-import { useLogin } from '../../hooks/useLogin';
+import { Grid, Typography } from '@mui/material';
 import { Field, Form, FormikProvider, useFormik } from 'formik';
-import { loginSchema } from './validateLogin';
 import { GoogleButton } from 'react-google-button';
-import { useGoogleSignIn } from '../../hooks/useGoogleSignIn';
+import { Link } from 'react-router-dom';
+import { ColorButton } from '../../components/ColorButton';
 import Separator from '../../components/Separator';
 import { TextFormField } from '../../formFields/TextFormField';
-import { Grid, Typography } from '@mui/material';
-import { ColorButton } from '../../components/ColorButton';
-import { Link } from 'react-router-dom';
+import { useGoogleSignIn } from '../../hooks/useGoogleSignIn';
+import { useLogin } from '../../hooks/useLogin';
+import { loginSchema } from './validateLogin';
 
 export default function Login() {
    const { login, error, isPending } = useLogin();

@@ -1,13 +1,14 @@
-import * as React from 'react';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import { Divider, Tooltip } from '@mui/material';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
-import PopupState, { bindTrigger, bindMenu } from 'material-ui-popup-state';
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-import { useLogout } from '../hooks/useLogout';
+import PopupState, { bindMenu, bindTrigger } from 'material-ui-popup-state';
+import * as React from 'react';
 import { Link } from 'react-router-dom';
-import { MenuButton } from './MenuButton';
-import { Divider, Tooltip } from '@mui/material';
+
 import { useAuthContext } from '../hooks/useAuthContext';
+import { useLogout } from '../hooks/useLogout';
+import { MenuButton } from './MenuButton';
 
 export default function MenuProfilePopup() {
    const { user } = useAuthContext();

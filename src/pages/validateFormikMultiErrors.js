@@ -1,4 +1,4 @@
-import { validateYupSchema, setIn, getIn } from "formik";
+import { getIn, setIn, validateYupSchema } from "formik";
 
 // https://github.com/jaredpalmer/formik/pull/1573
 // Copied from PR: https://github.com/formium/formik/pull/1573

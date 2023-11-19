@@ -1,6 +1,6 @@
-import * as React from "react";
-import PropTypes from "prop-types";
 import Box from "@mui/material/Box";
+import PropTypes from "prop-types";
+import * as React from "react";
 
 function TransactionGridFooterTotalComponent(props) {
    return (

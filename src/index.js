@@ -1,13 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import { AuthContextProvider } from './context/AuthContext';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
+
+import App from './app';
+import { AuthProvider } from './context/AuthContext';
+import './index.css';
 
 ReactDOM.render(
    <React.StrictMode>
-      <AuthContextProvider>
+      <AuthProvider>
          <HelmetProvider>
             <Helmet>
                <meta charSet="utf-8" />
@@ -15,7 +16,7 @@ ReactDOM.render(
             </Helmet>
             <App />
          </HelmetProvider>
-      </AuthContextProvider>
+      </AuthProvider>
    </React.StrictMode>,
    document.getElementById('root')
 );

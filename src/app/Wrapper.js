@@ -1,5 +1,5 @@
 import { Box } from "@mui/material";
-import Navbar from "./components/Navbar";
+import Navbar from "../components/Navbar";
 
 export default function Wrapper({ children }) {
    return (

@@ -1,8 +1,8 @@
+import { Container, Grid } from '@mui/material';
 import { useAuthContext } from '../../hooks/useAuthContext';
 import { useCollection } from '../../hooks/useCollection';
 import TransactionForm from './TransactionForm';
 import TransactionGrid from './TransactionGrid';
-import { Grid, Container } from '@mui/material';
 
 export default function Home() {
    const { user } = useAuthContext();

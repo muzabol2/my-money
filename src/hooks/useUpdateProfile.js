@@ -1,12 +1,12 @@
-import { useEffect, useState } from 'react';
-import { AuthType } from '../enums/AuthType';
-import { useAuthContext } from './useAuthContext';
 import {
    EmailAuthProvider,
    reauthenticateWithCredential,
    updatePassword,
    updateProfile
 } from "firebase/auth";
+import { useEffect, useState } from 'react';
+import { AuthType } from '../enums/AuthType';
+import { useAuthContext } from './useAuthContext';
 
 export const useUpdateProfile = () => {
    const [isCancelled, setIsCancelled] = useState(false);

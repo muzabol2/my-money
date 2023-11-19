@@ -1,11 +1,11 @@
-import { useState } from 'react';
-import { auth } from '../firebase/config';
 import {
    createUserWithEmailAndPassword,
-   updateProfile,
+   sendEmailVerification,
    signOut,
-   sendEmailVerification
+   updateProfile
 } from 'firebase/auth';
+import { useState } from 'react';
+import { auth } from '../firebase/config';
 import { useFirestore } from './useFirestore';
 
 export const useSignup = () => {

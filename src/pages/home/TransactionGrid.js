@@ -1,12 +1,12 @@
-import { useState } from 'react';
-import { useFirestore } from '../../hooks/useFirestore';
+import DeleteIcon from '@mui/icons-material/Delete';
+import { Grid, Stack, TextField } from '@mui/material';
 import { DataGrid, GridActionsCellItem } from '@mui/x-data-grid';
 import { DatePicker, LocalizationProvider } from '@mui/x-date-pickers';
-import { Grid, Stack, TextField } from '@mui/material';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-import { TransactionGridFooterTotalComponent } from "./transactionGridFooter.js";
-import DeleteIcon from '@mui/icons-material/Delete';
 import dayjs from 'dayjs';
+import { useState } from 'react';
+import { useFirestore } from '../../hooks/useFirestore';
+import { TransactionGridFooterTotalComponent } from "./transactionGridFooter.js";
 
 export default function TransactionGrid({ transactions }) {
    const { deleteDocument } = useFirestore('transactions')
