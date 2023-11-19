@@ -1,4 +1,2 @@
-import { AuthType } from "./AuthType";
-import { FirestoreType } from "./FirestoreType";
-
-export { AuthType, FirestoreType };
+export * from "./texts";
+export * from "./types";

@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { validateYupSchemaMultiErrors, updateSchema } from "utils";
 import { useAuthContext, useUpdateProfile } from "hooks";
 import { ColorButton, TextFormField } from "components";
+import { PagesTexts as PT, ButtonsTexts as BT } from "enums";
 
 export default function UpdateProfile() {
   const { user } = useAuthContext();
@@ -36,11 +37,7 @@ export default function UpdateProfile() {
       <FormikProvider value={updateProfileFormik}>
         <Form onSubmit={handleSubmit} className="form-container">
           {user.providerData[0].providerId === "google.com" ? (
-            <p>
-              {
-                "You are sign in with Google account. You can't change your profile data from here."
-              }
-            </p>
+            <p>{PT.CAN_NOT_CHANGE_PROFILE}</p>
           ) : (
             <>
               <Grid container spacing={2}>
@@ -85,9 +82,9 @@ export default function UpdateProfile() {
                 </Grid>
                 <Grid item>
                   {!isPending ? (
-                    <ColorButton type="submit">Update</ColorButton>
+                    <ColorButton type="submit">{BT.UPDATE}</ColorButton>
                   ) : (
-                    <ColorButton disabled>Loading</ColorButton>
+                    <ColorButton disabled>{BT.LOADING}</ColorButton>
                   )}
                   {error && <p className="firebase-error">{error}</p>}
                   {success && <p className="firebase-success">{success}</p>}
@@ -99,7 +96,7 @@ export default function UpdateProfile() {
       </FormikProvider>
       <div className="below-container">
         <Typography variant="h6" sx={{ textAlign: "center" }}>
-          <Link to="/">back</Link>
+          <Link to="/">{BT.BACK}</Link>
         </Typography>
       </div>
     </Container>

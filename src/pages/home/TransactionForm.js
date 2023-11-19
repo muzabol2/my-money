@@ -11,6 +11,7 @@ import {
   SelectFormField,
   TextFormField,
 } from "components";
+import { ButtonsTexts as BT } from "enums";
 
 export default function TransactionForm({ uid }) {
   const { addDocument } = useFirestore("transactions");
@@ -93,7 +94,7 @@ export default function TransactionForm({ uid }) {
                 <Field label="Amount" name="amount" component={TextFormField} />
               </Grid>
               <Grid item mb={3}>
-                <ColorButton type="submit">Add Transaction</ColorButton>
+                <ColorButton type="submit">{BT.ADD_TRANSACTION}</ColorButton>
               </Grid>
             </Grid>
           </Container>

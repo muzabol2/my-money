@@ -1,6 +1,7 @@
 import { AppBar, Toolbar, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
 
+import { PagesTexts as T } from "enums";
 import MenuProfilePopup from "./MenuProfilePopup";
 
 export default function Navbar() {
@@ -16,7 +17,7 @@ export default function Navbar() {
               fontWeight: "bold",
             }}
           >
-            Where is my money?!
+            {T.TITLE}
           </Link>
         </Typography>
         <MenuProfilePopup />

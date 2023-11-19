@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import { loginSchema } from "utils";
 import { useGoogleSignIn, useLogin } from "hooks";
 import { ColorButton, Separator, TextFormField } from "components";
+import { PagesTexts as PT, ButtonsTexts as BT } from "enums";
 
 export default function Login() {
   const { login, error, isPending } = useLogin();
@@ -32,13 +33,13 @@ export default function Login() {
                 variant="h5"
                 sx={{ fontFamily: "Arial", fontWeight: "bold" }}
               >
-                Where is my money?!
+                {PT.TITLE}
               </Typography>
               <Typography
                 variant="subtitle2"
                 sx={{ fontFamily: "Monospace", m: 1 }}
               >
-                Application to help you manage your home budget
+                {PT.SUBTITLE}
               </Typography>
             </Grid>
             <Grid item mb={2}>
@@ -54,9 +55,9 @@ export default function Login() {
             </Grid>
             <Grid item>
               {!isPending ? (
-                <ColorButton type="submit">Login</ColorButton>
+                <ColorButton type="submit">{BT.LOGIN}</ColorButton>
               ) : (
-                <ColorButton disabled>Loading</ColorButton>
+                <ColorButton disabled>{BT.LOADING}</ColorButton>
               )}
             </Grid>
             <Grid item>
@@ -79,10 +80,10 @@ export default function Login() {
       </FormikProvider>
       <div className="below-container">
         <Typography sx={{ textAlign: "center" }}>
-          Do not have an account? <Link to="signup">Sign up</Link>
+          {PT.HAVE_ACCOUNT} <Link to="signup">{PT.SIGN_UP}</Link>
         </Typography>
         <Typography sx={{ textAlign: "center" }}>
-          Why this project? <Link to="inspiration">Inspiration</Link>
+          {PT.WHY_THIS_PROJECT} <Link to="inspiration">{PT.INSPIRATION}</Link>
         </Typography>
       </div>
     </>

@@ -1,15 +1,13 @@
 import { Container, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
 
+import { PagesTexts as PT } from "enums";
+
 export default function Inspiration() {
   return (
     <Container>
       <div className="iframe-container">
         <iframe
-          frameBorder="0"
-          scrolling="no"
-          marginHeight="0"
-          marginWidth="0"
           width="788.54"
           height="443"
           type="text/html"
@@ -19,10 +17,10 @@ export default function Inspiration() {
       </div>
       <div className="below-container">
         <Typography sx={{ textAlign: "center" }}>
-          Have an account? <Link to="login">Login</Link>
+          {PT.HAVE_ACCOUNT} <Link to="login">{PT.LOGIN}</Link>
         </Typography>
         <Typography sx={{ textAlign: "center" }}>
-          Do not have an account? <Link to="signup">Sign up</Link>
+          {PT.DO_NOT_HAVE_ACCOUNT} <Link to="signup">{PT.SIGN_UP}</Link>
         </Typography>
       </div>
     </Container>

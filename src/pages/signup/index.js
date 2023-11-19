@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import { signupSchema, validateYupSchemaMultiErrors } from "utils";
 import { useGoogleSignIn, useSignup } from "hooks";
 import { ColorButton, Separator, TextFormField } from "components";
+import { ButtonsTexts as BT, PagesTexts as PT } from "enums";
 
 export default function Signup() {
   const { signup, isPending, error, verificationMail } = useSignup();
@@ -29,11 +30,7 @@ export default function Signup() {
     <>
       <div className="form-container">
         {verificationMail ? (
-          <p className="firebase-success">
-            {
-              "A verification email has been sent to your account. Please confirm it. If you can't find it, check your spam box. ;)"
-            }
-          </p>
+          <p className="firebase-success">{PT.PLEASE_CONFIRM}</p>
         ) : (
           <FormikProvider value={signupFormik}>
             <Form onSubmit={handleSubmit}>
@@ -74,9 +71,9 @@ export default function Signup() {
                 </Grid>
                 <Grid item>
                   {!isPending ? (
-                    <ColorButton type="submit">Sign up</ColorButton>
+                    <ColorButton type="submit">{BT.SIGN_UP}</ColorButton>
                   ) : (
-                    <ColorButton disabled>Loading</ColorButton>
+                    <ColorButton disabled>{BT.LOADING}</ColorButton>
                   )}
                 </Grid>
                 <Grid item>
@@ -99,10 +96,11 @@ export default function Signup() {
       </div>
       <div className="below-container">
         <Typography sx={{ textAlign: "center" }}>
-          Have an account? <Link to="login">Login</Link>
+          {PT.HAVE_ACCOUNT} <Link to="login">{PT.LOGIN}</Link>
         </Typography>
         <Typography sx={{ textAlign: "center" }}>
-          Why this project? <Link to="inspiration">Inspiration</Link>
+          {PT.WHY_THIS_PROJECT}
+          <Link to="inspiration">{PT.INSPIRATION}</Link>
         </Typography>
       </div>
     </>

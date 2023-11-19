@@ -14,6 +14,7 @@ import { Link } from "react-router-dom";
 import { categoriesSchema, validateYupSchemaMultiErrors } from "utils";
 import { useAuthContext, useCollection, useFirestore } from "hooks";
 import { ColorButton, TextFormField } from "components";
+import { PagesTexts as PT, ButtonsTexts as BT } from "enums";
 
 export default function Categories() {
   const { user } = useAuthContext();
@@ -43,7 +44,7 @@ export default function Categories() {
               variant="h6"
               sx={{ fontFamily: "Arial", fontWeight: "bold" }}
             >
-              Transaction categories:
+              {PT.TRANSACTION_CATEGORIES}
             </Typography>
           </Grid>
           <Grid container direction="column" spacing={2}>
@@ -92,7 +93,7 @@ export default function Categories() {
                   type="submit"
                   disabled={isSubmitting}
                 >
-                  Add
+                  {BT.ADD}
                 </ColorButton>
               </Grid>
             </Grid>
@@ -102,7 +103,7 @@ export default function Categories() {
       </FormikProvider>
       <div className="below-container">
         <Typography variant="h6" sx={{ textAlign: "center" }}>
-          <Link to="/">back</Link>
+          <Link to="/">{BT.BACK}</Link>
         </Typography>
       </div>
     </Container>
