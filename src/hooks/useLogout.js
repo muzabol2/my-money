@@ -2,7 +2,7 @@ import { signOut } from 'firebase/auth';
 import { useState } from 'react';
 
 import { auth } from 'config';
-import { AuthType } from 'enums';
+import { AuthType as AT } from 'enums';
 import { useAuthContext } from 'hooks';
 
 export const useLogout = () => {
@@ -16,7 +16,7 @@ export const useLogout = () => {
 
       signOut(auth)
          .then(() => {
-            dispatch({ type: AuthType.LOGOUT });
+            dispatch({ type: AT.LOGOUT });
          })
          .catch((error) => {
             console.error(error);

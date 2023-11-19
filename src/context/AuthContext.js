@@ -2,17 +2,17 @@ import { onAuthStateChanged } from 'firebase/auth';
 import { createContext, useEffect, useReducer } from 'react';
 
 import { auth } from 'config';
-import { AuthType } from 'enums';
+import { AuthType as AT } from 'enums';
 
 export const AuthContext = createContext();
 
 export const authReducer = (state, action) => {
    switch (action.type) {
-      case AuthType.LOGIN:
+      case AT.LOGIN:
          return { ...state, user: action.payload };
-      case AuthType.LOGOUT:
+      case AT.LOGOUT:
          return { ...state, user: null };
-      case AuthType.AUTH_IS_READY:
+      case AT.AUTH_IS_READY:
          return { ...state, user: action.payload, authIsReady: true };
       default:
          return state;
@@ -27,7 +27,7 @@ export const AuthProvider = ({ children }) => {
 
    useEffect(() => {
       const unsub = onAuthStateChanged(auth, (user) => {
-         dispatch({ type: AuthType.AUTH_IS_READY, payload: user });
+         dispatch({ type: AT.AUTH_IS_READY, payload: user });
          unsub();
       });
    }, []);

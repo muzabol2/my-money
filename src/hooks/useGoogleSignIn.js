@@ -2,7 +2,7 @@ import { GoogleAuthProvider, getAdditionalUserInfo, signInWithPopup } from 'fire
 import { useEffect, useState } from 'react';
 
 import { auth } from 'config';
-import { AuthType } from 'enums';
+import { AuthType as AT } from 'enums';
 import { useAuthContext, useFirestore } from 'hooks';
 
 export const useGoogleSignIn = () => {
@@ -19,7 +19,7 @@ export const useGoogleSignIn = () => {
       try {
          const provider = new GoogleAuthProvider();
          const result = await signInWithPopup(auth, provider);
-         dispatch({ type: AuthType.LOGIN, payload: result.user });
+         dispatch({ type: AT.LOGIN, payload: result.user });
 
          const { isNewUser } = getAdditionalUserInfo(result);
          if (isNewUser) {

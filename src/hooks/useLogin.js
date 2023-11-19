@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 
 import { useAuthContext } from 'hooks';
 import { auth } from 'config';
-import { AuthType } from 'enums';
+import { AuthType as AT } from 'enums';
 
 export const useLogin = () => {
    const [isCancelled, setIsCancelled] = useState(false);
@@ -18,7 +18,7 @@ export const useLogin = () => {
       signInWithEmailAndPassword(auth, email, password)
          .then(res => {
             if (res.user.emailVerified) {
-               dispatch({ type: AuthType.LOGIN, payload: res.user });
+               dispatch({ type: AT.LOGIN, payload: res.user });
             }
             else {
                signOut(auth);

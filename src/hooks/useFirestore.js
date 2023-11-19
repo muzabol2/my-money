@@ -2,7 +2,7 @@ import { Timestamp, addDoc, arrayRemove, arrayUnion, collection, deleteDoc, doc,
 import { useEffect, useReducer, useState } from 'react';
 
 import { db } from 'config';
-import { FirestoreType } from 'enums';
+import { FirestoreType as FT } from 'enums';
 
 let initialState = {
    document: null,
@@ -13,28 +13,28 @@ let initialState = {
 
 const firestoreReducer = (state, action) => {
    switch (action.type) {
-      case FirestoreType.IS_PENDING:
+      case FT.IS_PENDING:
          return {
             document: null,
             isPending: true,
             error: null,
             success: null
          };
-      case FirestoreType.ADDED_DOCUMENT:
+      case FT.ADDED_DOCUMENT:
          return {
             document: action.payload,
             isPending: false,
             error: null,
             success: true
          };
-      case FirestoreType.DELETED_DOCUMENT:
+      case FT.DELETED_DOCUMENT:
          return {
             document: null,
             isPending: false,
             error: null,
             success: true
          };
-      case FirestoreType.ERROR:
+      case FT.ERROR:
          return {
             document: null,
             isPending: false,
@@ -60,33 +60,33 @@ export const useFirestore = (collectionName) => {
    }
 
    const addDocument = async (document) => {
-      dispatch({ type: FirestoreType.IS_PENDING });
+      dispatch({ type: FT.IS_PENDING });
 
       try {
          const createdAt = Timestamp.fromDate(new Date());
          const addedDocument = await addDoc(ref, { ...document, createdAt });
-         dispatchIfNotCancelled({ type: FirestoreType.ADDED_DOCUMENT, payload: addedDocument });
+         dispatchIfNotCancelled({ type: FT.ADDED_DOCUMENT, payload: addedDocument });
       }
       catch (error) {
          console.error(error);
-         dispatchIfNotCancelled({ type: FirestoreType.ERROR, payload: error.message });
+         dispatchIfNotCancelled({ type: FT.ERROR, payload: error.message });
       }
    }
 
    const deleteDocument = async (id) => {
-      dispatch({ type: FirestoreType.IS_PENDING });
+      dispatch({ type: FT.IS_PENDING });
       try {
          const ref = doc(db, collectionName, id);
          await deleteDoc(ref);
-         dispatchIfNotCancelled({ type: FirestoreType.DELETED_DOCUMENT });
+         dispatchIfNotCancelled({ type: FT.DELETED_DOCUMENT });
       } catch (error) {
          console.error(error);
-         dispatchIfNotCancelled({ type: FirestoreType.ERROR, payload: "could not delete" });
+         dispatchIfNotCancelled({ type: FT.ERROR, payload: "could not delete" });
       }
    }
 
    const addUser = async (displayName, id) => {
-      dispatch({ type: FirestoreType.IS_PENDING });
+      dispatch({ type: FT.IS_PENDING });
 
       const ref = doc(db, collectionName, id);
       const data = {
@@ -97,39 +97,39 @@ export const useFirestore = (collectionName) => {
       
       try {
          await setDoc(ref, data);
-         dispatchIfNotCancelled({ type: FirestoreType.ADDED_DOCUMENT, payload: data });
+         dispatchIfNotCancelled({ type: FT.ADDED_DOCUMENT, payload: data });
       }
       catch (error) {
          console.error(error);
-         dispatchIfNotCancelled({ type: FirestoreType.ERROR, payload: error.message });
+         dispatchIfNotCancelled({ type: FT.ERROR, payload: error.message });
       }
    }
 
    const updateCategories = async ({ id, category }) => {
-      dispatch({ type: FirestoreType.IS_PENDING });
+      dispatch({ type: FT.IS_PENDING });
       try {
          const ref = doc(db, collectionName, id);
          const updatedDocument = await updateDoc(ref, {
             categories: arrayUnion(category)
          });
-         dispatchIfNotCancelled({ type: FirestoreType.ADDED_DOCUMENT, payload: updatedDocument });
+         dispatchIfNotCancelled({ type: FT.ADDED_DOCUMENT, payload: updatedDocument });
       } catch (error) {
          console.error(error);
-         dispatchIfNotCancelled({ type: FirestoreType.ERROR, payload: "could not update" });
+         dispatchIfNotCancelled({ type: FT.ERROR, payload: "could not update" });
       }
    }
 
    const deleteCategories = async ({ id, category }) => {
-      dispatch({ type: FirestoreType.IS_PENDING });
+      dispatch({ type: FT.IS_PENDING });
       try {
          const ref = doc(db, collectionName, id);
          const updatedDocument = await updateDoc(ref, {
             categories: arrayRemove(category)
          });
-         dispatchIfNotCancelled({ type: FirestoreType.ADDED_DOCUMENT, payload: updatedDocument });
+         dispatchIfNotCancelled({ type: FT.ADDED_DOCUMENT, payload: updatedDocument });
       } catch (error) {
          console.error(error);
-         dispatchIfNotCancelled({ type: FirestoreType.ERROR, payload: "could not delete" });
+         dispatchIfNotCancelled({ type: FT.ERROR, payload: "could not delete" });
       }
    }
 

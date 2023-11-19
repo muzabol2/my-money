@@ -6,7 +6,7 @@ import {
 } from "firebase/auth";
 import { useEffect, useState } from 'react';
 
-import { AuthType } from 'enums';
+import { AuthType as AT } from 'enums';
 import { useAuthContext } from 'hooks';
 
 export const useUpdateProfile = () => {
@@ -44,7 +44,7 @@ export const useUpdateProfile = () => {
 
       Promise.all(promises)
          .then(() => {
-            dispatch({ type: AuthType.LOGIN, payload: user });
+            dispatch({ type: AT.LOGIN, payload: user });
 
             if (!isCancelled) {
                setIsPending(false);
