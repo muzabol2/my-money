@@ -12,7 +12,7 @@ export default function Login() {
   const { login, error, isPending } = useLogin();
   const { googleSignIn, googleError, isGooglePending } = useGoogleSignIn();
 
-  const loginFornik = useFormik({
+  const loginFormik = useFormik({
     initialValues: {
       email: "",
       password: "",
@@ -21,11 +21,11 @@ export default function Login() {
     onSubmit: (values) => login(values.email, values.password),
   });
 
-  const { handleSubmit } = loginFornik;
+  const { handleSubmit } = loginFormik;
 
   return (
     <>
-      <FormikProvider value={loginFornik}>
+      <FormikProvider value={loginFormik}>
         <Form onSubmit={handleSubmit} className="form-container">
           <Grid container alignItems="center" justifyContent="center">
             <Grid item mb={1} align="center">
@@ -80,7 +80,7 @@ export default function Login() {
       </FormikProvider>
       <div className="below-container">
         <Typography sx={{ textAlign: "center" }}>
-          {PT.HAVE_ACCOUNT} <Link to="signup">{PT.SIGN_UP}</Link>
+          {PT.HAVE_ACCOUNT} <Link to="signup">{PT.SIGNUP}</Link>
         </Typography>
         <Typography sx={{ textAlign: "center" }}>
           {PT.WHY_THIS_PROJECT} <Link to="inspiration">{PT.INSPIRATION}</Link>

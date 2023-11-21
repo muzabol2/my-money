@@ -10,54 +10,57 @@ import {
   Signup,
   UpdateProfile,
 } from "pages";
+import { RedirectPaths as P } from "enums";
+
+import { StyledContainer } from "./styled";
 
 function App() {
   const { authIsReady, user } = useAuthContext();
 
   return (
-    <div className="App">
+    <StyledContainer>
       {authIsReady && (
         <BrowserRouter>
           <Switch>
-            <Route exact path="/">
-              {!user && <Redirect to="/login" />}
+            <Route exact path={P.HOME}>
+              {!user && <Redirect to={P.LOGIN} />}
               {user && (
                 <Wrapper>
                   <Home />
                 </Wrapper>
               )}
             </Route>
-            <Route path="/categories">
-              {!user && <Redirect to="/login" />}
+            <Route path={P.CATEGORIES}>
+              {!user && <Redirect to={P.LOGIN} />}
               {user && (
                 <Wrapper>
                   <Categories />
                 </Wrapper>
               )}
             </Route>
-            <Route path="/updateProfile">
-              {!user && <Redirect to="/login" />}
+            <Route path={P.UPDATE_PROFILE}>
+              {!user && <Redirect to={P.LOGIN} />}
               {user && (
                 <Wrapper>
                   <UpdateProfile />
                 </Wrapper>
               )}
             </Route>
-            <Route path="/login">
-              {user && <Redirect to="/" />}
+            <Route path={P.LOGIN}>
+              {user && <Redirect to={P.HOME} />}
               {!user && <Login />}
             </Route>
-            <Route path="/signup">
-              {user && <Redirect to="/" />}
+            <Route path={P.SIGNUP}>
+              {user && <Redirect to={P.HOME} />}
               {!user && <Signup />}
             </Route>
-            <Route path="/inspiration">
+            <Route path={P.INSPIRATION}>
               <Inspiration />
             </Route>
           </Switch>
         </BrowserRouter>
       )}
-    </div>
+    </StyledContainer>
   );
 }
 

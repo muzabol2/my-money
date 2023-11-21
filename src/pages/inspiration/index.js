@@ -1,28 +1,35 @@
-import { Container, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
 
-import { PagesTexts as PT } from "enums";
+import { PagesTexts as T, RedirectPaths as P } from "enums";
+
+import {
+  StyledContainer,
+  StyledBelowContainer,
+  StyledIframeContainer,
+  StyledIframe,
+  StyledText,
+} from "./styled";
 
 export default function Inspiration() {
   return (
-    <Container>
-      <div className="iframe-container">
-        <iframe
-          width="788.54"
-          height="443"
+    <StyledContainer>
+      <StyledIframeContainer>
+        <StyledIframe
+          src={P.YOUTUBE_LINK}
+          title={P.YOUTUBE_LINK}
           type="text/html"
-          src="https://www.youtube.com/embed/ZomwVcGt0LE?start=37"
-          title="Wheres my Money"
+          frameborder="0"
+          allowFullScreen
         />
-      </div>
-      <div className="below-container">
-        <Typography sx={{ textAlign: "center" }}>
-          {PT.HAVE_ACCOUNT} <Link to="login">{PT.LOGIN}</Link>
-        </Typography>
-        <Typography sx={{ textAlign: "center" }}>
-          {PT.DO_NOT_HAVE_ACCOUNT} <Link to="signup">{PT.SIGN_UP}</Link>
-        </Typography>
-      </div>
-    </Container>
+      </StyledIframeContainer>
+      <StyledBelowContainer>
+        <StyledText>
+          {T.HAVE_ACCOUNT} <Link to={P.LOGIN}>{T.LOGIN}</Link>
+        </StyledText>
+        <StyledText>
+          {T.DO_NOT_HAVE_ACCOUNT} <Link to={P.SIGNUP}>{T.SIGNUP}</Link>
+        </StyledText>
+      </StyledBelowContainer>
+    </StyledContainer>
   );
 }

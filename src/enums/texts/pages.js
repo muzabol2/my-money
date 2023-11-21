@@ -4,7 +4,7 @@ export const PagesTexts = {
   HAVE_ACCOUNT: "Have an account?",
   DO_NOT_HAVE_ACCOUNT: "Don't have an account?",
   LOGIN: "Login",
-  SIGN_UP: "Sign up",
+  SIGNUP: "Sign up",
   WHY_THIS_PROJECT: " Why this project?",
   INSPIRATION: "Inspiration",
   PLEASE_CONFIRM:
