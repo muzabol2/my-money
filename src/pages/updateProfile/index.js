@@ -1,13 +1,12 @@
-import { Container, Grid, Typography } from "@mui/material";
+import { Container, Grid } from "@mui/material";
 import { Field, Form, FormikProvider, useFormik } from "formik";
-import { Link } from "react-router-dom";
 
 import { validateYupSchemaMultiErrors, updateSchema } from "utils";
 import { useAuthContext, useUpdateProfile } from "hooks";
-import { ColorButton, TextFormField } from "components";
+import { BelowTextBox, ColorButton, TextFormField } from "components";
 import { PagesTexts as PT, ButtonsTexts as BT } from "enums";
 
-export default function UpdateProfile() {
+const UpdateProfile = () => {
   const { user } = useAuthContext();
   const { updateUserProfile, error, isPending, success } = useUpdateProfile();
 
@@ -94,11 +93,9 @@ export default function UpdateProfile() {
           )}
         </Form>
       </FormikProvider>
-      <div className="below-container">
-        <Typography variant="h6" sx={{ textAlign: "center" }}>
-          <Link to="/">{BT.BACK}</Link>
-        </Typography>
-      </div>
+      <BelowTextBox texts={[{ name: "", link: "/", linkName: BT.BACK }]} />
     </Container>
   );
-}
+};
+
+export default UpdateProfile;

@@ -1,16 +1,14 @@
-import { Link } from "react-router-dom";
-
+import { BelowTextBox } from "components";
 import { PagesTexts as T, RedirectPaths as P } from "enums";
 
-import {
-  StyledContainer,
-  StyledBelowContainer,
-  StyledIframeContainer,
-  StyledIframe,
-  StyledText,
-} from "./styled";
+import { StyledContainer, StyledIframeContainer, StyledIframe } from "./styled";
 
-export default function Inspiration() {
+const Inspiration = () => {
+  const inspirationBelowTexts = [
+    { name: T.HAVE_ACCOUNT, link: P.LOGIN, linkName: T.LOGIN },
+    { name: T.DO_NOT_HAVE_ACCOUNT, link: P.SIGNUP, linkName: T.SIGNUP },
+  ];
+
   return (
     <StyledContainer>
       <StyledIframeContainer>
@@ -22,14 +20,9 @@ export default function Inspiration() {
           allowFullScreen
         />
       </StyledIframeContainer>
-      <StyledBelowContainer>
-        <StyledText>
-          {T.HAVE_ACCOUNT} <Link to={P.LOGIN}>{T.LOGIN}</Link>
-        </StyledText>
-        <StyledText>
-          {T.DO_NOT_HAVE_ACCOUNT} <Link to={P.SIGNUP}>{T.SIGNUP}</Link>
-        </StyledText>
-      </StyledBelowContainer>
+      <BelowTextBox texts={inspirationBelowTexts} />
     </StyledContainer>
   );
-}
+};
+
+export default Inspiration;

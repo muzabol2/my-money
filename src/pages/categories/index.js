@@ -9,11 +9,10 @@ import {
   Typography,
 } from "@mui/material";
 import { Field, Form, FormikProvider, useFormik } from "formik";
-import { Link } from "react-router-dom";
 
 import { categoriesSchema, validateYupSchemaMultiErrors } from "utils";
 import { useAuthContext, useCollection, useFirestore } from "hooks";
-import { ColorButton, TextFormField } from "components";
+import { BelowTextBox, ColorButton, TextFormField } from "components";
 import { PagesTexts as PT, ButtonsTexts as BT } from "enums";
 
 export default function Categories() {
@@ -101,11 +100,7 @@ export default function Categories() {
           </Grid>
         </Form>
       </FormikProvider>
-      <div className="below-container">
-        <Typography variant="h6" sx={{ textAlign: "center" }}>
-          <Link to="/">{BT.BACK}</Link>
-        </Typography>
-      </div>
+      <BelowTextBox texts={[{ name: "", link: "/", linkName: BT.BACK }]} />
     </Container>
   );
 }

@@ -47,14 +47,6 @@ ul {
   box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.05);
 }
 
-.below-container {
-  max-width: 250px;
-  margin: 5px auto 30px;
-  padding: 10px 50px 10px;
-  border: 1px solid #ddd;
-  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.05);
-}
-
 .firebase-success {
   margin-top: 20px;
   color: #1f9751;

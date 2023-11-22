@@ -1,16 +1,52 @@
-import { Grid, Typography } from "@mui/material";
 import { Field, Form, FormikProvider, useFormik } from "formik";
 import { GoogleButton } from "react-google-button";
-import { Link } from "react-router-dom";
 
 import { signupSchema, validateYupSchemaMultiErrors } from "utils";
 import { useGoogleSignIn, useSignup } from "hooks";
-import { ColorButton, Separator, TextFormField } from "components";
-import { ButtonsTexts as BT, PagesTexts as PT } from "enums";
+import {
+  BelowTextBox,
+  ColorButton,
+  Separator,
+  TextFormField,
+} from "components";
+import {
+  ButtonsTexts as BT,
+  PagesTexts as PT,
+  RedirectPaths as P,
+} from "enums";
 
-export default function Signup() {
+import {
+  StyledWrapper,
+  StyledContainer,
+  StyledFormContainer,
+  StyledHeading,
+  StyledSuccessMsg,
+  StyledErrorMsg,
+} from "./styled";
+
+const Signup = () => {
   const { signup, isPending, error, verificationMail } = useSignup();
   const { googleSignIn, googleError, isGooglePending } = useGoogleSignIn();
+
+  const formFields = [
+    { label: "Display name", name: "displayName", type: "text" },
+    { label: "Email", name: "email", type: "text" },
+    { label: "Password", name: "password", type: "password" },
+    {
+      label: "Password confirmation",
+      name: "passwordConfirm",
+      type: "password",
+    },
+  ];
+
+  const signUpBelowTexts = [
+    { name: PT.HAVE_ACCOUNT, link: P.LOGIN, linkName: PT.LOGIN },
+    {
+      name: PT.WHY_THIS_PROJECT,
+      link: P.INSPIRATION,
+      linkName: PT.INSPIRATION,
+    },
+  ];
 
   const signupFormik = useFormik({
     initialValues: {
@@ -27,82 +63,48 @@ export default function Signup() {
   const { handleSubmit } = signupFormik;
 
   return (
-    <>
-      <div className="form-container">
+    <StyledWrapper>
+      <StyledFormContainer>
         {verificationMail ? (
-          <p className="firebase-success">{PT.PLEASE_CONFIRM}</p>
+          <StyledSuccessMsg>{PT.PLEASE_CONFIRM}</StyledSuccessMsg>
         ) : (
           <FormikProvider value={signupFormik}>
             <Form onSubmit={handleSubmit}>
-              <Grid container alignItems="center" justifyContent="center">
-                <Grid item mb={2} align="left">
-                  <Typography
-                    variant="h6"
-                    sx={{ fontFamily: "Arial", fontWeight: "bold" }}
-                  >
-                    Create a profile:
-                  </Typography>
-                </Grid>
-                <Grid item mb={1}>
+              <StyledContainer>
+                <StyledHeading>{PT.CREATE_PROFILE}</StyledHeading>
+
+                {formFields.map((field) => (
                   <Field
-                    label="Display name"
-                    name="displayName"
+                    key={field.name}
                     component={TextFormField}
+                    {...field}
                   />
-                </Grid>
-                <Grid item mb={1}>
-                  <Field label="Email" name="email" component={TextFormField} />
-                </Grid>
-                <Grid item mb={1}>
-                  <Field
-                    label="Password"
-                    name="password"
-                    type="password"
-                    component={TextFormField}
-                  />
-                </Grid>
-                <Grid item mb={1}>
-                  <Field
-                    label="Password confirmation"
-                    name="passwordConfirm"
-                    type="password"
-                    component={TextFormField}
-                  />
-                </Grid>
-                <Grid item>
-                  {!isPending ? (
-                    <ColorButton type="submit">{BT.SIGN_UP}</ColorButton>
-                  ) : (
-                    <ColorButton disabled>{BT.LOADING}</ColorButton>
-                  )}
-                </Grid>
-                <Grid item>
-                  {error && <p className="firebase-error">{error}</p>}
-                </Grid>
-                <Grid item>
-                  <Separator label="OR" />
-                  <GoogleButton
-                    style={{ width: "220px" }}
-                    label="Login with Google"
-                    onClick={googleSignIn}
-                    disabled={isGooglePending}
-                  />
-                  {googleError && <p className="firebase-error">{error}</p>}
-                </Grid>
-              </Grid>
+                ))}
+
+                {!isPending ? (
+                  <ColorButton type="submit">{BT.SIGN_UP}</ColorButton>
+                ) : (
+                  <ColorButton disabled>{BT.LOADING}</ColorButton>
+                )}
+                {error && <StyledErrorMsg>{error}</StyledErrorMsg>}
+
+                <Separator label="OR" />
+
+                <GoogleButton
+                  style={{ width: "220px" }}
+                  label="Login with Google"
+                  onClick={googleSignIn}
+                  disabled={isGooglePending}
+                />
+                {googleError && <StyledErrorMsg>{error}</StyledErrorMsg>}
+              </StyledContainer>
             </Form>
           </FormikProvider>
         )}
-      </div>
-      <div className="below-container">
-        <Typography sx={{ textAlign: "center" }}>
-          {PT.HAVE_ACCOUNT} <Link to="login">{PT.LOGIN}</Link>
-        </Typography>
-        <Typography sx={{ textAlign: "center" }}>
-          {PT.WHY_THIS_PROJECT}
-          <Link to="inspiration">{PT.INSPIRATION}</Link>
-        </Typography>
-      </div>
-    </>
+      </StyledFormContainer>
+      <BelowTextBox texts={signUpBelowTexts} />
+    </StyledWrapper>
   );
-}
+};
+
+export default Signup;

@@ -1,16 +1,34 @@
 import { Grid, Typography } from "@mui/material";
 import { Field, Form, FormikProvider, useFormik } from "formik";
 import { GoogleButton } from "react-google-button";
-import { Link } from "react-router-dom";
 
 import { loginSchema } from "utils";
 import { useGoogleSignIn, useLogin } from "hooks";
-import { ColorButton, Separator, TextFormField } from "components";
+import {
+  BelowTextBox,
+  ColorButton,
+  Separator,
+  TextFormField,
+} from "components";
 import { PagesTexts as PT, ButtonsTexts as BT } from "enums";
 
 export default function Login() {
   const { login, error, isPending } = useLogin();
   const { googleSignIn, googleError, isGooglePending } = useGoogleSignIn();
+
+  // const loginFormFields = [
+  //   { label: "Email", name: "email", type: "text" },
+  //   { label: "Password", name: "password", type: "password" },
+  // ];
+
+  const loginBelowTexts = [
+    { name: PT.HAVE_ACCOUNT, link: "signup", linkName: PT.SIGNUP },
+    {
+      name: PT.WHY_THIS_PROJECT,
+      link: "inspiration",
+      linkName: PT.INSPIRATION,
+    },
+  ];
 
   const loginFormik = useFormik({
     initialValues: {
@@ -78,14 +96,7 @@ export default function Login() {
           </Grid>
         </Form>
       </FormikProvider>
-      <div className="below-container">
-        <Typography sx={{ textAlign: "center" }}>
-          {PT.HAVE_ACCOUNT} <Link to="signup">{PT.SIGNUP}</Link>
-        </Typography>
-        <Typography sx={{ textAlign: "center" }}>
-          {PT.WHY_THIS_PROJECT} <Link to="inspiration">{PT.INSPIRATION}</Link>
-        </Typography>
-      </div>
+      <BelowTextBox texts={loginBelowTexts} />
     </>
   );
 }
