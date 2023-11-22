@@ -5,7 +5,7 @@ import { getIn, setIn, validateYupSchema } from "formik";
 /**
  * Transform Yup ValidationError to a more usable object
  */
-function yupToFormErrors(yupError, validationSchemaOptions) {
+const yupToFormErrors = (yupError, validationSchemaOptions) => {
   let errors = {};
 
   if (yupError.inner.length === 0) {
@@ -32,7 +32,7 @@ function yupToFormErrors(yupError, validationSchemaOptions) {
   }
 
   return errors;
-}
+};
 
 export const validateYupSchemaMultiErrors = async (values, schema) => {
   try {

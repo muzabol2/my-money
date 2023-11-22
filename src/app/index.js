@@ -14,7 +14,7 @@ import { RedirectPaths as P } from "enums";
 
 import { StyledContainer } from "./styled";
 
-function App() {
+const App = () => {
   const { authIsReady, user } = useAuthContext();
 
   return (
@@ -62,6 +62,6 @@ function App() {
       )}
     </StyledContainer>
   );
-}
+};
 
 export default App;

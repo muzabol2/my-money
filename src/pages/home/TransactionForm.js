@@ -13,7 +13,7 @@ import {
 } from "components";
 import { ButtonsTexts as BT } from "enums";
 
-export default function TransactionForm({ uid }) {
+const TransactionForm = ({ uid }) => {
   const { addDocument } = useFirestore("transactions");
   const { documents } = useCollection("users", ["uid", "==", uid]);
 
@@ -102,7 +102,9 @@ export default function TransactionForm({ uid }) {
       </FormikProvider>
     </div>
   );
-}
+};
+
+export default TransactionForm;
 
 TransactionForm.propTypes = {
   uid: PropTypes.string.isRequired,

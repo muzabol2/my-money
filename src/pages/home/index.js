@@ -4,7 +4,7 @@ import { useAuthContext, useCollection } from "hooks";
 import TransactionForm from "./TransactionForm";
 import TransactionGrid from "./TransactionGrid";
 
-export default function Home() {
+const Home = () => {
   const { user } = useAuthContext();
   const { documents, error } = useCollection(
     "transactions",
@@ -31,4 +31,6 @@ export default function Home() {
       </Grid>
     </Container>
   );
-}
+};
+
+export default Home;

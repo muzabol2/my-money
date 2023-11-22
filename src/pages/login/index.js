@@ -12,14 +12,9 @@ import {
 } from "components";
 import { PagesTexts as PT, ButtonsTexts as BT } from "enums";
 
-export default function Login() {
+const Login = () => {
   const { login, error, isPending } = useLogin();
   const { googleSignIn, googleError, isGooglePending } = useGoogleSignIn();
-
-  // const loginFormFields = [
-  //   { label: "Email", name: "email", type: "text" },
-  //   { label: "Password", name: "password", type: "password" },
-  // ];
 
   const loginBelowTexts = [
     { name: PT.HAVE_ACCOUNT, link: "signup", linkName: PT.SIGNUP },
@@ -99,4 +94,6 @@ export default function Login() {
       <BelowTextBox texts={loginBelowTexts} />
     </>
   );
-}
+};
+
+export default Login;

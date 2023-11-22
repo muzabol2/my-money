@@ -9,7 +9,7 @@ import { Link } from "react-router-dom";
 import { useAuthContext, useLogout } from "hooks";
 import { MenuButton } from "./MenuButton";
 
-export default function MenuProfilePopup() {
+const MenuProfilePopup = () => {
   const { user } = useAuthContext();
   const { logout } = useLogout();
 
@@ -50,4 +50,6 @@ export default function MenuProfilePopup() {
       )}
     </PopupState>
   );
-}
+};
+
+export default MenuProfilePopup;

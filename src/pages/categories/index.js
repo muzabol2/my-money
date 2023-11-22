@@ -15,7 +15,7 @@ import { useAuthContext, useCollection, useFirestore } from "hooks";
 import { BelowTextBox, ColorButton, TextFormField } from "components";
 import { PagesTexts as PT, ButtonsTexts as BT } from "enums";
 
-export default function Categories() {
+const Categories = () => {
   const { user } = useAuthContext();
   const { documents, error } = useCollection("users", ["uid", "==", user.uid]);
   const { updateCategories, deleteCategories } = useFirestore("users");
@@ -103,4 +103,6 @@ export default function Categories() {
       <BelowTextBox texts={[{ name: "", link: "/", linkName: BT.BACK }]} />
     </Container>
   );
-}
+};
+
+export default Categories;

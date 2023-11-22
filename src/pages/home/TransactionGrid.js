@@ -10,7 +10,7 @@ import PropTypes from "prop-types";
 import { useFirestore } from "hooks";
 import { TransactionGridFooterTotalComponent } from "./transactionGridFooter";
 
-export default function TransactionGrid({ transactions }) {
+const TransactionGrid = ({ transactions }) => {
   const { deleteDocument } = useFirestore("transactions");
   const [total, setTotal] = useState(0);
   const [value, setValue] = useState(dayjs("2022-11-01"));
@@ -128,7 +128,9 @@ export default function TransactionGrid({ transactions }) {
       </Grid>
     </Grid>
   );
-}
+};
+
+export default TransactionGrid;
 
 TransactionGrid.propTypes = {
   transactions: PropTypes.array.isRequired,
