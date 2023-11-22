@@ -5,7 +5,7 @@ import { Helmet, HelmetProvider } from "react-helmet-async";
 import App from "app";
 import { AuthProvider } from "context";
 
-import "./index.css";
+import GlobalStyles from "global-styles";
 
 ReactDOM.render(
   <React.StrictMode>
@@ -15,6 +15,7 @@ ReactDOM.render(
           <meta charSet="utf-8" />
           <title>myMoney</title>
         </Helmet>
+        <GlobalStyles />
         <App />
       </HelmetProvider>
     </AuthProvider>
