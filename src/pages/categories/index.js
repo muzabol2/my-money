@@ -1,19 +1,19 @@
 import DeleteIcon from "@mui/icons-material/Delete";
-import {
-  Container,
-  Grid,
-  IconButton,
-  List,
-  ListItem,
-  ListItemText,
-  Typography,
-} from "@mui/material";
+import { Grid, IconButton, List, ListItem, ListItemText } from "@mui/material";
 import { Field, Form, FormikProvider, useFormik } from "formik";
 
 import { categoriesSchema, validateYupSchemaMultiErrors } from "utils";
 import { useAuthContext, useCollection, useFirestore } from "hooks";
 import { BelowTextBox, ColorButton, TextFormField } from "components";
 import { PagesTexts as PT, ButtonsTexts as BT } from "enums";
+
+import {
+  StyledContainer,
+  StyledErrorMsg,
+  StyledFormContainer,
+  StyledTitle,
+  StyledWrapper,
+} from "./styled";
 
 const Categories = () => {
   const { user } = useAuthContext();
@@ -32,22 +32,17 @@ const Categories = () => {
     },
   });
 
+  const categoriesBelowTexts = [{ name: "", link: "/", linkName: BT.BACK }];
+
   const { isSubmitting, handleSubmit, resetForm } = categoriesFormik;
 
   return (
-    <Container>
-      <FormikProvider value={categoriesFormik}>
-        <Form onSubmit={handleSubmit} className="form-container">
-          <Grid item mb={2} align="left">
-            <Typography
-              variant="h6"
-              sx={{ fontFamily: "Arial", fontWeight: "bold" }}
-            >
-              {PT.TRANSACTION_CATEGORIES}
-            </Typography>
-          </Grid>
-          <Grid container direction="column" spacing={2}>
-            <Grid item>
+    <StyledWrapper>
+      <StyledFormContainer>
+        <FormikProvider value={categoriesFormik}>
+          <Form onSubmit={handleSubmit}>
+            <StyledContainer>
+              <StyledTitle>{PT.TRANSACTION_CATEGORIES}</StyledTitle>
               <List>
                 {documents?.[0]?.categories.map((category) => (
                   <ListItem
@@ -68,40 +63,40 @@ const Categories = () => {
                   </ListItem>
                 ))}
               </List>
-            </Grid>
 
-            <Grid
-              sx={{ flexGrow: 1 }}
-              item
-              container
-              direction="row"
-              justifyContent="flex-start"
-              alignItems="flex-start"
-              spacing={1}
-            >
-              <Grid item xs={8}>
-                <Field
-                  style={{ width: "170px" }}
-                  name="categories"
-                  component={TextFormField}
-                />
+              <Grid
+                sx={{ flexGrow: 1 }}
+                item
+                container
+                direction="row"
+                justifyContent="flex-start"
+                alignItems="flex-start"
+                spacing={1}
+              >
+                <Grid item xs={8}>
+                  <Field
+                    style={{ width: "170px" }}
+                    name="categories"
+                    component={TextFormField}
+                  />
+                </Grid>
+                <Grid item mt={1} xs={4}>
+                  <ColorButton
+                    style={{ width: "10px", height: "40px" }}
+                    type="submit"
+                    disabled={isSubmitting}
+                  >
+                    {BT.ADD}
+                  </ColorButton>
+                </Grid>
               </Grid>
-              <Grid item mt={1} xs={4}>
-                <ColorButton
-                  style={{ width: "10px", height: "40px" }}
-                  type="submit"
-                  disabled={isSubmitting}
-                >
-                  {BT.ADD}
-                </ColorButton>
-              </Grid>
-            </Grid>
-            <Grid item>{error && <p>{error}</p>}</Grid>
-          </Grid>
-        </Form>
-      </FormikProvider>
-      <BelowTextBox texts={[{ name: "", link: "/", linkName: BT.BACK }]} />
-    </Container>
+              {error && <StyledErrorMsg>{error}</StyledErrorMsg>}
+            </StyledContainer>
+          </Form>
+        </FormikProvider>
+      </StyledFormContainer>
+      <BelowTextBox texts={categoriesBelowTexts} />
+    </StyledWrapper>
   );
 };
 

@@ -19,7 +19,7 @@ import {
   StyledWrapper,
   StyledContainer,
   StyledFormContainer,
-  StyledHeading,
+  StyledTitle,
   StyledSuccessMsg,
   StyledErrorMsg,
 } from "./styled";
@@ -28,7 +28,7 @@ const Signup = () => {
   const { signup, isPending, error, verificationMail } = useSignup();
   const { googleSignIn, googleError, isGooglePending } = useGoogleSignIn();
 
-  const formFields = [
+  const signupFormFields = [
     { label: "Display name", name: "displayName", type: "text" },
     { label: "Email", name: "email", type: "text" },
     { label: "Password", name: "password", type: "password" },
@@ -71,9 +71,9 @@ const Signup = () => {
           <FormikProvider value={signupFormik}>
             <Form onSubmit={handleSubmit}>
               <StyledContainer>
-                <StyledHeading>{PT.CREATE_PROFILE}</StyledHeading>
+                <StyledTitle>{PT.CREATE_PROFILE}</StyledTitle>
 
-                {formFields.map((field) => (
+                {signupFormFields.map((field) => (
                   <Field
                     key={field.name}
                     component={TextFormField}

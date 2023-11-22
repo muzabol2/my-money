@@ -1,4 +1,3 @@
-import { Container, Grid } from "@mui/material";
 import { Field, Form, FormikProvider, useFormik } from "formik";
 
 import { validateYupSchemaMultiErrors, updateSchema } from "utils";
@@ -6,9 +5,31 @@ import { useAuthContext, useUpdateProfile } from "hooks";
 import { BelowTextBox, ColorButton, TextFormField } from "components";
 import { PagesTexts as PT, ButtonsTexts as BT } from "enums";
 
+import {
+  StyledContainer,
+  StyledErrorMsg,
+  StyledFormContainer,
+  StyledSuccessMsg,
+  StyledWrapper,
+} from "./styled";
+
 const UpdateProfile = () => {
   const { user } = useAuthContext();
   const { updateUserProfile, error, isPending, success } = useUpdateProfile();
+
+  const updateProfileFormFields = [
+    { label: "Display name", name: "displayName", type: "text" },
+    { label: "Email", name: "email", type: "text" },
+    { label: "Current password", name: "currentPassword", type: "password" },
+    { label: "Password", name: "password", type: "password" },
+    {
+      label: "Password confirmation",
+      name: "passwordConfirm",
+      type: "password",
+    },
+  ];
+
+  const updateProfileBelowTexts = [{ name: "", link: "/", linkName: BT.BACK }];
 
   const updateProfileFormik = useFormik({
     initialValues: {
@@ -32,69 +53,36 @@ const UpdateProfile = () => {
   const { resetForm, handleSubmit } = updateProfileFormik;
 
   return (
-    <Container>
-      <FormikProvider value={updateProfileFormik}>
-        <Form onSubmit={handleSubmit} className="form-container">
-          {user.providerData[0].providerId === "google.com" ? (
-            <p>{PT.CAN_NOT_CHANGE_PROFILE}</p>
-          ) : (
-            <>
-              <Grid container spacing={2}>
-                <Grid item>
+    <StyledWrapper>
+      <StyledFormContainer>
+        {user.providerData[0].providerId === "google.com" ? (
+          <p>{PT.CAN_NOT_CHANGE_PROFILE}</p>
+        ) : (
+          <FormikProvider value={updateProfileFormik}>
+            <Form onSubmit={handleSubmit}>
+              <StyledContainer>
+                {updateProfileFormFields.map((field) => (
                   <Field
-                    label="Display name"
-                    name="displayName"
+                    key={field.name}
                     component={TextFormField}
+                    {...field}
                   />
-                </Grid>
-                <Grid item>
-                  <Field
-                    label="Email"
-                    name="email"
-                    component={TextFormField}
-                    disabled
-                  />
-                </Grid>
-                <Grid item>
-                  <Field
-                    label="Current password"
-                    name="currentPassword"
-                    type="password"
-                    component={TextFormField}
-                  />
-                </Grid>
-                <Grid item>
-                  <Field
-                    label="Password"
-                    name="password"
-                    type="password"
-                    component={TextFormField}
-                  />
-                </Grid>
-                <Grid item>
-                  <Field
-                    label="Password confirmation"
-                    name="passwordConfirm"
-                    type="password"
-                    component={TextFormField}
-                  />
-                </Grid>
-                <Grid item>
-                  {!isPending ? (
-                    <ColorButton type="submit">{BT.UPDATE}</ColorButton>
-                  ) : (
-                    <ColorButton disabled>{BT.LOADING}</ColorButton>
-                  )}
-                  {error && <p className="firebase-error">{error}</p>}
-                  {success && <p className="firebase-success">{success}</p>}
-                </Grid>
-              </Grid>
-            </>
-          )}
-        </Form>
-      </FormikProvider>
-      <BelowTextBox texts={[{ name: "", link: "/", linkName: BT.BACK }]} />
-    </Container>
+                ))}
+
+                {!isPending ? (
+                  <ColorButton type="submit">{BT.UPDATE}</ColorButton>
+                ) : (
+                  <ColorButton disabled>{BT.LOADING}</ColorButton>
+                )}
+                {error && <StyledErrorMsg>{error}</StyledErrorMsg>}
+                {success && <StyledSuccessMsg>{success}</StyledSuccessMsg>}
+              </StyledContainer>
+            </Form>
+          </FormikProvider>
+        )}
+      </StyledFormContainer>
+      <BelowTextBox texts={updateProfileBelowTexts} />
+    </StyledWrapper>
   );
 };
 
