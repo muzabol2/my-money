@@ -1,6 +1,5 @@
 import { BrowserRouter, Redirect, Route, Switch } from "react-router-dom";
 
-import { Wrapper } from "components";
 import { useAuthContext } from "hooks";
 import {
   Categories,
@@ -13,6 +12,11 @@ import {
 import { RedirectPaths as P } from "enums";
 
 import { StyledContainer } from "./styled";
+import { withNavbar } from "components";
+
+const WrappedUpdateProfile = withNavbar(UpdateProfile);
+const WrappedCategories = withNavbar(Categories);
+const WrappedHome = withNavbar(Home);
 
 const App = () => {
   const { authIsReady, user } = useAuthContext();
@@ -24,27 +28,15 @@ const App = () => {
           <Switch>
             <Route exact path={P.HOME}>
               {!user && <Redirect to={P.LOGIN} />}
-              {user && (
-                <Wrapper>
-                  <Home />
-                </Wrapper>
-              )}
+              {user && <WrappedHome />}
             </Route>
             <Route path={P.CATEGORIES}>
               {!user && <Redirect to={P.LOGIN} />}
-              {user && (
-                <Wrapper>
-                  <Categories />
-                </Wrapper>
-              )}
+              {user && <WrappedCategories />}
             </Route>
             <Route path={P.UPDATE_PROFILE}>
               {!user && <Redirect to={P.LOGIN} />}
-              {user && (
-                <Wrapper>
-                  <UpdateProfile />
-                </Wrapper>
-              )}
+              {user && <WrappedUpdateProfile />}
             </Route>
             <Route path={P.LOGIN}>
               {user && <Redirect to={P.HOME} />}
