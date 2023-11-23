@@ -1,5 +1,3 @@
-import PropTypes from "prop-types";
-
 import {
   StyledLabel,
   StyledLabelContainer,
@@ -7,7 +5,7 @@ import {
   StyledContainer,
 } from "./styled";
 
-const Separator = ({ label }) => (
+const Separator = ({ label }: { label: string }) => (
   <StyledContainer>
     <StyledLine />
     <StyledLabelContainer>
@@ -18,7 +16,3 @@ const Separator = ({ label }) => (
 );
 
 export default Separator;
-
-Separator.propTypes = {
-  label: PropTypes.string.isRequired,
-};

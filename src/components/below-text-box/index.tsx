@@ -1,9 +1,18 @@
 import { Link } from "react-router-dom";
-import PropTypes from "prop-types";
 
 import { StyledBelowContainer, StyledText } from "./styled";
 
-const BelowTextBox = ({ texts }) => (
+interface TextItem {
+  name: string;
+  link: string;
+  linkName: string;
+}
+
+interface Props {
+  texts: TextItem[];
+}
+
+const BelowTextBox = ({ texts }: Props) => (
   <StyledBelowContainer>
     {texts.map(({ name, link, linkName }, index) => (
       <StyledText key={index}>
@@ -14,13 +23,3 @@ const BelowTextBox = ({ texts }) => (
 );
 
 export default BelowTextBox;
-
-BelowTextBox.propTypes = {
-  texts: PropTypes.arrayOf(
-    PropTypes.shape({
-      name: PropTypes.string.isRequired,
-      link: PropTypes.string.isRequired,
-      linkName: PropTypes.string.isRequired,
-    })
-  ).isRequired,
-};
