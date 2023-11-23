@@ -1,4 +1,7 @@
 module.exports = {
+  plugins: ["autofix"],
+  ignorePatterns: ["**/openapi-types.ts"],
+  parser: "@typescript-eslint/parser",
   parserOptions: {
     ecmaVersion: 2021,
     sourceType: "module",
@@ -11,11 +14,13 @@ module.exports = {
       version: "detect",
     },
   },
-  extends: ["eslint:recommended", "plugin:react/recommended", "prettier"],
-  plugins: ["react", "prettier"],
+  extends: [
+    "plugin:react/recommended",
+    "plugin:@typescript-eslint/recommended",
+    "prettier",
+    "plugin:prettier/recommended",
+  ],
   rules: {
-    "no-console": "off",
-    "no-undef": "off",
     "prettier/prettier": ["error", { endOfLine: "auto" }],
     "no-multiple-empty-lines": ["error", { max: 1, maxEOF: 0, maxBOF: 0 }],
     "padding-line-between-statements": [
@@ -29,9 +34,12 @@ module.exports = {
       { blankLine: "any", prev: ["const", "let"], next: ["const", "let"] },
     ],
     "arrow-body-style": ["error", "as-needed"],
+    "react/prop-types": 0, // for ignoring double check on typescript prop types,
+    "@typescript-eslint/explicit-module-boundary-types": "off",
     "react/self-closing-comp": ["error", { component: true, html: true }],
     "no-duplicate-imports": "off",
+    "@typescript-eslint/no-duplicate-imports": ["error"],
     "react/react-in-jsx-scope": "off",
-    "no-unused-vars": ["error", { varsIgnorePattern: "^_" }],
+    "autofix/no-unused-vars": ["off", { varsIgnorePattern: "^_" }],
   },
 };
