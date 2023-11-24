@@ -8,7 +8,7 @@ import { useState } from "react";
 import PropTypes from "prop-types";
 
 import { useFirestore } from "hooks";
-import { TransactionGridFooterTotalComponent } from "./transactionGridFooter";
+import { TransactionGridFooterTotalComponent } from "./footer";
 
 const TransactionGrid = ({ transactions }) => {
   const { deleteDocument } = useFirestore("transactions");

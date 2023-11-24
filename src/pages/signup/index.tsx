@@ -1,16 +1,18 @@
 import { Field, Form, FormikProvider, useFormik } from "formik";
-import { GoogleButton } from "react-google-button";
+import GoogleButton from "react-google-button";
 
 import { signupSchema, validateYupSchemaMultiErrors } from "utils";
 import { useGoogleSignIn, useSignup } from "hooks";
+
+import { ButtonsTexts as BT, PagesTexts as PT } from "enums";
+import { SIGNUP_BELOW_TEXTS, SIGN_UP_FORM_FIELDS } from "consts";
+
 import {
   BelowTextBox,
   ColorButton,
   Separator,
   TextFormField,
 } from "components";
-import { ButtonsTexts as BT, PagesTexts as PT } from "enums";
-import { SIGNUP_BELOW_TEXTS, SIGN_UP_FORM_FIELDS } from "consts";
 
 import {
   StyledWrapper,

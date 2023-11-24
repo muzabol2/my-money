@@ -17,6 +17,12 @@ export const StyledToolbar = styled.div`
   padding: 8px;
 `;
 
+export const StyledOptions = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+`;
+
 export const StyledTypography = styled.div`
   font-size: 24px;
   font-weight: bold;

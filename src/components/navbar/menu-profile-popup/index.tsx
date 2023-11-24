@@ -2,8 +2,10 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 import { useAuthContext, useLogout } from "hooks";
-import { AccountCircleIcon } from "icons";
+
 import { PagesTexts as T, RedirectPaths as P } from "enums";
+
+import { AccountCircleIcon } from "icons";
 
 import {
   StyledContainer,

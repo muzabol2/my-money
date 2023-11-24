@@ -10,8 +10,10 @@ import { useEffect, useRef, useState } from "react";
 import { db } from "config";
 
 export const useCollection = (collectionName, _query, _orderBy) => {
-  const [documents, setDocuments] = useState(null);
+  const [documents, setDocuments] = useState([]);
   const [error, setError] = useState(null);
+
+  const categories = documents?.[0]?.categories;
 
   // if we don't use a ref --> infinite loop in useEffect
   // _query is an array and is "different" on every function call
@@ -48,5 +50,5 @@ export const useCollection = (collectionName, _query, _orderBy) => {
     return () => unsubscribe();
   }, [collectionName, queryRef, orderByRef]);
 
-  return { documents, error };
+  return { documents, categories, error };
 };

@@ -1,12 +1,14 @@
-import DeleteIcon from "@mui/icons-material/Delete";
 import { Grid, IconButton, List, ListItem, ListItemText } from "@mui/material";
 import { Field, Form, FormikProvider, useFormik } from "formik";
 
 import { categoriesSchema, validateYupSchemaMultiErrors } from "utils";
 import { useAuthContext, useCollection, useFirestore } from "hooks";
-import { BelowTextBox, ColorButton, TextFormField } from "components";
+
 import { PagesTexts as PT, ButtonsTexts as BT } from "enums";
 import { GO_BACK_BELOW_TEXTS } from "consts";
+
+import { BelowTextBox, ColorButton, TextFormField } from "components";
+import { DeleteIcon } from "icons";
 
 import {
   StyledContainer,
@@ -18,7 +20,7 @@ import {
 
 const Categories = () => {
   const { user } = useAuthContext();
-  const { documents, error } = useCollection("users", ["uid", "==", user.uid]);
+  const { categories, error } = useCollection("users", ["uid", "==", user.uid]);
   const { updateCategories, deleteCategories } = useFirestore("users");
 
   const categoriesFormik = useFormik({
@@ -43,9 +45,9 @@ const Categories = () => {
             <StyledContainer>
               <StyledTitle>{PT.TRANSACTION_CATEGORIES}</StyledTitle>
               <List>
-                {documents?.[0]?.categories.map((category) => (
+                {categories?.map((category: string) => (
                   <ListItem
-                    key={category.toString()}
+                    key={category}
                     secondaryAction={
                       <IconButton
                         edge="end"
@@ -94,6 +96,7 @@ const Categories = () => {
           </Form>
         </FormikProvider>
       </StyledFormContainer>
+
       <BelowTextBox texts={GO_BACK_BELOW_TEXTS} />
     </StyledWrapper>
   );

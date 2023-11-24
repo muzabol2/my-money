@@ -2,9 +2,11 @@ import { Field, Form, FormikProvider, useFormik } from "formik";
 
 import { validateYupSchemaMultiErrors, updateSchema } from "utils";
 import { useAuthContext, useUpdateProfile } from "hooks";
-import { BelowTextBox, ColorButton, TextFormField } from "components";
+
 import { PagesTexts as PT, ButtonsTexts as BT } from "enums";
 import { GO_BACK_BELOW_TEXTS, UPDATE_PROFILE_FORM_FIELDS } from "consts";
+
+import { BelowTextBox, ColorButton, TextFormField } from "components";
 
 import {
   StyledContainer,

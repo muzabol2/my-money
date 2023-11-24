@@ -1,6 +1,7 @@
-import { BelowTextBox } from "components";
 import { RedirectPaths as P } from "enums";
 import { INSPIRATION_BELOW_TEXTS } from "consts";
+
+import { BelowTextBox } from "components";
 
 import { StyledContainer, StyledIframeContainer, StyledIframe } from "./styled";
 
