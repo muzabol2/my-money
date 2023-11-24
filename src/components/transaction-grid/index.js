@@ -8,7 +8,8 @@ import { useState } from "react";
 import PropTypes from "prop-types";
 
 import { useFirestore } from "hooks";
-import { TransactionGridFooterTotalComponent } from "./footer";
+
+import { GridFooterTotal } from "./footer";
 
 const TransactionGrid = ({ transactions }) => {
   const { deleteDocument } = useFirestore("transactions");
@@ -101,7 +102,7 @@ const TransactionGrid = ({ transactions }) => {
                     color: "#1f9751",
                   },
                 }}
-                components={{ Toolbar: TransactionGridFooterTotalComponent }}
+                components={{ Toolbar: GridFooterTotal }}
                 componentsProps={{ toolbar: { total } }}
                 onStateChange={(state) => {
                   const visibleRows = state.filter.visibleRowsLookup;

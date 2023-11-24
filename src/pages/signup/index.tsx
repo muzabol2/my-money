@@ -35,8 +35,8 @@ const Signup = () => {
       passwordConfirm: "",
     },
     validate: (values) => validateYupSchemaMultiErrors(values, signupSchema),
-    onSubmit: (values) =>
-      signup(values.email, values.password, values.displayName),
+    onSubmit: ({ email, password, displayName }) =>
+      signup(email, password, displayName),
   });
 
   const { handleSubmit } = signupFormik;

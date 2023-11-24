@@ -29,12 +29,8 @@ const UpdateProfile = () => {
       passwordConfirm: "",
     },
     validate: (values) => validateYupSchemaMultiErrors(values, updateSchema),
-    onSubmit: (values) => {
-      updateUserProfile(
-        values.displayName,
-        values.password,
-        values.currentPassword
-      );
+    onSubmit: ({ displayName, password, currentPassword }) => {
+      updateUserProfile(displayName, password, currentPassword);
       resetForm();
     },
   });

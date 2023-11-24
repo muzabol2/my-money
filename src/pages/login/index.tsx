@@ -33,7 +33,7 @@ const Login = () => {
       password: "",
     },
     validationSchema: loginSchema,
-    onSubmit: (values) => login(values.email, values.password),
+    onSubmit: ({ email, password }) => login(email, password),
   });
 
   const { handleSubmit } = loginFormik;
