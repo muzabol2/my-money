@@ -4,6 +4,7 @@ import { validateYupSchemaMultiErrors, updateSchema } from "utils";
 import { useAuthContext, useUpdateProfile } from "hooks";
 import { BelowTextBox, ColorButton, TextFormField } from "components";
 import { PagesTexts as PT, ButtonsTexts as BT } from "enums";
+import { GO_BACK_BELOW_TEXTS, UPDATE_PROFILE_FORM_FIELDS } from "consts";
 
 import {
   StyledContainer,
@@ -16,20 +17,6 @@ import {
 const UpdateProfile = () => {
   const { user } = useAuthContext();
   const { updateUserProfile, error, isPending, success } = useUpdateProfile();
-
-  const updateProfileFormFields = [
-    { label: "Display name", name: "displayName", type: "text" },
-    { label: "Email", name: "email", type: "text" },
-    { label: "Current password", name: "currentPassword", type: "password" },
-    { label: "Password", name: "password", type: "password" },
-    {
-      label: "Password confirmation",
-      name: "passwordConfirm",
-      type: "password",
-    },
-  ];
-
-  const updateProfileBelowTexts = [{ name: "", link: "/", linkName: BT.BACK }];
 
   const updateProfileFormik = useFormik({
     initialValues: {
@@ -61,7 +48,7 @@ const UpdateProfile = () => {
           <FormikProvider value={updateProfileFormik}>
             <Form onSubmit={handleSubmit}>
               <StyledContainer>
-                {updateProfileFormFields.map((field) => (
+                {UPDATE_PROFILE_FORM_FIELDS.map((field) => (
                   <Field
                     key={field.name}
                     component={TextFormField}
@@ -81,7 +68,8 @@ const UpdateProfile = () => {
           </FormikProvider>
         )}
       </StyledFormContainer>
-      <BelowTextBox texts={updateProfileBelowTexts} />
+
+      <BelowTextBox texts={GO_BACK_BELOW_TEXTS} />
     </StyledWrapper>
   );
 };

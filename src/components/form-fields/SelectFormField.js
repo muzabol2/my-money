@@ -36,5 +36,4 @@ SelectFormField.propTypes = {
   field: PropTypes.object.isRequired,
   form: PropTypes.object.isRequired,
   label: PropTypes.string.isRequired,
-  options: PropTypes.array.isRequired,
 };

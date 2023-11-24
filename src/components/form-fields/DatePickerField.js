@@ -23,7 +23,6 @@ export const DatePickerField = ({ label, field, form, ...rest }) => (
 );
 
 DatePickerField.propTypes = {
-  label: PropTypes.string.isRequired,
   field: PropTypes.object.isRequired,
   form: PropTypes.object.isRequired,
 };

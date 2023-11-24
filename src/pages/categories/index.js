@@ -6,6 +6,7 @@ import { categoriesSchema, validateYupSchemaMultiErrors } from "utils";
 import { useAuthContext, useCollection, useFirestore } from "hooks";
 import { BelowTextBox, ColorButton, TextFormField } from "components";
 import { PagesTexts as PT, ButtonsTexts as BT } from "enums";
+import { GO_BACK_BELOW_TEXTS } from "consts";
 
 import {
   StyledContainer,
@@ -31,8 +32,6 @@ const Categories = () => {
       resetForm();
     },
   });
-
-  const categoriesBelowTexts = [{ name: "", link: "/", linkName: BT.BACK }];
 
   const { isSubmitting, handleSubmit, resetForm } = categoriesFormik;
 
@@ -95,7 +94,7 @@ const Categories = () => {
           </Form>
         </FormikProvider>
       </StyledFormContainer>
-      <BelowTextBox texts={categoriesBelowTexts} />
+      <BelowTextBox texts={GO_BACK_BELOW_TEXTS} />
     </StyledWrapper>
   );
 };

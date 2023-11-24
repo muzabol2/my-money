@@ -9,11 +9,8 @@ import {
   Separator,
   TextFormField,
 } from "components";
-import {
-  ButtonsTexts as BT,
-  PagesTexts as PT,
-  RedirectPaths as P,
-} from "enums";
+import { ButtonsTexts as BT, PagesTexts as PT } from "enums";
+import { SIGNUP_BELOW_TEXTS, SIGN_UP_FORM_FIELDS } from "consts";
 
 import {
   StyledWrapper,
@@ -27,26 +24,6 @@ import {
 const Signup = () => {
   const { signup, isPending, error, verificationMail } = useSignup();
   const { googleSignIn, googleError, isGooglePending } = useGoogleSignIn();
-
-  const signupFormFields = [
-    { label: "Display name", name: "displayName", type: "text" },
-    { label: "Email", name: "email", type: "text" },
-    { label: "Password", name: "password", type: "password" },
-    {
-      label: "Password confirmation",
-      name: "passwordConfirm",
-      type: "password",
-    },
-  ];
-
-  const signUpBelowTexts = [
-    { name: PT.HAVE_ACCOUNT, link: P.LOGIN, linkName: PT.LOGIN },
-    {
-      name: PT.WHY_THIS_PROJECT,
-      link: P.INSPIRATION,
-      linkName: PT.INSPIRATION,
-    },
-  ];
 
   const signupFormik = useFormik({
     initialValues: {
@@ -73,7 +50,7 @@ const Signup = () => {
               <StyledContainer>
                 <StyledTitle>{PT.CREATE_PROFILE}</StyledTitle>
 
-                {signupFormFields.map((field) => (
+                {SIGN_UP_FORM_FIELDS.map((field) => (
                   <Field
                     key={field.name}
                     component={TextFormField}
@@ -102,7 +79,8 @@ const Signup = () => {
           </FormikProvider>
         )}
       </StyledFormContainer>
-      <BelowTextBox texts={signUpBelowTexts} />
+
+      <BelowTextBox texts={SIGNUP_BELOW_TEXTS} />
     </StyledWrapper>
   );
 };

@@ -4,7 +4,6 @@ export enum ButtonsTexts {
   SUBMIT = "SUBMIT",
   UPDATE = "UPDATE",
   LOADING = "LOADING...",
-  BACK = "BACK",
   ADD = "ADD",
   ADD_TRANSACTION = "ADD TRANSACTION",
 }

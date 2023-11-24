@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 import { useAuthContext, useLogout } from "hooks";
@@ -19,9 +19,8 @@ const MenuProfilePopup = () => {
   const { logout } = useLogout();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  // TODO: fix unmounted component warning
-  // This is a no-op, but it indicates a memory leak in your application.
-  // To fix, cancel all subscriptions and asynchronous tasks in a useEffect cleanup function.
+  //cleanup function
+  useEffect(() => () => setIsMenuOpen(true), []);
 
   return (
     <StyledContainer>

@@ -5,6 +5,8 @@ export enum PagesTexts {
   DO_NOT_HAVE_ACCOUNT = "Don't have an account?",
   LOGIN = "Login",
   SIGNUP = "Sign up",
+  BACK = "BACK",
+  EMPTY = "",
   WHY_THIS_PROJECT = "Why this project?",
   INSPIRATION = "Inspiration",
   PLEASE_CONFIRM = "A verification email has been sent to your account. Please confirm it. If you can't find it, check your spam box. ;)",

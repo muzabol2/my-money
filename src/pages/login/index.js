@@ -9,11 +9,8 @@ import {
   Separator,
   TextFormField,
 } from "components";
-import {
-  PagesTexts as PT,
-  ButtonsTexts as BT,
-  RedirectPaths as P,
-} from "enums";
+import { PagesTexts as PT, ButtonsTexts as BT } from "enums";
+import { LOGIN_BELOW_TEXTS, LOGIN_FORM_FIELDS } from "consts";
 
 import {
   StyledContainer,
@@ -27,20 +24,6 @@ import {
 const Login = () => {
   const { login, error, isPending } = useLogin();
   const { googleSignIn, googleError, isGooglePending } = useGoogleSignIn();
-
-  const loginFormFields = [
-    { label: "Email", name: "email", type: "text" },
-    { label: "Password", name: "password", type: "password" },
-  ];
-
-  const loginBelowTexts = [
-    { name: PT.HAVE_ACCOUNT, link: P.SIGNUP, linkName: PT.SIGNUP },
-    {
-      name: PT.WHY_THIS_PROJECT,
-      link: P.INSPIRATION,
-      linkName: PT.INSPIRATION,
-    },
-  ];
 
   const loginFormik = useFormik({
     initialValues: {
@@ -62,7 +45,7 @@ const Login = () => {
               <StyledTitle>{PT.TITLE}</StyledTitle>
               <StyledSubtitle>{PT.SUBTITLE}</StyledSubtitle>
 
-              {loginFormFields.map((field) => (
+              {LOGIN_FORM_FIELDS.map((field) => (
                 <Field key={field.name} component={TextFormField} {...field} />
               ))}
 
@@ -88,7 +71,8 @@ const Login = () => {
           </Form>
         </FormikProvider>
       </StyledFormContainer>
-      <BelowTextBox texts={loginBelowTexts} />
+
+      <BelowTextBox texts={LOGIN_BELOW_TEXTS} />
     </StyledWrapper>
   );
 };

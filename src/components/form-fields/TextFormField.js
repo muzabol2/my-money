@@ -24,7 +24,6 @@ export const TextFormField = ({ label, field, form, ...props }) => {
 };
 
 TextFormField.propTypes = {
-  label: PropTypes.string.isRequired,
   field: PropTypes.object.isRequired,
   form: PropTypes.object.isRequired,
 };
