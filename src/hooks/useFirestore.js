@@ -1,3 +1,4 @@
+import { useEffect, useReducer, useState } from "react";
 import {
   Timestamp,
   addDoc,
@@ -9,9 +10,9 @@ import {
   setDoc,
   updateDoc,
 } from "firebase/firestore";
-import { useEffect, useReducer, useState } from "react";
 
 import { db } from "config";
+
 import { FirestoreType as FT } from "enums";
 
 let initialState = {

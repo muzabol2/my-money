@@ -8,13 +8,7 @@ import { GO_BACK_BELOW_TEXTS, UPDATE_PROFILE_FORM_FIELDS } from "consts";
 
 import { BelowTextBox, ColorButton, TextFormField } from "components";
 
-import {
-  StyledContainer,
-  StyledErrorMsg,
-  StyledFormContainer,
-  StyledSuccessMsg,
-  StyledWrapper,
-} from "./styled";
+import * as $ from "./styled";
 
 const UpdateProfile = () => {
   const { user } = useAuthContext();
@@ -38,14 +32,14 @@ const UpdateProfile = () => {
   const { resetForm, handleSubmit } = updateProfileFormik;
 
   return (
-    <StyledWrapper>
-      <StyledFormContainer>
+    <$.StyledWrapper>
+      <$.StyledFormContainer>
         {user.providerData[0].providerId === "google.com" ? (
           <p>{PT.CAN_NOT_CHANGE_PROFILE}</p>
         ) : (
           <FormikProvider value={updateProfileFormik}>
             <Form onSubmit={handleSubmit}>
-              <StyledContainer>
+              <$.StyledContainer>
                 {UPDATE_PROFILE_FORM_FIELDS.map((field) => (
                   <Field
                     key={field.name}
@@ -59,16 +53,16 @@ const UpdateProfile = () => {
                 ) : (
                   <ColorButton disabled>{BT.LOADING}</ColorButton>
                 )}
-                {error && <StyledErrorMsg>{error}</StyledErrorMsg>}
-                {success && <StyledSuccessMsg>{success}</StyledSuccessMsg>}
-              </StyledContainer>
+                {error && <$.StyledErrorMsg>{error}</$.StyledErrorMsg>}
+                {success && <$.StyledSuccessMsg>{success}</$.StyledSuccessMsg>}
+              </$.StyledContainer>
             </Form>
           </FormikProvider>
         )}
-      </StyledFormContainer>
+      </$.StyledFormContainer>
 
       <BelowTextBox texts={GO_BACK_BELOW_TEXTS} />
-    </StyledWrapper>
+    </$.StyledWrapper>
   );
 };
 

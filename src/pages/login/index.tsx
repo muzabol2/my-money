@@ -1,5 +1,5 @@
-import { Field, Form, FormikProvider, useFormik } from "formik";
 import GoogleButton from "react-google-button";
+import { Field, Form, FormikProvider, useFormik } from "formik";
 
 import { loginSchema } from "utils";
 import { useGoogleSignIn, useLogin } from "hooks";
@@ -14,14 +14,7 @@ import {
   TextFormField,
 } from "components";
 
-import {
-  StyledContainer,
-  StyledErrorMsg,
-  StyledFormContainer,
-  StyledSubtitle,
-  StyledTitle,
-  StyledWrapper,
-} from "./styled";
+import * as $ from "./styled";
 
 const Login = () => {
   const { login, error, isPending } = useLogin();
@@ -39,13 +32,13 @@ const Login = () => {
   const { handleSubmit } = loginFormik;
 
   return (
-    <StyledWrapper>
-      <StyledFormContainer>
+    <$.StyledWrapper>
+      <$.StyledFormContainer>
         <FormikProvider value={loginFormik}>
           <Form onSubmit={handleSubmit}>
-            <StyledContainer>
-              <StyledTitle>{PT.TITLE}</StyledTitle>
-              <StyledSubtitle>{PT.SUBTITLE}</StyledSubtitle>
+            <$.StyledContainer>
+              <$.StyledTitle>{PT.TITLE}</$.StyledTitle>
+              <$.StyledSubtitle>{PT.SUBTITLE}</$.StyledSubtitle>
 
               {LOGIN_FORM_FIELDS.map((field) => (
                 <Field key={field.name} component={TextFormField} {...field} />
@@ -57,7 +50,7 @@ const Login = () => {
                 <ColorButton disabled>{BT.LOADING}</ColorButton>
               )}
 
-              {error && <StyledErrorMsg>{error}</StyledErrorMsg>}
+              {error && <$.StyledErrorMsg>{error}</$.StyledErrorMsg>}
 
               <Separator label="OR" />
 
@@ -68,14 +61,14 @@ const Login = () => {
                 disabled={isGooglePending}
               />
 
-              {googleError && <StyledErrorMsg>{error}</StyledErrorMsg>}
-            </StyledContainer>
+              {googleError && <$.StyledErrorMsg>{error}</$.StyledErrorMsg>}
+            </$.StyledContainer>
           </Form>
         </FormikProvider>
-      </StyledFormContainer>
+      </$.StyledFormContainer>
 
       <BelowTextBox texts={LOGIN_BELOW_TEXTS} />
-    </StyledWrapper>
+    </$.StyledWrapper>
   );
 };
 

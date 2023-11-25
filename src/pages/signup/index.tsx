@@ -1,5 +1,5 @@
-import { Field, Form, FormikProvider, useFormik } from "formik";
 import GoogleButton from "react-google-button";
+import { Field, Form, FormikProvider, useFormik } from "formik";
 
 import { signupSchema, validateYupSchemaMultiErrors } from "utils";
 import { useGoogleSignIn, useSignup } from "hooks";
@@ -14,14 +14,7 @@ import {
   TextFormField,
 } from "components";
 
-import {
-  StyledWrapper,
-  StyledContainer,
-  StyledFormContainer,
-  StyledTitle,
-  StyledSuccessMsg,
-  StyledErrorMsg,
-} from "./styled";
+import * as $ from "./styled";
 
 const Signup = () => {
   const { signup, isPending, error, verificationMail } = useSignup();
@@ -42,15 +35,15 @@ const Signup = () => {
   const { handleSubmit } = signupFormik;
 
   return (
-    <StyledWrapper>
-      <StyledFormContainer>
+    <$.StyledWrapper>
+      <$.StyledFormContainer>
         {verificationMail ? (
-          <StyledSuccessMsg>{PT.PLEASE_CONFIRM}</StyledSuccessMsg>
+          <$.StyledSuccessMsg>{PT.PLEASE_CONFIRM}</$.StyledSuccessMsg>
         ) : (
           <FormikProvider value={signupFormik}>
             <Form onSubmit={handleSubmit}>
-              <StyledContainer>
-                <StyledTitle>{PT.CREATE_PROFILE}</StyledTitle>
+              <$.StyledContainer>
+                <$.StyledTitle>{PT.CREATE_PROFILE}</$.StyledTitle>
 
                 {SIGN_UP_FORM_FIELDS.map((field) => (
                   <Field
@@ -65,7 +58,7 @@ const Signup = () => {
                 ) : (
                   <ColorButton disabled>{BT.LOADING}</ColorButton>
                 )}
-                {error && <StyledErrorMsg>{error}</StyledErrorMsg>}
+                {error && <$.StyledErrorMsg>{error}</$.StyledErrorMsg>}
 
                 <Separator label="OR" />
 
@@ -75,15 +68,15 @@ const Signup = () => {
                   onClick={googleSignIn}
                   disabled={isGooglePending}
                 />
-                {googleError && <StyledErrorMsg>{error}</StyledErrorMsg>}
-              </StyledContainer>
+                {googleError && <$.StyledErrorMsg>{error}</$.StyledErrorMsg>}
+              </$.StyledContainer>
             </Form>
           </FormikProvider>
         )}
-      </StyledFormContainer>
+      </$.StyledFormContainer>
 
       <BelowTextBox texts={SIGNUP_BELOW_TEXTS} />
-    </StyledWrapper>
+    </$.StyledWrapper>
   );
 };
 

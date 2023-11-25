@@ -1,9 +1,11 @@
-import { signOut } from "firebase/auth";
 import { useState } from "react";
+import { signOut } from "firebase/auth";
 
 import { auth } from "config";
-import { AuthType as AT } from "enums";
+
 import { useAuthContext } from "hooks";
+
+import { AuthType as AT } from "enums";
 
 export const useLogout = () => {
   const [isPending, setIsPending] = useState(false);

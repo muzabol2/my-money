@@ -1,8 +1,10 @@
-import { signInWithEmailAndPassword, signOut } from "firebase/auth";
 import { useEffect, useState } from "react";
+import { signInWithEmailAndPassword, signOut } from "firebase/auth";
+
+import { auth } from "config";
 
 import { useAuthContext } from "hooks";
-import { auth } from "config";
+
 import { AuthType as AT } from "enums";
 
 export const useLogin = () => {
