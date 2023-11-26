@@ -4,7 +4,7 @@ import { Field, Form, FormikProvider, useFormik } from "formik";
 import { signupSchema, validateYupSchemaMultiErrors } from "utils";
 import { useGoogleSignIn, useSignup } from "hooks";
 
-import { ButtonsTexts as BT, PagesTexts as PT } from "enums";
+import { ButtonsTexts as BT, PagesTexts as PT } from "models";
 import { SIGNUP_BELOW_TEXTS, SIGN_UP_FORM_FIELDS } from "consts";
 
 import {

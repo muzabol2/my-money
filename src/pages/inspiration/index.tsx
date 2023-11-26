@@ -1,4 +1,4 @@
-import { RedirectPaths as P } from "enums";
+import { RedirectPaths as P } from "models";
 import { INSPIRATION_BELOW_TEXTS } from "consts";
 
 import { BelowTextBox } from "components";

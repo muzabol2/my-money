@@ -1,4 +1,4 @@
-import { PagesTexts as T, RedirectPaths as P } from "enums";
+import { PagesTexts as T, RedirectPaths as P } from "models";
 
 import TransactionPlus from "./transaction-plus";
 import MenuProfilePopup from "./menu-profile-popup";

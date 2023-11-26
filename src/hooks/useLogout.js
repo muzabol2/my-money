@@ -5,7 +5,7 @@ import { auth } from "config";
 
 import { useAuthContext } from "hooks";
 
-import { AuthType as AT } from "enums";
+import { AuthType as AT } from "models";
 
 export const useLogout = () => {
   const [isPending, setIsPending] = useState(false);

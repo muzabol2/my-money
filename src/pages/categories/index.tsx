@@ -2,7 +2,7 @@ import { Field, Form, FormikProvider } from "formik";
 
 import { useHelpers } from "./helpers";
 
-import { PagesTexts as PT, ButtonsTexts as BT } from "enums";
+import { PagesTexts as PT, ButtonsTexts as BT } from "models";
 import { GO_BACK_BELOW_TEXTS } from "consts";
 
 import { BelowTextBox, TextFormField } from "components";

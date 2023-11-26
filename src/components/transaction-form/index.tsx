@@ -2,7 +2,7 @@ import { Field, Form, FormikProvider } from "formik";
 
 import { useHelpers } from "./helpers";
 
-import { ButtonsTexts as BT } from "enums";
+import { ButtonsTexts as BT } from "models";
 
 import { ColorButton } from "components";
 

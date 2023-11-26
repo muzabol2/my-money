@@ -5,7 +5,7 @@ import { auth } from "config";
 
 import { useAuthContext } from "hooks";
 
-import { AuthType as AT } from "enums";
+import { AuthType as AT } from "models";
 
 export const useLogin = () => {
   const [isCancelled, setIsCancelled] = useState(false);

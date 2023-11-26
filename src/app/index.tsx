@@ -9,7 +9,7 @@ import {
   Signup,
   UpdateProfile,
 } from "pages";
-import { RedirectPaths as P } from "enums";
+import { RedirectPaths as P } from "models";
 
 import { StyledContainer } from "./styled";
 import { withNavbar } from "components";

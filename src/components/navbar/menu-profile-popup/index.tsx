@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 import { useAuthContext, useLogout } from "hooks";
 
-import { PagesTexts as T, RedirectPaths as P } from "enums";
+import { PagesTexts as T, RedirectPaths as P } from "models";
 
 import { AccountCircleIcon } from "icons";
 

@@ -1,6 +1,6 @@
 import * as yup from "yup";
 
-import { ValidationMessages as VM } from "enums";
+import { ValidationMessages as VM } from "models";
 
 const regExp = {
   transactionName: /^[\s\p{L}0-9]+$/u,

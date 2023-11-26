@@ -4,7 +4,7 @@ import { Field, Form, FormikProvider, useFormik } from "formik";
 import { loginSchema } from "utils";
 import { useGoogleSignIn, useLogin } from "hooks";
 
-import { PagesTexts as PT, ButtonsTexts as BT } from "enums";
+import { PagesTexts as PT, ButtonsTexts as BT } from "models";
 import { LOGIN_BELOW_TEXTS, LOGIN_FORM_FIELDS } from "consts";
 
 import {

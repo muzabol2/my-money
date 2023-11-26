@@ -2,7 +2,7 @@ import {
   FormFieldLabels as L,
   FormFieldNames as N,
   FormFieldTypes as T,
-} from "enums";
+} from "models";
 
 export const SIGN_UP_FORM_FIELDS = [
   { label: L.DisplayName, name: N.DisplayName, type: T.Text },

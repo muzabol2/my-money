@@ -1,4 +1,4 @@
-import { PagesTexts as PT, RedirectPaths as P } from "enums";
+import { PagesTexts as PT, RedirectPaths as P } from "models";
 
 export const SIGNUP_BELOW_TEXTS = [
   { name: PT.HAVE_ACCOUNT, link: P.LOGIN, linkName: PT.LOGIN },

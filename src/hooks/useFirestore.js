@@ -13,7 +13,7 @@ import {
 
 import { db } from "config";
 
-import { FirestoreType as FT } from "enums";
+import { FirestoreType as FT } from "models";
 
 let initialState = {
   document: null,

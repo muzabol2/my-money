@@ -8,7 +8,7 @@ import {
 
 import { useAuthContext } from "hooks";
 
-import { AuthType as AT } from "enums";
+import { AuthType as AT } from "models";
 
 export const useUpdateProfile = () => {
   const [isCancelled, setIsCancelled] = useState(false);
