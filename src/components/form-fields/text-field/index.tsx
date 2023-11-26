@@ -1,4 +1,4 @@
-import { getIn, FieldProps } from "formik";
+import { FieldProps, getIn } from "formik";
 
 import {
   StyledFormControl,
@@ -7,11 +7,11 @@ import {
   StyledTextField,
 } from "./styled";
 
-interface Props extends FieldProps {
+interface TextFieldProps extends FieldProps {
   label: string;
 }
 
-export const TextFormField = ({ label, field, form }: Props) => {
+export const TextFormField = ({ label, field, form }: TextFieldProps) => {
   const errorText =
     getIn(form.touched, field.name) && getIn(form.errors, field.name);
 
