@@ -1,27 +1,25 @@
+import {
+  FormFieldLabels as L,
+  FormFieldNames as N,
+  FormFieldTypes as T,
+} from "enums";
+
 export const SIGN_UP_FORM_FIELDS = [
-  { label: "Display name", name: "displayName", type: "text" },
-  { label: "Email", name: "email", type: "text" },
-  { label: "Password", name: "password", type: "password" },
-  {
-    label: "Password confirmation",
-    name: "passwordConfirm",
-    type: "password",
-  },
+  { label: L.DisplayName, name: N.DisplayName, type: T.Text },
+  { label: L.Email, name: N.Email, type: T.Text },
+  { label: L.Password, name: N.Password, type: T.Password },
+  { label: L.PassConfirm, name: N.PassConfirm, type: T.Password },
 ];
 
 export const LOGIN_FORM_FIELDS = [
-  { label: "Email", name: "email", type: "text" },
-  { label: "Password", name: "password", type: "password" },
+  { label: L.Email, name: N.Email, type: T.Text },
+  { label: L.Password, name: N.Password, type: T.Password },
 ];
 
 export const UPDATE_PROFILE_FORM_FIELDS = [
-  { label: "Display name", name: "displayName", type: "text" },
-  { label: "Email", name: "email", type: "text" },
-  { label: "Current password", name: "currentPassword", type: "password" },
-  { label: "Password", name: "password", type: "password" },
-  {
-    label: "Password confirmation",
-    name: "passwordConfirm",
-    type: "password",
-  },
+  { label: L.DisplayName, name: N.DisplayName, type: T.Text },
+  { label: L.Email, name: N.Email, type: T.Text },
+  { label: L.CurrentPassword, name: N.CurrentPassword, type: T.Password },
+  { label: L.Password, name: N.Password, type: T.Password },
+  { label: L.PassConfirm, name: N.PassConfirm, type: T.Password },
 ];
