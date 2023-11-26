@@ -7,4 +7,3 @@ export { default as withNavbar } from "./navbar/withNavbar";
 export { default as Separator } from "./separator";
 
 export { default as TransactionForm } from "./transaction-form";
-export { default as TransactionGrid } from "./transaction-grid";

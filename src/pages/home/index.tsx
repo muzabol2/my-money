@@ -1,8 +1,8 @@
 import { useAuthContext, useCollection } from "hooks";
 
-import { TransactionGrid } from "components";
+import BodySection from "./body-section";
 
-import { StyledContainer } from "./styled";
+import { StyledContainer, StyledErrorMsg } from "./styled";
 
 const Home = () => {
   const { user } = useAuthContext();
@@ -14,8 +14,8 @@ const Home = () => {
 
   return (
     <StyledContainer>
-      {error && <p>{error}</p>}
-      {!!documents && <TransactionGrid transactions={documents} />}
+      {error && <StyledErrorMsg>{error}</StyledErrorMsg>}
+      {!!documents && <BodySection transactions={documents} />}
     </StyledContainer>
   );
 };
