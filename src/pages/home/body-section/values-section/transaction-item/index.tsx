@@ -4,7 +4,7 @@ import * as $ from "./styled";
 
 interface Props {
   t: Transaction;
-  deleteDocument(id: any): Promise<void>;
+  deleteDocument(id: string): Promise<void>;
 }
 
 const TransactionItem = ({ t, deleteDocument }: Props) => (

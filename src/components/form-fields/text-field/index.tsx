@@ -9,9 +9,10 @@ import {
 
 interface TextFieldProps extends FieldProps {
   label: string;
+  type?: string;
 }
 
-export const TextFormField = ({ label, field, form }: TextFieldProps) => {
+export const TextFormField = ({ field, form, label, type }: TextFieldProps) => {
   const errorText =
     getIn(form.touched, field.name) && getIn(form.errors, field.name);
 
@@ -20,7 +21,7 @@ export const TextFormField = ({ label, field, form }: TextFieldProps) => {
       <StyledLabel isError={!!errorText}>{label}</StyledLabel>
       <StyledTextField
         id={field.name}
-        type="text"
+        type={type ? type : "text"}
         {...field}
         isError={!!errorText}
       />
