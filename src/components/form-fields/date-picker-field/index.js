@@ -4,7 +4,7 @@ import dayjs from "dayjs";
 import { Field } from "formik";
 import PropTypes from "prop-types";
 
-import { TextFormField } from "./TextFormField";
+import { TextFormField } from "../text-field";
 
 export const DatePickerField = ({ label, field, form, ...rest }) => (
   <LocalizationProvider dateAdapter={AdapterDayjs}>
