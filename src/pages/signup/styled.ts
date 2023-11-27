@@ -26,6 +26,12 @@ export const StyledTitle = styled.h3`
   margin-bottom: 8px;
 `;
 
+export const StyledSubtitle = styled.h4`
+  text-align: center;
+  font-family: Monospace;
+  margin: 8px;
+`;
+
 export const StyledErrorMsg = styled.p`
   margin-top: 20px;
   color: red;
@@ -35,4 +41,20 @@ export const StyledSuccessMsg = styled.p`
   margin-top: 20px;
   color: #1f9751;
   font-weight: bold;
+`;
+
+export const StyledButton = styled.button`
+  width: 220px;
+  height: 50px;
+  background: none;
+  border-radius: 5px;
+  border: 2px solid #1f9751;
+  color: #1f9751;
+  background-color: #fff;
+  font-weight: bold;
+
+  &:hover {
+    color: #fff;
+    background-color: #1f9751;
+  }
 `;

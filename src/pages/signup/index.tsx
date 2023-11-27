@@ -7,12 +7,7 @@ import { useGoogleSignIn, useSignup } from "hooks";
 import { ButtonsTexts as BT, PagesTexts as PT } from "models";
 import { SIGNUP_BELOW_TEXTS, SIGN_UP_FORM_FIELDS } from "consts";
 
-import {
-  BelowTextBox,
-  ColorButton,
-  Separator,
-  TextFormField,
-} from "components";
+import { BelowTextBox, TextFormField } from "components";
 
 import * as $ from "./styled";
 
@@ -54,13 +49,13 @@ const Signup = () => {
                 ))}
 
                 {!isPending ? (
-                  <ColorButton type="submit">{BT.SIGN_UP}</ColorButton>
+                  <$.StyledButton type="submit">{BT.SIGN_UP}</$.StyledButton>
                 ) : (
-                  <ColorButton disabled>{BT.LOADING}</ColorButton>
+                  <$.StyledButton disabled>{BT.LOADING}</$.StyledButton>
                 )}
                 {error && <$.StyledErrorMsg>{error}</$.StyledErrorMsg>}
 
-                <Separator label="OR" />
+                <$.StyledSubtitle>{"OR"}</$.StyledSubtitle>
 
                 <GoogleButton
                   style={{ width: "220px" }}

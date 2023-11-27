@@ -4,9 +4,7 @@ import { useHelpers } from "./helpers";
 
 import { ButtonsTexts as BT } from "models";
 
-import { ColorButton } from "components";
-
-import { StyledContainer, StyledGrid } from "./styled";
+import { StyledButton, StyledContainer, StyledGrid } from "./styled";
 
 const TransactionForm = ({ uid }: { uid: string }) => {
   const { transactionFormFields, transactionFormik, handleSubmit } =
@@ -21,7 +19,7 @@ const TransactionForm = ({ uid }: { uid: string }) => {
               <Field key={field.name} {...field} />
             ))}
 
-            <ColorButton type="submit">{BT.ADD_TRANSACTION}</ColorButton>
+            <StyledButton type="submit">{BT.ADD_TRANSACTION}</StyledButton>
           </StyledGrid>
         </Form>
       </FormikProvider>

@@ -7,12 +7,7 @@ import { useGoogleSignIn, useLogin } from "hooks";
 import { PagesTexts as PT, ButtonsTexts as BT } from "models";
 import { LOGIN_BELOW_TEXTS, LOGIN_FORM_FIELDS } from "consts";
 
-import {
-  BelowTextBox,
-  ColorButton,
-  Separator,
-  TextFormField,
-} from "components";
+import { BelowTextBox, TextFormField } from "components";
 
 import * as $ from "./styled";
 
@@ -45,14 +40,14 @@ const Login = () => {
               ))}
 
               {!isPending ? (
-                <ColorButton type="submit">{BT.LOGIN}</ColorButton>
+                <$.StyledButton type="submit">{BT.LOGIN}</$.StyledButton>
               ) : (
-                <ColorButton disabled>{BT.LOADING}</ColorButton>
+                <$.StyledButton disabled>{BT.LOADING}</$.StyledButton>
               )}
 
               {error && <$.StyledErrorMsg>{error}</$.StyledErrorMsg>}
 
-              <Separator label="OR" />
+              <$.StyledSubtitle>{"OR"}</$.StyledSubtitle>
 
               <GoogleButton
                 style={{ width: "220px" }}

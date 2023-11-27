@@ -6,7 +6,7 @@ import { useAuthContext, useUpdateProfile } from "hooks";
 import { PagesTexts as PT, ButtonsTexts as BT } from "models";
 import { GO_BACK_BELOW_TEXTS, UPDATE_PROFILE_FORM_FIELDS } from "consts";
 
-import { BelowTextBox, ColorButton, TextFormField } from "components";
+import { BelowTextBox, TextFormField } from "components";
 
 import * as $ from "./styled";
 
@@ -49,9 +49,9 @@ const UpdateProfile = () => {
                 ))}
 
                 {!isPending ? (
-                  <ColorButton type="submit">{BT.UPDATE}</ColorButton>
+                  <$.StyledButton type="submit">{BT.UPDATE}</$.StyledButton>
                 ) : (
-                  <ColorButton disabled>{BT.LOADING}</ColorButton>
+                  <$.StyledButton disabled>{BT.LOADING}</$.StyledButton>
                 )}
                 {error && <$.StyledErrorMsg>{error}</$.StyledErrorMsg>}
                 {success && <$.StyledSuccessMsg>{success}</$.StyledSuccessMsg>}
