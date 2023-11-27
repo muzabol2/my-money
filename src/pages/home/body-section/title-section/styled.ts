@@ -1,16 +1,15 @@
 import styled from "styled-components";
 
+import { alto, concrete } from "styles";
+
 export const StyledContainer = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr 1.5fr 0.5fr;
   gap: 15px 1px;
   margin: 10px auto;
-  border: 1px solid #f2f2f2;
+  border: 1px solid ${concrete};
   box-shadow: 3px 3px 5px rgba(50, 50, 50, 0.1);
   padding: 10px;
-  /* align-items: center;
-  position: relative;
-  overflow: hidden; */
 `;
 
 export const StyledName = styled.span``;
@@ -34,7 +33,7 @@ export const StyledDeleteButton = styled.button`
   position: absolute;
   top: 0;
   right: 0;
-  background: #ddd;
+  background: ${alto};
   border: none;
   padding: 12px 8px;
   text-align: center;

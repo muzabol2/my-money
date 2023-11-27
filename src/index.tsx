@@ -3,9 +3,10 @@ import ReactDOM from "react-dom";
 import { Helmet, HelmetProvider } from "react-helmet-async";
 
 import App from "app";
+
 import { AuthProvider } from "context";
 
-import GlobalStyles from "global-styles";
+import { GlobalStyles } from "styles";
 
 ReactDOM.render(
   <React.StrictMode>

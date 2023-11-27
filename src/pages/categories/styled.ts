@@ -1,12 +1,14 @@
 import styled from "styled-components";
 
+import { alto, eucalyptus, white } from "styles";
+
 export const StyledWrapper = styled.div``;
 
 export const StyledFormContainer = styled.div`
   max-width: 250px;
   margin: 30px auto 5px;
   padding: 40px 50px 30px;
-  border: 1px solid #ddd;
+  border: 1px solid ${alto};
   box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.05);
 `;
 
@@ -63,13 +65,13 @@ export const StyledButton = styled.button`
   height: 56px;
   background: none;
   border-radius: 4px;
-  border: 2px solid #1f9751;
-  color: #1f9751;
-  background-color: #fff;
+  border: 2px solid ${eucalyptus};
+  color: ${eucalyptus};
+  background-color: ${white};
   font-weight: bold;
 
   &:hover {
-    color: #fff;
-    background-color: #1f9751;
+    color: ${white};
+    background-color: ${eucalyptus};
   }
 `;

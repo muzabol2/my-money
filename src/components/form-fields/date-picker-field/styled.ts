@@ -5,7 +5,7 @@ export const StyledFormControl = styled.div``;
 export const StyledLabel = styled.label<{
   isError: boolean;
 }>`
-  color: ${({ isError }) => (isError ? "red" : "black")};
+  color: ${({ isError }) => (isError ? "red" : "${black}")};
 `;
 
 export const StyledDateInput = styled.input`

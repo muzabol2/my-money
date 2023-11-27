@@ -1,0 +1,9 @@
+export const eucalyptus = "#1f9751";
+export const black = "#000";
+export const boulder = "#777";
+export const silver = "#CCC";
+export const alto = "#DDD";
+export const white = "#FFF";
+export const alabaster = "#F9F9F9";
+export const ottoman = "#EFFAF0";
+export const concrete = "#F2F2F2";

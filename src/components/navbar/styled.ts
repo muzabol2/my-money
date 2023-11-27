@@ -1,13 +1,15 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
+import { alto, black, ottoman } from "styles";
+
 export const StyledNavbar = styled.div`
   position: fixed;
   top: 0;
   width: 100%;
-  background-color: #effaf0;
-  color: black;
-  border-bottom: 1px solid #ddd;
+  background-color: ${ottoman};
+  color: ${black};
+  border-bottom: 1px solid ${alto};
 `;
 
 export const StyledToolbar = styled.div`
@@ -30,6 +32,6 @@ export const StyledTypography = styled.div`
 
 export const StyledLink = styled(Link)`
   text-decoration: none;
-  color: black;
+  color: ${black};
   font-weight: bold;
 `;

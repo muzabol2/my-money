@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { silver } from "styles";
 
 export const StyledFormControl = styled.div`
   display: flex;
@@ -10,7 +11,7 @@ export const StyledTextField = styled.input<{
 }>`
   width: 220px;
   padding: 12px;
-  border: 1px solid #ccc;
+  border: 1px solid ${silver};
   border-radius: 4px;
   background-color: white;
   box-sizing: border-box;
@@ -30,5 +31,5 @@ export const StyledFormHelperText = styled.div`
 export const StyledLabel = styled.label<{
   isError: boolean;
 }>`
-  color: ${({ isError }) => (isError ? "red" : "black")};
+  color: ${({ isError }) => (isError ? "red" : "${black}")};
 `;

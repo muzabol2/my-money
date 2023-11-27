@@ -1,13 +1,15 @@
 import styled from "styled-components";
 
+import { alabaster, eucalyptus, white } from "styles";
+
 export const StyledContainer = styled.div`
   display: grid;
   position: absolute;
   top: 50px;
   right: 60px;
-  background-color: #f9f9f9;
+  background-color: ${alabaster};
   border-radius: 10px;
-  border: 2px solid #1f9751;
+  border: 2px solid ${eucalyptus};
   width: 220;
   max-width: 220px;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
@@ -28,13 +30,13 @@ export const StyledButton = styled.button`
   height: 50px;
   background: none;
   border-radius: 5px;
-  border: 2px solid #1f9751;
-  color: #1f9751;
-  background-color: #fff;
+  border: 2px solid ${eucalyptus};
+  color: ${eucalyptus};
+  background-color: ${white};
   font-weight: bold;
 
   &:hover {
-    color: #fff;
-    background-color: #1f9751;
+    color: ${white};
+    background-color: ${eucalyptus};
   }
 `;
