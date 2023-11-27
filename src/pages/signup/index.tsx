@@ -4,7 +4,11 @@ import { Field, Form, FormikProvider, useFormik } from "formik";
 import { signupSchema, validateYupSchemaMultiErrors } from "utils";
 import { useGoogleSignIn, useSignup } from "hooks";
 
-import { ButtonsTexts as BT, PagesTexts as PT } from "models";
+import {
+  ButtonsTexts as BT,
+  PagesTexts as PT,
+  FormFieldNames as N,
+} from "models";
 import { SIGNUP_BELOW_TEXTS, SIGN_UP_FORM_FIELDS } from "consts";
 
 import { BelowTextBox, TextFormField } from "components";
@@ -17,10 +21,10 @@ const Signup = () => {
 
   const signupFormik = useFormik({
     initialValues: {
-      displayName: "",
-      email: "",
-      password: "",
-      passwordConfirm: "",
+      [N.displayName]: "",
+      [N.email]: "",
+      [N.password]: "",
+      [N.passConfirm]: "",
     },
     validate: (values) => validateYupSchemaMultiErrors(values, signupSchema),
     onSubmit: ({ email, password, displayName }) =>
@@ -53,9 +57,10 @@ const Signup = () => {
                 ) : (
                   <$.StyledButton disabled>{BT.LOADING}</$.StyledButton>
                 )}
+
                 {error && <$.StyledErrorMsg>{error}</$.StyledErrorMsg>}
 
-                <$.StyledSubtitle>{"OR"}</$.StyledSubtitle>
+                <$.StyledSubtitle>{PT.OR}</$.StyledSubtitle>
 
                 <GoogleButton
                   style={{ width: "220px" }}

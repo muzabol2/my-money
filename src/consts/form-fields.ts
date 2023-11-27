@@ -5,21 +5,21 @@ import {
 } from "models";
 
 export const SIGN_UP_FORM_FIELDS = [
-  { label: L.DisplayName, name: N.DisplayName, type: T.Text },
-  { label: L.Email, name: N.Email, type: T.Text },
-  { label: L.Password, name: N.Password, type: T.Password },
-  { label: L.PassConfirm, name: N.PassConfirm, type: T.Password },
+  { label: L.displayName, name: N.displayName, type: T.text },
+  { label: L.email, name: N.email, type: T.text },
+  { label: L.password, name: N.password, type: T.password },
+  { label: L.passConfirm, name: N.passConfirm, type: T.password },
 ];
 
 export const LOGIN_FORM_FIELDS = [
-  { label: L.Email, name: N.Email, type: T.Text },
-  { label: L.Password, name: N.Password, type: T.Password },
+  { label: L.email, name: N.email, type: T.text },
+  { label: L.password, name: N.password, type: T.password },
 ];
 
 export const UPDATE_PROFILE_FORM_FIELDS = [
-  { label: L.DisplayName, name: N.DisplayName, type: T.Text },
-  { label: L.Email, name: N.Email, type: T.Text },
-  { label: L.CurrentPassword, name: N.CurrentPassword, type: T.Password },
-  { label: L.Password, name: N.Password, type: T.Password },
-  { label: L.PassConfirm, name: N.PassConfirm, type: T.Password },
+  { label: L.displayName, name: N.displayName, type: T.text },
+  { label: L.email, name: N.email, type: T.text },
+  { label: L.password, name: N.password, type: T.password },
+  { label: L.newPass, name: N.newPass, type: T.password },
+  { label: L.newPassConfirm, name: N.newPassConfirm, type: T.password },
 ];

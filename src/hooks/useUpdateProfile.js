@@ -19,21 +19,18 @@ export const useUpdateProfile = () => {
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(null);
 
-  const updateUserProfile = async (displayName, password, currentPassword) => {
+  const updateUserProfile = async (displayName, newPassword, password) => {
     const promises = [];
 
     setIsPending(true);
     setError(null);
 
-    const credential = EmailAuthProvider.credential(
-      user.email,
-      currentPassword
-    );
+    const credential = EmailAuthProvider.credential(user.email, password);
 
     await reauthenticateWithCredential(user, credential)
       .then(async () => {
-        if (password) {
-          promises.push(await updatePassword(user, password));
+        if (newPassword) {
+          promises.push(await updatePassword(user, newPassword));
         }
 
         if (displayName !== user.displayName) {

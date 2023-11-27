@@ -17,6 +17,14 @@ export const StyledContainer = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  gap: 10px;
+`;
+
+export const StyledTitle = styled.h3`
+  text-align: center;
+  font-family: Arial;
+  font-weight: bold;
+  margin-bottom: 8px;
 `;
 
 export const StyledErrorMsg = styled.p`
@@ -39,6 +47,8 @@ export const StyledButton = styled.button`
   color: ${eucalyptus};
   background-color: ${white};
   font-weight: bold;
+  margin-top: 15px;
+  cursor: pointer;
 
   &:hover {
     color: ${white};

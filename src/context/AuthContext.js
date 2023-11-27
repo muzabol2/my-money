@@ -3,6 +3,7 @@ import { createContext, useEffect, useReducer } from "react";
 import PropTypes from "prop-types";
 
 import { auth } from "config";
+
 import { AuthType as AT } from "models";
 
 export const AuthContext = createContext();

@@ -8,6 +8,12 @@ import {
 } from "utils";
 import { useCollection, useFirestore } from "hooks";
 
+import {
+  FormFieldLabels as L,
+  FormFieldNames as N,
+  FormFieldTypes as T,
+} from "models";
+
 import { TextFormField, DatePickerField, SelectFormField } from "components";
 
 export const useHelpers = (uid: string) => {
@@ -16,26 +22,33 @@ export const useHelpers = (uid: string) => {
 
   const transactionFormFields = [
     {
-      label: "Transaction name",
-      name: "transactionName",
+      label: L.transactionName,
+      name: N.transactionName,
+      type: T.text,
       component: TextFormField,
     },
-    { label: "Date", name: "transactionDate", component: DatePickerField },
     {
-      label: "Category",
-      name: "transactionCategory",
+      label: L.transactionDate,
+      name: N.transactionDate,
+      type: T.text,
+      component: DatePickerField,
+    },
+    {
+      label: L.transactionCategory,
+      name: N.transactionCategory,
+      type: T.text,
       component: SelectFormField,
       options: categories,
     },
-    { label: "Amount", name: "amount", component: TextFormField },
+    { label: L.amount, name: N.amount, type: T.text, component: TextFormField },
   ];
 
   const transactionFormik = useFormik({
     initialValues: {
-      transactionName: "",
-      transactionDate: generateCurrentDate(),
-      transactionCategory: "",
-      amount: "",
+      [N.transactionName]: "",
+      [N.transactionDate]: generateCurrentDate(),
+      [N.transactionCategory]: "",
+      [N.amount]: "",
     },
     validationSchema: transactionSchema,
     onSubmit: ({

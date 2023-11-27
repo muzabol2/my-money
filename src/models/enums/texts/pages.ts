@@ -16,4 +16,6 @@ export enum PagesTexts {
   CATEGORIES = "Categories",
   PROFILE = "Profile",
   LOGOUT = "Logout",
+  OR = "OR",
+  LOADING = "Loading...",
 }

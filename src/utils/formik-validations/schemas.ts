@@ -1,6 +1,6 @@
 import * as yup from "yup";
 
-import { ValidationMessages as VM } from "models";
+import { ValidationMessages as VM, FormFieldNames as N } from "models";
 
 const regExp = {
   transactionName: /^[\s\p{L}0-9]+$/u,
@@ -23,13 +23,13 @@ const chars = {
 };
 
 export const signupSchema = yup.object().shape({
-  displayName: yup
+  [N.displayName]: yup
     .string()
     .min(chars.displayMin, VM.DisplayNameMinMaxChar)
     .max(chars.displayMax, VM.DisplayNameMinMaxChar)
     .required(VM.Required),
-  email: yup.string().email(VM.EmailInvalid).required(VM.Required),
-  password: yup
+  [N.email]: yup.string().email(VM.EmailInvalid).required(VM.Required),
+  [N.password]: yup
     .string()
     .min(chars.passMin, VM.PassMinChar)
     .matches(regExp.passLowercase, VM.PassLowercase)
@@ -37,34 +37,34 @@ export const signupSchema = yup.object().shape({
     .matches(regExp.passSpecialChar, VM.PassSpecialChar)
     .matches(regExp.passNumber, VM.PassNumber)
     .required(VM.Required),
-  passwordConfirm: yup
+  [N.passConfirm]: yup
     .string()
-    .oneOf([yup.ref("password"), null], VM.PassMustMatch)
+    .oneOf([yup.ref(N.password), null], VM.PassMustMatch)
     .required(VM.Required),
 });
 
 export const loginSchema = yup.object().shape({
-  email: yup.string().email(VM.EmailInvalid).required(VM.Required),
-  password: yup.string().required(VM.Required),
+  [N.email]: yup.string().email(VM.EmailInvalid).required(VM.Required),
+  [N.password]: yup.string().required(VM.Required),
 });
 
 export const updateSchema = yup.object().shape({
-  currentPassword: yup.string().required(VM.Required),
-  displayName: yup
+  [N.password]: yup.string().required(VM.Required),
+  [N.displayName]: yup
     .string()
     .min(chars.displayMin, VM.DisplayNameMinMaxChar)
     .max(chars.displayMax, VM.DisplayNameMinMaxChar)
     .required(VM.Required),
-  password: yup
+  [N.newPass]: yup
     .string()
     .min(chars.passMin, VM.PassMinChar)
     .matches(regExp.passLowercase, VM.PassLowercase)
     .matches(regExp.passUppercase, VM.PassUppercase)
     .matches(regExp.passSpecialChar, VM.PassSpecialChar)
     .matches(regExp.passNumber, VM.PassNumber),
-  passwordConfirm: yup
+  [N.newPassConfirm]: yup
     .string()
-    .oneOf([yup.ref("password"), null], VM.PassMustMatch),
+    .oneOf([yup.ref(N.newPass), null], VM.PassMustMatch),
 });
 
 export const categoriesSchema = yup.object({

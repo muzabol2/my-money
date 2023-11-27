@@ -4,7 +4,11 @@ import { Field, Form, FormikProvider, useFormik } from "formik";
 import { loginSchema } from "utils";
 import { useGoogleSignIn, useLogin } from "hooks";
 
-import { PagesTexts as PT, ButtonsTexts as BT } from "models";
+import {
+  PagesTexts as PT,
+  ButtonsTexts as BT,
+  FormFieldNames as N,
+} from "models";
 import { LOGIN_BELOW_TEXTS, LOGIN_FORM_FIELDS } from "consts";
 
 import { BelowTextBox, TextFormField } from "components";
@@ -17,8 +21,8 @@ const Login = () => {
 
   const loginFormik = useFormik({
     initialValues: {
-      email: "",
-      password: "",
+      [N.email]: "",
+      [N.password]: "",
     },
     validationSchema: loginSchema,
     onSubmit: ({ email, password }) => login(email, password),
@@ -47,7 +51,7 @@ const Login = () => {
 
               {error && <$.StyledErrorMsg>{error}</$.StyledErrorMsg>}
 
-              <$.StyledSubtitle>{"OR"}</$.StyledSubtitle>
+              <$.StyledSubtitle>{PT.OR}</$.StyledSubtitle>
 
               <GoogleButton
                 style={{ width: "220px" }}
