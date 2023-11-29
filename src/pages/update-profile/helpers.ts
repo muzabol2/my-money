@@ -7,7 +7,7 @@ import { FormFieldNames as N } from "models";
 
 export const useHelpers = () => {
   const { user } = useAuthContext();
-  const { updateUserProfile, error, isPending, success } = useUpdateProfile();
+  const { updateUserProfile, status } = useUpdateProfile();
 
   const isGoogleProvider = user.providerData[0].providerId === "google.com";
 
@@ -21,17 +21,14 @@ export const useHelpers = () => {
     },
     validate: (values) => validateYupSchemaMultiErrors(values, updateSchema),
     onSubmit: ({ displayName, newPass, password }) => {
-      updateUserProfile(displayName, newPass, password);
-      resetForm();
+      updateUserProfile({ displayName, newPass, password });
     },
   });
 
-  const { resetForm, handleSubmit } = updateProfileFormik;
+  const { handleSubmit } = updateProfileFormik;
 
   return {
-    isPending,
-    error,
-    success,
+    status,
     updateProfileFormik,
     isGoogleProvider,
     handleSubmit,

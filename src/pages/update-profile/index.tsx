@@ -2,7 +2,7 @@ import { Field, Form, FormikProvider } from "formik";
 
 import { useHelpers } from "./helpers";
 
-import { PagesTexts as PT, ButtonsTexts as BT } from "models";
+import { PagesTexts as PT, ButtonsTexts as BT, StatusState as S } from "models";
 import { GO_BACK_BELOW_TEXTS, UPDATE_PROFILE_FORM_FIELDS } from "consts";
 
 import { BelowTextBox, TextFormField } from "components";
@@ -10,14 +10,8 @@ import { BelowTextBox, TextFormField } from "components";
 import * as $ from "./styled";
 
 const UpdateProfile = () => {
-  const {
-    error,
-    isPending,
-    success,
-    updateProfileFormik,
-    isGoogleProvider,
-    handleSubmit,
-  } = useHelpers();
+  const { status, updateProfileFormik, isGoogleProvider, handleSubmit } =
+    useHelpers();
 
   if (isGoogleProvider) {
     return (
@@ -31,7 +25,7 @@ const UpdateProfile = () => {
     );
   }
 
-  if (isPending) {
+  if (status.state === S.PENDING) {
     return <$.StyledWrapper>{PT.LOADING}</$.StyledWrapper>;
   }
 
@@ -48,8 +42,12 @@ const UpdateProfile = () => {
 
               <$.StyledButton type="submit">{BT.UPDATE}</$.StyledButton>
 
-              {error && <$.StyledErrorMsg>{error}</$.StyledErrorMsg>}
-              {success && <$.StyledSuccessMsg>{success}</$.StyledSuccessMsg>}
+              {status.state === S.REJECTED && (
+                <$.StyledErrorMsg>{status.message}</$.StyledErrorMsg>
+              )}
+              {status.state === S.FULFILLED && (
+                <$.StyledSuccessMsg>{status.message}</$.StyledSuccessMsg>
+              )}
             </$.StyledContainer>
           </Form>
         </FormikProvider>

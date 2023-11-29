@@ -5,4 +5,4 @@ export * from "./useGoogleSignIn";
 export * from "./useLogin";
 export * from "./useLogout";
 export * from "./useSignup";
-export * from "./useUpdateProfile";
+export * from "./use-update-profile";

@@ -18,4 +18,6 @@ export enum PagesTexts {
   LOGOUT = "Logout",
   OR = "OR",
   LOADING = "Loading...",
+  PROFILE_UPDATED = "Profile updated!",
+  ERROR = "Error",
 }
