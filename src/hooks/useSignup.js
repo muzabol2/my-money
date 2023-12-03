@@ -10,11 +10,13 @@ import { auth } from "config";
 
 import { useFirestore } from "hooks";
 
+import { COLLECTION_USERS } from "consts";
+
 export const useSignup = () => {
   const [isPending, setIsPending] = useState(false);
   const [error, setError] = useState(null);
   const [verificationMail, setVerificationMail] = useState(false);
-  const { addUser } = useFirestore("users");
+  const { addUser } = useFirestore(COLLECTION_USERS);
 
   const signup = async (email, password, displayName) => {
     setError(null);

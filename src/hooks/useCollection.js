@@ -9,6 +9,8 @@ import { useEffect, useRef, useState } from "react";
 
 import { db } from "config";
 
+import { ErrorMessages as E } from "models";
+
 export const useCollection = (collectionName, _query, _orderBy) => {
   const [documents, setDocuments] = useState([]);
   const [error, setError] = useState(null);
@@ -43,7 +45,7 @@ export const useCollection = (collectionName, _query, _orderBy) => {
       },
       (error) => {
         console.error(error);
-        setError("could not fetch the data");
+        setError(E.COULD_NOT_FETCH_DATA);
       }
     );
 

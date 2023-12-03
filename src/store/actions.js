@@ -11,7 +11,7 @@ import {
 
 import { db } from "config";
 
-import { FirestoreType as FT } from "models";
+import { FirestoreType as FT, ErrorMessages as E } from "models";
 
 export const actions = (collectionName, dispatch, isCancelled) => {
   const ref = collection(db, collectionName);
@@ -49,7 +49,7 @@ export const actions = (collectionName, dispatch, isCancelled) => {
       dispatchIfNotCancelled({ type: FT.DELETED_DOCUMENT });
     } catch (error) {
       console.error(error);
-      dispatchIfNotCancelled({ type: FT.ERROR, payload: "could not delete" });
+      dispatchIfNotCancelled({ type: FT.ERROR, payload: E.COULD_NOT_DELETE });
     }
   };
 
@@ -86,7 +86,7 @@ export const actions = (collectionName, dispatch, isCancelled) => {
       });
     } catch (error) {
       console.error(error);
-      dispatchIfNotCancelled({ type: FT.ERROR, payload: "could not update" });
+      dispatchIfNotCancelled({ type: FT.ERROR, payload: E.COULD_NOT_UPDATE });
     }
   };
 
@@ -104,7 +104,7 @@ export const actions = (collectionName, dispatch, isCancelled) => {
       });
     } catch (error) {
       console.error(error);
-      dispatchIfNotCancelled({ type: FT.ERROR, payload: "could not delete" });
+      dispatchIfNotCancelled({ type: FT.ERROR, payload: E.COULD_NOT_DELETE });
     }
   };
 

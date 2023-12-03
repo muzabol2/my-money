@@ -2,6 +2,14 @@ import { useAuthContext } from "context";
 
 import { useCollection } from "hooks";
 
+import {
+  COLLECTION_TRANSACTIONS,
+  FIELD_CREATED_AT,
+  FIELD_UID,
+  QUERY_OPERATOR_DESC,
+  QUERY_OPERATOR_EQUAL,
+} from "consts";
+
 import BodySection from "./body-section";
 
 import { StyledContainer, StyledErrorMsg } from "./styled";
@@ -9,9 +17,9 @@ import { StyledContainer, StyledErrorMsg } from "./styled";
 const Home = () => {
   const { user } = useAuthContext();
   const { documents, error } = useCollection(
-    "transactions",
-    ["uid", "==", user?.uid],
-    ["createdAt", "desc"]
+    COLLECTION_TRANSACTIONS,
+    [FIELD_UID, QUERY_OPERATOR_EQUAL, user?.uid],
+    [FIELD_CREATED_AT, QUERY_OPERATOR_DESC]
   );
 
   return (

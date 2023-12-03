@@ -12,13 +12,14 @@ import { useAuthContext } from "context";
 import { useFirestore } from "hooks";
 
 import { AuthType as AT } from "models";
+import { COLLECTION_USERS } from "consts";
 
 export const useGoogleSignIn = () => {
   const [isCancelled, setIsCancelled] = useState(false);
   const [isGooglePending, setIsGooglePending] = useState(false);
   const [googleError, setGoogleError] = useState(null);
   const { dispatch } = useAuthContext();
-  const { addUser } = useFirestore("users");
+  const { addUser } = useFirestore(COLLECTION_USERS);
 
   const googleSignIn = async () => {
     setGoogleError(null);

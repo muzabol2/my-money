@@ -1,7 +1,7 @@
 import { ButtonsTexts } from "./buttons";
 import { FormFieldLabels, FormFieldNames, FormFieldTypes } from "./form-fields";
 import { PagesTexts } from "./pages";
-import { ValidationMessages } from "./validations";
+import { ErrorMessages, StatusMessages, ValidationMessages } from "./messages";
 
 export {
   ButtonsTexts,
@@ -9,5 +9,7 @@ export {
   FormFieldNames,
   FormFieldTypes,
   PagesTexts,
+  ErrorMessages,
+  StatusMessages,
   ValidationMessages,
 };

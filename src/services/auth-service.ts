@@ -6,7 +6,7 @@ import {
   User,
 } from "firebase/auth";
 
-async function reauthenticate(user: User, password: string) {
+const reauthenticate = async (user: User, password: string) => {
   try {
     const credential = EmailAuthProvider.credential(
       user.email as string,
@@ -19,15 +19,13 @@ async function reauthenticate(user: User, password: string) {
       throw error;
     }
   }
-}
+};
 
-function updatePassword(user: User, newPassword: string) {
-  return firebaseUpdatePassword(user, newPassword);
-}
+const updatePassword = (user: User, newPassword: string) =>
+  firebaseUpdatePassword(user, newPassword);
 
-function updateDisplayName(user: User, displayName: string) {
-  return updateProfile(user, { displayName });
-}
+const updateDisplayName = (user: User, displayName: string) =>
+  updateProfile(user, { displayName });
 
 export default {
   reauthenticate,

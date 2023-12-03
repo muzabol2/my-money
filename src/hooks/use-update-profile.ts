@@ -4,13 +4,21 @@ import { AuthService } from "services";
 
 import { useAuthContext } from "context";
 
-import { AuthType as AT, Status, StatusState as S } from "models";
+import {
+  AuthType as AT,
+  Status,
+  StatusState as S,
+  StatusMessages as M,
+} from "models";
 
 export const useUpdateProfile = () => {
   const { user, dispatch } = useAuthContext();
   const [isCancelled, setIsCancelled] = useState(false);
 
-  const [status, setStatus] = useState<Status>({ state: S.IDLE, message: "" });
+  const [status, setStatus] = useState<Status>({
+    state: S.IDLE,
+    message: M.EMPTY,
+  });
 
   const updateUserProfile = async ({
     displayName,
@@ -23,12 +31,12 @@ export const useUpdateProfile = () => {
   }) => {
     const promises: Promise<void>[] = [];
 
-    setStatus({ state: S.PENDING, message: "" });
+    setStatus({ state: S.PENDING, message: M.EMPTY });
 
     if (!user) {
       setStatus({
         state: S.REJECTED,
-        message: "No user is currently logged in.",
+        message: M.NO_USER_LOGGED_IN,
       });
 
       return;
@@ -49,7 +57,7 @@ export const useUpdateProfile = () => {
 
       setStatus({
         state: S.FULFILLED,
-        message: "Profile updated!",
+        message: M.PROFILE_UPDATED,
       });
 
       dispatch({ type: AT.LOGIN, payload: user });
@@ -59,7 +67,7 @@ export const useUpdateProfile = () => {
       setStatus({ state: S.REJECTED, message });
     } finally {
       if (!isCancelled) {
-        setStatus({ state: S.IDLE, message: "" });
+        setStatus({ state: S.IDLE, message: M.EMPTY });
       }
     }
   };

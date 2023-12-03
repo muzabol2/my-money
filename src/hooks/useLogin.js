@@ -5,7 +5,7 @@ import { auth } from "config";
 
 import { useAuthContext } from "context";
 
-import { AuthType as AT } from "models";
+import { AuthType as AT, ErrorMessages as E } from "models";
 
 export const useLogin = () => {
   const [isCancelled, setIsCancelled] = useState(false);
@@ -23,7 +23,7 @@ export const useLogin = () => {
           dispatch({ type: AT.LOGIN, payload: res.user });
         } else {
           signOut(auth);
-          setError("Email not verified.");
+          setError(E.EMAIL_NOT_VERIFIED);
         }
       })
       .catch((error) => {

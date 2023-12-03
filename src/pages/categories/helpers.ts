@@ -1,15 +1,22 @@
 import { useFormik } from "formik";
 
 import { useAuthContext } from "context";
+
 import { categoriesSchema, validateYupSchemaMultiErrors } from "utils";
 import { useCollection, useFirestore } from "hooks";
+
+import { COLLECTION_USERS, FIELD_UID, QUERY_OPERATOR_EQUAL } from "consts";
 
 export const useHelpers = () => {
   const { user } = useAuthContext();
   const userId = user?.uid;
 
-  const { categories, error } = useCollection("users", ["uid", "==", userId]);
-  const { updateCategories, deleteCategories } = useFirestore("users");
+  const { categories, error } = useCollection(COLLECTION_USERS, [
+    FIELD_UID,
+    QUERY_OPERATOR_EQUAL,
+    userId,
+  ]);
+  const { updateCategories, deleteCategories } = useFirestore(COLLECTION_USERS);
 
   const categoriesFormik = useFormik({
     initialValues: {
@@ -17,8 +24,8 @@ export const useHelpers = () => {
     },
     validate: (values) =>
       validateYupSchemaMultiErrors(values, categoriesSchema),
-    onSubmit: (values) => {
-      updateCategories({ id: userId, category: values.categories });
+    onSubmit: ({ categories }) => {
+      updateCategories({ id: userId, category: categories });
       resetForm();
     },
   });

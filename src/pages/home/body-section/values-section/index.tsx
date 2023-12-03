@@ -1,6 +1,7 @@
 import { useFirestore } from "hooks";
 
 import { Transaction } from "models";
+import { COLLECTION_TRANSACTIONS } from "consts";
 
 import TransactionItem from "./transaction-item";
 
@@ -9,7 +10,7 @@ interface Props {
 }
 
 const ValuesSection = ({ transactions }: Props) => {
-  const { deleteDocument } = useFirestore("transactions");
+  const { deleteDocument } = useFirestore(COLLECTION_TRANSACTIONS);
 
   return (
     <>

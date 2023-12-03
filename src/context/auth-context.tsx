@@ -1,34 +1,28 @@
-import { onAuthStateChanged, User } from "firebase/auth";
+import { onAuthStateChanged } from "firebase/auth";
 import React, { createContext, useContext, useEffect, useReducer } from "react";
 
 import { auth } from "config";
 
-import { AuthType as AT } from "models";
-
-interface State {
-  user: User | null;
-  authIsReady: boolean;
-}
-type Action =
-  | { type: AT.LOGIN; payload: User }
-  | { type: AT.LOGOUT }
-  | { type: AT.AUTH_IS_READY; payload: User | null };
-
-type AuthContextType = {
-  user: User | null;
-  authIsReady: boolean;
-  dispatch: React.Dispatch<Action>;
-};
+import {
+  AuthAction,
+  AuthContextType,
+  AuthState,
+  AuthType as T,
+  ErrorMessages as E,
+} from "models";
 
 export const AuthContext = createContext<AuthContextType | null>(null);
 
-export const authReducer = (state: State, action: Action): State => {
+export const authReducer = (
+  state: AuthState,
+  action: AuthAction
+): AuthState => {
   switch (action.type) {
-    case AT.LOGIN:
+    case T.LOGIN:
       return { ...state, user: action.payload };
-    case AT.LOGOUT:
+    case T.LOGOUT:
       return { ...state, user: null };
-    case AT.AUTH_IS_READY:
+    case T.AUTH_IS_READY:
       return { ...state, user: action.payload, authIsReady: true };
 
     default:
@@ -48,7 +42,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
 
   useEffect(() => {
     const unsub = onAuthStateChanged(auth, (user) => {
-      dispatch({ type: AT.AUTH_IS_READY, payload: user });
+      dispatch({ type: T.AUTH_IS_READY, payload: user });
       unsub();
     });
   }, []);
@@ -64,7 +58,7 @@ export const useAuthContext = () => {
   const context = useContext(AuthContext);
 
   if (!context) {
-    throw Error("useAuthContext must be used within an AuthContextProvider");
+    throw Error(E.INVALID_CONTEXT);
   }
 
   return context;

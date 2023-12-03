@@ -2,6 +2,8 @@ import { BrowserRouter, Redirect, Route, Switch } from "react-router-dom";
 
 import { useAuthContext } from "context";
 
+import { RedirectPaths as P } from "models";
+
 import {
   Categories,
   Home,
@@ -10,10 +12,9 @@ import {
   Signup,
   UpdateProfile,
 } from "pages";
-import { RedirectPaths as P } from "models";
+import { withNavbar } from "components";
 
 import { StyledContainer } from "./styled";
-import { withNavbar } from "components";
 
 const WrappedUpdateProfile = withNavbar(UpdateProfile);
 const WrappedCategories = withNavbar(Categories);

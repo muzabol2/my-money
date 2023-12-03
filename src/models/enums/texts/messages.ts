@@ -1,3 +1,17 @@
+export enum ErrorMessages {
+  INVALID_CONTEXT = "useAuthContext must be used within an AuthContextProvider",
+  EMAIL_NOT_VERIFIED = "Email not verified",
+  COULD_NOT_FETCH_DATA = "Could not fetch data",
+  COULD_NOT_DELETE = "Could not delete",
+  COULD_NOT_UPDATE = "Could not update",
+}
+
+export enum StatusMessages {
+  NO_USER_LOGGED_IN = "No user is currently logged in.",
+  PROFILE_UPDATED = "Profile updated!",
+  EMPTY = "",
+}
+
 export enum ValidationMessages {
   DisplayNameMinMaxChar = "5-20 characters",
   EmailInvalid = "Please enter a valid email",

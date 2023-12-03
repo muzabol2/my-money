@@ -13,12 +13,22 @@ import {
   FormFieldNames as N,
   FormFieldTypes as T,
 } from "models";
+import {
+  COLLECTION_TRANSACTIONS,
+  COLLECTION_USERS,
+  FIELD_UID,
+  QUERY_OPERATOR_EQUAL,
+} from "consts";
 
 import { TextFormField, DatePickerField, SelectFormField } from "components";
 
 export const useHelpers = (uid: string) => {
-  const { addDocument } = useFirestore("transactions");
-  const { categories } = useCollection("users", ["uid", "==", uid]);
+  const { addDocument } = useFirestore(COLLECTION_TRANSACTIONS);
+  const { categories } = useCollection(COLLECTION_USERS, [
+    FIELD_UID,
+    QUERY_OPERATOR_EQUAL,
+    uid,
+  ]);
 
   const transactionFormFields = [
     {
