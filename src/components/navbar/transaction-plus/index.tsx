@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-import { useAuthContext } from "hooks";
+import { useAuthContext } from "context";
 
 import { TransactionForm } from "components";
 import { PlusIcon } from "icons";
@@ -19,7 +19,7 @@ const TransactionPlus = () => {
       <StyledMenuButton onClick={() => setIsOpen(!isOpen)}>
         <PlusIcon />
       </StyledMenuButton>
-      {isOpen && <TransactionForm uid={user.uid} />}
+      {isOpen && <TransactionForm uid={user?.uid ?? ""} />}
     </StyledContainer>
   );
 };

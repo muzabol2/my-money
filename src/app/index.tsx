@@ -1,6 +1,7 @@
 import { BrowserRouter, Redirect, Route, Switch } from "react-router-dom";
 
-import { useAuthContext } from "hooks";
+import { useAuthContext } from "context";
+
 import {
   Categories,
   Home,

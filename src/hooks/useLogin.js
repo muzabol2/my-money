@@ -3,7 +3,7 @@ import { signInWithEmailAndPassword, signOut } from "firebase/auth";
 
 import { auth } from "config";
 
-import { useAuthContext } from "hooks";
+import { useAuthContext } from "context";
 
 import { AuthType as AT } from "models";
 

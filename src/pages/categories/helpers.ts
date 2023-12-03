@@ -1,7 +1,8 @@
 import { useFormik } from "formik";
 
+import { useAuthContext } from "context";
 import { categoriesSchema, validateYupSchemaMultiErrors } from "utils";
-import { useAuthContext, useCollection, useFirestore } from "hooks";
+import { useCollection, useFirestore } from "hooks";
 
 export const useHelpers = () => {
   const { user } = useAuthContext();

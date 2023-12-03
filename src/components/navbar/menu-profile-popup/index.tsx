@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
-import { useAuthContext, useLogout } from "hooks";
+import { useAuthContext } from "context";
+
+import { useLogout } from "hooks";
 
 import { PagesTexts as T, RedirectPaths as P } from "models";
 
@@ -31,7 +33,7 @@ const MenuProfilePopup = () => {
       </StyledMenuButton>
       {isMenuOpen && (
         <StyledMenu>
-          <StyledDisplayName>{user.displayName}</StyledDisplayName>
+          <StyledDisplayName>{user?.displayName}</StyledDisplayName>
           <StyledDivider />
           <StyledMenuItem as={Link} to={P.CATEGORIES}>
             {T.CATEGORIES}

@@ -7,7 +7,9 @@ import {
 
 import { auth } from "config";
 
-import { useAuthContext, useFirestore } from "hooks";
+import { useAuthContext } from "context";
+
+import { useFirestore } from "hooks";
 
 import { AuthType as AT } from "models";
 

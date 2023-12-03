@@ -1,4 +1,6 @@
-import { useAuthContext, useCollection } from "hooks";
+import { useAuthContext } from "context";
+
+import { useCollection } from "hooks";
 
 import BodySection from "./body-section";
 
@@ -8,7 +10,7 @@ const Home = () => {
   const { user } = useAuthContext();
   const { documents, error } = useCollection(
     "transactions",
-    ["uid", "==", user.uid],
+    ["uid", "==", user?.uid],
     ["createdAt", "desc"]
   );
 

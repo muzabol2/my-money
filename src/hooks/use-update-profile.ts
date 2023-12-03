@@ -2,14 +2,13 @@ import { useEffect, useState } from "react";
 
 import { AuthService } from "services";
 
-import { useAuthContext } from "hooks";
+import { useAuthContext } from "context";
 
 import { AuthType as AT, Status, StatusState as S } from "models";
 
 export const useUpdateProfile = () => {
+  const { user, dispatch } = useAuthContext();
   const [isCancelled, setIsCancelled] = useState(false);
-  const { dispatch } = useAuthContext();
-  const { user } = useAuthContext();
 
   const [status, setStatus] = useState<Status>({ state: S.IDLE, message: "" });
 
@@ -25,6 +24,15 @@ export const useUpdateProfile = () => {
     const promises: Promise<void>[] = [];
 
     setStatus({ state: S.PENDING, message: "" });
+
+    if (!user) {
+      setStatus({
+        state: S.REJECTED,
+        message: "No user is currently logged in.",
+      });
+
+      return;
+    }
 
     try {
       await AuthService.reauthenticate(user, password);
