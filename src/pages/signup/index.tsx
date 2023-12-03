@@ -8,6 +8,7 @@ import {
   ButtonsTexts as BT,
   PagesTexts as PT,
   FormFieldNames as N,
+  StatusState as S,
 } from "models";
 import { SIGNUP_BELOW_TEXTS, SIGN_UP_FORM_FIELDS } from "consts";
 
@@ -17,7 +18,7 @@ import * as $ from "./styled";
 
 const Signup = () => {
   const { signup, isPending, error, verificationMail } = useSignup();
-  const { googleSignIn, googleError, isGooglePending } = useGoogleSignIn();
+  const { googleSignIn, googleStatus } = useGoogleSignIn();
 
   const signupFormik = useFormik({
     initialValues: {
@@ -66,9 +67,11 @@ const Signup = () => {
                   style={{ width: "220px" }}
                   label="Login with Google"
                   onClick={googleSignIn}
-                  disabled={isGooglePending}
+                  disabled={googleStatus.state === S.PENDING}
                 />
-                {googleError && <$.StyledErrorMsg>{error}</$.StyledErrorMsg>}
+                {googleStatus.state === S.REJECTED && (
+                  <$.StyledErrorMsg>{googleStatus.message}</$.StyledErrorMsg>
+                )}
               </$.StyledContainer>
             </Form>
           </FormikProvider>

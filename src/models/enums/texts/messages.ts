@@ -9,6 +9,7 @@ export enum ErrorMessages {
 export enum StatusMessages {
   NO_USER_LOGGED_IN = "No user is currently logged in.",
   PROFILE_UPDATED = "Profile updated!",
+  USER_LOGGED_IN = "User logged in!",
   EMPTY = "",
 }
 

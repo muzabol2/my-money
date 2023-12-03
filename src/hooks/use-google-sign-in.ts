@@ -11,19 +11,26 @@ import { useAuthContext } from "context";
 
 import { useFirestore } from "hooks";
 
-import { AuthType as AT } from "models";
+import {
+  AuthProcessStatus,
+  AuthType as AT,
+  StatusState as S,
+  StatusMessages as M,
+} from "models";
 import { COLLECTION_USERS } from "consts";
 
 export const useGoogleSignIn = () => {
-  const [isCancelled, setIsCancelled] = useState(false);
-  const [isGooglePending, setIsGooglePending] = useState(false);
-  const [googleError, setGoogleError] = useState(null);
   const { dispatch } = useAuthContext();
   const { addUser } = useFirestore(COLLECTION_USERS);
 
+  const [isCancelled, setIsCancelled] = useState(false);
+  const [status, setStatus] = useState<AuthProcessStatus>({
+    state: S.IDLE,
+    message: M.EMPTY,
+  });
+
   const googleSignIn = async () => {
-    setGoogleError(null);
-    setIsGooglePending(true);
+    setStatus({ state: S.PENDING, message: M.EMPTY });
 
     try {
       const provider = new GoogleAuthProvider();
@@ -31,23 +38,30 @@ export const useGoogleSignIn = () => {
 
       dispatch({ type: AT.LOGIN, payload: result.user });
 
-      const { isNewUser } = getAdditionalUserInfo(result);
+      const additionalUserInfo = getAdditionalUserInfo(result);
 
-      if (isNewUser) {
+      if (additionalUserInfo?.isNewUser) {
         // create a user file with default categories
         await addUser(result.user.displayName, result.user.uid);
       }
+
+      setStatus({
+        state: S.FULFILLED,
+        message: M.USER_LOGGED_IN,
+      });
     } catch (error) {
       console.error(error);
-      setGoogleError(error.message);
+      const message = (error as Error).message;
+
+      setStatus({ state: S.REJECTED, message });
     } finally {
       if (!isCancelled) {
-        setIsGooglePending(false);
+        setStatus({ state: S.IDLE, message: M.EMPTY });
       }
     }
   };
 
   useEffect(() => () => setIsCancelled(true), []);
 
-  return { googleSignIn, googleError, isGooglePending };
+  return { googleSignIn, googleStatus: status };
 };

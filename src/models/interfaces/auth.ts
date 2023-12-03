@@ -1,8 +1,13 @@
 import { User } from "firebase/auth";
 
-import { AuthType as T } from "models";
+import { AuthType as T, StatusState } from "models";
 
 export type AuthUser = User;
+
+export interface AuthProcessStatus {
+  state: StatusState;
+  message: string;
+}
 
 export type AuthAction =
   | { type: T.LOGIN; payload: AuthUser }

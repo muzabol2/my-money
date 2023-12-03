@@ -5,8 +5,8 @@ import { AuthService } from "services";
 import { useAuthContext } from "context";
 
 import {
+  AuthProcessStatus,
   AuthType as AT,
-  Status,
   StatusState as S,
   StatusMessages as M,
 } from "models";
@@ -15,7 +15,7 @@ export const useUpdateProfile = () => {
   const { user, dispatch } = useAuthContext();
   const [isCancelled, setIsCancelled] = useState(false);
 
-  const [status, setStatus] = useState<Status>({
+  const [status, setStatus] = useState<AuthProcessStatus>({
     state: S.IDLE,
     message: M.EMPTY,
   });
