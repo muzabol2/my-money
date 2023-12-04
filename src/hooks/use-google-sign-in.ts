@@ -17,17 +17,14 @@ import {
   StatusState as S,
   StatusMessages as M,
 } from "models";
-import { COLLECTION_USERS } from "consts";
+import { COLLECTION_USERS, INITIAL_AUTH_STATUS } from "consts";
 
 export const useGoogleSignIn = () => {
   const { dispatch } = useAuthContext();
   const { addUser } = useFirestore(COLLECTION_USERS);
 
-  const [isCancelled, setIsCancelled] = useState(false);
-  const [status, setStatus] = useState<AuthProcessStatus>({
-    state: S.IDLE,
-    message: M.EMPTY,
-  });
+  const [, setIsCancelled] = useState(false);
+  const [status, setStatus] = useState<AuthProcessStatus>(INITIAL_AUTH_STATUS);
 
   const googleSignIn = async () => {
     setStatus({ state: S.PENDING, message: M.EMPTY });
@@ -35,6 +32,8 @@ export const useGoogleSignIn = () => {
     try {
       const provider = new GoogleAuthProvider();
       const result = await signInWithPopup(auth, provider);
+
+      setStatus({ state: S.FULFILLED, message: M.USER_LOGGED_IN });
 
       dispatch({ type: AT.LOGIN, payload: result.user });
 
@@ -44,20 +43,8 @@ export const useGoogleSignIn = () => {
         // create a user file with default categories
         await addUser(result.user.displayName, result.user.uid);
       }
-
-      setStatus({
-        state: S.FULFILLED,
-        message: M.USER_LOGGED_IN,
-      });
     } catch (error) {
-      console.error(error);
-      const message = (error as Error).message;
-
-      setStatus({ state: S.REJECTED, message });
-    } finally {
-      if (!isCancelled) {
-        setStatus({ state: S.IDLE, message: M.EMPTY });
-      }
+      setStatus({ state: S.REJECTED, message: M.WRONG_CREDENTIALS });
     }
   };
 

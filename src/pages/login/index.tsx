@@ -1,15 +1,10 @@
 import GoogleButton from "react-google-button";
-import { Field, Form, FormikProvider, useFormik } from "formik";
+import { Field, Form, FormikProvider } from "formik";
 
-import { loginSchema } from "utils";
-import { useGoogleSignIn, useLogin } from "hooks";
+import { useGoogleSignIn } from "hooks";
+import { useHelpers } from "./helpers";
 
-import {
-  PagesTexts as PT,
-  ButtonsTexts as BT,
-  FormFieldNames as N,
-  StatusState as S,
-} from "models";
+import { PagesTexts as PT, ButtonsTexts as BT, StatusState as S } from "models";
 import { LOGIN_BELOW_TEXTS, LOGIN_FORM_FIELDS } from "consts";
 
 import { BelowTextBox, TextFormField } from "components";
@@ -17,19 +12,14 @@ import { BelowTextBox, TextFormField } from "components";
 import * as $ from "./styled";
 
 const Login = () => {
-  const { login, error, isPending } = useLogin();
+  const { status, loginFormik } = useHelpers();
   const { googleSignIn, googleStatus } = useGoogleSignIn();
 
-  const loginFormik = useFormik({
-    initialValues: {
-      [N.email]: "",
-      [N.password]: "",
-    },
-    validationSchema: loginSchema,
-    onSubmit: ({ email, password }) => login(email, password),
-  });
-
   const { handleSubmit } = loginFormik;
+
+  if (status.state === S.PENDING || googleStatus.state === S.PENDING) {
+    return <$.StyledWrapper>{PT.LOADING}</$.StyledWrapper>;
+  }
 
   return (
     <$.StyledWrapper>
@@ -44,21 +34,18 @@ const Login = () => {
                 <Field key={field.name} component={TextFormField} {...field} />
               ))}
 
-              {!isPending ? (
-                <$.StyledButton type="submit">{BT.LOGIN}</$.StyledButton>
-              ) : (
-                <$.StyledButton disabled>{BT.LOADING}</$.StyledButton>
-              )}
+              <$.StyledButton type="submit">{BT.LOGIN}</$.StyledButton>
 
-              {error && <$.StyledErrorMsg>{error}</$.StyledErrorMsg>}
+              {status.state === S.REJECTED && (
+                <$.StyledErrorMsg>{status.message}</$.StyledErrorMsg>
+              )}
 
               <$.StyledSubtitle>{PT.OR}</$.StyledSubtitle>
 
               <GoogleButton
                 style={{ width: "220px" }}
-                label="Login with Google"
+                label="Log in with Google"
                 onClick={googleSignIn}
-                disabled={googleStatus.state === S.PENDING}
               />
 
               {googleStatus.state === S.REJECTED && (

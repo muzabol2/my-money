@@ -65,7 +65,6 @@ const Signup = () => {
 
                 <GoogleButton
                   style={{ width: "220px" }}
-                  label="Login with Google"
                   onClick={googleSignIn}
                   disabled={googleStatus.state === S.PENDING}
                 />

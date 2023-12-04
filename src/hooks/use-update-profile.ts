@@ -10,15 +10,13 @@ import {
   StatusState as S,
   StatusMessages as M,
 } from "models";
+import { INITIAL_AUTH_STATUS } from "consts";
 
 export const useUpdateProfile = () => {
   const { user, dispatch } = useAuthContext();
-  const [isCancelled, setIsCancelled] = useState(false);
+  const [, setIsCancelled] = useState(false);
 
-  const [status, setStatus] = useState<AuthProcessStatus>({
-    state: S.IDLE,
-    message: M.EMPTY,
-  });
+  const [status, setStatus] = useState<AuthProcessStatus>(INITIAL_AUTH_STATUS);
 
   const updateUserProfile = async ({
     displayName,
@@ -34,10 +32,7 @@ export const useUpdateProfile = () => {
     setStatus({ state: S.PENDING, message: M.EMPTY });
 
     if (!user) {
-      setStatus({
-        state: S.REJECTED,
-        message: M.NO_USER_LOGGED_IN,
-      });
+      setStatus({ state: S.REJECTED, message: M.NO_USER_LOGGED_IN });
 
       return;
     }
@@ -55,20 +50,13 @@ export const useUpdateProfile = () => {
 
       await Promise.all(promises);
 
-      setStatus({
-        state: S.FULFILLED,
-        message: M.PROFILE_UPDATED,
-      });
+      setStatus({ state: S.FULFILLED, message: M.PROFILE_UPDATED });
 
       dispatch({ type: AT.LOGIN, payload: user });
     } catch (error) {
       const message = (error as Error).message;
 
       setStatus({ state: S.REJECTED, message });
-    } finally {
-      if (!isCancelled) {
-        setStatus({ state: S.IDLE, message: M.EMPTY });
-      }
     }
   };
 

@@ -20,6 +20,8 @@ import {
   UPDATE_PROFILE_FORM_FIELDS,
 } from "./form-fields";
 
+import { INITIAL_AUTH_STATUS } from "./initial-auth-status";
+
 export {
   LOGIN_BELOW_TEXTS,
   SIGNUP_BELOW_TEXTS,
@@ -34,4 +36,5 @@ export {
   LOGIN_FORM_FIELDS,
   SIGN_UP_FORM_FIELDS,
   UPDATE_PROFILE_FORM_FIELDS,
+  INITIAL_AUTH_STATUS,
 };

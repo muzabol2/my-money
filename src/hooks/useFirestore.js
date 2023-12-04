@@ -9,7 +9,9 @@ export const useFirestore = (collectionName) => {
   const allFunctions = actions(collectionName, dispatch, isCancelled);
 
   //cleanup function
-  useEffect(() => () => setIsCancelled(true), []);
+  useEffect(() => {
+    () => setIsCancelled(true);
+  }, []);
 
   return { ...allFunctions, response };
 };
