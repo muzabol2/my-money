@@ -1,8 +1,12 @@
 import GoogleButton from "react-google-button";
 import { Field, Form, FormikProvider, useFormik } from "formik";
 
-import { signupSchema, validateYupSchemaMultiErrors } from "utils";
-import { useGoogleSignIn, useSignup } from "hooks";
+import {
+  signupSchema,
+  validateYupSchemaMultiErrors,
+  useGoogleSignIn,
+  useSignup,
+} from "utils";
 
 import {
   ButtonsTexts as BT,

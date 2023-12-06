@@ -1,4 +1,4 @@
-import { useFirestore } from "hooks";
+import { useFirestore } from "utils";
 
 import { Transaction } from "models";
 import { COLLECTION_TRANSACTIONS } from "consts";

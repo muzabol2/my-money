@@ -1,7 +1,7 @@
 import GoogleButton from "react-google-button";
 import { Field, Form, FormikProvider } from "formik";
 
-import { useGoogleSignIn } from "hooks";
+import { useGoogleSignIn } from "utils";
 import { useHelpers } from "./helpers";
 
 import { PagesTexts as PT, ButtonsTexts as BT, StatusState as S } from "models";

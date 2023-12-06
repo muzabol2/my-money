@@ -2,8 +2,11 @@ import { useFormik } from "formik";
 
 import { useAuthContext } from "context";
 
-import { updateSchema, validateYupSchemaMultiErrors } from "utils";
-import { useUpdateProfile } from "hooks";
+import {
+  updateSchema,
+  validateYupSchemaMultiErrors,
+  useUpdateProfile,
+} from "utils";
 
 import { FormFieldNames as N } from "models";
 

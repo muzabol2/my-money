@@ -9,7 +9,7 @@ import { auth } from "config";
 
 import { useAuthContext } from "context";
 
-import { useFirestore } from "hooks";
+import { useFirestore } from "utils";
 
 import {
   AuthProcessStatus,

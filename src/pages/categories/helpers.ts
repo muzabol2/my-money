@@ -2,8 +2,12 @@ import { useFormik } from "formik";
 
 import { useAuthContext } from "context";
 
-import { categoriesSchema, validateYupSchemaMultiErrors } from "utils";
-import { useCollection, useFirestore } from "hooks";
+import {
+  categoriesSchema,
+  validateYupSchemaMultiErrors,
+  useCollection,
+  useFirestore,
+} from "utils";
 
 import { COLLECTION_USERS, FIELD_UID, QUERY_OPERATOR_EQUAL } from "consts";
 

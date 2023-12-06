@@ -1,6 +1,6 @@
 import { useAuthContext } from "context";
 
-import { useCollection } from "hooks";
+import { useCollection } from "utils";
 
 import {
   COLLECTION_TRANSACTIONS,

@@ -8,7 +8,7 @@ import {
 
 import { auth } from "config";
 
-import { useFirestore } from "hooks";
+import { useFirestore } from "utils";
 
 import { COLLECTION_USERS } from "consts";
 
