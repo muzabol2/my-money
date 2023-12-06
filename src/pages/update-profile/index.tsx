@@ -10,8 +10,7 @@ import { BelowTextBox, TextFormField } from "components";
 import * as $ from "./styled";
 
 const UpdateProfile = () => {
-  const { status, updateProfileFormik, isGoogleProvider, handleSubmit } =
-    useHelpers();
+  const { status, updateProfileFormik, isGoogleProvider } = useHelpers();
 
   if (isGoogleProvider) {
     return (
@@ -33,7 +32,7 @@ const UpdateProfile = () => {
     <$.StyledWrapper>
       <$.StyledFormContainer>
         <FormikProvider value={updateProfileFormik}>
-          <Form onSubmit={handleSubmit}>
+          <Form onSubmit={updateProfileFormik.handleSubmit}>
             <$.StyledContainer>
               <$.StyledTitle>{PT.CREATE_PROFILE}</$.StyledTitle>
               {UPDATE_PROFILE_FORM_FIELDS.map((field) => (

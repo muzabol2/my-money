@@ -79,11 +79,7 @@ export const useHelpers = (uid: string) => {
     },
   });
 
-  const { handleSubmit, resetForm } = transactionFormik;
+  const { resetForm } = transactionFormik;
 
-  return {
-    transactionFormFields,
-    transactionFormik,
-    handleSubmit,
-  };
+  return { transactionFormFields, transactionFormik };
 };

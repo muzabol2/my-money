@@ -30,12 +30,9 @@ export const useHelpers = () => {
     },
   });
 
-  const { handleSubmit } = updateProfileFormik;
-
   return {
     status,
     updateProfileFormik,
     isGoogleProvider,
-    handleSubmit,
   };
 };

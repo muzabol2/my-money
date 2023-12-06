@@ -13,14 +13,14 @@ import * as $ from "./styled";
 const Categories = () => {
   const {
     consts: { userId, categories, error, categoriesFormik, isSubmitting },
-    funcs: { deleteCategories, handleSubmit },
+    funcs: { deleteCategories },
   } = useHelpers();
 
   return (
     <$.StyledWrapper>
       <$.StyledFormContainer>
         <FormikProvider value={categoriesFormik}>
-          <Form onSubmit={handleSubmit}>
+          <Form onSubmit={categoriesFormik.handleSubmit}>
             <$.StyledContainer>
               <$.StyledTitle>{PT.TRANSACTION_CATEGORIES}</$.StyledTitle>
               <$.StyledList>

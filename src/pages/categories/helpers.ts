@@ -34,13 +34,10 @@ export const useHelpers = () => {
     },
   });
 
-  const { isSubmitting, handleSubmit, resetForm } = categoriesFormik;
+  const { isSubmitting, resetForm } = categoriesFormik;
 
   return {
     consts: { userId, categories, error, categoriesFormik, isSubmitting },
-    funcs: {
-      deleteCategories,
-      handleSubmit,
-    },
+    funcs: { deleteCategories },
   };
 };

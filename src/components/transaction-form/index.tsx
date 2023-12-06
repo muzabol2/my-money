@@ -7,13 +7,12 @@ import { ButtonsTexts as BT } from "models";
 import { StyledButton, StyledContainer, StyledGrid } from "./styled";
 
 const TransactionForm = ({ uid }: { uid: string }) => {
-  const { transactionFormFields, transactionFormik, handleSubmit } =
-    useHelpers(uid);
+  const { transactionFormFields, transactionFormik } = useHelpers(uid);
 
   return (
     <StyledContainer>
       <FormikProvider value={transactionFormik}>
-        <Form onSubmit={handleSubmit}>
+        <Form onSubmit={transactionFormik.handleSubmit}>
           <StyledGrid>
             {transactionFormFields.map((field) => (
               <Field key={field.name} {...field} />

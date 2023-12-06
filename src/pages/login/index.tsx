@@ -1,7 +1,6 @@
 import GoogleButton from "react-google-button";
 import { Field, Form, FormikProvider } from "formik";
 
-import { useGoogleSignIn } from "utils";
 import { useHelpers } from "./helpers";
 
 import { PagesTexts as PT, ButtonsTexts as BT, StatusState as S } from "models";
@@ -12,10 +11,10 @@ import { BelowTextBox, TextFormField } from "components";
 import * as $ from "./styled";
 
 const Login = () => {
-  const { status, loginFormik } = useHelpers();
-  const { googleSignIn, googleStatus } = useGoogleSignIn();
-
-  const { handleSubmit } = loginFormik;
+  const {
+    consts: { style, status, googleStatus, loginFormik },
+    funcs: { googleSignIn },
+  } = useHelpers();
 
   if (status.state === S.PENDING || googleStatus.state === S.PENDING) {
     return <$.StyledWrapper>{PT.LOADING}</$.StyledWrapper>;
@@ -25,7 +24,7 @@ const Login = () => {
     <$.StyledWrapper>
       <$.StyledFormContainer>
         <FormikProvider value={loginFormik}>
-          <Form onSubmit={handleSubmit}>
+          <Form onSubmit={loginFormik.handleSubmit}>
             <$.StyledContainer>
               <$.StyledTitle>{PT.TITLE}</$.StyledTitle>
               <$.StyledSubtitle>{PT.SUBTITLE}</$.StyledSubtitle>
@@ -43,7 +42,7 @@ const Login = () => {
               <$.StyledSubtitle>{PT.OR}</$.StyledSubtitle>
 
               <GoogleButton
-                style={{ width: "220px" }}
+                style={style}
                 label="Log in with Google"
                 onClick={googleSignIn}
               />
