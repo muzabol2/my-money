@@ -41,6 +41,7 @@ const Categories = () => {
                 <Field
                   style={{ width: "150px" }}
                   name="categories"
+                  label="categories"
                   component={TextFormField}
                 />
 

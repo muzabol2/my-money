@@ -39,15 +39,15 @@ export const StyledSuccessMsg = styled.p`
 `;
 
 export const StyledButton = styled.button`
+  margin-top: 25px;
   width: 220px;
-  height: 50px;
+  height: 41px;
   background: none;
   border-radius: 5px;
   border: 2px solid ${eucalyptus};
   color: ${eucalyptus};
   background-color: ${white};
   font-weight: bold;
-  margin-top: 15px;
   cursor: pointer;
 
   &:hover {
