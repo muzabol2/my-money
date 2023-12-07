@@ -12,16 +12,13 @@ import * as $ from "./styled";
 
 const Signup = () => {
   const {
-    consts: {
-      style,
-      isPending,
-      error,
-      verificationMail,
-      googleStatus,
-      signupFormik,
-    },
+    consts: { style, status, verificationMail, googleStatus, signupFormik },
     funcs: { googleSignIn },
   } = useHelpers();
+
+  if (status.state === S.PENDING || googleStatus.state === S.PENDING) {
+    return <$.StyledWrapper>{PT.LOADING}</$.StyledWrapper>;
+  }
 
   return (
     <$.StyledWrapper>
@@ -42,21 +39,16 @@ const Signup = () => {
                   />
                 ))}
 
-                {!isPending ? (
-                  <$.StyledButton type="submit">{BT.SIGN_UP}</$.StyledButton>
-                ) : (
-                  <$.StyledButton disabled>{BT.LOADING}</$.StyledButton>
-                )}
+                <$.StyledButton type="submit">{BT.SIGN_UP}</$.StyledButton>
 
-                {error && <$.StyledErrorMsg>{error}</$.StyledErrorMsg>}
+                {status.state === S.REJECTED && (
+                  <$.StyledErrorMsg>{status.message}</$.StyledErrorMsg>
+                )}
 
                 <$.StyledSubtitle>{PT.OR}</$.StyledSubtitle>
 
-                <GoogleButton
-                  style={style}
-                  onClick={googleSignIn}
-                  disabled={googleStatus.state === S.PENDING}
-                />
+                <GoogleButton style={style} onClick={googleSignIn} />
+
                 {googleStatus.state === S.REJECTED && (
                   <$.StyledErrorMsg>{googleStatus.message}</$.StyledErrorMsg>
                 )}

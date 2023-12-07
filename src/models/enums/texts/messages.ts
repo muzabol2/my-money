@@ -10,6 +10,7 @@ export enum StatusMessages {
   EMPTY = "",
   NO_USER_LOGGED_IN = "No user is currently logged in.",
   PROFILE_UPDATED = "Profile updated!",
+  USER_ACCOUNT_CREATED = "User account created!",
   USER_LOGGED_IN = "User logged in!",
   USER_LOGGED_OUT = "User logged out!",
   WRONG_CREDENTIALS = "Wrong email or password",

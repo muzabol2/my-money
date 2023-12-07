@@ -10,7 +10,7 @@ import {
 import { FormFieldNames as N } from "models";
 
 export const useHelpers = () => {
-  const { signup, isPending, error, verificationMail } = useSignup();
+  const { signup, status, verificationMail } = useSignup();
   const { googleSignIn, googleStatus } = useGoogleSignIn();
 
   const signupFormik = useFormik({
@@ -30,8 +30,7 @@ export const useHelpers = () => {
   return {
     consts: {
       style,
-      isPending,
-      error,
+      status,
       verificationMail,
       googleStatus,
       signupFormik,
