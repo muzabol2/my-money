@@ -1,5 +1,5 @@
 import { AuthType } from "./auth-types";
 import { FirestoreType } from "./firestore-types";
-import { StatusState } from "./status-types";
+import { StatusState, FirebaseStatus } from "./status-types";
 
-export { AuthType, FirestoreType, StatusState };
+export { AuthType, FirestoreType, StatusState, FirebaseStatus };

@@ -1,3 +1,5 @@
+import { FirestoreType as FT } from "../types";
+
 export enum ErrorMessages {
   INVALID_CONTEXT = "useAuthContext must be used within an AuthContextProvider",
   COULD_NOT_FETCH_DATA = "Could not fetch data",
@@ -30,3 +32,11 @@ export enum ValidationMessages {
   AmountValidation = "Only numbers, max 12 digits, dot (.) or comma (,) separator, only 2 decimal places",
   Required = "Required",
 }
+
+export const FirestoreMessages = {
+  [FT.ADDED_USER]: "User added successfully",
+  [FT.ADDED_DOC]: "Document added successfully",
+  [FT.DELETED_DOC]: "Document deleted successfully",
+  [FT.ADDED_CATEGORY]: "Category added successfully",
+  [FT.DELETED_CATEGORY]: "Category removed successfully",
+};

@@ -20,7 +20,7 @@ export const useHelpers = () => {
     QUERY_OPERATOR_EQUAL,
     userId,
   ]);
-  const { updateCategories, deleteCategories } = useFirestore(COLLECTION_USERS);
+  const { addCategory, deleteCategory } = useFirestore(COLLECTION_USERS);
 
   const categoriesFormik = useFormik({
     initialValues: {
@@ -29,7 +29,7 @@ export const useHelpers = () => {
     validate: (values) =>
       validateYupSchemaMultiErrors(values, categoriesSchema),
     onSubmit: ({ categories }) => {
-      updateCategories({ id: userId, category: categories });
+      addCategory({ id: userId, category: categories });
       resetForm();
     },
   });
@@ -38,6 +38,6 @@ export const useHelpers = () => {
 
   return {
     consts: { userId, categories, error, categoriesFormik, isSubmitting },
-    funcs: { deleteCategories },
+    funcs: { deleteCategory },
   };
 };

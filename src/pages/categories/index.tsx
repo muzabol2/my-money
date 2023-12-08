@@ -13,7 +13,7 @@ import * as $ from "./styled";
 const Categories = () => {
   const {
     consts: { userId, categories, error, categoriesFormik, isSubmitting },
-    funcs: { deleteCategories },
+    funcs: { deleteCategory },
   } = useHelpers();
 
   return (
@@ -29,7 +29,7 @@ const Categories = () => {
                     <$.StyledListItemText>{category}</$.StyledListItemText>
                     <$.StyledIconButton
                       type="button"
-                      onClick={() => deleteCategories({ id: userId, category })}
+                      onClick={() => deleteCategory({ id: userId, category })}
                     >
                       <DeleteIcon />
                     </$.StyledIconButton>

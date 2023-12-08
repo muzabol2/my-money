@@ -2,7 +2,12 @@ import { ButtonsTexts } from "./buttons";
 import { Categories } from "./categories";
 import { FormFieldLabels, FormFieldNames, FormFieldTypes } from "./form-fields";
 import { PagesTexts } from "./pages";
-import { ErrorMessages, StatusMessages, ValidationMessages } from "./messages";
+import {
+  ErrorMessages,
+  StatusMessages,
+  ValidationMessages,
+  FirestoreMessages,
+} from "./messages";
 
 export {
   ButtonsTexts,
@@ -14,4 +19,5 @@ export {
   ErrorMessages,
   StatusMessages,
   ValidationMessages,
+  FirestoreMessages,
 };

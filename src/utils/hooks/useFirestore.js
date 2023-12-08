@@ -13,39 +13,21 @@ import {
 
 import { db } from "config";
 
+import { INITIAL_STATE, firestoreReducer } from "reducers";
+
 import {
   FirestoreType as FT,
   ErrorMessages as E,
   Categories as C,
 } from "models";
 
-let initialState = {
-  document: null,
-  isPending: false,
-  error: null,
-  success: null,
-};
-
-const firestoreReducer = (state, action) => {
-  switch (action.type) {
-    case FT.IS_PENDING:
-    case FT.ADDED_DOCUMENT:
-    case FT.DELETED_DOCUMENT:
-    case FT.ERROR:
-      return { ...initialState, ...action.payload };
-
-    default:
-      return state;
-  }
-};
-
 export const useFirestore = (collectionName) => {
-  const [response, dispatch] = useReducer(firestoreReducer, initialState);
+  const [response, dispatch] = useReducer(firestoreReducer, INITIAL_STATE);
   const [isCancelled, setIsCancelled] = useState(false);
 
   const ref = collection(db, collectionName);
-  // only dispatch if not cancel
-  const dispatchIfNotCancelled = (action) => {
+
+  const safeDispatch = (action) => {
     if (!isCancelled) {
       dispatch(action);
     }
@@ -57,38 +39,26 @@ export const useFirestore = (collectionName) => {
       const createdAt = Timestamp.fromDate(new Date());
       const addedDocument = await addDoc(ref, { ...document, createdAt });
 
-      dispatchIfNotCancelled({
-        type: FT.ADDED_DOCUMENT,
-        payload: { document: addedDocument, success: true },
-      });
+      safeDispatch({ type: FT.ADDED_DOC, payload: addedDocument });
     } catch (error) {
-      dispatchIfNotCancelled({
-        type: FT.ERROR,
-        payload: { error: error.message },
-      });
+      safeDispatch({ type: FT.ERROR, payload: error.message });
     }
   };
 
   const deleteDocument = async (id) => {
-    dispatch({ type: FT.IS_PENDING, payload: { isPending: true } });
+    dispatch({ type: FT.IS_PENDING });
     try {
       const ref = doc(db, collectionName, id);
 
       await deleteDoc(ref);
-      dispatchIfNotCancelled({
-        type: FT.DELETED_DOCUMENT,
-        payload: { isPending: false, success: true },
-      });
+      safeDispatch({ type: FT.DELETED_DOC, payload: id });
     } catch (error) {
-      dispatchIfNotCancelled({
-        type: FT.ERROR,
-        payload: { error: E.COULD_NOT_DELETE, isPending: false },
-      });
+      safeDispatch({ type: FT.ERROR, payload: error.message });
     }
   };
 
   const addUser = async (displayName, id) => {
-    dispatch({ type: FT.IS_PENDING, payload: { isPending: true } });
+    dispatch({ type: FT.IS_PENDING });
     const ref = doc(db, collectionName, id);
     const data = {
       displayName,
@@ -98,59 +68,40 @@ export const useFirestore = (collectionName) => {
 
     try {
       await setDoc(ref, data);
-      dispatchIfNotCancelled({
-        type: FT.ADDED_DOCUMENT,
-        payload: { document: data, isPending: false, success: true },
-      });
+      safeDispatch({ type: FT.ADDED_USER, payload: data });
     } catch (error) {
-      dispatchIfNotCancelled({
-        type: FT.ERROR,
-        payload: { error: error.message, isPending: false },
-      });
+      safeDispatch({ type: FT.ERROR, payload: error.message });
     }
   };
 
-  const updateCategories = async ({ id, category }) => {
-    dispatch({ type: FT.IS_PENDING, payload: { isPending: true } });
+  const addCategory = async ({ id, category }) => {
+    dispatch({ type: FT.IS_PENDING });
     try {
       const ref = doc(db, collectionName, id);
       const updatedDocument = await updateDoc(ref, {
         categories: arrayUnion(category),
       });
 
-      dispatchIfNotCancelled({
-        type: FT.ADDED_DOCUMENT,
-        payload: { document: updatedDocument, isPending: false, success: true },
-      });
+      safeDispatch({ type: FT.ADDED_CATEGORY, payload: updatedDocument });
     } catch (error) {
-      dispatchIfNotCancelled({
-        type: FT.ERROR,
-        payload: { error: E.COULD_NOT_UPDATE, isPending: false },
-      });
+      safeDispatch({ type: FT.ERROR, payload: E.COULD_NOT_UPDATE });
     }
   };
 
-  const deleteCategories = async ({ id, category }) => {
-    dispatch({ type: FT.IS_PENDING, payload: { isPending: true } });
+  const deleteCategory = async ({ id, category }) => {
+    dispatch({ type: FT.IS_PENDING });
     try {
       const ref = doc(db, collectionName, id);
       const updatedDocument = await updateDoc(ref, {
         categories: arrayRemove(category),
       });
 
-      dispatchIfNotCancelled({
-        type: FT.ADDED_DOCUMENT,
-        payload: { document: updatedDocument, isPending: false, success: true },
-      });
+      safeDispatch({ type: FT.DELETED_CATEGORY, payload: updatedDocument });
     } catch (error) {
-      dispatchIfNotCancelled({
-        type: FT.ERROR,
-        payload: { error: E.COULD_NOT_DELETE, isPending: false },
-      });
+      safeDispatch({ type: FT.ERROR, payload: error.message });
     }
   };
 
-  //cleanup function
   useEffect(() => {
     () => setIsCancelled(true);
   }, []);
@@ -159,8 +110,8 @@ export const useFirestore = (collectionName) => {
     addDocument,
     deleteDocument,
     addUser,
-    updateCategories,
-    deleteCategories,
+    addCategory,
+    deleteCategory,
     response,
   };
 };
