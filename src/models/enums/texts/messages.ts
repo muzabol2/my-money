@@ -3,19 +3,22 @@ import { FirestoreType as FT } from "../types";
 export enum ErrorMessages {
   INVALID_CONTEXT = "useAuthContext must be used within an AuthContextProvider",
   COULD_NOT_FETCH_DATA = "Could not fetch data",
+  COULD_NOT_ADD_DOC = "Could not add document",
   COULD_NOT_DELETE = "Could not delete",
   COULD_NOT_UPDATE = "Could not update",
+  COULD_NOT_CREATE_USER_ACCOUNT = "Could not create user account",
 }
 
 export enum StatusMessages {
   EMAIL_NOT_VERIFIED = "Email not verified",
   EMPTY = "",
   NO_USER_LOGGED_IN = "No user is currently logged in.",
-  PROFILE_UPDATED = "Profile updated!",
+  PROFILE_UPDATED = "Profile updated",
   USER_ACCOUNT_CREATED = "User account created!",
-  USER_LOGGED_IN = "User logged in!",
-  USER_LOGGED_OUT = "User logged out!",
+  USER_LOGGED_IN = "User logged in",
+  USER_LOGGED_OUT = "User logged out",
   WRONG_CREDENTIALS = "Wrong email or password",
+  COULD_NOT_UPDATE_PROFILE = "Could not update profile",
 }
 
 export enum ValidationMessages {
@@ -34,9 +37,9 @@ export enum ValidationMessages {
 }
 
 export const FirestoreMessages = {
-  [FT.ADDED_USER]: "User added successfully",
-  [FT.ADDED_DOC]: "Document added successfully",
-  [FT.DELETED_DOC]: "Document deleted successfully",
-  [FT.ADDED_CATEGORY]: "Category added successfully",
-  [FT.DELETED_CATEGORY]: "Category removed successfully",
+  [FT.ADDED_USER]: "User added",
+  [FT.ADDED_DOC]: "Document added",
+  [FT.DELETED_DOC]: "Document deleted",
+  [FT.ADDED_CATEGORY]: "Category added",
+  [FT.DELETED_CATEGORY]: "Category removed",
 };

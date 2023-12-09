@@ -1,8 +1,12 @@
-import { Field, Form, FormikProvider } from "formik";
+import { Field, Form, FormikProvider, useFormik } from "formik";
 
-import { useHelpers } from "./helpers";
+import { useSignup, signupSchema, validateYupSchemaMultiErrors } from "utils";
 
-import { ButtonsTexts as BT, PagesTexts as PT, StatusState as S } from "models";
+import {
+  ButtonsTexts as BT,
+  PagesTexts as PT,
+  FormFieldNames as N,
+} from "models";
 import { SIGNUP_BELOW_TEXTS, SIGN_UP_FORM_FIELDS } from "consts";
 
 import { BelowTextBox, GoogleSignIn, TextFormField } from "components";
@@ -10,44 +14,46 @@ import { BelowTextBox, GoogleSignIn, TextFormField } from "components";
 import * as $ from "./styled";
 
 const Signup = () => {
-  const { status, verificationMail, signupFormik } = useHelpers();
+  const { signup, isLoading } = useSignup();
 
-  if (status.state === S.PENDING) {
+  const signupFormik = useFormik({
+    initialValues: {
+      [N.displayName]: "",
+      [N.email]: "",
+      [N.password]: "",
+      [N.passConfirm]: "",
+    },
+    validate: (values) => validateYupSchemaMultiErrors(values, signupSchema),
+    onSubmit: ({ email, password, displayName }) => {
+      signup(email, password, displayName);
+      signupFormik.resetForm();
+    },
+  });
+
+  if (isLoading) {
     return <$.StyledWrapper>{PT.LOADING}</$.StyledWrapper>;
   }
 
   return (
     <$.StyledWrapper>
       <$.StyledFormContainer>
-        {verificationMail ? (
-          <$.StyledSuccessMsg>{PT.PLEASE_CONFIRM}</$.StyledSuccessMsg>
-        ) : (
-          <FormikProvider value={signupFormik}>
-            <Form onSubmit={signupFormik.handleSubmit}>
-              <$.StyledContainer>
-                <$.StyledTitle>{PT.CREATE_PROFILE}</$.StyledTitle>
+        <FormikProvider value={signupFormik}>
+          <Form onSubmit={signupFormik.handleSubmit}>
+            <$.StyledContainer>
+              <$.StyledTitle>{PT.CREATE_PROFILE}</$.StyledTitle>
 
-                {SIGN_UP_FORM_FIELDS.map((field) => (
-                  <Field
-                    key={field.name}
-                    component={TextFormField}
-                    {...field}
-                  />
-                ))}
+              {SIGN_UP_FORM_FIELDS.map((field) => (
+                <Field key={field.name} component={TextFormField} {...field} />
+              ))}
 
-                <$.StyledButton type="submit">{BT.SIGN_UP}</$.StyledButton>
+              <$.StyledButton type="submit">{BT.SIGN_UP}</$.StyledButton>
 
-                {status.state === S.REJECTED && (
-                  <$.StyledErrorMsg>{status.message}</$.StyledErrorMsg>
-                )}
+              <$.StyledSubtitle>{PT.OR}</$.StyledSubtitle>
 
-                <$.StyledSubtitle>{PT.OR}</$.StyledSubtitle>
-
-                <GoogleSignIn />
-              </$.StyledContainer>
-            </Form>
-          </FormikProvider>
-        )}
+              <GoogleSignIn />
+            </$.StyledContainer>
+          </Form>
+        </FormikProvider>
       </$.StyledFormContainer>
 
       <BelowTextBox texts={SIGNUP_BELOW_TEXTS} />

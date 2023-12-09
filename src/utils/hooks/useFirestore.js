@@ -11,14 +11,17 @@ import {
   updateDoc,
 } from "firebase/firestore";
 
+import { getToastMsg } from "utils/toast-msg";
+
 import { db } from "config";
 
 import { INITIAL_STATE, firestoreReducer } from "reducers";
 
 import {
-  FirestoreType as FT,
+  FirestoreType as T,
   ErrorMessages as E,
   Categories as C,
+  FirestoreMessages as FM,
 } from "models";
 
 export const useFirestore = (collectionName) => {
@@ -34,31 +37,35 @@ export const useFirestore = (collectionName) => {
   };
 
   const addDocument = async (document) => {
-    dispatch({ type: FT.IS_PENDING });
+    dispatch({ type: T.IS_PENDING });
     try {
       const createdAt = Timestamp.fromDate(new Date());
       const addedDocument = await addDoc(ref, { ...document, createdAt });
 
-      safeDispatch({ type: FT.ADDED_DOC, payload: addedDocument });
+      safeDispatch({ type: T.ADDED_DOC, payload: addedDocument });
+      getToastMsg(FM[T.ADDED_DOC]);
     } catch (error) {
-      safeDispatch({ type: FT.ERROR, payload: error.message });
+      safeDispatch({ type: T.ERROR, payload: E.COULD_NOT_ADD_DOC });
+      getToastMsg(E.COULD_NOT_ADD_DOC);
     }
   };
 
   const deleteDocument = async (id) => {
-    dispatch({ type: FT.IS_PENDING });
+    dispatch({ type: T.IS_PENDING });
     try {
       const ref = doc(db, collectionName, id);
 
       await deleteDoc(ref);
-      safeDispatch({ type: FT.DELETED_DOC, payload: id });
+      safeDispatch({ type: T.DELETED_DOC, payload: id });
+      getToastMsg(FM[T.DELETED_DOC]);
     } catch (error) {
-      safeDispatch({ type: FT.ERROR, payload: error.message });
+      safeDispatch({ type: T.ERROR, payload: E.COULD_NOT_DELETE });
+      getToastMsg(E.COULD_NOT_DELETE);
     }
   };
 
   const addUser = async (displayName, id) => {
-    dispatch({ type: FT.IS_PENDING });
+    dispatch({ type: T.IS_PENDING });
     const ref = doc(db, collectionName, id);
     const data = {
       displayName,
@@ -68,43 +75,47 @@ export const useFirestore = (collectionName) => {
 
     try {
       await setDoc(ref, data);
-      safeDispatch({ type: FT.ADDED_USER, payload: data });
+      safeDispatch({ type: T.ADDED_USER, payload: data });
+      getToastMsg(FM[T.ADDED_USER]);
     } catch (error) {
-      safeDispatch({ type: FT.ERROR, payload: error.message });
+      safeDispatch({ type: T.ERROR, payload: E.COULD_NOT_CREATE_USER_ACCOUNT });
+      getToastMsg(E.COULD_NOT_CREATE_USER_ACCOUNT);
     }
   };
 
   const addCategory = async ({ id, category }) => {
-    dispatch({ type: FT.IS_PENDING });
+    dispatch({ type: T.IS_PENDING });
     try {
       const ref = doc(db, collectionName, id);
       const updatedDocument = await updateDoc(ref, {
         categories: arrayUnion(category),
       });
 
-      safeDispatch({ type: FT.ADDED_CATEGORY, payload: updatedDocument });
+      safeDispatch({ type: T.ADDED_CATEGORY, payload: updatedDocument });
+      getToastMsg(FM[T.ADDED_CATEGORY]);
     } catch (error) {
-      safeDispatch({ type: FT.ERROR, payload: E.COULD_NOT_UPDATE });
+      safeDispatch({ type: T.ERROR, payload: E.COULD_NOT_UPDATE });
+      getToastMsg(E.COULD_NOT_UPDATE);
     }
   };
 
   const deleteCategory = async ({ id, category }) => {
-    dispatch({ type: FT.IS_PENDING });
+    dispatch({ type: T.IS_PENDING });
     try {
       const ref = doc(db, collectionName, id);
       const updatedDocument = await updateDoc(ref, {
         categories: arrayRemove(category),
       });
 
-      safeDispatch({ type: FT.DELETED_CATEGORY, payload: updatedDocument });
+      safeDispatch({ type: T.DELETED_CATEGORY, payload: updatedDocument });
+      getToastMsg(FM[T.DELETED_CATEGORY]);
     } catch (error) {
-      safeDispatch({ type: FT.ERROR, payload: error.message });
+      safeDispatch({ type: T.ERROR, payload: E.COULD_NOT_DELETE });
+      getToastMsg(E.COULD_NOT_DELETE);
     }
   };
 
-  useEffect(() => {
-    () => setIsCancelled(true);
-  }, []);
+  useEffect(() => () => setIsCancelled(true), []);
 
   return {
     addDocument,

@@ -1,8 +1,12 @@
-import { Field, Form, FormikProvider } from "formik";
+import { Field, Form, FormikProvider, useFormik } from "formik";
 
-import { useHelpers } from "./helpers";
+import { loginSchema, useLogin } from "utils";
 
-import { PagesTexts as PT, ButtonsTexts as BT, StatusState as S } from "models";
+import {
+  PagesTexts as PT,
+  ButtonsTexts as BT,
+  FormFieldNames as N,
+} from "models";
 import { LOGIN_BELOW_TEXTS, LOGIN_FORM_FIELDS } from "consts";
 
 import { BelowTextBox, GoogleSignIn, TextFormField } from "components";
@@ -10,9 +14,18 @@ import { BelowTextBox, GoogleSignIn, TextFormField } from "components";
 import * as $ from "./styled";
 
 const Login = () => {
-  const { status, loginFormik } = useHelpers();
+  const { login, isLoading } = useLogin();
 
-  if (status.state === S.PENDING) {
+  const loginFormik = useFormik({
+    initialValues: {
+      [N.email]: "",
+      [N.password]: "",
+    },
+    validationSchema: loginSchema,
+    onSubmit: ({ email, password }) => login(email, password),
+  });
+
+  if (isLoading) {
     return <$.StyledWrapper>{PT.LOADING}</$.StyledWrapper>;
   }
 
@@ -30,10 +43,6 @@ const Login = () => {
               ))}
 
               <$.StyledButton type="submit">{BT.LOGIN}</$.StyledButton>
-
-              {status.state === S.REJECTED && (
-                <$.StyledErrorMsg>{status.message}</$.StyledErrorMsg>
-              )}
 
               <$.StyledSubtitle>{PT.OR}</$.StyledSubtitle>
 

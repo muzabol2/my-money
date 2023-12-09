@@ -9,25 +9,21 @@ import {
 import { auth } from "config";
 
 import { useFirestore } from "utils";
+import { getToastMsg } from "utils/toast-msg";
 
-import {
-  AuthProcessStatus,
-  StatusState as S,
-  StatusMessages as M,
-} from "models";
-import { COLLECTION_USERS, INITIAL_AUTH_STATUS } from "consts";
+import { StatusMessages as M, PagesTexts as PT } from "models";
+import { COLLECTION_USERS } from "consts";
 
 export const useSignup = () => {
   const { addUser } = useFirestore(COLLECTION_USERS);
-  const [status, setStatus] = useState<AuthProcessStatus>(INITIAL_AUTH_STATUS);
-  const [verificationMail, setVerificationMail] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const signup = async (
     email: string,
     password: string,
     displayName: string
   ) => {
-    setStatus({ state: S.PENDING, message: M.EMPTY });
+    setIsLoading(true);
 
     try {
       await createUserWithEmailAndPassword(auth, email, password);
@@ -39,13 +35,14 @@ export const useSignup = () => {
 
         sendEmailVerification(auth.currentUser);
       }
-      setVerificationMail(true);
       signOut(auth);
-      setStatus({ state: S.FULFILLED, message: M.USER_ACCOUNT_CREATED });
+      getToastMsg(PT.PLEASE_CONFIRM);
     } catch (error) {
-      setStatus({ state: S.REJECTED, message: M.WRONG_CREDENTIALS });
+      getToastMsg(M.WRONG_CREDENTIALS);
+    } finally {
+      setIsLoading(false);
     }
   };
 
-  return { signup, status, verificationMail };
+  return { signup, isLoading };
 };

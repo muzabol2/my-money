@@ -12,7 +12,7 @@ import { FormFieldNames as N } from "models";
 
 export const useHelpers = () => {
   const { user } = useAuthContext();
-  const { updateUserProfile, status } = useUpdateProfile();
+  const { updateUserProfile, isLoading } = useUpdateProfile();
 
   const isGoogleProvider = user?.providerData[0].providerId === "google.com";
 
@@ -31,7 +31,7 @@ export const useHelpers = () => {
   });
 
   return {
-    status,
+    isLoading,
     updateProfileFormik,
     isGoogleProvider,
   };

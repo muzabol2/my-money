@@ -1,22 +1,32 @@
-import { useEffect, useState } from "react";
+import { useState, useEffect, useRef } from "react";
 
 import { AuthService } from "services";
 
+import { getToastMsg } from "utils/toast-msg";
+
 import { useAuthContext } from "context";
 
-import {
-  AuthProcessStatus,
-  AuthType as AT,
-  StatusState as S,
-  StatusMessages as M,
-} from "models";
-import { INITIAL_AUTH_STATUS } from "consts";
+import { AuthType as AT, AuthAction, StatusMessages as M } from "models";
 
 export const useUpdateProfile = () => {
   const { user, dispatch } = useAuthContext();
-  const [, setIsCancelled] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const isCancelled = useRef(false);
 
-  const [status, setStatus] = useState<AuthProcessStatus>(INITIAL_AUTH_STATUS);
+  useEffect(
+    () => () => {
+      isCancelled.current = true;
+    },
+    []
+  );
+
+  const safeDispatch = (action: AuthAction) => {
+    if (!isCancelled.current) dispatch(action);
+  };
+
+  const safeSetIsLoading = (loading: boolean) => {
+    if (!isCancelled.current) setIsLoading(loading);
+  };
 
   const updateUserProfile = async ({
     displayName,
@@ -29,10 +39,10 @@ export const useUpdateProfile = () => {
   }) => {
     const promises: Promise<void>[] = [];
 
-    setStatus({ state: S.PENDING, message: M.EMPTY });
+    safeSetIsLoading(true);
 
     if (!user) {
-      setStatus({ state: S.REJECTED, message: M.NO_USER_LOGGED_IN });
+      getToastMsg(M.NO_USER_LOGGED_IN);
 
       return;
     }
@@ -50,17 +60,14 @@ export const useUpdateProfile = () => {
 
       await Promise.all(promises);
 
-      setStatus({ state: S.FULFILLED, message: M.PROFILE_UPDATED });
-
-      dispatch({ type: AT.LOGIN, payload: user });
+      safeDispatch({ type: AT.LOGIN, payload: user });
+      getToastMsg(M.PROFILE_UPDATED);
     } catch (error) {
-      const message = (error as Error).message;
-
-      setStatus({ state: S.REJECTED, message });
+      getToastMsg(M.COULD_NOT_UPDATE_PROFILE);
+    } finally {
+      safeSetIsLoading(false);
     }
   };
 
-  useEffect(() => () => setIsCancelled(true), []);
-
-  return { updateUserProfile, status };
+  return { updateUserProfile, isLoading };
 };

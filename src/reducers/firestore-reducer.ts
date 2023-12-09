@@ -1,12 +1,6 @@
 import { DocumentData } from "firebase/firestore";
 
-import { getToastMsg } from "utils/toast-msg";
-
-import {
-  FirestoreType as T,
-  FirebaseStatus as S,
-  FirestoreMessages,
-} from "models";
+import { FirestoreType as T, FirebaseStatus as S } from "models";
 
 interface State {
   status: S;
@@ -34,12 +28,8 @@ export const firestoreReducer = (state: State, action: Action) => {
     case T.DELETED_DOC:
     case T.ADDED_CATEGORY:
     case T.DELETED_CATEGORY:
-      getToastMsg(FirestoreMessages[action.type]);
-
       return { ...state, status: S.SUCCESS, document: action.payload };
     case T.ERROR:
-      getToastMsg(action.payload?.message);
-
       return { ...state, status: S.ERROR, errorMsg: action.payload };
 
     default:

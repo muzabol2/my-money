@@ -75,11 +75,9 @@ export const useHelpers = (uid: string) => {
         transactionCategory,
         amount: toNumber(amount),
       });
-      resetForm();
+      transactionFormik.resetForm();
     },
   });
-
-  const { resetForm } = transactionFormik;
 
   return { transactionFormFields, transactionFormik };
 };
