@@ -1,3 +1,4 @@
+import React from "react";
 import { Link } from "react-router-dom";
 
 import { StyledBelowContainer, StyledText } from "./styled";
@@ -22,4 +23,4 @@ const BelowTextBox = ({ texts }: Props) => (
   </StyledBelowContainer>
 );
 
-export default BelowTextBox;
+export default React.memo(BelowTextBox);

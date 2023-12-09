@@ -1,53 +1,74 @@
-import { Field, Form, FormikProvider } from "formik";
+import React from "react";
+import { useFormik } from "formik";
 
-import { useHelpers } from "./helpers";
+import { useAuthContext } from "context";
 
-import { PagesTexts as PT, ButtonsTexts as BT } from "models";
+import {
+  updateSchema,
+  useUpdateProfile,
+  validateYupSchemaMultiErrors,
+} from "utils";
+
+import {
+  PagesTexts as PT,
+  ButtonsTexts as BT,
+  FormFieldNames as N,
+  UpdateValues,
+} from "models";
 import { GO_BACK_BELOW_TEXTS, UPDATE_PROFILE_FORM_FIELDS } from "consts";
 
-import { BelowTextBox, TextFormField } from "components";
+import { FormikForm, BelowTextBox } from "components";
 
-import * as $ from "./styled";
+import { StyledFormContainer, StyledTitle, StyledWrapper } from "./styled";
 
 const UpdateProfile = () => {
-  const { isLoading, updateProfileFormik, isGoogleProvider } = useHelpers();
+  const { user } = useAuthContext();
+  const { updateUserProfile, isLoading } = useUpdateProfile();
+
+  const isGoogleProvider = user?.providerData[0].providerId === "google.com";
+
+  const updateProfileFormik = useFormik({
+    initialValues: {
+      [N.displayName]: user?.displayName ?? "",
+      [N.email]: user?.email ?? "",
+      [N.password]: "",
+      [N.newPass]: "",
+      [N.newPassConfirm]: "",
+    },
+    validate: (values) => validateYupSchemaMultiErrors(values, updateSchema),
+    onSubmit: ({ displayName, newPass, password }) => {
+      updateUserProfile({ displayName: `${displayName}`, newPass, password });
+    },
+  });
 
   if (isGoogleProvider) {
     return (
-      <$.StyledWrapper>
-        <$.StyledFormContainer>
-          {PT.CAN_NOT_CHANGE_PROFILE}
-        </$.StyledFormContainer>
+      <StyledWrapper>
+        <StyledFormContainer>{PT.CAN_NOT_CHANGE_PROFILE}</StyledFormContainer>
 
         <BelowTextBox texts={GO_BACK_BELOW_TEXTS} />
-      </$.StyledWrapper>
+      </StyledWrapper>
     );
   }
 
   if (isLoading) {
-    return <$.StyledWrapper>{PT.LOADING}</$.StyledWrapper>;
+    return <StyledWrapper>{PT.LOADING}</StyledWrapper>;
   }
 
   return (
-    <$.StyledWrapper>
-      <$.StyledFormContainer>
-        <FormikProvider value={updateProfileFormik}>
-          <Form onSubmit={updateProfileFormik.handleSubmit}>
-            <$.StyledContainer>
-              <$.StyledTitle>{PT.CREATE_PROFILE}</$.StyledTitle>
+    <StyledWrapper>
+      <StyledFormContainer>
+        <StyledTitle>{PT.CREATE_PROFILE}</StyledTitle>
 
-              {UPDATE_PROFILE_FORM_FIELDS.map((field) => (
-                <Field key={field.name} component={TextFormField} {...field} />
-              ))}
-
-              <$.StyledButton type="submit">{BT.UPDATE}</$.StyledButton>
-            </$.StyledContainer>
-          </Form>
-        </FormikProvider>
-      </$.StyledFormContainer>
+        <FormikForm<UpdateValues>
+          formik={updateProfileFormik}
+          formFields={UPDATE_PROFILE_FORM_FIELDS}
+          buttonText={BT.UPDATE}
+        />
+      </StyledFormContainer>
 
       <BelowTextBox texts={GO_BACK_BELOW_TEXTS} />
-    </$.StyledWrapper>
+    </StyledWrapper>
   );
 };
 

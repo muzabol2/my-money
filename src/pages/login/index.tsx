@@ -1,4 +1,4 @@
-import { Field, Form, FormikProvider, useFormik } from "formik";
+import { useFormik } from "formik";
 
 import { loginSchema, useLogin } from "utils";
 
@@ -6,12 +6,18 @@ import {
   PagesTexts as PT,
   ButtonsTexts as BT,
   FormFieldNames as N,
+  LoginValues,
 } from "models";
 import { LOGIN_BELOW_TEXTS, LOGIN_FORM_FIELDS } from "consts";
 
-import { BelowTextBox, GoogleSignIn, TextFormField } from "components";
+import { FormikForm, BelowTextBox, GoogleSignIn } from "components";
 
-import * as $ from "./styled";
+import {
+  StyledFormContainer,
+  StyledText,
+  StyledTitle,
+  StyledWrapper,
+} from "./styled";
 
 const Login = () => {
   const { login, isLoading } = useLogin();
@@ -26,34 +32,27 @@ const Login = () => {
   });
 
   if (isLoading) {
-    return <$.StyledWrapper>{PT.LOADING}</$.StyledWrapper>;
+    return <StyledWrapper>{PT.LOADING}</StyledWrapper>;
   }
 
   return (
-    <$.StyledWrapper>
-      <$.StyledFormContainer>
-        <FormikProvider value={loginFormik}>
-          <Form onSubmit={loginFormik.handleSubmit}>
-            <$.StyledContainer>
-              <$.StyledTitle>{PT.TITLE}</$.StyledTitle>
-              <$.StyledSubtitle>{PT.SUBTITLE}</$.StyledSubtitle>
+    <StyledWrapper>
+      <StyledFormContainer>
+        <StyledTitle>{PT.TITLE}</StyledTitle>
+        <StyledText>{PT.SUBTITLE}</StyledText>
 
-              {LOGIN_FORM_FIELDS.map((field) => (
-                <Field key={field.name} component={TextFormField} {...field} />
-              ))}
+        <FormikForm<LoginValues>
+          formik={loginFormik}
+          formFields={LOGIN_FORM_FIELDS}
+          buttonText={BT.LOGIN}
+        />
 
-              <$.StyledButton type="submit">{BT.LOGIN}</$.StyledButton>
+        <StyledText>{PT.OR}</StyledText>
 
-              <$.StyledSubtitle>{PT.OR}</$.StyledSubtitle>
-
-              <GoogleSignIn />
-            </$.StyledContainer>
-          </Form>
-        </FormikProvider>
-      </$.StyledFormContainer>
-
+        <GoogleSignIn />
+      </StyledFormContainer>
       <BelowTextBox texts={LOGIN_BELOW_TEXTS} />
-    </$.StyledWrapper>
+    </StyledWrapper>
   );
 };
 

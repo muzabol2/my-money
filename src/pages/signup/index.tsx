@@ -1,4 +1,4 @@
-import { Field, Form, FormikProvider, useFormik } from "formik";
+import { useFormik } from "formik";
 
 import { useSignup, signupSchema, validateYupSchemaMultiErrors } from "utils";
 
@@ -6,12 +6,18 @@ import {
   ButtonsTexts as BT,
   PagesTexts as PT,
   FormFieldNames as N,
+  SignupValues,
 } from "models";
 import { SIGNUP_BELOW_TEXTS, SIGN_UP_FORM_FIELDS } from "consts";
 
-import { BelowTextBox, GoogleSignIn, TextFormField } from "components";
+import { FormikForm, BelowTextBox, GoogleSignIn } from "components";
 
-import * as $ from "./styled";
+import {
+  StyledWrapper,
+  StyledFormContainer,
+  StyledTitle,
+  StyledText,
+} from "./styled";
 
 const Signup = () => {
   const { signup, isLoading } = useSignup();
@@ -31,33 +37,26 @@ const Signup = () => {
   });
 
   if (isLoading) {
-    return <$.StyledWrapper>{PT.LOADING}</$.StyledWrapper>;
+    return <StyledWrapper>{PT.LOADING}</StyledWrapper>;
   }
 
   return (
-    <$.StyledWrapper>
-      <$.StyledFormContainer>
-        <FormikProvider value={signupFormik}>
-          <Form onSubmit={signupFormik.handleSubmit}>
-            <$.StyledContainer>
-              <$.StyledTitle>{PT.CREATE_PROFILE}</$.StyledTitle>
+    <StyledWrapper>
+      <StyledFormContainer>
+        <StyledTitle>{PT.CREATE_PROFILE}</StyledTitle>
 
-              {SIGN_UP_FORM_FIELDS.map((field) => (
-                <Field key={field.name} component={TextFormField} {...field} />
-              ))}
+        <FormikForm<SignupValues>
+          formik={signupFormik}
+          formFields={SIGN_UP_FORM_FIELDS}
+          buttonText={BT.SIGN_UP}
+        />
 
-              <$.StyledButton type="submit">{BT.SIGN_UP}</$.StyledButton>
+        <StyledText>{PT.OR}</StyledText>
 
-              <$.StyledSubtitle>{PT.OR}</$.StyledSubtitle>
-
-              <GoogleSignIn />
-            </$.StyledContainer>
-          </Form>
-        </FormikProvider>
-      </$.StyledFormContainer>
-
+        <GoogleSignIn />
+      </StyledFormContainer>
       <BelowTextBox texts={SIGNUP_BELOW_TEXTS} />
-    </$.StyledWrapper>
+    </StyledWrapper>
   );
 };
 
