@@ -1,4 +1,3 @@
-import GoogleButton from "react-google-button";
 import { Field, Form, FormikProvider } from "formik";
 
 import { useHelpers } from "./helpers";
@@ -6,17 +5,14 @@ import { useHelpers } from "./helpers";
 import { ButtonsTexts as BT, PagesTexts as PT, StatusState as S } from "models";
 import { SIGNUP_BELOW_TEXTS, SIGN_UP_FORM_FIELDS } from "consts";
 
-import { BelowTextBox, TextFormField } from "components";
+import { BelowTextBox, GoogleSignIn, TextFormField } from "components";
 
 import * as $ from "./styled";
 
 const Signup = () => {
-  const {
-    consts: { style, status, verificationMail, googleStatus, signupFormik },
-    funcs: { googleSignIn },
-  } = useHelpers();
+  const { status, verificationMail, signupFormik } = useHelpers();
 
-  if (status.state === S.PENDING || googleStatus.state === S.PENDING) {
+  if (status.state === S.PENDING) {
     return <$.StyledWrapper>{PT.LOADING}</$.StyledWrapper>;
   }
 
@@ -47,11 +43,7 @@ const Signup = () => {
 
                 <$.StyledSubtitle>{PT.OR}</$.StyledSubtitle>
 
-                <GoogleButton style={style} onClick={googleSignIn} />
-
-                {googleStatus.state === S.REJECTED && (
-                  <$.StyledErrorMsg>{googleStatus.message}</$.StyledErrorMsg>
-                )}
+                <GoogleSignIn />
               </$.StyledContainer>
             </Form>
           </FormikProvider>
