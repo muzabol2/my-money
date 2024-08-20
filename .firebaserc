@@ -4,5 +4,8 @@
     "prod": "whereismymoneysir"
   },
   "targets": {},
-  "etags": {}
+  "etags": {},
+  "firebase": {
+    "config": "src/config/firebase/firebase.json"
+  }
 }
