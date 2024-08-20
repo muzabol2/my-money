@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { alto, concrete } from "styles";
 
-export const StyledContainer = styled.div`
+const StyledContainer = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr 1.5fr 0.5fr;
   gap: 15px 1px;
@@ -11,24 +11,24 @@ export const StyledContainer = styled.div`
   padding: 10px;
 `;
 
-export const StyledName = styled.span``;
+const StyledName = styled.span``;
 
-export const StyledDate = styled.span`
+const StyledDate = styled.span`
   margin-left: 20px;
 `;
 
-export const StyledCategory = styled.span`
+const StyledCategory = styled.span`
   margin-left: 20px;
 `;
 
-export const StyledAmount = styled.span`
+const StyledAmount = styled.span`
   display: flex;
   justify-content: flex-end;
   margin-right: 40px;
   font-weight: bold;
 `;
 
-export const StyledDeleteButton = styled.button`
+const StyledDeleteButton = styled.button`
   position: absolute;
   top: 0;
   right: 0;
@@ -40,3 +40,5 @@ export const StyledDeleteButton = styled.button`
   font-size: 0.9em;
   cursor: pointer;
 `;
+
+export { StyledContainer, StyledName, StyledDate, StyledCategory, StyledAmount, StyledDeleteButton };

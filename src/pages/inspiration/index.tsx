@@ -13,4 +13,4 @@ const Inspiration = () => (
   </StyledContainer>
 );
 
-export default Inspiration;
+export { Inspiration };

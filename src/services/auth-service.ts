@@ -22,8 +22,4 @@ const updatePassword = (user: User, newPassword: string) => firebaseUpdatePasswo
 
 const updateDisplayName = (user: User, displayName: string) => updateProfile(user, { displayName });
 
-export default {
-  reauthenticate,
-  updatePassword,
-  updateDisplayName,
-};
+export { reauthenticate, updatePassword, updateDisplayName };

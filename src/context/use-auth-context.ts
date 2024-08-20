@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { ErrorMessages as E } from "models";
 import { AuthContext } from "./auth-context";
 
-export const useAuthContext = () => {
+const useAuthContext = () => {
   const context = useContext(AuthContext);
 
   if (!context) {
@@ -11,3 +11,5 @@ export const useAuthContext = () => {
 
   return context;
 };
+
+export { useAuthContext };

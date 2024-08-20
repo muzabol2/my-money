@@ -5,4 +5,4 @@ const DeleteIcon = () => (
   </svg>
 );
 
-export default DeleteIcon;
+export { DeleteIcon };

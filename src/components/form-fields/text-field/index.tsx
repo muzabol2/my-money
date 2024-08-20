@@ -6,7 +6,7 @@ interface TextFieldProps extends FieldProps {
   type?: string;
 }
 
-export const TextFormField = ({ field, form, label, type }: TextFieldProps) => {
+const TextFormField = ({ field, form, label, type }: TextFieldProps) => {
   const errorText = getIn(form.touched, field.name) && getIn(form.errors, field.name);
 
   return (
@@ -17,3 +17,5 @@ export const TextFormField = ({ field, form, label, type }: TextFieldProps) => {
     </StyledFormControl>
   );
 };
+
+export { TextFormField };

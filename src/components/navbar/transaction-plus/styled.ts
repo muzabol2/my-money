@@ -1,9 +1,9 @@
 import styled from "styled-components";
 import { alabaster, eucalyptus, white } from "styles";
 
-export const StyledContainer = styled.div``;
+const StyledContainer = styled.div``;
 
-export const StyledMenuButton = styled.button`
+const StyledMenuButton = styled.button`
   background: none;
   border: 2px solid ${eucalyptus};
   color: ${eucalyptus};
@@ -18,7 +18,7 @@ export const StyledMenuButton = styled.button`
   }
 `;
 
-export const StyledMenu = styled.div`
+const StyledMenu = styled.div`
   position: absolute;
   right: 10px;
   background-color: ${alabaster};
@@ -26,3 +26,5 @@ export const StyledMenu = styled.div`
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 10;
 `;
+
+export { StyledContainer, StyledMenuButton, StyledMenu };

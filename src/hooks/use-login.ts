@@ -5,7 +5,7 @@ import { useAuthContext } from "context";
 import { AuthType as AT, StatusMessages as M } from "models";
 import { getToastMsg } from "utils/toast-msg";
 
-export const useLogin = () => {
+const useLogin = () => {
   const { dispatch } = useAuthContext();
   const [isLoading, setIsLoading] = useState(false);
 
@@ -32,3 +32,5 @@ export const useLogin = () => {
 
   return { login, isLoading };
 };
+
+export { useLogin };

@@ -6,7 +6,7 @@ import { useAuthContext } from "context";
 import { AuthType as AT, AuthProcessStatus, StatusMessages as M, StatusState as S } from "models";
 import { useFirestore } from "./useFirestore";
 
-export const useGoogleSignIn = () => {
+const useGoogleSignIn = () => {
   const { dispatch } = useAuthContext();
   const { addUser } = useFirestore(COLLECTION_USERS);
 
@@ -39,3 +39,5 @@ export const useGoogleSignIn = () => {
 
   return { googleSignIn, googleStatus: status };
 };
+
+export { useGoogleSignIn };

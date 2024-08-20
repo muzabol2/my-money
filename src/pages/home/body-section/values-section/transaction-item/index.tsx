@@ -16,4 +16,4 @@ const TransactionItem = ({ t, deleteDocument }: Props) => (
   </$.TransactionItem>
 );
 
-export default TransactionItem;
+export { TransactionItem };

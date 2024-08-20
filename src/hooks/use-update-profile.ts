@@ -4,7 +4,7 @@ import { AuthType as AT, AuthAction, StatusMessages as M } from "models";
 import { AuthService } from "services";
 import { getToastMsg } from "utils/toast-msg";
 
-export const useUpdateProfile = () => {
+const useUpdateProfile = () => {
   const { user, dispatch } = useAuthContext();
   const [isLoading, setIsLoading] = useState(false);
   const isCancelled = useRef(false);
@@ -67,3 +67,5 @@ export const useUpdateProfile = () => {
 
   return { updateUserProfile, isLoading };
 };
+
+export { useUpdateProfile };

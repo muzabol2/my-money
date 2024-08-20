@@ -1,24 +1,24 @@
 import { FormFieldLabels, FormFieldNames, FormFieldTypes, FormFieldNames as N } from "../enums";
 
-export interface FormField {
+interface FormField {
   label: FormFieldLabels;
   name: FormFieldNames;
   type: FormFieldTypes;
 }
 
-export interface LoginValues {
+interface LoginValues {
   [N.email]: string;
   [N.password]: string;
 }
 
-export interface SignupValues {
+interface SignupValues {
   [N.displayName]: string;
   [N.email]: string;
   [N.password]: string;
   [N.passConfirm]: string;
 }
 
-export interface UpdateValues {
+interface UpdateValues {
   [N.displayName]: string;
   [N.email]: string;
   [N.password]: string;
@@ -26,4 +26,6 @@ export interface UpdateValues {
   [N.newPassConfirm]: string;
 }
 
-export type FormikFormValues = LoginValues | SignupValues | UpdateValues;
+type FormikFormValues = LoginValues | SignupValues | UpdateValues;
+
+export type { FormField, LoginValues, SignupValues, UpdateValues, FormikFormValues };

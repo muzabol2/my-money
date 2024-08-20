@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useAuthContext } from "context";
 import { PlusIcon } from "icons";
 import { StyledContainer, StyledMenuButton } from "./styled";
-import TransactionForm from "../../transaction-form";
+import { TransactionForm } from "../../transaction-form";
 
 const TransactionPlus = () => {
   const { user } = useAuthContext();
@@ -21,4 +21,4 @@ const TransactionPlus = () => {
   );
 };
 
-export default TransactionPlus;
+export { TransactionPlus };

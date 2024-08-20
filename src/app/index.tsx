@@ -1,5 +1,5 @@
 import { BrowserRouter, Redirect, Route, Switch } from "react-router-dom";
-import ToastHandler from "app/toast-handler";
+import { ToastHandler } from "app/toast-handler";
 import { withNavbar } from "components";
 import { useAuthContext } from "context";
 import { RedirectPaths as P } from "models";
@@ -51,4 +51,4 @@ const App = () => {
   );
 };
 
-export default App;
+export { App };

@@ -6,7 +6,7 @@ import { StatusMessages as M, PagesTexts as PT } from "models";
 import { getToastMsg } from "utils/toast-msg";
 import { useFirestore } from "./useFirestore";
 
-export const useSignup = () => {
+const useSignup = () => {
   const { addUser } = useFirestore(COLLECTION_USERS);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -34,3 +34,5 @@ export const useSignup = () => {
 
   return { signup, isLoading };
 };
+
+export { useSignup };

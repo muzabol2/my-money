@@ -6,7 +6,7 @@ interface DateFieldProps extends FieldProps {
   label: string;
 }
 
-export const DatePickerField = ({ label, field, form }: DateFieldProps) => {
+const DatePickerField = ({ label, field, form }: DateFieldProps) => {
   const updatedField = { ...field, value: formatInputDate(field?.value) };
 
   const errorText = getIn(form.touched, field.name) && getIn(form.errors, field.name);
@@ -19,3 +19,5 @@ export const DatePickerField = ({ label, field, form }: DateFieldProps) => {
     </StyledFormControl>
   );
 };
+
+export { DatePickerField };

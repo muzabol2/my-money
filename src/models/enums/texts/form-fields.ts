@@ -1,4 +1,4 @@
-export enum FormFieldLabels {
+enum FormFieldLabels {
   displayName = "Display Name",
   email = "Email",
   password = "Password",
@@ -11,7 +11,7 @@ export enum FormFieldLabels {
   transactionCategory = "Category",
 }
 
-export enum FormFieldNames {
+enum FormFieldNames {
   displayName = "displayName",
   email = "email",
   password = "password",
@@ -24,10 +24,12 @@ export enum FormFieldNames {
   transactionCategory = "transactionCategory",
 }
 
-export enum FormFieldTypes {
+enum FormFieldTypes {
   text = "text",
   password = "password",
   //   Date = "date",
   //   Number = "number",
   //   Select = "select",
 }
+
+export { FormFieldLabels, FormFieldNames, FormFieldTypes };

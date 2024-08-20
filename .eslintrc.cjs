@@ -39,12 +39,11 @@ module.exports = {
     "@typescript-eslint/explicit-module-boundary-types": "off",
     "@typescript-eslint/no-duplicate-enum-values": "off",
     "@typescript-eslint/no-unused-vars": ["error", { argsIgnorePattern: "^_", varsIgnorePattern: "^_" }],
-    // "@typescript-eslint/consistent-type-imports": "error",
     "import/no-cycle": ["error"],
-    // "import/no-default-export": "error",
-    // "import/prefer-default-export": "off",
-    // "import/group-exports": "error",
-    // "import/exports-last": "error",
+    "import/no-default-export": "error",
+    "import/prefer-default-export": "off",
+    "import/group-exports": "error",
+    "import/exports-last": "error",
   },
   settings: {
     react: {

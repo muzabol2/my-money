@@ -1,2 +1,4 @@
-export const QUERY_OPERATOR_EQUAL = "==";
-export const QUERY_OPERATOR_DESC = "desc";
+const QUERY_OPERATOR_EQUAL = "==";
+const QUERY_OPERATOR_DESC = "desc";
+
+export { QUERY_OPERATOR_EQUAL, QUERY_OPERATOR_DESC };

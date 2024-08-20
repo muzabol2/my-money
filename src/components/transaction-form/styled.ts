@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { alabaster, eucalyptus, white } from "styles";
 
-export const StyledContainer = styled.div`
+const StyledContainer = styled.div`
   display: grid;
   position: absolute;
   top: 50px;
@@ -16,7 +16,7 @@ export const StyledContainer = styled.div`
   padding: 16px;
 `;
 
-export const StyledGrid = styled.div`
+const StyledGrid = styled.div`
   display: flex;
   flex-direction: column;
   gap: 5px;
@@ -24,7 +24,7 @@ export const StyledGrid = styled.div`
   align-items: center;
 `;
 
-export const StyledButton = styled.button`
+const StyledButton = styled.button`
   width: 220px;
   height: 50px;
   background: none;
@@ -39,3 +39,5 @@ export const StyledButton = styled.button`
     background-color: ${eucalyptus};
   }
 `;
+
+export { StyledContainer, StyledGrid, StyledButton };

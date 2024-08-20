@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { alto, boulder, concrete, eucalyptus } from "styles";
 
-export const TransactionItem = styled.li`
+const TransactionItem = styled.li`
   display: grid;
   grid-template-columns: 1fr 1fr 1.5fr 0.5fr;
   flex-flow: row wrap;
@@ -17,20 +17,20 @@ export const TransactionItem = styled.li`
   color: ${boulder};
 `;
 
-export const StyledName = styled.span``;
+const StyledName = styled.span``;
 
-export const StyledDate = styled.span``;
+const StyledDate = styled.span``;
 
-export const StyledCategory = styled.span``;
+const StyledCategory = styled.span``;
 
-export const StyledAmount = styled.span`
+const StyledAmount = styled.span`
   display: flex;
   justify-content: flex-end;
   margin-right: 40px;
   font-weight: bold;
 `;
 
-export const StyledDeleteButton = styled.button`
+const StyledDeleteButton = styled.button`
   position: absolute;
   top: 0;
   right: 0;
@@ -42,3 +42,5 @@ export const StyledDeleteButton = styled.button`
   font-size: 0.9em;
   cursor: pointer;
 `;
+
+export { TransactionItem, StyledName, StyledDate, StyledCategory, StyledAmount, StyledDeleteButton };

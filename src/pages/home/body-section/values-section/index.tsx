@@ -1,7 +1,7 @@
 import { COLLECTION_TRANSACTIONS } from "consts";
 import { useFirestore } from "hooks";
 import { Transaction } from "models";
-import TransactionItem from "./transaction-item";
+import { TransactionItem } from "./transaction-item";
 
 interface Props {
   transactions: Transaction[];
@@ -19,4 +19,4 @@ const ValuesSection = ({ transactions }: Props) => {
   );
 };
 
-export default ValuesSection;
+export { ValuesSection };

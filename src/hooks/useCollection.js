@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import { db } from "config";
 import { ErrorMessages as E } from "models";
 
-export const useCollection = (collectionName, _query, _orderBy) => {
+const useCollection = (collectionName, _query, _orderBy) => {
   const [documents, setDocuments] = useState([]);
   const [error, setError] = useState(null);
 
@@ -46,3 +46,5 @@ export const useCollection = (collectionName, _query, _orderBy) => {
 
   return { documents, categories, error };
 };
+
+export { useCollection };

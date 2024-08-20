@@ -43,4 +43,4 @@ const MenuProfilePopup = () => {
   );
 };
 
-export default MenuProfilePopup;
+export { MenuProfilePopup };

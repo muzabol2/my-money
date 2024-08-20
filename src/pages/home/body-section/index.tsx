@@ -1,7 +1,7 @@
 import { Transaction } from "models";
 import { StyledContainer, StyledItems, StyledSumHeader } from "./styled";
-import TitleSection from "./title-section";
-import ValuesSection from "./values-section";
+import { TitleSection } from "./title-section";
+import { ValuesSection } from "./values-section";
 
 interface Props {
   transactions: Transaction[];
@@ -21,4 +21,4 @@ const BodySection = ({ transactions }: Props) => {
   );
 };
 
-export default BodySection;
+export { BodySection };

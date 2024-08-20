@@ -12,13 +12,13 @@ interface Action {
   payload?: DocumentData;
 }
 
-export const INITIAL_STATE: State = {
+const INITIAL_STATE: State = {
   document: null,
   status: S.IDLE,
   errorMsg: null,
 };
 
-export const firestoreReducer = (state: State, action: Action) => {
+const firestoreReducer = (state: State, action: Action) => {
   switch (action.type) {
     case T.IS_PENDING:
       return { ...state, status: S.PENDING };
@@ -35,3 +35,5 @@ export const firestoreReducer = (state: State, action: Action) => {
       return state;
   }
 };
+
+export { INITIAL_STATE, firestoreReducer };

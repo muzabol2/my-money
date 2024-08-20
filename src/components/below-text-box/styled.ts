@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { alto } from "styles";
 
-export const StyledBelowContainer = styled.div`
+const StyledBelowContainer = styled.div`
   display: flex;
   flex-direction: column;
   max-width: 350px;
@@ -11,6 +11,8 @@ export const StyledBelowContainer = styled.div`
   box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.05);
 `;
 
-export const StyledText = styled.p`
+const StyledText = styled.p`
   text-align: center;
 `;
+
+export { StyledBelowContainer, StyledText };

@@ -5,7 +5,7 @@ import { FormFieldLabels as L, FormFieldNames as N, FormFieldTypes as T } from "
 import { formatDate, generateCurrentDate, toNumber, transactionSchema } from "utils";
 import { DatePickerField, SelectFormField, TextFormField } from "../form-fields";
 
-export const useHelpers = (uid: string) => {
+const useHelpers = (uid: string) => {
   const { addDocument } = useFirestore(COLLECTION_TRANSACTIONS);
   const { categories } = useCollection(COLLECTION_USERS, [FIELD_UID, QUERY_OPERATOR_EQUAL, uid]);
 
@@ -54,3 +54,5 @@ export const useHelpers = (uid: string) => {
 
   return { transactionFormFields, transactionFormik };
 };
+
+export { useHelpers };

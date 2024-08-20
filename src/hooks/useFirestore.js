@@ -15,7 +15,7 @@ import { Categories as C, ErrorMessages as E, FirestoreMessages as FM, Firestore
 import { INITIAL_STATE, firestoreReducer } from "reducers";
 import { getToastMsg } from "utils/toast-msg";
 
-export const useFirestore = (collectionName) => {
+const useFirestore = (collectionName) => {
   const [response, dispatch] = useReducer(firestoreReducer, INITIAL_STATE);
   const [isCancelled, setIsCancelled] = useState(false);
 
@@ -117,3 +117,5 @@ export const useFirestore = (collectionName) => {
     response,
   };
 };
+
+export { useFirestore };

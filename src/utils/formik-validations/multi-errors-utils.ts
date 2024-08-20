@@ -36,7 +36,7 @@ const yupToFormErrors = <T>(
   return errors;
 };
 
-export const validateYupSchemaMultiErrors = async <T extends FormikValues>(values: T, schema: AnySchema) => {
+const validateYupSchemaMultiErrors = async <T extends FormikValues>(values: T, schema: AnySchema) => {
   try {
     await validateYupSchema(values, schema);
 
@@ -48,3 +48,5 @@ export const validateYupSchemaMultiErrors = async <T extends FormikValues>(value
     throw error;
   }
 };
+
+export { validateYupSchemaMultiErrors };

@@ -1,13 +1,15 @@
-export enum StatusState {
+enum StatusState {
   IDLE = "idle",
   PENDING = "pending",
   FULFILLED = "fulfilled",
   REJECTED = "rejected",
 }
 
-export enum FirebaseStatus {
+enum FirebaseStatus {
   IDLE = "idle",
   PENDING = "pending",
   SUCCESS = "success",
   ERROR = "error",
 }
+
+export { StatusState, FirebaseStatus };

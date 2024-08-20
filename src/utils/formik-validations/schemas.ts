@@ -21,7 +21,7 @@ const chars = {
   categoriesMax: 20,
 };
 
-export const signupSchema = yup.object().shape({
+const signupSchema = yup.object().shape({
   [N.displayName]: yup
     .string()
     .min(chars.displayMin, VM.DisplayNameMinMaxChar)
@@ -42,12 +42,12 @@ export const signupSchema = yup.object().shape({
     .required(VM.Required),
 });
 
-export const loginSchema = yup.object().shape({
+const loginSchema = yup.object().shape({
   [N.email]: yup.string().email(VM.EmailInvalid).required(VM.Required),
   [N.password]: yup.string().required(VM.Required),
 });
 
-export const updateSchema = yup.object().shape({
+const updateSchema = yup.object().shape({
   [N.password]: yup.string().required(VM.Required),
   [N.displayName]: yup
     .string()
@@ -64,7 +64,7 @@ export const updateSchema = yup.object().shape({
   [N.newPassConfirm]: yup.string().oneOf([yup.ref(N.newPass), null], VM.PassMustMatch),
 });
 
-export const categoriesSchema = yup.object({
+const categoriesSchema = yup.object({
   categories: yup
     .string()
     .min(chars.categoriesMin, VM.DisplayNameMinMaxChar)
@@ -72,7 +72,7 @@ export const categoriesSchema = yup.object({
     .matches(regExp.onlyLettersNumbersSpaces, VM.OnlyLettersNumbersSpaces)
     .required(VM.Required),
 });
-export const transactionSchema = yup.object({
+const transactionSchema = yup.object({
   transactionName: yup
     .string()
     .min(chars.transactionMin, VM.TransactionNameMinMaxChar)
@@ -83,3 +83,5 @@ export const transactionSchema = yup.object({
   transactionDate: yup.string().required(VM.Required).nullable(),
   transactionCategory: yup.string().required(VM.Required),
 });
+
+export { signupSchema, loginSchema, updateSchema, categoriesSchema, transactionSchema };

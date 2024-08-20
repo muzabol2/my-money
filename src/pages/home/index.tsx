@@ -7,7 +7,7 @@ import {
 } from "consts";
 import { useAuthContext } from "context";
 import { useCollection } from "hooks";
-import BodySection from "./body-section";
+import { BodySection } from "./body-section";
 import { StyledContainer, StyledErrorMsg } from "./styled";
 
 const Home = () => {
@@ -26,4 +26,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export { Home };

@@ -1,2 +1,4 @@
-export const COLLECTION_TRANSACTIONS = "transactions";
-export const COLLECTION_USERS = "users";
+const COLLECTION_TRANSACTIONS = "transactions";
+const COLLECTION_USERS = "users";
+
+export { COLLECTION_TRANSACTIONS, COLLECTION_USERS };

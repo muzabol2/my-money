@@ -4,4 +4,4 @@ const PlusIcon = () => (
   </svg>
 );
 
-export default PlusIcon;
+export { PlusIcon };

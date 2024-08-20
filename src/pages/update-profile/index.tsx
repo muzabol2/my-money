@@ -58,4 +58,4 @@ const UpdateProfile = () => {
   );
 };
 
-export default UpdateProfile;
+export { UpdateProfile };

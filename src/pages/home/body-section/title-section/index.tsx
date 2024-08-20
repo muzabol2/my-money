@@ -9,4 +9,4 @@ const TitleSection = () => (
   </$.StyledContainer>
 );
 
-export default TitleSection;
+export { TitleSection };

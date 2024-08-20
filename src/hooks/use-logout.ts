@@ -5,7 +5,7 @@ import { INITIAL_AUTH_STATUS } from "consts";
 import { useAuthContext } from "context";
 import { AuthType as AT, AuthAction, AuthProcessStatus, StatusMessages as M, StatusState as S } from "models";
 
-export const useLogout = () => {
+const useLogout = () => {
   const { dispatch } = useAuthContext();
   const [status, setStatus] = useState<AuthProcessStatus>(INITIAL_AUTH_STATUS);
   const isCancelled = useRef(false);
@@ -40,3 +40,5 @@ export const useLogout = () => {
 
   return { logout, status };
 };
+
+export { useLogout };

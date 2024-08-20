@@ -5,4 +5,4 @@ const AccountCircleIcon = () => (
   </svg>
 );
 
-export default AccountCircleIcon;
+export { AccountCircleIcon };

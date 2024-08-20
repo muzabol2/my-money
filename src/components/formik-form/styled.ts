@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { eucalyptus, white } from "styles";
 
-export const StyledContainer = styled.div`
+const StyledContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -9,7 +9,7 @@ export const StyledContainer = styled.div`
   gap: 8px;
 `;
 
-export const StyledButton = styled.button`
+const StyledButton = styled.button`
   margin-top: 25px;
   width: 220px;
   height: 41px;
@@ -26,3 +26,5 @@ export const StyledButton = styled.button`
     background-color: ${eucalyptus};
   }
 `;
+
+export { StyledContainer, StyledButton };

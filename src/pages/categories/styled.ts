@@ -1,9 +1,9 @@
 import styled from "styled-components";
 import { alto, eucalyptus, white } from "styles";
 
-export const StyledWrapper = styled.div``;
+const StyledWrapper = styled.div``;
 
-export const StyledFormContainer = styled.div`
+const StyledFormContainer = styled.div`
   max-width: 250px;
   margin: 30px auto 5px;
   padding: 40px 50px 30px;
@@ -11,7 +11,7 @@ export const StyledFormContainer = styled.div`
   box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.05);
 `;
 
-export const StyledContainer = styled.div`
+const StyledContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -19,47 +19,47 @@ export const StyledContainer = styled.div`
   gap: 8px;
 `;
 
-export const StyledTitle = styled.h3`
+const StyledTitle = styled.h3`
   text-align: center;
   font-family: Arial;
   font-weight: bold;
   margin-bottom: 8px;
 `;
 
-export const StyledErrorMsg = styled.p`
+const StyledErrorMsg = styled.p`
   margin-top: 20px;
   color: red;
 `;
 
-export const StyledList = styled.ul`
+const StyledList = styled.ul`
   display: grid;
   list-style: none;
   padding: 0;
 `;
 
-export const StyledListItem = styled.li`
+const StyledListItem = styled.li`
   display: grid;
   grid-template-columns: 1fr 30px;
   justify-content: space-between;
   padding: 10px;
 `;
 
-export const StyledIconButton = styled.button`
+const StyledIconButton = styled.button`
   background: none;
   border: none;
   cursor: pointer;
 `;
 
-export const StyledListItemText = styled.span``;
+const StyledListItemText = styled.span``;
 
-export const StyledInputContainer = styled.div`
+const StyledInputContainer = styled.div`
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
   gap: 1rem;
 `;
 
-export const StyledButton = styled.button`
+const StyledButton = styled.button`
   width: 60px;
   height: 56px;
   background: none;
@@ -74,3 +74,17 @@ export const StyledButton = styled.button`
     background-color: ${eucalyptus};
   }
 `;
+
+export {
+  StyledWrapper,
+  StyledFormContainer,
+  StyledContainer,
+  StyledTitle,
+  StyledErrorMsg,
+  StyledList,
+  StyledListItem,
+  StyledIconButton,
+  StyledListItemText,
+  StyledInputContainer,
+  StyledButton,
+};

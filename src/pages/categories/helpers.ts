@@ -4,7 +4,7 @@ import { useAuthContext } from "context";
 import { useCollection, useFirestore } from "hooks";
 import { categoriesSchema, validateYupSchemaMultiErrors } from "utils";
 
-export const useHelpers = () => {
+const useHelpers = () => {
   const { user } = useAuthContext();
   const userId = user?.uid;
 
@@ -29,3 +29,5 @@ export const useHelpers = () => {
     funcs: { deleteCategory },
   };
 };
+
+export { useHelpers };

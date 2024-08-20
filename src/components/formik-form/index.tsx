@@ -23,4 +23,4 @@ const FormikForm = <T extends FormikFormValues>({ formik, formFields, buttonText
   </FormikProvider>
 );
 
-export default FormikForm;
+export { FormikForm };

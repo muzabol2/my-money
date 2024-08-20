@@ -1,9 +1,9 @@
 import styled from "styled-components";
 import { alabaster, alto, black, eucalyptus, ottoman, white } from "styles";
 
-export const StyledContainer = styled.div``;
+const StyledContainer = styled.div``;
 
-export const StyledMenuButton = styled.button`
+const StyledMenuButton = styled.button`
   background: none;
   border: 2px solid ${eucalyptus};
   color: ${eucalyptus};
@@ -18,7 +18,7 @@ export const StyledMenuButton = styled.button`
   }
 `;
 
-export const StyledMenu = styled.div`
+const StyledMenu = styled.div`
   position: absolute;
   top: 50px;
   right: 10px;
@@ -28,7 +28,7 @@ export const StyledMenu = styled.div`
   z-index: 10;
 `;
 
-export const StyledMenuItem = styled.div`
+const StyledMenuItem = styled.div`
   color: ${black};
   padding: 12px 16px;
   text-decoration: none;
@@ -41,7 +41,7 @@ export const StyledMenuItem = styled.div`
   }
 `;
 
-export const StyledDisplayName = styled.div`
+const StyledDisplayName = styled.div`
   color: ${black};
   padding: 12px 16px;
   text-decoration: none;
@@ -49,4 +49,6 @@ export const StyledDisplayName = styled.div`
   font-weight: bold;
 `;
 
-export const StyledDivider = styled.hr``;
+const StyledDivider = styled.hr``;
+
+export { StyledContainer, StyledMenuButton, StyledMenu, StyledMenuItem, StyledDisplayName, StyledDivider };

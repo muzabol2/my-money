@@ -7,7 +7,7 @@ interface SelectFieldProps extends FieldProps {
   label: string;
 }
 
-export const SelectFormField = ({ field, form, options, label }: SelectFieldProps) => {
+const SelectFormField = ({ field, form, options, label }: SelectFieldProps) => {
   const errorText = getIn(form.touched, field.name) && getIn(form.errors, field.name);
 
   return (
@@ -25,3 +25,5 @@ export const SelectFormField = ({ field, form, options, label }: SelectFieldProp
     </StyledFormControl>
   );
 };
+
+export { SelectFormField };

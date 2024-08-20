@@ -1,5 +1,5 @@
 import React, { ComponentType, ReactElement } from "react";
-import Navbar from "./navbar";
+import { Navbar } from "./navbar";
 
 const withNavbar = <P extends object>(WrappedComponent: ComponentType<P>): React.FC<P> => {
   const WrappedWithNavbar: React.FC<P> = (props): ReactElement => (
@@ -12,4 +12,4 @@ const withNavbar = <P extends object>(WrappedComponent: ComponentType<P>): React
   return WrappedWithNavbar;
 };
 
-export default withNavbar;
+export { withNavbar };

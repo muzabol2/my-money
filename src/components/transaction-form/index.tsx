@@ -23,4 +23,4 @@ const TransactionForm = ({ uid }: { uid: string }) => {
   );
 };
 
-export default TransactionForm;
+export { TransactionForm };

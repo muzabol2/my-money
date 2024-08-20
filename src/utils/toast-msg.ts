@@ -1,3 +1,5 @@
 import { toast } from "react-toastify";
 
-export const getToastMsg = (msg: string) => toast.info(msg);
+const getToastMsg = (msg: string) => toast.info(msg);
+
+export { getToastMsg };

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const StyledContainer = styled.div`
+const StyledContainer = styled.div`
   display: flex;
   flex-direction: column;
 
@@ -9,10 +9,12 @@ export const StyledContainer = styled.div`
   }
 `;
 
-export const StyledSumHeader = styled.h2`
+const StyledSumHeader = styled.h2`
   display: flex;
   justify-content: space-between;
   align-items: center;
 `;
 
-export const StyledItems = styled.ul``;
+const StyledItems = styled.ul``;
+
+export { StyledContainer, StyledSumHeader, StyledItems };

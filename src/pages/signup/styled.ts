@@ -1,9 +1,9 @@
 import styled from "styled-components";
 import { alto } from "styles";
 
-export const StyledWrapper = styled.div``;
+const StyledWrapper = styled.div``;
 
-export const StyledFormContainer = styled.div`
+const StyledFormContainer = styled.div`
   display: grid;
   align-items: center;
   max-width: 250px;
@@ -13,15 +13,17 @@ export const StyledFormContainer = styled.div`
   box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.05);
 `;
 
-export const StyledTitle = styled.h3`
+const StyledTitle = styled.h3`
   text-align: center;
   font-family: Arial;
   font-weight: bold;
   margin-bottom: 8px;
 `;
 
-export const StyledText = styled.h4`
+const StyledText = styled.h4`
   text-align: center;
   font-family: Monospace;
   margin: 8px;
 `;
+
+export { StyledWrapper, StyledFormContainer, StyledTitle, StyledText };

@@ -1,3 +1,3 @@
-export { default as AccountCircleIcon } from "./account-circle-icon";
-export { default as DeleteIcon } from "./delete-icon";
-export { default as PlusIcon } from "./plus-icon";
+export { AccountCircleIcon } from "./account-circle-icon";
+export { DeleteIcon } from "./delete-icon";
+export { PlusIcon } from "./plus-icon";

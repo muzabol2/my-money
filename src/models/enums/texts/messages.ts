@@ -1,6 +1,6 @@
 import { FirestoreType as FT } from "../types";
 
-export enum ErrorMessages {
+enum ErrorMessages {
   INVALID_CONTEXT = "useAuthContext must be used within an AuthContextProvider",
   COULD_NOT_FETCH_DATA = "Could not fetch data",
   COULD_NOT_ADD_DOC = "Could not add document",
@@ -9,7 +9,7 @@ export enum ErrorMessages {
   COULD_NOT_CREATE_USER_ACCOUNT = "Could not create user account",
 }
 
-export enum StatusMessages {
+enum StatusMessages {
   EMAIL_NOT_VERIFIED = "Email not verified",
   EMPTY = "",
   NO_USER_LOGGED_IN = "No user is currently logged in.",
@@ -21,7 +21,7 @@ export enum StatusMessages {
   COULD_NOT_UPDATE_PROFILE = "Could not update profile",
 }
 
-export enum ValidationMessages {
+enum ValidationMessages {
   DisplayNameMinMaxChar = "5-20 characters",
   EmailInvalid = "Please enter a valid email",
   PassMinChar = "\u2022 5 characters or more \n",
@@ -36,10 +36,12 @@ export enum ValidationMessages {
   Required = "Required",
 }
 
-export const FirestoreMessages = {
+const FirestoreMessages = {
   [FT.ADDED_USER]: "User added",
   [FT.ADDED_DOC]: "Document added",
   [FT.DELETED_DOC]: "Document deleted",
   [FT.ADDED_CATEGORY]: "Category added",
   [FT.DELETED_CATEGORY]: "Category removed",
 };
+
+export { ErrorMessages, StatusMessages, ValidationMessages, FirestoreMessages };

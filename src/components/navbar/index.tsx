@@ -1,7 +1,7 @@
 import { RedirectPaths as P, PagesTexts as T } from "models";
-import MenuProfilePopup from "./menu-profile-popup";
+import { MenuProfilePopup } from "./menu-profile-popup";
 import { StyledLink, StyledNavbar, StyledOptions, StyledToolbar, StyledTypography } from "./styled";
-import TransactionPlus from "./transaction-plus";
+import { TransactionPlus } from "./transaction-plus";
 
 const Navbar = () => (
   <StyledNavbar>
@@ -17,4 +17,4 @@ const Navbar = () => (
   </StyledNavbar>
 );
 
-export default Navbar;
+export { Navbar };

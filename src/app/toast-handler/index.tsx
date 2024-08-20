@@ -1,7 +1,7 @@
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-const Toast = (): JSX.Element => (
+const ToastHandler = (): JSX.Element => (
   <ToastContainer
     position="bottom-right"
     autoClose={3000}
@@ -15,4 +15,4 @@ const Toast = (): JSX.Element => (
   />
 );
 
-export default Toast;
+export { ToastHandler };

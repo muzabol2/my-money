@@ -24,4 +24,4 @@ const BelowTextBox = ({ texts }: Props) => (
 
 const MemoizedBelowTextBox = React.memo(BelowTextBox);
 
-export default MemoizedBelowTextBox;
+export { MemoizedBelowTextBox };
