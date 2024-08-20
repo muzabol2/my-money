@@ -1,9 +1,8 @@
-import React from "react";
 import { useFormik } from "formik";
 
 import { useAuthContext } from "context";
 
-import { updateSchema, useUpdateProfile, validateYupSchemaMultiErrors } from "utils";
+import { updateSchema, validateYupSchemaMultiErrors } from "utils";
 
 import { PagesTexts as PT, ButtonsTexts as BT, FormFieldNames as N, UpdateValues } from "models";
 import { GO_BACK_BELOW_TEXTS, UPDATE_PROFILE_FORM_FIELDS } from "consts";
@@ -11,6 +10,7 @@ import { GO_BACK_BELOW_TEXTS, UPDATE_PROFILE_FORM_FIELDS } from "consts";
 import { FormikForm, BelowTextBox } from "components";
 
 import { StyledFormContainer, StyledTitle, StyledWrapper } from "./styled";
+import { useUpdateProfile } from "hooks";
 
 const UpdateProfile = () => {
   const { user } = useAuthContext();

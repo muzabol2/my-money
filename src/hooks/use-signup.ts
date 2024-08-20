@@ -3,11 +3,11 @@ import { createUserWithEmailAndPassword, sendEmailVerification, signOut, updateP
 
 import { auth } from "config";
 
-import { useFirestore } from "utils";
 import { getToastMsg } from "utils/toast-msg";
 
 import { StatusMessages as M, PagesTexts as PT } from "models";
 import { COLLECTION_USERS } from "consts";
+import { useFirestore } from "./useFirestore";
 
 export const useSignup = () => {
   const { addUser } = useFirestore(COLLECTION_USERS);

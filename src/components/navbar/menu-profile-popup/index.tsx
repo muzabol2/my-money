@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 import { useAuthContext } from "context";
 
-import { useLogout } from "utils";
+import { useLogout } from "hooks";
 
 import { PagesTexts as T, RedirectPaths as P } from "models";
 

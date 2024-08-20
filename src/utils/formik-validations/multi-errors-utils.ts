@@ -1,7 +1,6 @@
 import { getIn, setIn, validateYupSchema, FormikValues, FormikErrors } from "formik";
 import { AnySchema, ValidationError } from "yup";
 
-// https://github.com/jaredpalmer/formik/pull/1573
 const yupToFormErrors = <T>(
   yupError: ValidationError,
   validationSchemaOptions: { showMultipleFieldErrors?: boolean },
@@ -26,8 +25,7 @@ const yupToFormErrors = <T>(
     yupError.inner.map((err) => {
       const errorPath = err.path ?? "";
 
-      // eslint-disable-next-line no-prototype-builtins
-      if (!errors.hasOwnProperty(errorPath)) {
+      if (!Object.prototype.hasOwnProperty.call(errors, errorPath)) {
         errors = setIn(errors, errorPath, err.message);
       }
 

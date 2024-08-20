@@ -1,6 +1,6 @@
 import { useFormik } from "formik";
 
-import { useSignup, signupSchema, validateYupSchemaMultiErrors } from "utils";
+import { signupSchema, validateYupSchemaMultiErrors } from "utils";
 
 import { ButtonsTexts as BT, PagesTexts as PT, FormFieldNames as N, SignupValues } from "models";
 import { SIGNUP_BELOW_TEXTS, SIGN_UP_FORM_FIELDS } from "consts";
@@ -8,6 +8,7 @@ import { SIGNUP_BELOW_TEXTS, SIGN_UP_FORM_FIELDS } from "consts";
 import { FormikForm, BelowTextBox, GoogleSignIn } from "components";
 
 import { StyledWrapper, StyledFormContainer, StyledTitle, StyledText } from "./styled";
+import { useSignup } from "hooks";
 
 const Signup = () => {
   const { signup, isLoading } = useSignup();

@@ -2,7 +2,7 @@ import { Field, Form, FormikProvider, FormikProps } from "formik";
 
 import { FormField, FormikFormValues } from "models";
 
-import { TextFormField } from "components";
+import { TextFormField } from "../form-fields";
 
 import { StyledContainer, StyledButton } from "./styled";
 

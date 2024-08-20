@@ -2,10 +2,10 @@ import { useEffect, useState } from "react";
 
 import { useAuthContext } from "context";
 
-import { TransactionForm } from "components";
 import { PlusIcon } from "icons";
 
 import { StyledContainer, StyledMenuButton } from "./styled";
+import TransactionForm from "../../transaction-form";
 
 const TransactionPlus = () => {
   const { user } = useAuthContext();

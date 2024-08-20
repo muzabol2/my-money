@@ -44,9 +44,8 @@ Main:
 
 Libraries:
 
-- material-ui
 - react-router-dom
-- forimik
+- formik
 - dayjs
 - firebase
 - and many others
@@ -76,6 +75,6 @@ Hopefully, in the near future, me and my friends will be able to actually use th
 
 Credits for:
 
-- [Shaun Pelling](https://github.com/iamshaunjp) - for an idea for this project and his excelent firebase tutorial. Thank you.
-- [Ben Awad](https://github.com/benawad) - for his intuitive Formik FormFields.Thank you.
+- [Shaun Pelling](https://github.com/iamshaunjp) - for an idea for this project and his excellent firebase tutorial. Thank you.
+- [Ben Awad](https://github.com/benawad) - for his intuitive Formik FormFields. Thank you.
 - And, of course as always - StackOverflow... :)

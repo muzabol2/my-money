@@ -1,6 +1,5 @@
 import { User } from "firebase/auth";
-
-import { AuthType as T, StatusState } from "models";
+import { AuthType, StatusState } from "../enums";
 
 export type AuthUser = User;
 
@@ -10,9 +9,9 @@ export interface AuthProcessStatus {
 }
 
 export type AuthAction =
-  | { type: T.LOGIN; payload: AuthUser }
-  | { type: T.LOGOUT }
-  | { type: T.AUTH_IS_READY; payload: AuthUser | null };
+  | { type: AuthType.LOGIN; payload: AuthUser }
+  | { type: AuthType.LOGOUT }
+  | { type: AuthType.AUTH_IS_READY; payload: AuthUser | null };
 
 export type AuthContextType = {
   user: AuthUser | null;

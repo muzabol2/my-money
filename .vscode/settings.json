@@ -4,13 +4,5 @@
   "editor.codeActionsOnSave": {
     "source.fixAll": "explicit"
   },
-  "cSpell.words": [
-    "autofix",
-    "consts",
-    "firestore",
-    "linebreak",
-    "Signup",
-    "toastify",
-    "unsub"
-  ]
+  "cSpell.words": ["autofix", "consts", "firestore", "linebreak", "Signup", "toastify", "unsub"]
 }

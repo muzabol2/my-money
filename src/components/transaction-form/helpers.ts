@@ -1,11 +1,12 @@
 import { useFormik } from "formik";
 
-import { formatDate, generateCurrentDate, toNumber, transactionSchema, useCollection, useFirestore } from "utils";
+import { formatDate, generateCurrentDate, toNumber, transactionSchema } from "utils";
 
 import { FormFieldLabels as L, FormFieldNames as N, FormFieldTypes as T } from "models";
 import { COLLECTION_TRANSACTIONS, COLLECTION_USERS, FIELD_UID, QUERY_OPERATOR_EQUAL } from "consts";
 
-import { TextFormField, DatePickerField, SelectFormField } from "components";
+import { DatePickerField, SelectFormField, TextFormField } from "../form-fields";
+import { useCollection, useFirestore } from "hooks";
 
 export const useHelpers = (uid: string) => {
   const { addDocument } = useFirestore(COLLECTION_TRANSACTIONS);

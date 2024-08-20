@@ -7,6 +7,7 @@
       "config": ["./config"],
       "consts": ["./consts"],
       "context": ["./context"],
+      "hooks": ["./hooks"],
       "icons": ["./icons"],
       "models": ["./models"],
       "pages": ["./pages"],
