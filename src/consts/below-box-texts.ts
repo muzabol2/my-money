@@ -23,6 +23,4 @@ export const INSPIRATION_BELOW_TEXTS = [
   { name: PT.DO_NOT_HAVE_ACCOUNT, link: P.SIGNUP, linkName: PT.SIGNUP },
 ];
 
-export const GO_BACK_BELOW_TEXTS = [
-  { name: PT.EMPTY, link: P.HOME, linkName: PT.BACK },
-];
+export const GO_BACK_BELOW_TEXTS = [{ name: PT.EMPTY, link: P.HOME, linkName: PT.BACK }];

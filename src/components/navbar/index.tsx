@@ -3,13 +3,7 @@ import { PagesTexts as T, RedirectPaths as P } from "models";
 import TransactionPlus from "./transaction-plus";
 import MenuProfilePopup from "./menu-profile-popup";
 
-import {
-  StyledNavbar,
-  StyledToolbar,
-  StyledLink,
-  StyledTypography,
-  StyledOptions,
-} from "./styled";
+import { StyledNavbar, StyledToolbar, StyledLink, StyledTypography, StyledOptions } from "./styled";
 
 const Navbar = () => (
   <StyledNavbar>

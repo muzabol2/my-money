@@ -12,11 +12,7 @@ type Props<T extends FormikFormValues> = {
   buttonText: string;
 };
 
-const FormikForm = <T extends FormikFormValues>({
-  formik,
-  formFields,
-  buttonText,
-}: Props<T>) => (
+const FormikForm = <T extends FormikFormValues>({ formik, formFields, buttonText }: Props<T>) => (
   <FormikProvider value={formik}>
     <Form onSubmit={formik.handleSubmit}>
       <StyledContainer>

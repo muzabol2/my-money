@@ -62,9 +62,7 @@ export const updateSchema = yup.object().shape({
     .matches(regExp.passUppercase, VM.PassUppercase)
     .matches(regExp.passSpecialChar, VM.PassSpecialChar)
     .matches(regExp.passNumber, VM.PassNumber),
-  [N.newPassConfirm]: yup
-    .string()
-    .oneOf([yup.ref(N.newPass), null], VM.PassMustMatch),
+  [N.newPassConfirm]: yup.string().oneOf([yup.ref(N.newPass), null], VM.PassMustMatch),
 });
 
 export const categoriesSchema = yup.object({
@@ -82,10 +80,7 @@ export const transactionSchema = yup.object({
     .max(chars.transactionMax, VM.TransactionNameMinMaxChar)
     .matches(regExp.transactionName, VM.OnlyLettersNumbersSpaces)
     .required(VM.Required),
-  amount: yup
-    .string()
-    .matches(regExp.amount, VM.AmountValidation)
-    .required(VM.Required),
+  amount: yup.string().matches(regExp.amount, VM.AmountValidation).required(VM.Required),
   transactionDate: yup.string().required(VM.Required).nullable(),
   transactionCategory: yup.string().required(VM.Required),
 });

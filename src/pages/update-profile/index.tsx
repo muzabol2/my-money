@@ -3,18 +3,9 @@ import { useFormik } from "formik";
 
 import { useAuthContext } from "context";
 
-import {
-  updateSchema,
-  useUpdateProfile,
-  validateYupSchemaMultiErrors,
-} from "utils";
+import { updateSchema, useUpdateProfile, validateYupSchemaMultiErrors } from "utils";
 
-import {
-  PagesTexts as PT,
-  ButtonsTexts as BT,
-  FormFieldNames as N,
-  UpdateValues,
-} from "models";
+import { PagesTexts as PT, ButtonsTexts as BT, FormFieldNames as N, UpdateValues } from "models";
 import { GO_BACK_BELOW_TEXTS, UPDATE_PROFILE_FORM_FIELDS } from "consts";
 
 import { FormikForm, BelowTextBox } from "components";

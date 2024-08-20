@@ -17,9 +17,7 @@ const GoogleSignIn = () => {
     <StyledWrapper>
       <GoogleButton style={{ width: "220px" }} onClick={googleSignIn} />
 
-      {googleStatus.state === S.REJECTED && (
-        <StyledErrorMsg>{googleStatus.message}</StyledErrorMsg>
-      )}
+      {googleStatus.state === S.REJECTED && <StyledErrorMsg>{googleStatus.message}</StyledErrorMsg>}
     </StyledWrapper>
   );
 };

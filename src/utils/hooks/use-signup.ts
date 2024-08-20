@@ -1,10 +1,5 @@
 import { useState } from "react";
-import {
-  createUserWithEmailAndPassword,
-  sendEmailVerification,
-  signOut,
-  updateProfile,
-} from "firebase/auth";
+import { createUserWithEmailAndPassword, sendEmailVerification, signOut, updateProfile } from "firebase/auth";
 
 import { auth } from "config";
 
@@ -18,11 +13,7 @@ export const useSignup = () => {
   const { addUser } = useFirestore(COLLECTION_USERS);
   const [isLoading, setIsLoading] = useState(false);
 
-  const signup = async (
-    email: string,
-    password: string,
-    displayName: string
-  ) => {
+  const signup = async (email: string, password: string, displayName: string) => {
     setIsLoading(true);
 
     try {

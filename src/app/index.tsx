@@ -6,14 +6,7 @@ import { useAuthContext } from "context";
 
 import { RedirectPaths as P } from "models";
 
-import {
-  Categories,
-  Home,
-  Inspiration,
-  Login,
-  Signup,
-  UpdateProfile,
-} from "pages";
+import { Categories, Home, Inspiration, Login, Signup, UpdateProfile } from "pages";
 import { withNavbar } from "components";
 
 import { StyledContainer } from "./styled";

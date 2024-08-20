@@ -1,8 +1,4 @@
-import {
-  FormFieldLabels as L,
-  FormFieldNames as N,
-  FormFieldTypes as T,
-} from "models";
+import { FormFieldLabels as L, FormFieldNames as N, FormFieldTypes as T } from "models";
 
 export const SIGN_UP_FORM_FIELDS = [
   { label: L.displayName, name: N.displayName, type: T.text },

@@ -27,10 +27,7 @@ const Categories = () => {
                 {categories?.map((category: string) => (
                   <$.StyledListItem key={category}>
                     <$.StyledListItemText>{category}</$.StyledListItemText>
-                    <$.StyledIconButton
-                      type="button"
-                      onClick={() => deleteCategory({ id: userId, category })}
-                    >
+                    <$.StyledIconButton type="button" onClick={() => deleteCategory({ id: userId, category })}>
                       <DeleteIcon />
                     </$.StyledIconButton>
                   </$.StyledListItem>
@@ -38,12 +35,7 @@ const Categories = () => {
               </$.StyledList>
 
               <$.StyledInputContainer>
-                <Field
-                  style={{ width: "150px" }}
-                  name="categories"
-                  label="categories"
-                  component={TextFormField}
-                />
+                <Field style={{ width: "150px" }} name="categories" label="categories" component={TextFormField} />
 
                 <$.StyledButton type="submit" disabled={isSubmitting}>
                   {BT.ADD}

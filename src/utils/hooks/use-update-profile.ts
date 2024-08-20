@@ -17,7 +17,7 @@ export const useUpdateProfile = () => {
     () => () => {
       isCancelled.current = true;
     },
-    []
+    [],
   );
 
   const safeDispatch = (action: AuthAction) => {

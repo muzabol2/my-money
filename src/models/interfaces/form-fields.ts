@@ -1,9 +1,4 @@
-import {
-  FormFieldLabels,
-  FormFieldNames,
-  FormFieldTypes,
-  FormFieldNames as N,
-} from "models";
+import { FormFieldLabels, FormFieldNames, FormFieldTypes, FormFieldNames as N } from "models";
 
 export interface FormField {
   label: FormFieldLabels;

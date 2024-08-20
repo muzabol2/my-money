@@ -1,9 +1,5 @@
 import { useEffect, useState } from "react";
-import {
-  GoogleAuthProvider,
-  getAdditionalUserInfo,
-  signInWithPopup,
-} from "firebase/auth";
+import { GoogleAuthProvider, getAdditionalUserInfo, signInWithPopup } from "firebase/auth";
 
 import { auth } from "config";
 
@@ -11,12 +7,7 @@ import { useAuthContext } from "context";
 
 import { useFirestore } from "utils";
 
-import {
-  AuthProcessStatus,
-  AuthType as AT,
-  StatusState as S,
-  StatusMessages as M,
-} from "models";
+import { AuthProcessStatus, AuthType as AT, StatusState as S, StatusMessages as M } from "models";
 import { COLLECTION_USERS, INITIAL_AUTH_STATUS } from "consts";
 
 export const useGoogleSignIn = () => {

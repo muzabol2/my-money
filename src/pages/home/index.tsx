@@ -19,7 +19,7 @@ const Home = () => {
   const { documents, error } = useCollection(
     COLLECTION_TRANSACTIONS,
     [FIELD_UID, QUERY_OPERATOR_EQUAL, user?.uid],
-    [FIELD_CREATED_AT, QUERY_OPERATOR_DESC]
+    [FIELD_CREATED_AT, QUERY_OPERATOR_DESC],
   );
 
   return (

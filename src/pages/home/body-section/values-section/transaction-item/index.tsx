@@ -13,9 +13,7 @@ const TransactionItem = ({ t, deleteDocument }: Props) => (
     <$.StyledDate>{t.transactionDate}</$.StyledDate>
     <$.StyledCategory>{t.transactionCategory}</$.StyledCategory>
     <$.StyledAmount>{t.amount}</$.StyledAmount>
-    <$.StyledDeleteButton onClick={() => deleteDocument(t.id)}>
-      x
-    </$.StyledDeleteButton>
+    <$.StyledDeleteButton onClick={() => deleteDocument(t.id)}>x</$.StyledDeleteButton>
   </$.TransactionItem>
 );
 

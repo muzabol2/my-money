@@ -5,13 +5,7 @@ import { auth } from "config";
 
 import { useAuthContext } from "context";
 
-import {
-  AuthProcessStatus,
-  AuthType as AT,
-  StatusState as S,
-  StatusMessages as M,
-  AuthAction,
-} from "models";
+import { AuthProcessStatus, AuthType as AT, StatusState as S, StatusMessages as M, AuthAction } from "models";
 import { INITIAL_AUTH_STATUS } from "consts";
 
 export const useLogout = () => {
@@ -23,7 +17,7 @@ export const useLogout = () => {
     () => () => {
       isCancelled.current = true;
     },
-    []
+    [],
   );
 
   const safeDispatch = (action: AuthAction) => {

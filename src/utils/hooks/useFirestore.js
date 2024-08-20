@@ -17,12 +17,7 @@ import { db } from "config";
 
 import { INITIAL_STATE, firestoreReducer } from "reducers";
 
-import {
-  FirestoreType as T,
-  ErrorMessages as E,
-  Categories as C,
-  FirestoreMessages as FM,
-} from "models";
+import { FirestoreType as T, ErrorMessages as E, Categories as C, FirestoreMessages as FM } from "models";
 
 export const useFirestore = (collectionName) => {
   const [response, dispatch] = useReducer(firestoreReducer, INITIAL_STATE);

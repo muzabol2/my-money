@@ -1,8 +1,4 @@
-import {
-  AuthProcessStatus,
-  StatusState as S,
-  StatusMessages as M,
-} from "models";
+import { AuthProcessStatus, StatusState as S, StatusMessages as M } from "models";
 
 export const INITIAL_AUTH_STATUS: AuthProcessStatus = {
   state: S.IDLE,

@@ -8,10 +8,7 @@ import {
 
 const reauthenticate = async (user: User, password: string) => {
   try {
-    const credential = EmailAuthProvider.credential(
-      user.email as string,
-      password
-    );
+    const credential = EmailAuthProvider.credential(user.email as string, password);
 
     await reauthenticateWithCredential(user, credential);
   } catch (error) {
@@ -21,11 +18,9 @@ const reauthenticate = async (user: User, password: string) => {
   }
 };
 
-const updatePassword = (user: User, newPassword: string) =>
-  firebaseUpdatePassword(user, newPassword);
+const updatePassword = (user: User, newPassword: string) => firebaseUpdatePassword(user, newPassword);
 
-const updateDisplayName = (user: User, displayName: string) =>
-  updateProfile(user, { displayName });
+const updateDisplayName = (user: User, displayName: string) => updateProfile(user, { displayName });
 
 export default {
   reauthenticate,

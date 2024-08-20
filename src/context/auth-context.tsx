@@ -3,20 +3,12 @@ import React, { createContext, useContext, useEffect, useReducer } from "react";
 
 import { auth } from "config";
 
-import {
-  AuthAction,
-  AuthContextType,
-  AuthState,
-  AuthType as T,
-  ErrorMessages as E,
-} from "models";
+import { AuthAction, AuthContextType, AuthState, AuthType as T, ErrorMessages as E } from "models";
 
 export const AuthContext = createContext<AuthContextType | null>(null);
 
-export const authReducer = (
-  state: AuthState,
-  action: AuthAction
-): AuthState => {
+// eslint-disable-next-line react-refresh/only-export-components
+export const authReducer = (state: AuthState, action: AuthAction): AuthState => {
   switch (action.type) {
     case T.LOGIN:
       return { ...state, user: action.payload };
@@ -47,13 +39,10 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
     });
   }, []);
 
-  return (
-    <AuthContext.Provider value={{ ...state, dispatch }}>
-      {children}
-    </AuthContext.Provider>
-  );
+  return <AuthContext.Provider value={{ ...state, dispatch }}>{children}</AuthContext.Provider>;
 };
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const useAuthContext = () => {
   const context = useContext(AuthContext);
 

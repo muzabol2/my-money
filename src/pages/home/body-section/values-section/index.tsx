@@ -15,11 +15,7 @@ const ValuesSection = ({ transactions }: Props) => {
   return (
     <>
       {transactions?.map((transaction: Transaction) => (
-        <TransactionItem
-          key={transaction.id}
-          t={transaction}
-          deleteDocument={deleteDocument}
-        />
+        <TransactionItem key={transaction.id} t={transaction} deleteDocument={deleteDocument} />
       ))}
     </>
   );

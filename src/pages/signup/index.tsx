@@ -2,22 +2,12 @@ import { useFormik } from "formik";
 
 import { useSignup, signupSchema, validateYupSchemaMultiErrors } from "utils";
 
-import {
-  ButtonsTexts as BT,
-  PagesTexts as PT,
-  FormFieldNames as N,
-  SignupValues,
-} from "models";
+import { ButtonsTexts as BT, PagesTexts as PT, FormFieldNames as N, SignupValues } from "models";
 import { SIGNUP_BELOW_TEXTS, SIGN_UP_FORM_FIELDS } from "consts";
 
 import { FormikForm, BelowTextBox, GoogleSignIn } from "components";
 
-import {
-  StyledWrapper,
-  StyledFormContainer,
-  StyledTitle,
-  StyledText,
-} from "./styled";
+import { StyledWrapper, StyledFormContainer, StyledTitle, StyledText } from "./styled";
 
 const Signup = () => {
   const { signup, isLoading } = useSignup();
@@ -45,11 +35,7 @@ const Signup = () => {
       <StyledFormContainer>
         <StyledTitle>{PT.CREATE_PROFILE}</StyledTitle>
 
-        <FormikForm<SignupValues>
-          formik={signupFormik}
-          formFields={SIGN_UP_FORM_FIELDS}
-          buttonText={BT.SIGN_UP}
-        />
+        <FormikForm<SignupValues> formik={signupFormik} formFields={SIGN_UP_FORM_FIELDS} buttonText={BT.SIGN_UP} />
 
         <StyledText>{PT.OR}</StyledText>
 

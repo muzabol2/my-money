@@ -1,9 +1,4 @@
-import {
-  LOGIN_BELOW_TEXTS,
-  SIGNUP_BELOW_TEXTS,
-  INSPIRATION_BELOW_TEXTS,
-  GO_BACK_BELOW_TEXTS,
-} from "./below-box-texts";
+import { LOGIN_BELOW_TEXTS, SIGNUP_BELOW_TEXTS, INSPIRATION_BELOW_TEXTS, GO_BACK_BELOW_TEXTS } from "./below-box-texts";
 
 import {
   COLLECTION_USERS,
@@ -14,11 +9,7 @@ import {
   QUERY_OPERATOR_EQUAL,
 } from "./firebase";
 
-import {
-  LOGIN_FORM_FIELDS,
-  SIGN_UP_FORM_FIELDS,
-  UPDATE_PROFILE_FORM_FIELDS,
-} from "./form-fields";
+import { LOGIN_FORM_FIELDS, SIGN_UP_FORM_FIELDS, UPDATE_PROFILE_FORM_FIELDS } from "./form-fields";
 
 import { INITIAL_AUTH_STATUS } from "./initial-auth-status";
 

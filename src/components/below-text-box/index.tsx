@@ -13,6 +13,7 @@ interface Props {
   texts: TextItem[];
 }
 
+// eslint-disable-next-line react-refresh/only-export-components
 const BelowTextBox = ({ texts }: Props) => (
   <StyledBelowContainer>
     {texts.map(({ name, link, linkName }, index) => (
@@ -23,4 +24,5 @@ const BelowTextBox = ({ texts }: Props) => (
   </StyledBelowContainer>
 );
 
+// eslint-disable-next-line react-refresh/only-export-components
 export default React.memo(BelowTextBox);

@@ -10,9 +10,7 @@ interface Props {
 }
 
 const BodySection = ({ transactions }: Props) => {
-  const transactionsSum = transactions
-    .reduce((acc, { amount }) => acc + Number(amount), 0)
-    .toFixed(2);
+  const transactionsSum = transactions.reduce((acc, { amount }) => acc + Number(amount), 0).toFixed(2);
 
   return (
     <StyledContainer>

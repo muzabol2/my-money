@@ -1,10 +1,4 @@
-import {
-  collection,
-  onSnapshot,
-  orderBy,
-  query,
-  where,
-} from "firebase/firestore";
+import { collection, onSnapshot, orderBy, query, where } from "firebase/firestore";
 import { useEffect, useRef, useState } from "react";
 
 import { db } from "config";
@@ -46,7 +40,7 @@ export const useCollection = (collectionName, _query, _orderBy) => {
       (error) => {
         console.error(error);
         setError(E.COULD_NOT_FETCH_DATA);
-      }
+      },
     );
 
     return () => unsubscribe();
