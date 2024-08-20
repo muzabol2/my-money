@@ -1,12 +1,9 @@
-import { useState, useEffect, useRef } from "react";
 import { signOut } from "firebase/auth";
-
+import { useEffect, useRef, useState } from "react";
 import { auth } from "config";
-
-import { useAuthContext } from "context";
-
-import { AuthProcessStatus, AuthType as AT, StatusState as S, StatusMessages as M, AuthAction } from "models";
 import { INITIAL_AUTH_STATUS } from "consts";
+import { useAuthContext } from "context";
+import { AuthType as AT, AuthAction, AuthProcessStatus, StatusMessages as M, StatusState as S } from "models";
 
 export const useLogout = () => {
   const { dispatch } = useAuthContext();
@@ -17,7 +14,7 @@ export const useLogout = () => {
     () => () => {
       isCancelled.current = true;
     },
-    [],
+    []
   );
 
   const safeDispatch = (action: AuthAction) => {

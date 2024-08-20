@@ -1,14 +1,10 @@
 import { useFormik } from "formik";
-
-import { loginSchema } from "utils";
-
-import { PagesTexts as PT, ButtonsTexts as BT, FormFieldNames as N, LoginValues } from "models";
+import { BelowTextBox, FormikForm, GoogleSignIn } from "components";
 import { LOGIN_BELOW_TEXTS, LOGIN_FORM_FIELDS } from "consts";
-
-import { FormikForm, BelowTextBox, GoogleSignIn } from "components";
-
-import { StyledFormContainer, StyledText, StyledTitle, StyledWrapper } from "./styled";
 import { useLogin } from "hooks";
+import { ButtonsTexts as BT, LoginValues, FormFieldNames as N, PagesTexts as PT } from "models";
+import { loginSchema } from "utils";
+import { StyledFormContainer, StyledText, StyledTitle, StyledWrapper } from "./styled";
 
 const Login = () => {
   const { login, isLoading } = useLogin();

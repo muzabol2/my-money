@@ -1,9 +1,9 @@
-import { getIn, setIn, validateYupSchema, FormikValues, FormikErrors } from "formik";
+import { FormikErrors, FormikValues, getIn, setIn, validateYupSchema } from "formik";
 import { AnySchema, ValidationError } from "yup";
 
 const yupToFormErrors = <T>(
   yupError: ValidationError,
-  validationSchemaOptions: { showMultipleFieldErrors?: boolean },
+  validationSchemaOptions: { showMultipleFieldErrors?: boolean }
 ) => {
   let errors: FormikErrors<T> = {};
 

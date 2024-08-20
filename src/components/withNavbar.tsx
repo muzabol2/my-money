@@ -1,5 +1,4 @@
-import React, { ReactElement, ComponentType } from "react";
-
+import React, { ComponentType, ReactElement } from "react";
 import Navbar from "./navbar";
 
 const withNavbar = <P extends object>(WrappedComponent: ComponentType<P>): React.FC<P> => {

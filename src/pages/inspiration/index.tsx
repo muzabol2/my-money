@@ -1,9 +1,7 @@
-import { RedirectPaths as P } from "models";
-import { INSPIRATION_BELOW_TEXTS } from "consts";
-
 import { BelowTextBox } from "components";
-
-import { StyledContainer, StyledIframeContainer, StyledIframe } from "./styled";
+import { INSPIRATION_BELOW_TEXTS } from "consts";
+import { RedirectPaths as P } from "models";
+import { StyledContainer, StyledIframe, StyledIframeContainer } from "./styled";
 
 const Inspiration = () => (
   <StyledContainer>

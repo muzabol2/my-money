@@ -1,12 +1,9 @@
-import { useState } from "react";
 import { createUserWithEmailAndPassword, sendEmailVerification, signOut, updateProfile } from "firebase/auth";
-
+import { useState } from "react";
 import { auth } from "config";
-
-import { getToastMsg } from "utils/toast-msg";
-
-import { StatusMessages as M, PagesTexts as PT } from "models";
 import { COLLECTION_USERS } from "consts";
+import { StatusMessages as M, PagesTexts as PT } from "models";
+import { getToastMsg } from "utils/toast-msg";
 import { useFirestore } from "./useFirestore";
 
 export const useSignup = () => {

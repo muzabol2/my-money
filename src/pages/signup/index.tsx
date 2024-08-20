@@ -1,14 +1,10 @@
 import { useFormik } from "formik";
-
-import { signupSchema, validateYupSchemaMultiErrors } from "utils";
-
-import { ButtonsTexts as BT, PagesTexts as PT, FormFieldNames as N, SignupValues } from "models";
+import { BelowTextBox, FormikForm, GoogleSignIn } from "components";
 import { SIGNUP_BELOW_TEXTS, SIGN_UP_FORM_FIELDS } from "consts";
-
-import { FormikForm, BelowTextBox, GoogleSignIn } from "components";
-
-import { StyledWrapper, StyledFormContainer, StyledTitle, StyledText } from "./styled";
 import { useSignup } from "hooks";
+import { ButtonsTexts as BT, FormFieldNames as N, PagesTexts as PT, SignupValues } from "models";
+import { signupSchema, validateYupSchemaMultiErrors } from "utils";
+import { StyledFormContainer, StyledText, StyledTitle, StyledWrapper } from "./styled";
 
 const Signup = () => {
   const { signup, isLoading } = useSignup();

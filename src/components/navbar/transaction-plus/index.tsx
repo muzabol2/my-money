@@ -1,9 +1,6 @@
 import { useEffect, useState } from "react";
-
 import { useAuthContext } from "context";
-
 import { PlusIcon } from "icons";
-
 import { StyledContainer, StyledMenuButton } from "./styled";
 import TransactionForm from "../../transaction-form";
 

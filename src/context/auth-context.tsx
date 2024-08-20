@@ -1,8 +1,6 @@
 import { onAuthStateChanged } from "firebase/auth";
 import React, { createContext, useEffect, useReducer } from "react";
-
 import { auth } from "config";
-
 import { AuthContextType, AuthType as T } from "models";
 import authReducer from "./auth-reducer";
 

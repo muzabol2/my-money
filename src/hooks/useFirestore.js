@@ -1,4 +1,3 @@
-import { useEffect, useReducer, useState } from "react";
 import {
   Timestamp,
   addDoc,
@@ -10,14 +9,11 @@ import {
   setDoc,
   updateDoc,
 } from "firebase/firestore";
-
-import { getToastMsg } from "utils/toast-msg";
-
+import { useEffect, useReducer, useState } from "react";
 import { db } from "config";
-
+import { Categories as C, ErrorMessages as E, FirestoreMessages as FM, FirestoreType as T } from "models";
 import { INITIAL_STATE, firestoreReducer } from "reducers";
-
-import { FirestoreType as T, ErrorMessages as E, Categories as C, FirestoreMessages as FM } from "models";
+import { getToastMsg } from "utils/toast-msg";
 
 export const useFirestore = (collectionName) => {
   const [response, dispatch] = useReducer(firestoreReducer, INITIAL_STATE);

@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-
 import { alto, black, ottoman } from "styles";
 
 export const StyledNavbar = styled.div`

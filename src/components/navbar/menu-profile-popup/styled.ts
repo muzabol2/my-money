@@ -1,5 +1,4 @@
 import styled from "styled-components";
-
 import { alabaster, alto, black, eucalyptus, ottoman, white } from "styles";
 
 export const StyledContainer = styled.div``;

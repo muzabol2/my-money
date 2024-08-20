@@ -1,7 +1,5 @@
 import { FieldProps, getIn } from "formik";
-
 import { SelectOption } from "models";
-
 import { StyledFormControl, StyledFormHelperText, StyledInputLabel, StyledOption, StyledSelect } from "./styled";
 
 interface SelectFieldProps extends FieldProps {

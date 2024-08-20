@@ -1,9 +1,6 @@
 import { Field, Form, FormikProvider } from "formik";
-
-import { useHelpers } from "./helpers";
-
 import { ButtonsTexts as BT } from "models";
-
+import { useHelpers } from "./helpers";
 import { StyledButton, StyledContainer, StyledGrid } from "./styled";
 
 const TransactionForm = ({ uid }: { uid: string }) => {

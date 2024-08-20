@@ -1,13 +1,9 @@
 import { Field, Form, FormikProvider } from "formik";
-
-import { useHelpers } from "./helpers";
-
-import { PagesTexts as PT, ButtonsTexts as BT } from "models";
-import { GO_BACK_BELOW_TEXTS } from "consts";
-
 import { BelowTextBox, TextFormField } from "components";
+import { GO_BACK_BELOW_TEXTS } from "consts";
 import { DeleteIcon } from "icons";
-
+import { ButtonsTexts as BT, PagesTexts as PT } from "models";
+import { useHelpers } from "./helpers";
 import * as $ from "./styled";
 
 const Categories = () => {

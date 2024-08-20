@@ -1,5 +1,4 @@
 import styled from "styled-components";
-
 import { alto, boulder, concrete, eucalyptus } from "styles";
 
 export const TransactionItem = styled.li`

@@ -1,5 +1,4 @@
 import styled from "styled-components";
-
 import { alto, concrete } from "styles";
 
 export const StyledContainer = styled.div`

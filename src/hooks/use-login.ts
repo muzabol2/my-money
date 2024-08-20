@@ -1,13 +1,9 @@
-import { useState } from "react";
 import { signInWithEmailAndPassword, signOut } from "firebase/auth";
-
-import { getToastMsg } from "utils/toast-msg";
-
+import { useState } from "react";
 import { auth } from "config";
-
 import { useAuthContext } from "context";
-
 import { AuthType as AT, StatusMessages as M } from "models";
+import { getToastMsg } from "utils/toast-msg";
 
 export const useLogin = () => {
   const { dispatch } = useAuthContext();

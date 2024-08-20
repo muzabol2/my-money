@@ -1,16 +1,11 @@
 import { useFormik } from "formik";
-
-import { useAuthContext } from "context";
-
-import { updateSchema, validateYupSchemaMultiErrors } from "utils";
-
-import { PagesTexts as PT, ButtonsTexts as BT, FormFieldNames as N, UpdateValues } from "models";
+import { BelowTextBox, FormikForm } from "components";
 import { GO_BACK_BELOW_TEXTS, UPDATE_PROFILE_FORM_FIELDS } from "consts";
-
-import { FormikForm, BelowTextBox } from "components";
-
-import { StyledFormContainer, StyledTitle, StyledWrapper } from "./styled";
+import { useAuthContext } from "context";
 import { useUpdateProfile } from "hooks";
+import { ButtonsTexts as BT, FormFieldNames as N, PagesTexts as PT, UpdateValues } from "models";
+import { updateSchema, validateYupSchemaMultiErrors } from "utils";
+import { StyledFormContainer, StyledTitle, StyledWrapper } from "./styled";
 
 const UpdateProfile = () => {
   const { user } = useAuthContext();

@@ -1,5 +1,4 @@
 import styled from "styled-components";
-
 import { alto } from "styles";
 
 export const StyledWrapper = styled.div``;

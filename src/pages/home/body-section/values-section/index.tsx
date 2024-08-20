@@ -1,8 +1,6 @@
-import { useFirestore } from "utils";
-
-import { Transaction } from "models";
 import { COLLECTION_TRANSACTIONS } from "consts";
-
+import { useFirestore } from "hooks";
+import { Transaction } from "models";
 import TransactionItem from "./transaction-item";
 
 interface Props {

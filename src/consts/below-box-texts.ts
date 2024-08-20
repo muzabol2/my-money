@@ -1,4 +1,4 @@
-import { PagesTexts as PT, RedirectPaths as P } from "models";
+import { RedirectPaths as P, PagesTexts as PT } from "models";
 
 export const SIGNUP_BELOW_TEXTS = [
   { name: PT.HAVE_ACCOUNT, link: P.LOGIN, linkName: PT.LOGIN },

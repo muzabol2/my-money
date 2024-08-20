@@ -1,6 +1,6 @@
 import { useContext } from "react";
-import { AuthContext } from "./auth-context";
 import { ErrorMessages as E } from "models";
+import { AuthContext } from "./auth-context";
 
 export const useAuthContext = () => {
   const context = useContext(AuthContext);

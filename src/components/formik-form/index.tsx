@@ -1,10 +1,7 @@
-import { Field, Form, FormikProvider, FormikProps } from "formik";
-
+import { Field, Form, FormikProps, FormikProvider } from "formik";
 import { FormField, FormikFormValues } from "models";
-
+import { StyledButton, StyledContainer } from "./styled";
 import { TextFormField } from "../form-fields";
-
-import { StyledContainer, StyledButton } from "./styled";
 
 type Props<T extends FormikFormValues> = {
   formik: FormikProps<T>;

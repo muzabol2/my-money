@@ -1,21 +1,16 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-
 import { useAuthContext } from "context";
-
 import { useLogout } from "hooks";
-
-import { PagesTexts as T, RedirectPaths as P } from "models";
-
 import { AccountCircleIcon } from "icons";
-
+import { RedirectPaths as P, PagesTexts as T } from "models";
 import {
   StyledContainer,
-  StyledMenuButton,
-  StyledMenu,
-  StyledMenuItem,
   StyledDisplayName,
   StyledDivider,
+  StyledMenu,
+  StyledMenuButton,
+  StyledMenuItem,
 } from "./styled";
 
 const MenuProfilePopup = () => {

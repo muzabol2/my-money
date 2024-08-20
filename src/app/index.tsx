@@ -1,14 +1,9 @@
 import { BrowserRouter, Redirect, Route, Switch } from "react-router-dom";
-
 import ToastHandler from "app/toast-handler";
-
-import { useAuthContext } from "context";
-
-import { RedirectPaths as P } from "models";
-
-import { Categories, Home, Inspiration, Login, Signup, UpdateProfile } from "pages";
 import { withNavbar } from "components";
-
+import { useAuthContext } from "context";
+import { RedirectPaths as P } from "models";
+import { Categories, Home, Inspiration, Login, Signup, UpdateProfile } from "pages";
 import { StyledContainer } from "./styled";
 
 const WrappedUpdateProfile = withNavbar(UpdateProfile);

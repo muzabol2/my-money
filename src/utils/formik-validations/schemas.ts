@@ -1,6 +1,5 @@
 import * as yup from "yup";
-
-import { ValidationMessages as VM, FormFieldNames as N } from "models";
+import { FormFieldNames as N, ValidationMessages as VM } from "models";
 
 const regExp = {
   transactionName: /^[\s\p{L}0-9]+$/u,

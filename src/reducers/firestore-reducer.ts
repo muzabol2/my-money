@@ -1,6 +1,5 @@
 import { DocumentData } from "firebase/firestore";
-
-import { FirestoreType as T, FirebaseStatus as S } from "models";
+import { FirebaseStatus as S, FirestoreType as T } from "models";
 
 interface State {
   status: S;

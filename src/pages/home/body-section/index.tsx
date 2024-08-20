@@ -1,9 +1,7 @@
 import { Transaction } from "models";
-
+import { StyledContainer, StyledItems, StyledSumHeader } from "./styled";
 import TitleSection from "./title-section";
 import ValuesSection from "./values-section";
-
-import { StyledContainer, StyledSumHeader, StyledItems } from "./styled";
 
 interface Props {
   transactions: Transaction[];

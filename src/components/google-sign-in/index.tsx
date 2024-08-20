@@ -1,10 +1,7 @@
 import GoogleButton from "react-google-button";
-
-import { useGoogleSignIn } from "utils";
-
+import { useGoogleSignIn } from "hooks";
 import { PagesTexts as PT, StatusState as S } from "models";
-
-import { StyledWrapper, StyledErrorMsg } from "./styled";
+import { StyledErrorMsg, StyledWrapper } from "./styled";
 
 const GoogleSignIn = () => {
   const { googleSignIn, googleStatus } = useGoogleSignIn();

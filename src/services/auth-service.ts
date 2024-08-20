@@ -1,9 +1,9 @@
 import {
   EmailAuthProvider,
-  reauthenticateWithCredential,
-  updatePassword as firebaseUpdatePassword,
-  updateProfile,
   User,
+  updatePassword as firebaseUpdatePassword,
+  reauthenticateWithCredential,
+  updateProfile,
 } from "firebase/auth";
 
 const reauthenticate = async (user: User, password: string) => {

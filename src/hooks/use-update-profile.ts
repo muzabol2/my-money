@@ -1,12 +1,8 @@
-import { useState, useEffect, useRef } from "react";
-
-import { AuthService } from "services";
-
-import { getToastMsg } from "utils/toast-msg";
-
+import { useEffect, useRef, useState } from "react";
 import { useAuthContext } from "context";
-
 import { AuthType as AT, AuthAction, StatusMessages as M } from "models";
+import { AuthService } from "services";
+import { getToastMsg } from "utils/toast-msg";
 
 export const useUpdateProfile = () => {
   const { user, dispatch } = useAuthContext();
@@ -17,7 +13,7 @@ export const useUpdateProfile = () => {
     () => () => {
       isCancelled.current = true;
     },
-    [],
+    []
   );
 
   const safeDispatch = (action: AuthAction) => {

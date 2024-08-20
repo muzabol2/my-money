@@ -1,5 +1,4 @@
 import styled from "styled-components";
-
 import { alto, eucalyptus, white } from "styles";
 
 export const StyledWrapper = styled.div``;

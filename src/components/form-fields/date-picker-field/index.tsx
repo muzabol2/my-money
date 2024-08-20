@@ -1,7 +1,5 @@
 import { FieldProps, getIn } from "formik";
-
 import { formatInputDate } from "utils";
-
 import { StyledDateInput, StyledFormControl, StyledFormHelperText, StyledLabel } from "./styled";
 
 interface DateFieldProps extends FieldProps {

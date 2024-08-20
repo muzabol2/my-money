@@ -1,5 +1,4 @@
 import { Transaction } from "models";
-
 import * as $ from "./styled";
 
 interface Props {
