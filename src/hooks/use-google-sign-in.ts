@@ -4,7 +4,7 @@ import { auth } from "config";
 import { COLLECTION_USERS, INITIAL_AUTH_STATUS } from "consts";
 import { useAuthContext } from "context";
 import { AuthType as AT, AuthProcessStatus, StatusMessages as M, StatusState as S } from "models";
-import { useFirestore } from "./useFirestore";
+import { useFirestore } from "./use-firestore";
 
 const useGoogleSignIn = () => {
   const { dispatch } = useAuthContext();

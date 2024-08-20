@@ -3,8 +3,8 @@ import { FirebaseStatus as S, FirestoreType as T } from "models";
 
 interface State {
   status: S;
-  document: DocumentData | null;
-  errorMsg: string | null;
+  document?: DocumentData | null;
+  errorMsg?: string | null;
 }
 
 interface Action {
@@ -18,7 +18,7 @@ const INITIAL_STATE: State = {
   errorMsg: null,
 };
 
-const firestoreReducer = (state: State, action: Action) => {
+const firestoreReducer = (state: State, action: Action): State => {
   switch (action.type) {
     case T.IS_PENDING:
       return { ...state, status: S.PENDING };
@@ -29,11 +29,12 @@ const firestoreReducer = (state: State, action: Action) => {
     case T.DELETED_CATEGORY:
       return { ...state, status: S.SUCCESS, document: action.payload };
     case T.ERROR:
-      return { ...state, status: S.ERROR, errorMsg: action.payload };
+      return { ...state, status: S.ERROR, errorMsg: `${action.payload}` };
 
     default:
       return state;
   }
 };
 
+export type { State, Action };
 export { INITIAL_STATE, firestoreReducer };

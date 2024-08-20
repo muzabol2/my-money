@@ -1,5 +1,5 @@
 export * from "./useCollection";
-export * from "./useFirestore";
+export * from "./use-firestore";
 export * from "./use-google-sign-in";
 export * from "./use-login";
 export * from "./use-logout";

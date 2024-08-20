@@ -1,4 +1,6 @@
 import {
+  CollectionReference,
+  DocumentReference,
   Timestamp,
   addDoc,
   arrayRemove,
@@ -12,22 +14,28 @@ import {
 import { useEffect, useReducer, useState } from "react";
 import { db } from "config";
 import { Categories as C, ErrorMessages as E, FirestoreMessages as FM, FirestoreType as T } from "models";
-import { INITIAL_STATE, firestoreReducer } from "reducers";
+import { Action, INITIAL_STATE, State, firestoreReducer } from "reducers";
 import { getToastMsg } from "utils/toast-msg";
 
-const useFirestore = (collectionName) => {
-  const [response, dispatch] = useReducer(firestoreReducer, INITIAL_STATE);
+interface FirestoreResponse {
+  type: T;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  payload?: any;
+}
+
+const useFirestore = (collectionName: string) => {
+  const [response, dispatch] = useReducer<React.Reducer<State, Action>>(firestoreReducer, INITIAL_STATE);
   const [isCancelled, setIsCancelled] = useState(false);
 
-  const ref = collection(db, collectionName);
+  const ref: CollectionReference = collection(db, collectionName);
 
-  const safeDispatch = (action) => {
+  const safeDispatch = (action: FirestoreResponse) => {
     if (!isCancelled) {
       dispatch(action);
     }
   };
 
-  const addDocument = async (document) => {
+  const addDocument = async (document: Record<string, any>) => {
     dispatch({ type: T.IS_PENDING });
     try {
       const createdAt = Timestamp.fromDate(new Date());
@@ -41,12 +49,12 @@ const useFirestore = (collectionName) => {
     }
   };
 
-  const deleteDocument = async (id) => {
+  const deleteDocument = async (id: string) => {
     dispatch({ type: T.IS_PENDING });
     try {
-      const ref = doc(db, collectionName, id);
+      const docRef: DocumentReference = doc(db, collectionName, id);
 
-      await deleteDoc(ref);
+      await deleteDoc(docRef);
       safeDispatch({ type: T.DELETED_DOC, payload: id });
       getToastMsg(FM[T.DELETED_DOC]);
     } catch (error) {
@@ -55,9 +63,9 @@ const useFirestore = (collectionName) => {
     }
   };
 
-  const addUser = async (displayName, id) => {
+  const addUser = async (displayName: string | null, id: string) => {
     dispatch({ type: T.IS_PENDING });
-    const ref = doc(db, collectionName, id);
+    const docRef: DocumentReference = doc(db, collectionName, id);
     const data = {
       displayName,
       categories: [C.Food, C.Other],
@@ -65,7 +73,7 @@ const useFirestore = (collectionName) => {
     };
 
     try {
-      await setDoc(ref, data);
+      await setDoc(docRef, data);
       safeDispatch({ type: T.ADDED_USER, payload: data });
       getToastMsg(FM[T.ADDED_USER]);
     } catch (error) {
@@ -74,11 +82,11 @@ const useFirestore = (collectionName) => {
     }
   };
 
-  const addCategory = async ({ id, category }) => {
+  const addCategory = async ({ id, category }: { id: string; category: string }) => {
     dispatch({ type: T.IS_PENDING });
     try {
-      const ref = doc(db, collectionName, id);
-      const updatedDocument = await updateDoc(ref, {
+      const docRef: DocumentReference = doc(db, collectionName, id);
+      const updatedDocument = await updateDoc(docRef, {
         categories: arrayUnion(category),
       });
 
@@ -90,11 +98,11 @@ const useFirestore = (collectionName) => {
     }
   };
 
-  const deleteCategory = async ({ id, category }) => {
+  const deleteCategory = async ({ id, category }: { id: string; category: string }) => {
     dispatch({ type: T.IS_PENDING });
     try {
-      const ref = doc(db, collectionName, id);
-      const updatedDocument = await updateDoc(ref, {
+      const docRef: DocumentReference = doc(db, collectionName, id);
+      const updatedDocument = await updateDoc(docRef, {
         categories: arrayRemove(category),
       });
 

@@ -4,7 +4,7 @@ import { auth } from "config";
 import { COLLECTION_USERS } from "consts";
 import { StatusMessages as M, PagesTexts as PT } from "models";
 import { getToastMsg } from "utils/toast-msg";
-import { useFirestore } from "./useFirestore";
+import { useFirestore } from "./use-firestore";
 
 const useSignup = () => {
   const { addUser } = useFirestore(COLLECTION_USERS);
