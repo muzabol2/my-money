@@ -1,22 +1,45 @@
 {
   "compilerOptions": {
     "baseUrl": "src",
-    "target": "es5",
-    "lib": ["dom", "dom.iterable", "esnext"],
-    "allowJs": true,
-    "skipLibCheck": true,
+    "paths": {
+      "app": ["./app"],
+      "components": ["./components"],
+      "config": ["./config"],
+      "consts": ["./consts"],
+      "context": ["./context"],
+      "icons": ["./icons"],
+      "models": ["./models"],
+      "pages": ["./pages"],
+      "reducers": ["./reducers"],
+      "services": ["./services"],
+      "styles": ["./styles"],
+      "utils": ["./utils"]
+    },
     "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true,
-    "downlevelIteration": true,
-    "strict": true,
-    "forceConsistentCasingInFileNames": true,
-    "noFallthroughCasesInSwitch": true,
-    "module": "esnext",
-    "moduleResolution": "node",
+    "target": "ES2020",
+    "useDefineForClassFields": true,
+    "lib": ["ESNext", "DOM", "DOM.Iterable"],
+    "module": "ESNext",
+    "skipLibCheck": true,
+
+    /* Bundler mode */
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react-jsx"
+    "jsx": "react-jsx",
+
+    /* Linting */
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true,
+
+    /* Support JS files */
+    "allowJs": true,
+    "checkJs": false
   },
-  "include": ["src/**/*"],
+  "include": ["src"],
+  "references": [{ "path": "./tsconfig.node.json" }]
 }
