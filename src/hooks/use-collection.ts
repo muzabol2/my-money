@@ -12,25 +12,18 @@ import { useEffect, useRef, useState } from "react";
 import { db } from "config";
 import { ErrorMessages as E } from "models";
 
-type Document = {
-  id: string;
-  uid?: string;
-  displayName?: string;
-  categories?: string[];
-};
-
-type CollectionReturn = {
-  documents: Array<Document>;
+type CollectionReturn<T> = {
+  documents: T[];
   categories?: string[];
   error: string | null;
 };
 
-const useCollection = (
+const useCollection = <T extends Record<string, any>>(
   collectionName: string,
   _query?: [string, WhereFilterOp, string],
   _orderBy?: [string, "asc" | "desc"]
-): CollectionReturn => {
-  const [documents, setDocuments] = useState<Array<Document>>([]);
+): CollectionReturn<T> => {
+  const [documents, setDocuments] = useState<T[]>([]);
   const [error, setError] = useState<string | null>(null);
 
   const categories = documents?.[0]?.categories;
@@ -53,10 +46,10 @@ const useCollection = (
     const unsubscribe = onSnapshot(
       ref,
       (snapshot) => {
-        const results: Array<Document> = [];
+        const results: T[] = [];
 
         snapshot.docs.forEach((doc) => {
-          results.push({ ...doc.data(), id: doc.id });
+          results.push({ ...doc.data(), id: doc.id } as unknown as T);
         });
         setDocuments(results);
         setError(null);

@@ -4,7 +4,7 @@ import { Transaction } from "models";
 import { TransactionItem } from "./transaction-item";
 
 interface Props {
-  transactions: Transaction[];
+  transactions?: Transaction[];
 }
 
 const ValuesSection = ({ transactions }: Props) => {

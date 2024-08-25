@@ -6,7 +6,7 @@ import { categoriesSchema, validateYupSchemaMultiErrors } from "utils";
 
 const useHelpers = () => {
   const { user } = useAuthContext();
-  const userId = user?.uid;
+  const userId = user?.uid ?? "";
 
   const { categories, error } = useCollection(COLLECTION_USERS, [FIELD_UID, QUERY_OPERATOR_EQUAL, userId]);
   const { addCategory, deleteCategory } = useFirestore(COLLECTION_USERS);

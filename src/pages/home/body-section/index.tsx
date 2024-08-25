@@ -4,11 +4,11 @@ import { TitleSection } from "./title-section";
 import { ValuesSection } from "./values-section";
 
 interface Props {
-  transactions: Transaction[];
+  transactions?: Transaction[];
 }
 
 const BodySection = ({ transactions }: Props) => {
-  const transactionsSum = transactions.reduce((acc, { amount }) => acc + Number(amount), 0).toFixed(2);
+  const transactionsSum = transactions?.reduce((acc, { amount }) => acc + Number(amount), 0).toFixed(2);
 
   return (
     <StyledContainer>
