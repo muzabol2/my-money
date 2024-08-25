@@ -13,9 +13,9 @@ const DatePickerField = ({ label, field, form }: DateFieldProps) => {
 
   return (
     <StyledFormControl>
-      <StyledLabel isError={!!errorText}>{label}</StyledLabel>
+      <StyledLabel $isError={!!errorText}>{label}</StyledLabel>
       <StyledDateInput id={field.name} type="date" {...updatedField} />
-      <StyledFormHelperText isError={!!errorText}>{errorText}</StyledFormHelperText>
+      <StyledFormHelperText $isError={!!errorText}>{errorText}</StyledFormHelperText>
     </StyledFormControl>
   );
 };

@@ -6,14 +6,14 @@ const StyledFormControl = styled.div`
   flex-direction: column;
 `;
 
-const StyledTextField = styled.input<{ isError: boolean }>`
+const StyledTextField = styled.input<{ hasError: boolean }>`
   width: 220px;
   padding: 12px;
   border: 1px solid ${silver};
   border-radius: 4px;
   background-color: white;
   box-sizing: border-box;
-  ${({ isError }) => isError && "border-color: 'red'; color: 'red';"}
+  ${({ hasError }) => hasError && "border-color: 'red'; color: 'red';"}
 `;
 
 const StyledFormHelperText = styled.div`
@@ -21,8 +21,8 @@ const StyledFormHelperText = styled.div`
   font-size: 12px;
 `;
 
-const StyledLabel = styled.label<{ isError: boolean }>`
-  color: ${({ isError }) => (isError ? "red" : "${black}")};
+const StyledLabel = styled.label<{ hasError: boolean }>`
+  color: ${({ hasError }) => (hasError ? "red" : "${black}")};
 `;
 
 export { StyledFormControl, StyledTextField, StyledFormHelperText, StyledLabel };

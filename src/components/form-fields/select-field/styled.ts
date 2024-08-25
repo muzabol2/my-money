@@ -12,8 +12,8 @@ const StyledSelect = styled.select`
 
 const StyledOption = styled.option``;
 
-const StyledFormHelperText = styled.div<{ isError: boolean }>`
-  color: ${({ isError }) => (isError ? "red" : "inherit")};
+const StyledFormHelperText = styled.div<{ $isError: boolean }>`
+  color: ${({ $isError }) => ($isError ? "red" : "inherit")};
 `;
 
 export { StyledFormControl, StyledInputLabel, StyledSelect, StyledOption, StyledFormHelperText };

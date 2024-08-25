@@ -11,8 +11,8 @@ const TextFormField = ({ field, form, label, type }: TextFieldProps) => {
 
   return (
     <StyledFormControl>
-      <StyledLabel isError={!!errorText}>{label}</StyledLabel>
-      <StyledTextField id={field.name} type={type ? type : "text"} {...field} isError={!!errorText} />
+      <StyledLabel $isError={!!errorText}>{label}</StyledLabel>
+      <StyledTextField id={field.name} type={type ? type : "text"} {...field} $isError={!!errorText} />
       {errorText && <StyledFormHelperText>{errorText}</StyledFormHelperText>}
     </StyledFormControl>
   );

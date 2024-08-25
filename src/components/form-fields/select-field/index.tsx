@@ -21,7 +21,7 @@ const SelectFormField = ({ field, form, options, label }: SelectFieldProps) => {
           <StyledOption key={index}>{op}</StyledOption>
         ))}
       </StyledSelect>
-      <StyledFormHelperText isError={!!errorText}>{errorText}</StyledFormHelperText>
+      <StyledFormHelperText $isError={!!errorText}>{errorText}</StyledFormHelperText>
     </StyledFormControl>
   );
 };

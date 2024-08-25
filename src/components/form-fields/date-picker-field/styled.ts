@@ -3,9 +3,9 @@ import styled from "styled-components";
 const StyledFormControl = styled.div``;
 
 const StyledLabel = styled.label<{
-  isError: boolean;
+  $isError: boolean;
 }>`
-  color: ${({ isError }) => (isError ? "red" : "${black}")};
+  color: ${({ $isError }) => ($isError ? "red" : "${black}")};
 `;
 
 const StyledDateInput = styled.input`
@@ -15,9 +15,9 @@ const StyledDateInput = styled.input`
 `;
 
 const StyledFormHelperText = styled.div<{
-  isError: boolean;
+  $isError: boolean;
 }>`
-  color: ${({ isError }) => (isError ? "red" : "inherit")};
+  color: ${({ $isError }) => ($isError ? "red" : "inherit")};
 `;
 
 export { StyledFormControl, StyledLabel, StyledDateInput, StyledFormHelperText };
